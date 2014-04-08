@@ -18,7 +18,7 @@ namespace GestioneViaggi.Model
         Decimal Pesata { get; set; }
         int CaloPesoPercentuale { get; set; }
 
-        Cliente Cliente { get; set; }
+        Fornitore Cliente { get; set; }
         Prodotto Prodotto { get; set; }
     }
 
@@ -35,7 +35,7 @@ namespace GestioneViaggi.Model
         public int CaloPesoPercentuale { get; set; }
         
         [Write(false)]
-        public Cliente Cliente { get; set; }
+        public Fornitore Cliente { get; set; }
         [Write(false)]
         public Prodotto Prodotto { get; set; }
     }

@@ -6,7 +6,7 @@ using Dapper.Contrib.Extensions;
 
 namespace GestioneViaggi.Model
 {
-    public interface ICliente
+    public interface IFornitore
     {
         [Key]
         long Id { get; set; }
@@ -14,16 +14,16 @@ namespace GestioneViaggi.Model
         Decimal Tariffa { get; set; }
     }
 
-    [Table("Cliente")]
-    public class Cliente : ICliente
+    [Table("Fornitore")]
+    public class Fornitore : IFornitore
     {
         public long Id { get; set; }
         public String RagioneSociale { get; set; }
         public Decimal Tariffa { get; set; }
 
-        public Cliente Clone()
+        public Fornitore Clone()
         {
-            return new Cliente
+            return new Fornitore
             {
                 Id = this.Id,
                 RagioneSociale = this.RagioneSociale,

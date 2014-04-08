@@ -7,10 +7,10 @@ using System.Windows.Forms;
 
 namespace GestioneViaggi.ViewModel
 {
-    public class AnagraficaClientiVModel
+    public class AnagraficaFornitoriVModel
     {
-        public List<Cliente> Clienti { get; set; }
-        public Cliente currentClient { get; set; }
+        public List<Fornitore> Fornitori { get; set; }
+        public Fornitore currentClient { get; set; }
         public Boolean isSelectedClient { get { return currentClient != null; } }
     }
 }

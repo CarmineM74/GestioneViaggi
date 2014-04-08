@@ -33,35 +33,35 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.clientiTabPage = new System.Windows.Forms.TabPage();
+            this.FornitoriTabPage = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.eliminaBtn = new System.Windows.Forms.Button();
+            this.salvaBtn = new System.Windows.Forms.Button();
+            this.nuovoBtn = new System.Windows.Forms.Button();
+            this.tariffaMTb = new System.Windows.Forms.MaskedTextBox();
+            this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.ragioneSocialeTb = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.elencoClientiDg = new System.Windows.Forms.DataGridView();
+            this.elencoFornitoriDg = new System.Windows.Forms.DataGridView();
+            this.ragioneSocialeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tariffaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.elencoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
             this.ragioneSocialeFilterTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.prodottiTabPage = new System.Windows.Forms.TabPage();
             this.viaggiTabPage = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ragioneSocialeTb = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tariffaMTb = new System.Windows.Forms.MaskedTextBox();
-            this.nuovoBtn = new System.Windows.Forms.Button();
-            this.salvaBtn = new System.Windows.Forms.Button();
-            this.eliminaBtn = new System.Windows.Forms.Button();
-            this.currentClientBs = new System.Windows.Forms.BindingSource(this.components);
-            this.anagraficaClientiVMBs = new System.Windows.Forms.BindingSource(this.components);
-            this.ragioneSocialeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tariffaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.elencoClientiBs = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
-            this.clientiTabPage.SuspendLayout();
+            this.FornitoriTabPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoClientiDg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentClientBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaClientiVMBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoClientiBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -91,7 +91,7 @@
             // 
             // mainTabControl
             // 
-            this.mainTabControl.Controls.Add(this.clientiTabPage);
+            this.mainTabControl.Controls.Add(this.FornitoriTabPage);
             this.mainTabControl.Controls.Add(this.prodottiTabPage);
             this.mainTabControl.Controls.Add(this.viaggiTabPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -101,17 +101,17 @@
             this.mainTabControl.Size = new System.Drawing.Size(784, 538);
             this.mainTabControl.TabIndex = 1;
             // 
-            // clientiTabPage
+            // FornitoriTabPage
             // 
-            this.clientiTabPage.Controls.Add(this.groupBox2);
-            this.clientiTabPage.Controls.Add(this.groupBox1);
-            this.clientiTabPage.Location = new System.Drawing.Point(4, 22);
-            this.clientiTabPage.Name = "clientiTabPage";
-            this.clientiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.clientiTabPage.Size = new System.Drawing.Size(776, 512);
-            this.clientiTabPage.TabIndex = 0;
-            this.clientiTabPage.Text = "Anagrafica clienti";
-            this.clientiTabPage.UseVisualStyleBackColor = true;
+            this.FornitoriTabPage.Controls.Add(this.groupBox2);
+            this.FornitoriTabPage.Controls.Add(this.groupBox1);
+            this.FornitoriTabPage.Location = new System.Drawing.Point(4, 22);
+            this.FornitoriTabPage.Name = "FornitoriTabPage";
+            this.FornitoriTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.FornitoriTabPage.Size = new System.Drawing.Size(776, 512);
+            this.FornitoriTabPage.TabIndex = 0;
+            this.FornitoriTabPage.Text = "Anagrafica Fornitori";
+            this.FornitoriTabPage.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -122,17 +122,90 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.ragioneSocialeTb);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.DataBindings.Add(new System.Windows.Forms.Binding("Visible", this.anagraficaClientiVMBs, "isSelectedClient", true));
+            this.groupBox2.DataBindings.Add(new System.Windows.Forms.Binding("Visible", this.anagraficaFornitoriVMBs, "isSelectedClient", true));
             this.groupBox2.Location = new System.Drawing.Point(401, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(367, 411);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dettaglio cliente";
+            this.groupBox2.Text = "Dettaglio fornitore";
+            // 
+            // eliminaBtn
+            // 
+            this.eliminaBtn.Location = new System.Drawing.Point(283, 382);
+            this.eliminaBtn.Name = "eliminaBtn";
+            this.eliminaBtn.Size = new System.Drawing.Size(75, 23);
+            this.eliminaBtn.TabIndex = 7;
+            this.eliminaBtn.Text = "Elimina";
+            this.eliminaBtn.UseVisualStyleBackColor = true;
+            this.eliminaBtn.Click += new System.EventHandler(this.eliminaBtn_Click);
+            // 
+            // salvaBtn
+            // 
+            this.salvaBtn.Location = new System.Drawing.Point(99, 382);
+            this.salvaBtn.Name = "salvaBtn";
+            this.salvaBtn.Size = new System.Drawing.Size(75, 23);
+            this.salvaBtn.TabIndex = 6;
+            this.salvaBtn.Text = "Salva";
+            this.salvaBtn.UseVisualStyleBackColor = true;
+            this.salvaBtn.Click += new System.EventHandler(this.salvaBtn_Click);
+            // 
+            // nuovoBtn
+            // 
+            this.nuovoBtn.Location = new System.Drawing.Point(9, 382);
+            this.nuovoBtn.Name = "nuovoBtn";
+            this.nuovoBtn.Size = new System.Drawing.Size(75, 23);
+            this.nuovoBtn.TabIndex = 5;
+            this.nuovoBtn.Text = "Nuovo";
+            this.nuovoBtn.UseVisualStyleBackColor = true;
+            this.nuovoBtn.Click += new System.EventHandler(this.nuovoBtn_Click);
+            // 
+            // tariffaMTb
+            // 
+            this.tariffaMTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentFornitoreBs, "Tariffa", true));
+            this.tariffaMTb.Location = new System.Drawing.Point(9, 85);
+            this.tariffaMTb.Name = "tariffaMTb";
+            this.tariffaMTb.Size = new System.Drawing.Size(100, 20);
+            this.tariffaMTb.TabIndex = 4;
+            this.tariffaMTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // currentFornitoreBs
+            // 
+            this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Tariffa";
+            // 
+            // ragioneSocialeTb
+            // 
+            this.ragioneSocialeTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentFornitoreBs, "RagioneSociale", true));
+            this.ragioneSocialeTb.Location = new System.Drawing.Point(6, 32);
+            this.ragioneSocialeTb.Name = "ragioneSocialeTb";
+            this.ragioneSocialeTb.Size = new System.Drawing.Size(352, 20);
+            this.ragioneSocialeTb.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Ragione Sociale";
+            // 
+            // anagraficaFornitoriVMBs
+            // 
+            this.anagraficaFornitoriVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.elencoClientiDg);
+            this.groupBox1.Controls.Add(this.elencoFornitoriDg);
             this.groupBox1.Controls.Add(this.ragioneSocialeFilterTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
@@ -140,23 +213,45 @@
             this.groupBox1.Size = new System.Drawing.Size(367, 411);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Elenco clienti";
+            this.groupBox1.Text = "Elenco Fornitori";
             // 
-            // elencoClientiDg
+            // elencoFornitoriDg
             // 
-            this.elencoClientiDg.AllowUserToAddRows = false;
-            this.elencoClientiDg.AllowUserToDeleteRows = false;
-            this.elencoClientiDg.AutoGenerateColumns = false;
-            this.elencoClientiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elencoClientiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.elencoFornitoriDg.AllowUserToAddRows = false;
+            this.elencoFornitoriDg.AllowUserToDeleteRows = false;
+            this.elencoFornitoriDg.AutoGenerateColumns = false;
+            this.elencoFornitoriDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elencoFornitoriDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ragioneSocialeDataGridViewTextBoxColumn,
             this.tariffaDataGridViewTextBoxColumn});
-            this.elencoClientiDg.DataSource = this.elencoClientiBs;
-            this.elencoClientiDg.Location = new System.Drawing.Point(9, 58);
-            this.elencoClientiDg.Name = "elencoClientiDg";
-            this.elencoClientiDg.ReadOnly = true;
-            this.elencoClientiDg.Size = new System.Drawing.Size(352, 347);
-            this.elencoClientiDg.TabIndex = 2;
+            this.elencoFornitoriDg.DataSource = this.elencoFornitoriBs;
+            this.elencoFornitoriDg.Location = new System.Drawing.Point(9, 58);
+            this.elencoFornitoriDg.Name = "elencoFornitoriDg";
+            this.elencoFornitoriDg.ReadOnly = true;
+            this.elencoFornitoriDg.Size = new System.Drawing.Size(352, 347);
+            this.elencoFornitoriDg.TabIndex = 2;
+            // 
+            // ragioneSocialeDataGridViewTextBoxColumn
+            // 
+            this.ragioneSocialeDataGridViewTextBoxColumn.DataPropertyName = "RagioneSociale";
+            this.ragioneSocialeDataGridViewTextBoxColumn.HeaderText = "RagioneSociale";
+            this.ragioneSocialeDataGridViewTextBoxColumn.Name = "ragioneSocialeDataGridViewTextBoxColumn";
+            this.ragioneSocialeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ragioneSocialeDataGridViewTextBoxColumn.Width = 230;
+            // 
+            // tariffaDataGridViewTextBoxColumn
+            // 
+            this.tariffaDataGridViewTextBoxColumn.DataPropertyName = "Tariffa";
+            this.tariffaDataGridViewTextBoxColumn.HeaderText = "Tariffa";
+            this.tariffaDataGridViewTextBoxColumn.Name = "tariffaDataGridViewTextBoxColumn";
+            this.tariffaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tariffaDataGridViewTextBoxColumn.Width = 55;
+            // 
+            // elencoFornitoriBs
+            // 
+            this.elencoFornitoriBs.DataMember = "Fornitori";
+            this.elencoFornitoriBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
+            this.elencoFornitoriBs.CurrentChanged += new System.EventHandler(this.elencoFornitoriBs_CurrentChanged);
             // 
             // ragioneSocialeFilterTextBox
             // 
@@ -194,101 +289,6 @@
             this.viaggiTabPage.Text = "Storico viaggi";
             this.viaggiTabPage.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ragione Sociale";
-            // 
-            // ragioneSocialeTb
-            // 
-            this.ragioneSocialeTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentClientBs, "RagioneSociale", true));
-            this.ragioneSocialeTb.Location = new System.Drawing.Point(6, 32);
-            this.ragioneSocialeTb.Name = "ragioneSocialeTb";
-            this.ragioneSocialeTb.Size = new System.Drawing.Size(352, 20);
-            this.ragioneSocialeTb.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Tariffa";
-            // 
-            // tariffaMTb
-            // 
-            this.tariffaMTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentClientBs, "Tariffa", true));
-            this.tariffaMTb.Location = new System.Drawing.Point(9, 85);
-            this.tariffaMTb.Name = "tariffaMTb";
-            this.tariffaMTb.Size = new System.Drawing.Size(100, 20);
-            this.tariffaMTb.TabIndex = 4;
-            this.tariffaMTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // nuovoBtn
-            // 
-            this.nuovoBtn.Location = new System.Drawing.Point(9, 382);
-            this.nuovoBtn.Name = "nuovoBtn";
-            this.nuovoBtn.Size = new System.Drawing.Size(75, 23);
-            this.nuovoBtn.TabIndex = 5;
-            this.nuovoBtn.Text = "Nuovo";
-            this.nuovoBtn.UseVisualStyleBackColor = true;
-            this.nuovoBtn.Click += new System.EventHandler(this.nuovoBtn_Click);
-            // 
-            // salvaBtn
-            // 
-            this.salvaBtn.Location = new System.Drawing.Point(99, 382);
-            this.salvaBtn.Name = "salvaBtn";
-            this.salvaBtn.Size = new System.Drawing.Size(75, 23);
-            this.salvaBtn.TabIndex = 6;
-            this.salvaBtn.Text = "Salva";
-            this.salvaBtn.UseVisualStyleBackColor = true;
-            this.salvaBtn.Click += new System.EventHandler(this.salvaBtn_Click);
-            // 
-            // eliminaBtn
-            // 
-            this.eliminaBtn.Location = new System.Drawing.Point(283, 382);
-            this.eliminaBtn.Name = "eliminaBtn";
-            this.eliminaBtn.Size = new System.Drawing.Size(75, 23);
-            this.eliminaBtn.TabIndex = 7;
-            this.eliminaBtn.Text = "Elimina";
-            this.eliminaBtn.UseVisualStyleBackColor = true;
-            this.eliminaBtn.Click += new System.EventHandler(this.eliminaBtn_Click);
-            // 
-            // currentClientBs
-            // 
-            this.currentClientBs.DataSource = typeof(GestioneViaggi.Model.Cliente);
-            // 
-            // anagraficaClientiVMBs
-            // 
-            this.anagraficaClientiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaClientiVModel);
-            // 
-            // ragioneSocialeDataGridViewTextBoxColumn
-            // 
-            this.ragioneSocialeDataGridViewTextBoxColumn.DataPropertyName = "RagioneSociale";
-            this.ragioneSocialeDataGridViewTextBoxColumn.HeaderText = "RagioneSociale";
-            this.ragioneSocialeDataGridViewTextBoxColumn.Name = "ragioneSocialeDataGridViewTextBoxColumn";
-            this.ragioneSocialeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ragioneSocialeDataGridViewTextBoxColumn.Width = 230;
-            // 
-            // tariffaDataGridViewTextBoxColumn
-            // 
-            this.tariffaDataGridViewTextBoxColumn.DataPropertyName = "Tariffa";
-            this.tariffaDataGridViewTextBoxColumn.HeaderText = "Tariffa";
-            this.tariffaDataGridViewTextBoxColumn.Name = "tariffaDataGridViewTextBoxColumn";
-            this.tariffaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tariffaDataGridViewTextBoxColumn.Width = 55;
-            // 
-            // elencoClientiBs
-            // 
-            this.elencoClientiBs.DataMember = "Clienti";
-            this.elencoClientiBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaClientiVModel);
-            this.elencoClientiBs.CurrentChanged += new System.EventHandler(this.elencoClientiBs_CurrentChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,15 +306,15 @@
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
-            this.clientiTabPage.ResumeLayout(false);
+            this.FornitoriTabPage.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoClientiDg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentClientBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaClientiVMBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoClientiBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,18 +326,18 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem terminaToolStripMenuItem;
         private System.Windows.Forms.TabControl mainTabControl;
-        private System.Windows.Forms.TabPage clientiTabPage;
+        private System.Windows.Forms.TabPage FornitoriTabPage;
         private System.Windows.Forms.TabPage prodottiTabPage;
         private System.Windows.Forms.TabPage viaggiTabPage;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox ragioneSocialeFilterTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView elencoClientiDg;
-        private System.Windows.Forms.BindingSource elencoClientiBs;
+        private System.Windows.Forms.DataGridView elencoFornitoriDg;
+        private System.Windows.Forms.BindingSource elencoFornitoriBs;
         private System.Windows.Forms.DataGridViewTextBoxColumn ragioneSocialeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tariffaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource anagraficaClientiVMBs;
+        private System.Windows.Forms.BindingSource anagraficaFornitoriVMBs;
         private System.Windows.Forms.MaskedTextBox tariffaMTb;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox ragioneSocialeTb;
@@ -345,7 +345,7 @@
         private System.Windows.Forms.Button eliminaBtn;
         private System.Windows.Forms.Button salvaBtn;
         private System.Windows.Forms.Button nuovoBtn;
-        private System.Windows.Forms.BindingSource currentClientBs;
+        private System.Windows.Forms.BindingSource currentFornitoreBs;
     }
 }
 

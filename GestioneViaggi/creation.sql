@@ -1,4 +1,4 @@
-CREATE TABLE "Cliente" 
+CREATE TABLE "Fornitore" 
 (
   "Id" INTEGER PRIMARY KEY AUTOINCREMENT, 
   "RagioneSociale" VARCHAR(60) NOT NULL, 

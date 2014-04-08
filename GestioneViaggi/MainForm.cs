@@ -20,11 +20,11 @@ using GestioneViaggi.ViewModel;
 
 namespace GestioneViaggi
 {
-    public partial class MainForm : Form, IAnagraficaClientiView
+    public partial class MainForm : Form, IAnagraficaFornitoriView
     {
         private Dal _dal;
-        private AnagraficaClientiVModel _anaclievm = null;
-        private AnagraficaClientiPresenter _anacliepr = null;
+        private AnagraficaFornitoriVModel _anaclievm = null;
+        private AnagraficaFornitoriPresenter _anacliepr = null;
 
         public MainForm()
         {
@@ -40,9 +40,9 @@ namespace GestioneViaggi
         {
             Dal.connection.Open();
 
-            Cliente c = new Cliente
+            Fornitore c = new Fornitore
             {
-                RagioneSociale = "Cliente di prova " + DateTime.Now.Millisecond.ToString(),
+                RagioneSociale = "Fornitore di prova " + DateTime.Now.Millisecond.ToString(),
                 Tariffa = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(100).ToString())
             };
             c.Id = Dal.connection.Insert(c);
@@ -95,35 +95,35 @@ namespace GestioneViaggi
         private void MainForm_Shown(object sender, EventArgs e)
         {
             this.Text = String.Format("Gestione Viaggi - V{0}", Application.ProductVersion);
-            _anacliepr = new AnagraficaClientiPresenter(this as IAnagraficaClientiView);
-            _anacliepr.onClientiRefreshed += new ClientiRefreshedDelegate(_anacliepr_onClientiRefreshed);
-            _anacliepr.onClientiSaveError += new NotifyMessagesDelegate(_anacliepr_onClientiSaveError);
-            _anacliepr.onClientiRemoveError += new NotifyMessagesDelegate(_anacliepr_onClientiSaveError);
-            _anacliepr.refreshClienti();
+            _anacliepr = new AnagraficaFornitoriPresenter(this as IAnagraficaFornitoriView);
+            _anacliepr.onFornitoriRefreshed += new FornitoriRefreshedDelegate(_anacliepr_onFornitoriRefreshed);
+            _anacliepr.onFornitoriSaveError += new NotifyMessagesDelegate(_anacliepr_onFornitoriSaveError);
+            _anacliepr.onFornitoriRemoveError += new NotifyMessagesDelegate(_anacliepr_onFornitoriSaveError);
+            _anacliepr.refreshFornitori();
         }
 
-        void _anacliepr_onClientiSaveError(List<string> messages)
+        void _anacliepr_onFornitoriSaveError(List<string> messages)
         {
             MessageBox.Show(String.Join("\n", messages));
         }
 
-        void _anacliepr_onClientiRefreshed(List<Cliente> clienti)
+        void _anacliepr_onFornitoriRefreshed(List<Fornitore> Fornitori)
         {
-            elencoClientiBs.DataSource = clienti;
-            elencoClientiDg.DataSource = elencoClientiBs;
+            elencoFornitoriBs.DataSource = Fornitori;
+            elencoFornitoriDg.DataSource = elencoFornitoriBs;
         }
 
-        void IAnagraficaClientiView.SetVModel(AnagraficaClientiVModel model)
+        void IAnagraficaFornitoriView.SetVModel(AnagraficaFornitoriVModel model)
         {
             _anaclievm = model;
-            anagraficaClientiVMBs.DataSource = _anaclievm;
+            anagraficaFornitoriVMBs.DataSource = _anaclievm;
         }
 
-        private void elencoClientiBs_CurrentChanged(object sender, EventArgs e)
+        private void elencoFornitoriBs_CurrentChanged(object sender, EventArgs e)
         {
-            _anaclievm.currentClient = (elencoClientiBs.Current as Cliente).Clone();
-            currentClientBs.DataSource = _anaclievm.currentClient;
-            anagraficaClientiVMBs.ResetBindings(false);
+            _anaclievm.currentClient = (elencoFornitoriBs.Current as Fornitore).Clone();
+            currentFornitoreBs.DataSource = _anaclievm.currentClient;
+            anagraficaFornitoriVMBs.ResetBindings(false);
         }
 
         private void salvaBtn_Click(object sender, EventArgs e)
@@ -133,9 +133,9 @@ namespace GestioneViaggi
 
         private void nuovoBtn_Click(object sender, EventArgs e)
         {
-            _anaclievm.currentClient = new Cliente();
-            currentClientBs.DataSource = _anaclievm.currentClient;
-            anagraficaClientiVMBs.ResetBindings(false);
+            _anaclievm.currentClient = new Fornitore();
+            currentFornitoreBs.DataSource = _anaclievm.currentClient;
+            anagraficaFornitoriVMBs.ResetBindings(false);
         }
 
         private void eliminaBtn_Click(object sender, EventArgs e)

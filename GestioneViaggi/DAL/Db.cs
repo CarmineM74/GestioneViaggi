@@ -9,7 +9,7 @@ namespace GestioneViaggi.DAL
 {
     public class Db: Database<Db>
     {
-        public Table<Cliente> Clienti { get; set; }
+        public Table<Fornitore> Fornitori { get; set; }
         public Table<Prodotto> Prodotti { get; set; }
         public Table<Viaggio> Viaggi { get; set; }
     }

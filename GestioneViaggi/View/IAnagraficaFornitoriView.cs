@@ -6,8 +6,8 @@ using GestioneViaggi.ViewModel;
 
 namespace GestioneViaggi.View
 {
-    public interface IAnagraficaClientiView
+    public interface IAnagraficaFornitoriView
     {
-        void SetVModel(AnagraficaClientiVModel model);
+        void SetVModel(AnagraficaFornitoriVModel model);
     }
 }
