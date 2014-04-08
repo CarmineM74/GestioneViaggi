@@ -38,16 +38,13 @@
             this.eliminaBtn = new System.Windows.Forms.Button();
             this.salvaBtn = new System.Windows.Forms.Button();
             this.nuovoBtn = new System.Windows.Forms.Button();
-            this.tariffaMTb = new System.Windows.Forms.MaskedTextBox();
             this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.ragioneSocialeTb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.elencoFornitoriDg = new System.Windows.Forms.DataGridView();
             this.ragioneSocialeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tariffaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elencoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
             this.ragioneSocialeFilterTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -118,8 +115,6 @@
             this.groupBox2.Controls.Add(this.eliminaBtn);
             this.groupBox2.Controls.Add(this.salvaBtn);
             this.groupBox2.Controls.Add(this.nuovoBtn);
-            this.groupBox2.Controls.Add(this.tariffaMTb);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.ragioneSocialeTb);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.DataBindings.Add(new System.Windows.Forms.Binding("Visible", this.anagraficaFornitoriVMBs, "isSelectedClient", true));
@@ -160,27 +155,9 @@
             this.nuovoBtn.UseVisualStyleBackColor = true;
             this.nuovoBtn.Click += new System.EventHandler(this.nuovoBtn_Click);
             // 
-            // tariffaMTb
-            // 
-            this.tariffaMTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentFornitoreBs, "Tariffa", true));
-            this.tariffaMTb.Location = new System.Drawing.Point(9, 85);
-            this.tariffaMTb.Name = "tariffaMTb";
-            this.tariffaMTb.Size = new System.Drawing.Size(100, 20);
-            this.tariffaMTb.TabIndex = 4;
-            this.tariffaMTb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // currentFornitoreBs
             // 
             this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Tariffa";
             // 
             // ragioneSocialeTb
             // 
@@ -222,8 +199,7 @@
             this.elencoFornitoriDg.AutoGenerateColumns = false;
             this.elencoFornitoriDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.elencoFornitoriDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ragioneSocialeDataGridViewTextBoxColumn,
-            this.tariffaDataGridViewTextBoxColumn});
+            this.ragioneSocialeDataGridViewTextBoxColumn});
             this.elencoFornitoriDg.DataSource = this.elencoFornitoriBs;
             this.elencoFornitoriDg.Location = new System.Drawing.Point(9, 58);
             this.elencoFornitoriDg.Name = "elencoFornitoriDg";
@@ -238,14 +214,6 @@
             this.ragioneSocialeDataGridViewTextBoxColumn.Name = "ragioneSocialeDataGridViewTextBoxColumn";
             this.ragioneSocialeDataGridViewTextBoxColumn.ReadOnly = true;
             this.ragioneSocialeDataGridViewTextBoxColumn.Width = 230;
-            // 
-            // tariffaDataGridViewTextBoxColumn
-            // 
-            this.tariffaDataGridViewTextBoxColumn.DataPropertyName = "Tariffa";
-            this.tariffaDataGridViewTextBoxColumn.HeaderText = "Tariffa";
-            this.tariffaDataGridViewTextBoxColumn.Name = "tariffaDataGridViewTextBoxColumn";
-            this.tariffaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tariffaDataGridViewTextBoxColumn.Width = 55;
             // 
             // elencoFornitoriBs
             // 
@@ -338,8 +306,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ragioneSocialeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tariffaDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource anagraficaFornitoriVMBs;
-        private System.Windows.Forms.MaskedTextBox tariffaMTb;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox ragioneSocialeTb;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button eliminaBtn;

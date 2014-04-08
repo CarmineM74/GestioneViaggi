@@ -11,7 +11,6 @@ namespace GestioneViaggi.Model
         [Key]
         long Id { get; set; }
         String RagioneSociale { get; set; }
-        Decimal Tariffa { get; set; }
     }
 
     [Table("Fornitore")]
@@ -19,7 +18,6 @@ namespace GestioneViaggi.Model
     {
         public long Id { get; set; }
         public String RagioneSociale { get; set; }
-        public Decimal Tariffa { get; set; }
 
         public Fornitore Clone()
         {
@@ -27,7 +25,6 @@ namespace GestioneViaggi.Model
             {
                 Id = this.Id,
                 RagioneSociale = this.RagioneSociale,
-                Tariffa = this.Tariffa
             };
         }
 
@@ -37,13 +34,6 @@ namespace GestioneViaggi.Model
             Errors = new List<string>();
             if (String.IsNullOrEmpty(this.RagioneSociale))
                 Errors.Add("La ragione sociale è obbligatoria");
-            Decimal res;
-            if(!Decimal.TryParse(this.Tariffa.ToString(), out res)) {
-                Errors.Add("La tariffa deve essere un campo decimale");
-            } else {
-                if (res < 0)
-                    Errors.Add("La tariffa non può essere inferiore a 0");
-            }
             return Errors.Count == 0;
         }
     }

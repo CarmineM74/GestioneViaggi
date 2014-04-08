@@ -42,20 +42,20 @@ namespace GestioneViaggi
 
             Fornitore c = new Fornitore
             {
-                RagioneSociale = "Fornitore di prova " + DateTime.Now.Millisecond.ToString(),
-                Tariffa = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(100).ToString())
+                RagioneSociale = "Fornitore di prova " + DateTime.Now.Millisecond.ToString()
             };
             c.Id = Dal.connection.Insert(c);
 
             Prodotto p = new Prodotto
             {
-                Descrizione = "Prodotto di prova " + DateTime.Now.Millisecond.ToString()
+                Descrizione = "Prodotto di prova " + DateTime.Now.Millisecond.ToString(),
+                Costo = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(100).ToString())
             };
             p.Id = Dal.connection.Insert(p);
 
             Viaggio v = new Viaggio
             {
-                ClienteId = c.Id,
+                FornitoreId = c.Id,
                 ProdottoId = p.Id,
                 Data = DateTime.Now,
                 TargaAutomezzo = "EF158NN",
@@ -66,9 +66,9 @@ namespace GestioneViaggi
             v.Id = Dal.connection.Insert(v);
 
 //            String sql = @"select * from Viaggio
-//                        inner join Cliente on Cliente.Id = Viaggio.ClienteId
+//                        inner join Fornitore on Fornitore.Id = Viaggio.FornitoreId
 //                        inner join Prodotto on Prodotto.Id = Viaggio.ProdottoId";
-//            Viaggio viaggio = Dal.connection.Query<Viaggio, Cliente, Prodotto>(sql).First();
+//            Viaggio viaggio = Dal.connection.Query<Viaggio, Fornitore, Prodotto>(sql).First();
 
             Dal.connection.Close();
         }
