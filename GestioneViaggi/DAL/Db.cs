@@ -12,5 +12,6 @@ namespace GestioneViaggi.DAL
         public Table<Fornitore> Fornitori { get; set; }
         public Table<Prodotto> Prodotti { get; set; }
         public Table<Viaggio> Viaggi { get; set; }
+        public Table<RigaViaggio> RigheViaggi { get; set; }
     }
 }

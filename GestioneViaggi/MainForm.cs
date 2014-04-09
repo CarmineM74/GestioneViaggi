@@ -30,45 +30,74 @@ namespace GestioneViaggi
         {
             InitializeComponent();
             Setup();
-            //foreach (int i in Enumerable.Range(1, 10))
-            //{
-            //    testData();
-            //}
+            testData();
         }
 
         private void testData()
         {
             Dal.connection.Open();
-
-            Fornitore c = new Fornitore
+            Fornitore c;
+            Prodotto p;
+            foreach (int i in Enumerable.Range(1, 10))
             {
-                RagioneSociale = "Fornitore di prova " + DateTime.Now.Millisecond.ToString()
-            };
-            c.Id = Dal.connection.Insert(c);
+                c = new Fornitore
+                {
+                    RagioneSociale = "Fornitore di prova " + DateTime.Now.Millisecond.ToString()
+                };
+                c.Id = Dal.connection.Insert(c);
 
-            Prodotto p = new Prodotto
+                p = new Prodotto
+                {
+                    Descrizione = "Prodotto di prova " + DateTime.Now.Millisecond.ToString(),
+                    Costo = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(100).ToString())
+                };
+                p.Id = Dal.connection.Insert(p);
+
+            }
+
+            Viaggio v;
+            foreach (int j in Enumerable.Range(1, 20))
             {
-                Descrizione = "Prodotto di prova " + DateTime.Now.Millisecond.ToString(),
-                Costo = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(100).ToString())
-            };
-            p.Id = Dal.connection.Insert(p);
+                v = new Viaggio
+                {
+                    FornitoreId = new Random(DateTime.Now.Millisecond).Next(1, 10),
+                    Data = DateTime.Now,
+                    TargaAutomezzo = "EF158NN",
+                    Conducente = "Carmine Moleti"
+                };
+                v.Id = Dal.connection.Insert(v);
 
-            Viaggio v = new Viaggio
-            {
-                FornitoreId = c.Id,
-                ProdottoId = p.Id,
-                Data = DateTime.Now,
-                TargaAutomezzo = "EF158NN",
-                Conducente = "Carmine Moleti",
-                Pesata = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(10000).ToString()),
-                CaloPesoPercentuale = new Random(DateTime.Now.Millisecond).Next(100)
-            };
-            v.Id = Dal.connection.Insert(v);
+                foreach (int i in Enumerable.Range(1, 5))
+                {
+                    p = Dal.db.Prodotti.Get(new Random(DateTime.Now.Millisecond).Next(1, 10));
+                    Decimal pesata = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(10000).ToString());
+                    RigaViaggio rv = new RigaViaggio
+                    {
+                        ViaggioId = v.Id,
+                        ProdottoId = p.Id,
+                        Pesata = pesata,
+                        CaloPesoPercentuale = new Random(DateTime.Now.Millisecond).Next(100),
+                        Costo = p.Costo * pesata
+                    };
+                    Dal.connection.Insert(rv);
+                }
+            }
 
-//            String sql = @"select * from Viaggio
+            List<Viaggio> viaggi = ViaggiService.All();
+            foreach (Viaggio vv in viaggi) { MessageBox.Show(vv.Fornitore.RagioneSociale); }
+
+            //String sql = @"Select * from Viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId";
+            //List<Viaggio> vs = Dal.connection.QueryParentChild<Viaggio, RigaViaggio, long>(sql,
+            //    viaggio => viaggio.Id,
+            //    viaggio => viaggio.Righe,
+            //    splitOn: "Id").ToList();
+
+//            sql = @"select * from Viaggio
+//                        inner join RigaViaggio on RigaViaggio.ViaggioId = Viaggio.Id
 //                        inner join Fornitore on Fornitore.Id = Viaggio.FornitoreId
-//                        inner join Prodotto on Prodotto.Id = Viaggio.ProdottoId";
-//            Viaggio viaggio = Dal.connection.Query<Viaggio, Fornitore, Prodotto>(sql).First();
+//                        inner join Prodotto on Prodotto.Id = RigaViaggio.ProdottoId";
+//            Viaggio v3 =Dal.connection.Query<Viaggio, RigaViaggio, Prodotto, Fornitore>(sql).First();
+//            MessageBox.Show(v3.TargaAutomezzo);
 
             Dal.connection.Close();
         }

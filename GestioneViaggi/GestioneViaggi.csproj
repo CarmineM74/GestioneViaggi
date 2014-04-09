@@ -75,6 +75,8 @@
     </Compile>
     <Compile Include="DAL\Dal.cs" />
     <Compile Include="DAL\Db.cs" />
+    <Compile Include="DAL\Extensions.cs" />
+    <Compile Include="DAL\ViaggiService.cs" />
     <Compile Include="Dapper\SqlMapperExtensions.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -84,6 +86,7 @@
     </Compile>
     <Compile Include="Model\Fornitore.cs" />
     <Compile Include="Model\Prodotto.cs" />
+    <Compile Include="Model\RigaViaggio.cs" />
     <Compile Include="Model\Viaggio.cs" />
     <Compile Include="Presenter\AnagraficaFornitoriPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="View\IAnagraficaFornitoriView.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

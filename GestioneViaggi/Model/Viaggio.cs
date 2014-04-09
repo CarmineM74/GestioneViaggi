@@ -11,15 +11,12 @@ namespace GestioneViaggi.Model
         [Key]
         long Id { get; set; }
         long FornitoreId { get; set; }
-        long ProdottoId { get; set; }
         DateTime Data { get; set; }
         String TargaAutomezzo { get; set; }
         String Conducente { get; set; }
-        Decimal Pesata { get; set; }
-        int CaloPesoPercentuale { get; set; }
 
-        Fornitore Cliente { get; set; }
-        Prodotto Prodotto { get; set; }
+        Fornitore Fornitore { get; set; }
+        List<RigaViaggio> Righe { get; set; }
     }
 
     [Table("Viaggio")]
@@ -27,16 +24,20 @@ namespace GestioneViaggi.Model
     {
         public long Id { get; set; }
         public long FornitoreId { get; set; }
-        public long ProdottoId { get; set; }
         public DateTime Data { get; set; }
         public String TargaAutomezzo { get; set; }
         public String Conducente { get; set; }
-        public Decimal Pesata { get; set; }
-        public int CaloPesoPercentuale { get; set; }
         
         [Write(false)]
-        public Fornitore Cliente { get; set; }
+        public Fornitore Fornitore { get; set; }
+
         [Write(false)]
-        public Prodotto Prodotto { get; set; }
+        public List<RigaViaggio> Righe { get; set; }
+
+        public Viaggio()
+        {
+            this.Righe = new List<RigaViaggio>();
+        }
+
     }
 }
