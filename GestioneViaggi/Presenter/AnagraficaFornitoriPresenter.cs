@@ -64,5 +64,16 @@ namespace GestioneViaggi.Presenter
                     onFornitoriRemoveError(errors);
             }
         }
+
+        internal void FilterFornitoreByRagioneSociale(string p)
+        {
+            List<Fornitore> filtered;
+            if ((p.Length < 3) || String.IsNullOrWhiteSpace(p))
+                filtered = _vmodel.items;
+            else
+                filtered = _vmodel.items.Where(f => f.RagioneSociale.Contains(p)).ToList();
+            if (onFornitoriRefreshed != null)
+                onFornitoriRefreshed(filtered);
+        }
     }
 }

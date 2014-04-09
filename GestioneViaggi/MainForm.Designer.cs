@@ -56,11 +56,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.descrizioneProdottoTb = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
-            this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elencoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
-            this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
+            this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
             this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elencoProdottiBs = new System.Windows.Forms.BindingSource(this.components);
@@ -69,9 +70,8 @@
             this.targaAutomezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.conducenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elencoViaggiBs = new System.Windows.Forms.BindingSource(this.components);
-            this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
-            this.descrizioneProdottoTb = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
+            this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
@@ -86,12 +86,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiVMBs)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -237,6 +237,7 @@
             this.ragioneSocialeFilterTextBox.Name = "ragioneSocialeFilterTextBox";
             this.ragioneSocialeFilterTextBox.Size = new System.Drawing.Size(352, 20);
             this.ragioneSocialeFilterTextBox.TabIndex = 1;
+            this.ragioneSocialeFilterTextBox.TextChanged += new System.EventHandler(this.ragioneSocialeFilterTextBox_TextChanged);
             // 
             // label1
             // 
@@ -375,13 +376,26 @@
             this.button3.Text = "Nuovo";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // descrizioneProdottoTb
+            // 
+            this.descrizioneProdottoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentProdottoBs, "Descrizione", true));
+            this.descrizioneProdottoTb.Location = new System.Drawing.Point(6, 41);
+            this.descrizioneProdottoTb.Name = "descrizioneProdottoTb";
+            this.descrizioneProdottoTb.Size = new System.Drawing.Size(352, 20);
+            this.descrizioneProdottoTb.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Descrizione";
+            // 
             // currentFornitoreBs
             // 
             this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
-            // 
-            // anagraficaFornitoriVMBs
-            // 
-            this.anagraficaFornitoriVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -397,9 +411,9 @@
             this.elencoFornitoriBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             this.elencoFornitoriBs.CurrentChanged += new System.EventHandler(this.elencoFornitoriBs_CurrentChanged);
             // 
-            // anagraficaProdottiVMBs
+            // currentProdottoBs
             // 
-            this.anagraficaProdottiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
+            this.currentProdottoBs.DataSource = typeof(GestioneViaggi.Model.Prodotto);
             // 
             // descrizioneDataGridViewTextBoxColumn
             // 
@@ -456,26 +470,13 @@
             this.elencoViaggiBs.DataMember = "items";
             this.elencoViaggiBs.DataSource = typeof(GestioneViaggi.ViewModel.ElencoViaggiVModel);
             // 
-            // currentProdottoBs
+            // anagraficaFornitoriVMBs
             // 
-            this.currentProdottoBs.DataSource = typeof(GestioneViaggi.Model.Prodotto);
+            this.anagraficaFornitoriVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             // 
-            // descrizioneProdottoTb
+            // anagraficaProdottiVMBs
             // 
-            this.descrizioneProdottoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentProdottoBs, "Descrizione", true));
-            this.descrizioneProdottoTb.Location = new System.Drawing.Point(6, 41);
-            this.descrizioneProdottoTb.Name = "descrizioneProdottoTb";
-            this.descrizioneProdottoTb.Size = new System.Drawing.Size(352, 20);
-            this.descrizioneProdottoTb.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Descrizione";
+            this.anagraficaProdottiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
             // 
             // MainForm
             // 
@@ -509,12 +510,12 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

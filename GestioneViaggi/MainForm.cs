@@ -207,5 +207,10 @@ namespace GestioneViaggi
             Application.Exit();
         }
 
+        private void ragioneSocialeFilterTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _anaforpr.FilterFornitoreByRagioneSociale(ragioneSocialeFilterTextBox.Text);
+        }
+
     }
 }
