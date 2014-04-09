@@ -212,5 +212,10 @@ namespace GestioneViaggi
             _anaforpr.FilterFornitoreByRagioneSociale(ragioneSocialeFilterTextBox.Text);
         }
 
+        private void descrizioneProdottoFilterTb_TextChanged(object sender, EventArgs e)
+        {
+            _anapropr.FilterProdottoByDescrizione(descrizioneProdottoFilterTb.Text);
+        }
+
     }
 }

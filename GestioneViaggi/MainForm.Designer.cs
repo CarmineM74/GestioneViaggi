@@ -72,6 +72,8 @@
             this.elencoViaggiBs = new System.Windows.Forms.BindingSource(this.components);
             this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
+            this.descrizioneProdottoFilterTb = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
@@ -262,6 +264,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.descrizioneProdottoFilterTb);
+            this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.elencoProdottiDg);
             this.groupBox3.Location = new System.Drawing.Point(8, 6);
             this.groupBox3.Name = "groupBox3";
@@ -478,6 +482,23 @@
             // 
             this.anagraficaProdottiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
             // 
+            // descrizioneProdottoFilterTb
+            // 
+            this.descrizioneProdottoFilterTb.Location = new System.Drawing.Point(7, 32);
+            this.descrizioneProdottoFilterTb.Name = "descrizioneProdottoFilterTb";
+            this.descrizioneProdottoFilterTb.Size = new System.Drawing.Size(352, 20);
+            this.descrizioneProdottoFilterTb.TabIndex = 5;
+            this.descrizioneProdottoFilterTb.TextChanged += new System.EventHandler(this.descrizioneProdottoFilterTb_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Filtra per descrizione";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,6 +524,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).EndInit();
             this.prodottiTabPage.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiDg)).EndInit();
             this.viaggiTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).EndInit();
@@ -568,6 +590,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox descrizioneProdottoTb;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox descrizioneProdottoFilterTb;
+        private System.Windows.Forms.Label label4;
     }
 }
 

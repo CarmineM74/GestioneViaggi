@@ -31,5 +31,16 @@ namespace GestioneViaggi.Presenter
             if (onProdottiRefreshed != null)
                 onProdottiRefreshed(_vmodel.items);
         }
+
+        internal void FilterProdottoByDescrizione(string p)
+        {
+            List<Prodotto> filtered;
+            if ((p.Length < 3) || String.IsNullOrWhiteSpace(p))
+                filtered = _vmodel.items;
+            else
+                filtered = _vmodel.items.Where(f => f.Descrizione.Contains(p)).ToList();
+            if (onProdottiRefreshed != null)
+                onProdottiRefreshed(filtered);
+        }
     }
 }
