@@ -20,22 +20,25 @@ using GestioneViaggi.ViewModel;
 
 namespace GestioneViaggi
 {
-    public partial class MainForm : Form, IAnagraficaFornitoriView
+    public partial class MainForm : Form, IAnagraficaFornitoriView, IAnagraficaProdottiView, IElencoViaggiView
     {
         private Dal _dal;
-        private AnagraficaFornitoriVModel _anaclievm = null;
-        private AnagraficaFornitoriPresenter _anacliepr = null;
+        private AnagraficaFornitoriVModel _anaforvm = null;
+        private AnagraficaFornitoriPresenter _anaforpr = null;
+        private AnagraficaProdottiVModel _anaprovm = null;
+        private AnagraficaProdottiPresenter _anapropr = null;
+        private ElencoViaggiPresenter _viaggipr = null;
+        private ElencoViaggiVModel _viaggivm = null;
 
         public MainForm()
         {
             InitializeComponent();
             Setup();
-            testData();
+            //testData();
         }
 
         private void testData()
         {
-            Dal.connection.Open();
             Fornitore c;
             Prodotto p;
             foreach (int i in Enumerable.Range(1, 10))
@@ -82,23 +85,6 @@ namespace GestioneViaggi
                     Dal.connection.Insert(rv);
                 }
             }
-
-            List<Viaggio> viaggi = ViaggiService.All();
-            foreach (Viaggio vv in viaggi) { MessageBox.Show(vv.Fornitore.RagioneSociale); }
-
-            //String sql = @"Select * from Viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId";
-            //List<Viaggio> vs = Dal.connection.QueryParentChild<Viaggio, RigaViaggio, long>(sql,
-            //    viaggio => viaggio.Id,
-            //    viaggio => viaggio.Righe,
-            //    splitOn: "Id").ToList();
-
-//            sql = @"select * from Viaggio
-//                        inner join RigaViaggio on RigaViaggio.ViaggioId = Viaggio.Id
-//                        inner join Fornitore on Fornitore.Id = Viaggio.FornitoreId
-//                        inner join Prodotto on Prodotto.Id = RigaViaggio.ProdottoId";
-//            Viaggio v3 =Dal.connection.Query<Viaggio, RigaViaggio, Prodotto, Fornitore>(sql).First();
-//            MessageBox.Show(v3.TargaAutomezzo);
-
             Dal.connection.Close();
         }
 
@@ -107,6 +93,7 @@ namespace GestioneViaggi
             try
             {
                 Dal.ensureDb();
+                Dal.connection.Open();
             }
             catch (Exception e)
             {
@@ -116,63 +103,109 @@ namespace GestioneViaggi
             }
         }
 
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            this.Text = String.Format("Gestione Viaggi - V{0}", Application.ProductVersion);
+            _anaforpr = new AnagraficaFornitoriPresenter(this as IAnagraficaFornitoriView);
+            _anaforpr.onFornitoriRefreshed += new FornitoriRefreshedDelegate(_anaforpr_onFornitoriRefreshed);
+            _anaforpr.onFornitoriSaveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
+            _anaforpr.onFornitoriRemoveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
+            _anaforpr.refreshFornitori();
+            _anapropr = new AnagraficaProdottiPresenter(this as IAnagraficaProdottiView);
+            _anapropr.onProdottiRefreshed += new ProdottiRefreshedDelegate(_anapropr_onProdottiRefreshed);
+            _anapropr.refreshProdotti();
+            _viaggipr = new ElencoViaggiPresenter(this as IElencoViaggiView);
+            _viaggipr.onViaggiRefreshed += new ViaggiRefreshedDelegate(_viaggipr_onViaggiRefreshed);
+            _viaggipr.refreshViaggi();
+        }
+
+        void IElencoViaggiView.SetVModel(ElencoViaggiVModel model)
+        {
+            _viaggivm = model;
+            elencoViaggiVMBs.DataSource = _viaggivm;
+        }
+
+        void _viaggipr_onViaggiRefreshed(List<Viaggio> viaggi)
+        {
+            elencoViaggiBs.DataSource = viaggi;
+            elencoViaggiDg.DataSource = elencoViaggiBs;
+        }
+
+        private void elencoViaggiDg_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+            {
+                e.Value = ViewHelpers.EvaluateValue(elencoViaggiDg.Rows[e.RowIndex].DataBoundItem, elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName);
+            }
+        }
+
+        void IAnagraficaProdottiView.SetVModel(AnagraficaProdottiVModel model)
+        {
+            _anaprovm = model;
+            anagraficaProdottiVMBs.DataSource = _anaprovm;
+        }
+
+        void _anapropr_onProdottiRefreshed(List<Prodotto> prodotti)
+        {
+            elencoProdottiBs.DataSource = prodotti;
+            elencoProdottiDg.DataSource = elencoProdottiBs;
+        }
+
+        private void elencoProdottiBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _anaprovm.current = (elencoProdottiBs.Current as Prodotto).Clone();
+            currentProdottoBs.DataSource = _anaprovm.current;
+            anagraficaProdottiVMBs.ResetBindings(false);
+        }
+
+        void _anaforpr_onFornitoriSaveError(List<string> messages)
+        {
+            MessageBox.Show(String.Join("\n", messages));
+        }
+
+        void IAnagraficaFornitoriView.SetVModel(AnagraficaFornitoriVModel model)
+        {
+            _anaforvm = model;
+            anagraficaFornitoriVMBs.DataSource = _anaforvm;
+        }
+
+        void _anaforpr_onFornitoriRefreshed(List<Fornitore> fornitori)
+        {
+            elencoFornitoriBs.DataSource = fornitori;
+            elencoFornitoriDg.DataSource = elencoFornitoriBs;
+        }
+
+        private void elencoFornitoriBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _anaforvm.current = (elencoFornitoriBs.Current as Fornitore).Clone();
+            currentFornitoreBs.DataSource = _anaforvm.current;
+            anagraficaFornitoriVMBs.ResetBindings(false);
+        }
+
+        private void salvaFornitoreBtn_Click(object sender, EventArgs e)
+        {
+            _anaforpr.Save(_anaforvm.current);
+        }
+
+        private void nuovoFornitoreBtn_Click(object sender, EventArgs e)
+        {
+            _anaforvm.current = new Fornitore();
+            currentFornitoreBs.DataSource = _anaforvm.current;
+            anagraficaFornitoriVMBs.ResetBindings(false);
+        }
+
+        private void eliminaFornitoreBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Procedere con la rimozione del cliente selezionato?", "Rimozione cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                _anaforpr.Remove(_anaforvm.current);
+            }
+        }
+
         private void terminaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            this.Text = String.Format("Gestione Viaggi - V{0}", Application.ProductVersion);
-            _anacliepr = new AnagraficaFornitoriPresenter(this as IAnagraficaFornitoriView);
-            _anacliepr.onFornitoriRefreshed += new FornitoriRefreshedDelegate(_anacliepr_onFornitoriRefreshed);
-            _anacliepr.onFornitoriSaveError += new NotifyMessagesDelegate(_anacliepr_onFornitoriSaveError);
-            _anacliepr.onFornitoriRemoveError += new NotifyMessagesDelegate(_anacliepr_onFornitoriSaveError);
-            _anacliepr.refreshFornitori();
-        }
-
-        void _anacliepr_onFornitoriSaveError(List<string> messages)
-        {
-            MessageBox.Show(String.Join("\n", messages));
-        }
-
-        void _anacliepr_onFornitoriRefreshed(List<Fornitore> Fornitori)
-        {
-            elencoFornitoriBs.DataSource = Fornitori;
-            elencoFornitoriDg.DataSource = elencoFornitoriBs;
-        }
-
-        void IAnagraficaFornitoriView.SetVModel(AnagraficaFornitoriVModel model)
-        {
-            _anaclievm = model;
-            anagraficaFornitoriVMBs.DataSource = _anaclievm;
-        }
-
-        private void elencoFornitoriBs_CurrentChanged(object sender, EventArgs e)
-        {
-            _anaclievm.currentClient = (elencoFornitoriBs.Current as Fornitore).Clone();
-            currentFornitoreBs.DataSource = _anaclievm.currentClient;
-            anagraficaFornitoriVMBs.ResetBindings(false);
-        }
-
-        private void salvaBtn_Click(object sender, EventArgs e)
-        {
-            _anacliepr.SaveClient(_anaclievm.currentClient);
-        }
-
-        private void nuovoBtn_Click(object sender, EventArgs e)
-        {
-            _anaclievm.currentClient = new Fornitore();
-            currentFornitoreBs.DataSource = _anaclievm.currentClient;
-            anagraficaFornitoriVMBs.ResetBindings(false);
-        }
-
-        private void eliminaBtn_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Procedere con la rimozione del cliente selezionato?", "Rimozione cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                _anacliepr.RemoveClient(_anaclievm.currentClient);
-            }
-        }
     }
 }

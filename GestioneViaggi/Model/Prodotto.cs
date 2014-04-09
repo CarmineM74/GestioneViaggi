@@ -21,6 +21,16 @@ namespace GestioneViaggi.Model
         public String Descrizione { get; set; }
         public Decimal Costo { get; set; }
 
+        public Prodotto Clone()
+        {
+            return new Prodotto
+            {
+                Id = this.Id,
+                Descrizione = this.Descrizione,
+                Costo = this.Costo
+            };
+        }
+
         public List<String> Errors;
         public Boolean isValid()
         {

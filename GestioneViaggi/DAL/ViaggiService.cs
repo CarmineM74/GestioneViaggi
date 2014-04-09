@@ -9,18 +9,20 @@ using Dapper.Mapper;
 
 namespace GestioneViaggi.DAL
 {
-    public static class ViaggiService
+    public class ViaggiService
     {
-        public static List<Viaggio> All()
+        private static IEnumerable<Viaggio> AllBySql(String sql)
         {
-            String sql = @"Select * from Viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId";
             var vs = Dal.connection.QueryParentChild<Viaggio, RigaViaggio, long>(sql,
                 viaggio => viaggio.Id,
                 viaggio => viaggio.Righe,
                 splitOn: "Id");
+            return vs;
+        }
 
-
-            Dictionary<long,Viaggio> viaggiLookup = vs.ToDictionary<Viaggio,long>(v => v.Id);
+        private static IEnumerable<Viaggio> RehidrateAllFields(IEnumerable<Viaggio> vs) 
+        {
+            Dictionary<long, Viaggio> viaggiLookup = vs.ToDictionary<Viaggio, long>(v => v.Id);
             List<long> viaggio_fornitore_map = vs.Select<Viaggio, long>(v => v.FornitoreId).ToList();
             List<long> viaggio_prodotti_map = vs.Select<Viaggio, List<long>>(v => v.Righe.Select<RigaViaggio, long>(r => r.ProdottoId).ToList()).SelectMany(x => x).ToList();
             Dictionary<long, Prodotto> prodLookup = Dal.connection.Query<Prodotto>("select * from Prodotto where Id in @Ids", new { Ids = viaggio_prodotti_map.Select(p => p).Distinct() }).ToDictionary<Prodotto, long>(p => p.Id);
@@ -41,8 +43,20 @@ namespace GestioneViaggi.DAL
                 return v;
             });
 
+            return vs;
+        }
 
-            return vs.ToList();
+        public static List<Viaggio> All()
+        {
+            String sql = @"Select * from Viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId";
+            var vs = AllBySql(sql);
+            return RehidrateAllFields(vs).ToList();
+        }
+
+        public static List<Viaggio> FindByFornitore(Fornitore fornitore)
+        {
+            String sql = String.Format(@"Select * from viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId where FornitoreId={0}",fornitore.Id);
+            return AllBySql(sql).ToList();
         }
     }
 }

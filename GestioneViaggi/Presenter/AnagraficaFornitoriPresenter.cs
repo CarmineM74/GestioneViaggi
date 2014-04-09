@@ -13,8 +13,7 @@ using Dapper.Mapper;
 
 namespace GestioneViaggi.Presenter
 {
-    public delegate void FornitoriRefreshedDelegate(List<Fornitore> Fornitori);
-    public delegate void NotifyMessagesDelegate(List<String> messages);
+    public delegate void FornitoriRefreshedDelegate(List<Fornitore> fornitori);
 
     public class AnagraficaFornitoriPresenter
     {
@@ -29,38 +28,38 @@ namespace GestioneViaggi.Presenter
         {
             _view = iAnagraficaFornitoriView;
             _vmodel = new AnagraficaFornitoriVModel();
-            _vmodel.currentClient = null;
+            _vmodel.current = null;
             _view.SetVModel(_vmodel);
         }
 
         public void refreshFornitori()
         {
-            _vmodel.Fornitori = Dal.db.Fornitori.All().ToList();
+            _vmodel.items = Dal.db.Fornitori.All().ToList();
             if (onFornitoriRefreshed != null)
-                onFornitoriRefreshed(_vmodel.Fornitori);
+                onFornitoriRefreshed(_vmodel.items);
         }
 
-        internal void SaveClient(Fornitore cliente)
+        internal void Save(Fornitore fornitore)
         {
-            if (!cliente.isValid())
+            if (!fornitore.isValid())
             {
                 if (onFornitoriSaveError != null)
-                    onFornitoriSaveError(cliente.Errors);
+                    onFornitoriSaveError(fornitore.Errors);
             }
             else
             {
-                Dal.db.Fornitori.InsertOrUpdate(cliente);
+                Dal.db.Fornitori.InsertOrUpdate(fornitore);
                 refreshFornitori();
             }
         }
 
-        internal void RemoveClient(Fornitore cliente)
+        internal void Remove(Fornitore fornitore)
         {
             List<String> errors = new List<string>();
-            var viaggi = Dal.db.Query("select * from Viaggio where ClienteId=@id", new { id = cliente.Id });
+            var viaggi = ViaggiService.FindByFornitore(fornitore);
             if (viaggi.Count() > 0)
             {
-                errors.Add(String.Format("Impossibile rimuovere il cliente: {0} viaggi associati", viaggi.Count()));
+                errors.Add(String.Format("Impossibile rimuovere il fornitore: {0} viaggi associati", viaggi.Count()));
                 if (onFornitoriRemoveError != null)
                     onFornitoriRemoveError(errors);
             }
