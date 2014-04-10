@@ -16,6 +16,7 @@ namespace GestioneViaggi.Presenter
         private ElencoViaggiVModel _vmodel;
 
         public event ViaggiRefreshedDelegate onViaggiRefreshed;
+        public event NotifyMessagesMapDelegate onViaggiFilterFailed;
 
         public ElencoViaggiPresenter(IElencoViaggiView iElencoViaggiView)
         {
@@ -27,9 +28,50 @@ namespace GestioneViaggi.Presenter
 
         public void refreshViaggi()
         {
-            _vmodel.items = ViaggiService.All(); //Dal.db.Viaggi.All().ToList();
+            _vmodel.items = ViaggiService.All(); 
             if (onViaggiRefreshed != null)
                 onViaggiRefreshed(_vmodel.items);
+        }
+
+        public void SetDateFilterFromTo(DateTime from, DateTime to)
+        {
+            _vmodel.dalFilter = from;
+            _vmodel.alFilter = to;
+        }
+
+        public void ClearFilter()
+        {
+            _vmodel.filtro = new ViaggioFilter();
+            if (onViaggiRefreshed != null)
+                onViaggiRefreshed(_vmodel.items);
+        }
+
+        internal void ApplyFilter()
+        {
+            List<Viaggio> viaggi;
+            Dictionary<String, List<String>> msgs = new Dictionary<string, List<string>>();
+            _vmodel.filtro.CheckValidity(msgs);
+            if (msgs.Count > 0)
+            {
+                if (onViaggiFilterFailed != null)
+                    onViaggiFilterFailed(msgs);
+            }
+            else
+            {
+                viaggi = _vmodel.items;
+               if (_vmodel.filtro.fornitoreValid)
+                   viaggi = viaggi.Where(v => v.Fornitore.RagioneSociale.Contains(_vmodel.filtro.fornitore)).ToList();
+               if (_vmodel.filtro.targaValid)
+                   viaggi = viaggi.Where(v => v.TargaAutomezzo.Contains(_vmodel.filtro.targa)).ToList();
+               if (_vmodel.filtro.conducenteValid)
+                   viaggi = viaggi.Where(v => v.Conducente.Contains(_vmodel.filtro.conducente)).ToList();
+               if ((_vmodel.filtro.dataEnabled) && (_vmodel.filtro.dataValid))
+               {
+                   viaggi = viaggi.Where(v => (v.Data >= _vmodel.filtro.dal) && (v.Data <= _vmodel.filtro.al)).ToList();
+               }
+               if (onViaggiRefreshed != null)
+                   onViaggiRefreshed(viaggi);
+            }
         }
     }
 }

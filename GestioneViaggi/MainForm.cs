@@ -39,6 +39,20 @@ namespace GestioneViaggi
 
         private void testData()
         {
+            List<String> conducenti = new List<string>();
+            conducenti.Add("Carmine Moleti");
+            conducenti.Add("Francesco Moleti");
+            conducenti.Add("Franco Melardo");
+            conducenti.Add("Carmine Della Gatta");
+            conducenti.Add("Anna Del Prete");
+            conducenti.Add("Vito Del Prete");
+
+            List<String> targhe = new List<string>();
+            targhe.Add("EF158NN");
+            targhe.Add("BW214CZ");
+            targhe.Add("BX762ZY");
+            targhe.Add("FC888DQ");
+
             Fornitore c;
             Prodotto p;
             foreach (int i in Enumerable.Range(1, 10))
@@ -65,8 +79,8 @@ namespace GestioneViaggi
                 {
                     FornitoreId = new Random(DateTime.Now.Millisecond).Next(1, 10),
                     Data = DateTime.Now,
-                    TargaAutomezzo = "EF158NN",
-                    Conducente = "Carmine Moleti"
+                    TargaAutomezzo = targhe[new Random(DateTime.Now.Millisecond).Next(0,targhe.Count-1)],
+                    Conducente = conducenti[new Random(DateTime.Now.Millisecond).Next(0,conducenti.Count-1)]
                 };
                 v.Id = Dal.connection.Insert(v);
 
@@ -85,7 +99,6 @@ namespace GestioneViaggi
                     Dal.connection.Insert(rv);
                 }
             }
-            Dal.connection.Close();
         }
 
         private void Setup()
@@ -116,7 +129,19 @@ namespace GestioneViaggi
             _anapropr.refreshProdotti();
             _viaggipr = new ElencoViaggiPresenter(this as IElencoViaggiView);
             _viaggipr.onViaggiRefreshed += new ViaggiRefreshedDelegate(_viaggipr_onViaggiRefreshed);
+            _viaggipr.onViaggiFilterFailed += new NotifyMessagesMapDelegate(_viaggipr_onViaggiFilterFailed);
             _viaggipr.refreshViaggi();
+        }
+
+        void _viaggipr_onViaggiFilterFailed(Dictionary<string, List<string>> messages)
+        {
+            //List<String> errori = messages.Select(kvp => String.Format("{0}: {1}\n", kvp.Key, kvp.Value.Aggregate((v,a) => a += v + ","))).ToList();
+            //String errore = errori.Aggregate((v, a) => a += v);
+            if (messages.Keys.Contains("data"))
+            {
+                String errore = messages["data"].Aggregate((v, a) => a += "- " + v + "\n");
+                MessageBox.Show(errore, "Errore filtro viaggi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void IElencoViaggiView.SetVModel(ElencoViaggiVModel model)
@@ -215,6 +240,32 @@ namespace GestioneViaggi
         private void descrizioneProdottoFilterTb_TextChanged(object sender, EventArgs e)
         {
             _anapropr.FilterProdottoByDescrizione(descrizioneProdottoFilterTb.Text);
+        }
+
+        private void viaggioMeseFilterCb_TextChanged(object sender, EventArgs e)
+        {
+            if (viaggioMeseFilterCb.Items.Contains(viaggioMeseFilterCb.Text))
+            {
+                int idx = viaggioMeseFilterCb.Items.IndexOf(viaggioMeseFilterCb.Text);
+                DateTime from, to;
+                int anno = DateTime.Today.Year;
+                from = DateTime.Parse(String.Format("1/{0}/{1}", idx + 1, anno));
+                to = from.AddMonths(1).AddDays(-1);
+                _viaggipr.SetDateFilterFromTo(from, to);
+                elencoViaggiVMBs.ResetBindings(false);
+            }
+        }
+
+        private void viaggiRimuoviFiltroBtn_Click(object sender, EventArgs e)
+        {
+            _viaggipr.ClearFilter();
+            viaggioMeseFilterCb.Text = "";
+            elencoViaggiVMBs.ResetBindings(false);
+        }
+
+        private void viaggiApplicaFiltroBtn_Click(object sender, EventArgs e)
+        {
+            _viaggipr.ApplyFilter();
         }
 
     }

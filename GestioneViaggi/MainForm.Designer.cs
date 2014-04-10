@@ -45,19 +45,37 @@
             this.ragioneSocialeFilterTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.prodottiTabPage = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.elencoProdottiDg = new System.Windows.Forms.DataGridView();
-            this.viaggiTabPage = new System.Windows.Forms.TabPage();
-            this.nuovoViaggioBtn = new System.Windows.Forms.Button();
-            this.elencoViaggiDg = new System.Windows.Forms.DataGridView();
-            this.elencoViaggiVMBs = new System.Windows.Forms.BindingSource(this.components);
-            this.Fornitore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.descrizioneProdottoTb = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.descrizioneProdottoTb = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.descrizioneProdottoFilterTb = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.elencoProdottiDg = new System.Windows.Forms.DataGridView();
+            this.viaggiTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.viaggiFiltroDatePnl = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.viaggioMeseFilterCb = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.viaggiAbilitaFiltroDateCb = new System.Windows.Forms.CheckBox();
+            this.viaggiRimuoviFiltroBtn = new System.Windows.Forms.Button();
+            this.viaggiApplicaFiltroBtn = new System.Windows.Forms.Button();
+            this.viaggioConducenteFilterTb = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.viaggioTargaFilterTb = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.viaggioFornitoreFilterTb = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nuovoViaggioBtn = new System.Windows.Forms.Button();
+            this.elencoViaggiDg = new System.Windows.Forms.DataGridView();
+            this.Fornitore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elencoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
@@ -65,6 +83,7 @@
             this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elencoProdottiBs = new System.Windows.Forms.BindingSource(this.components);
+            this.elencoViaggiVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.targaAutomezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,8 +91,6 @@
             this.elencoViaggiBs = new System.Windows.Forms.BindingSource(this.components);
             this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
-            this.descrizioneProdottoFilterTb = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
@@ -81,16 +98,18 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).BeginInit();
             this.prodottiTabPage.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiDg)).BeginInit();
             this.viaggiTabPage.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.viaggiFiltroDatePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiVMBs)).BeginInit();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
@@ -262,83 +281,6 @@
             this.prodottiTabPage.Text = "Anagrafica prodotti";
             this.prodottiTabPage.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.descrizioneProdottoFilterTb);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.elencoProdottiDg);
-            this.groupBox3.Location = new System.Drawing.Point(8, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 498);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Elenco prodotti";
-            // 
-            // elencoProdottiDg
-            // 
-            this.elencoProdottiDg.AllowUserToAddRows = false;
-            this.elencoProdottiDg.AllowUserToDeleteRows = false;
-            this.elencoProdottiDg.AutoGenerateColumns = false;
-            this.elencoProdottiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elencoProdottiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.descrizioneDataGridViewTextBoxColumn,
-            this.costoDataGridViewTextBoxColumn});
-            this.elencoProdottiDg.DataSource = this.elencoProdottiBs;
-            this.elencoProdottiDg.Location = new System.Drawing.Point(6, 58);
-            this.elencoProdottiDg.Name = "elencoProdottiDg";
-            this.elencoProdottiDg.ReadOnly = true;
-            this.elencoProdottiDg.Size = new System.Drawing.Size(352, 434);
-            this.elencoProdottiDg.TabIndex = 3;
-            // 
-            // viaggiTabPage
-            // 
-            this.viaggiTabPage.Controls.Add(this.nuovoViaggioBtn);
-            this.viaggiTabPage.Controls.Add(this.elencoViaggiDg);
-            this.viaggiTabPage.Location = new System.Drawing.Point(4, 22);
-            this.viaggiTabPage.Name = "viaggiTabPage";
-            this.viaggiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.viaggiTabPage.Size = new System.Drawing.Size(776, 512);
-            this.viaggiTabPage.TabIndex = 2;
-            this.viaggiTabPage.Text = "Storico viaggi";
-            this.viaggiTabPage.UseVisualStyleBackColor = true;
-            // 
-            // nuovoViaggioBtn
-            // 
-            this.nuovoViaggioBtn.Location = new System.Drawing.Point(6, 483);
-            this.nuovoViaggioBtn.Name = "nuovoViaggioBtn";
-            this.nuovoViaggioBtn.Size = new System.Drawing.Size(75, 23);
-            this.nuovoViaggioBtn.TabIndex = 1;
-            this.nuovoViaggioBtn.Text = "Nuovo";
-            this.nuovoViaggioBtn.UseVisualStyleBackColor = true;
-            // 
-            // elencoViaggiDg
-            // 
-            this.elencoViaggiDg.AllowUserToAddRows = false;
-            this.elencoViaggiDg.AllowUserToDeleteRows = false;
-            this.elencoViaggiDg.AutoGenerateColumns = false;
-            this.elencoViaggiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elencoViaggiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.dataDataGridViewTextBoxColumn,
-            this.Fornitore,
-            this.targaAutomezzoDataGridViewTextBoxColumn,
-            this.conducenteDataGridViewTextBoxColumn});
-            this.elencoViaggiDg.DataSource = this.elencoViaggiBs;
-            this.elencoViaggiDg.Location = new System.Drawing.Point(6, 73);
-            this.elencoViaggiDg.Name = "elencoViaggiDg";
-            this.elencoViaggiDg.ReadOnly = true;
-            this.elencoViaggiDg.Size = new System.Drawing.Size(762, 399);
-            this.elencoViaggiDg.TabIndex = 0;
-            this.elencoViaggiDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.elencoViaggiDg_CellFormatting);
-            // 
-            // Fornitore
-            // 
-            this.Fornitore.DataPropertyName = "Fornitore.RagioneSociale";
-            this.Fornitore.HeaderText = "Fornitore";
-            this.Fornitore.Name = "Fornitore";
-            this.Fornitore.ReadOnly = true;
-            this.Fornitore.Width = 200;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.descrizioneProdottoTb);
@@ -352,6 +294,23 @@
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dettaglio prodotto";
+            // 
+            // descrizioneProdottoTb
+            // 
+            this.descrizioneProdottoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentProdottoBs, "Descrizione", true));
+            this.descrizioneProdottoTb.Location = new System.Drawing.Point(6, 41);
+            this.descrizioneProdottoTb.Name = "descrizioneProdottoTb";
+            this.descrizioneProdottoTb.Size = new System.Drawing.Size(352, 20);
+            this.descrizioneProdottoTb.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Descrizione";
             // 
             // button1
             // 
@@ -380,22 +339,281 @@
             this.button3.Text = "Nuovo";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // descrizioneProdottoTb
+            // groupBox3
             // 
-            this.descrizioneProdottoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentProdottoBs, "Descrizione", true));
-            this.descrizioneProdottoTb.Location = new System.Drawing.Point(6, 41);
-            this.descrizioneProdottoTb.Name = "descrizioneProdottoTb";
-            this.descrizioneProdottoTb.Size = new System.Drawing.Size(352, 20);
-            this.descrizioneProdottoTb.TabIndex = 9;
+            this.groupBox3.Controls.Add(this.descrizioneProdottoFilterTb);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.elencoProdottiDg);
+            this.groupBox3.Location = new System.Drawing.Point(8, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(367, 498);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Elenco prodotti";
             // 
-            // label3
+            // descrizioneProdottoFilterTb
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Descrizione";
+            this.descrizioneProdottoFilterTb.Location = new System.Drawing.Point(7, 32);
+            this.descrizioneProdottoFilterTb.Name = "descrizioneProdottoFilterTb";
+            this.descrizioneProdottoFilterTb.Size = new System.Drawing.Size(352, 20);
+            this.descrizioneProdottoFilterTb.TabIndex = 5;
+            this.descrizioneProdottoFilterTb.TextChanged += new System.EventHandler(this.descrizioneProdottoFilterTb_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Filtra per descrizione";
+            // 
+            // elencoProdottiDg
+            // 
+            this.elencoProdottiDg.AllowUserToAddRows = false;
+            this.elencoProdottiDg.AllowUserToDeleteRows = false;
+            this.elencoProdottiDg.AutoGenerateColumns = false;
+            this.elencoProdottiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elencoProdottiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.descrizioneDataGridViewTextBoxColumn,
+            this.costoDataGridViewTextBoxColumn});
+            this.elencoProdottiDg.DataSource = this.elencoProdottiBs;
+            this.elencoProdottiDg.Location = new System.Drawing.Point(6, 58);
+            this.elencoProdottiDg.Name = "elencoProdottiDg";
+            this.elencoProdottiDg.ReadOnly = true;
+            this.elencoProdottiDg.Size = new System.Drawing.Size(352, 434);
+            this.elencoProdottiDg.TabIndex = 3;
+            // 
+            // viaggiTabPage
+            // 
+            this.viaggiTabPage.Controls.Add(this.groupBox5);
+            this.viaggiTabPage.Controls.Add(this.nuovoViaggioBtn);
+            this.viaggiTabPage.Controls.Add(this.elencoViaggiDg);
+            this.viaggiTabPage.Location = new System.Drawing.Point(4, 22);
+            this.viaggiTabPage.Name = "viaggiTabPage";
+            this.viaggiTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.viaggiTabPage.Size = new System.Drawing.Size(776, 512);
+            this.viaggiTabPage.TabIndex = 2;
+            this.viaggiTabPage.Text = "Storico viaggi";
+            this.viaggiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.viaggiFiltroDatePnl);
+            this.groupBox5.Controls.Add(this.viaggiAbilitaFiltroDateCb);
+            this.groupBox5.Controls.Add(this.viaggiRimuoviFiltroBtn);
+            this.groupBox5.Controls.Add(this.viaggiApplicaFiltroBtn);
+            this.groupBox5.Controls.Add(this.viaggioConducenteFilterTb);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.viaggioTargaFilterTb);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.viaggioFornitoreFilterTb);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Location = new System.Drawing.Point(8, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(760, 107);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Filtri";
+            // 
+            // viaggiFiltroDatePnl
+            // 
+            this.viaggiFiltroDatePnl.Controls.Add(this.label10);
+            this.viaggiFiltroDatePnl.Controls.Add(this.viaggioMeseFilterCb);
+            this.viaggiFiltroDatePnl.Controls.Add(this.label9);
+            this.viaggiFiltroDatePnl.Controls.Add(this.label8);
+            this.viaggiFiltroDatePnl.Controls.Add(this.dateTimePicker2);
+            this.viaggiFiltroDatePnl.Controls.Add(this.dateTimePicker1);
+            this.viaggiFiltroDatePnl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.elencoViaggiVMBs, "dataFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.viaggiFiltroDatePnl.Location = new System.Drawing.Point(410, 8);
+            this.viaggiFiltroDatePnl.Name = "viaggiFiltroDatePnl";
+            this.viaggiFiltroDatePnl.Size = new System.Drawing.Size(228, 85);
+            this.viaggiFiltroDatePnl.TabIndex = 20;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 44);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Mese";
+            // 
+            // viaggioMeseFilterCb
+            // 
+            this.viaggioMeseFilterCb.FormattingEnabled = true;
+            this.viaggioMeseFilterCb.Items.AddRange(new object[] {
+            "Gennaio",
+            "Febbraio",
+            "Marzo",
+            "Aprile",
+            "Maggio",
+            "Giugno",
+            "Luglio",
+            "Agosto",
+            "Settembre",
+            "Ottobre",
+            "Novembre",
+            "Dicembre"});
+            this.viaggioMeseFilterCb.Location = new System.Drawing.Point(7, 59);
+            this.viaggioMeseFilterCb.Name = "viaggioMeseFilterCb";
+            this.viaggioMeseFilterCb.Size = new System.Drawing.Size(105, 21);
+            this.viaggioMeseFilterCb.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(115, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(16, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Al";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(23, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Dal";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "alFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(118, 21);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(105, 20);
+            this.dateTimePicker2.TabIndex = 18;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "dalFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(7, 21);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(105, 20);
+            this.dateTimePicker1.TabIndex = 17;
+            // 
+            // viaggiAbilitaFiltroDateCb
+            // 
+            this.viaggiAbilitaFiltroDateCb.AutoSize = true;
+            this.viaggiAbilitaFiltroDateCb.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.elencoViaggiVMBs, "dataFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.viaggiAbilitaFiltroDateCb.Location = new System.Drawing.Point(287, 32);
+            this.viaggiAbilitaFiltroDateCb.Name = "viaggiAbilitaFiltroDateCb";
+            this.viaggiAbilitaFiltroDateCb.Size = new System.Drawing.Size(99, 17);
+            this.viaggiAbilitaFiltroDateCb.TabIndex = 19;
+            this.viaggiAbilitaFiltroDateCb.Text = "abilita filtro date";
+            this.viaggiAbilitaFiltroDateCb.UseVisualStyleBackColor = true;
+            // 
+            // viaggiRimuoviFiltroBtn
+            // 
+            this.viaggiRimuoviFiltroBtn.Location = new System.Drawing.Point(660, 68);
+            this.viaggiRimuoviFiltroBtn.Name = "viaggiRimuoviFiltroBtn";
+            this.viaggiRimuoviFiltroBtn.Size = new System.Drawing.Size(94, 23);
+            this.viaggiRimuoviFiltroBtn.TabIndex = 18;
+            this.viaggiRimuoviFiltroBtn.Text = "Rimuovi filtro";
+            this.viaggiRimuoviFiltroBtn.UseVisualStyleBackColor = true;
+            this.viaggiRimuoviFiltroBtn.Click += new System.EventHandler(this.viaggiRimuoviFiltroBtn_Click);
+            // 
+            // viaggiApplicaFiltroBtn
+            // 
+            this.viaggiApplicaFiltroBtn.Location = new System.Drawing.Point(660, 29);
+            this.viaggiApplicaFiltroBtn.Name = "viaggiApplicaFiltroBtn";
+            this.viaggiApplicaFiltroBtn.Size = new System.Drawing.Size(94, 23);
+            this.viaggiApplicaFiltroBtn.TabIndex = 17;
+            this.viaggiApplicaFiltroBtn.Text = "Applica filtro";
+            this.viaggiApplicaFiltroBtn.UseVisualStyleBackColor = true;
+            this.viaggiApplicaFiltroBtn.Click += new System.EventHandler(this.viaggiApplicaFiltroBtn_Click);
+            // 
+            // viaggioConducenteFilterTb
+            // 
+            this.viaggioConducenteFilterTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.elencoViaggiVMBs, "conducenteFilter", true));
+            this.viaggioConducenteFilterTb.Location = new System.Drawing.Point(9, 71);
+            this.viaggioConducenteFilterTb.Name = "viaggioConducenteFilterTb";
+            this.viaggioConducenteFilterTb.Size = new System.Drawing.Size(133, 20);
+            this.viaggioConducenteFilterTb.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Conducente";
+            // 
+            // viaggioTargaFilterTb
+            // 
+            this.viaggioTargaFilterTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.elencoViaggiVMBs, "targaFilter", true));
+            this.viaggioTargaFilterTb.Location = new System.Drawing.Point(148, 32);
+            this.viaggioTargaFilterTb.Name = "viaggioTargaFilterTb";
+            this.viaggioTargaFilterTb.Size = new System.Drawing.Size(133, 20);
+            this.viaggioTargaFilterTb.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(145, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Targa automezzo";
+            // 
+            // viaggioFornitoreFilterTb
+            // 
+            this.viaggioFornitoreFilterTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.elencoViaggiVMBs, "fornitoreFilter", true));
+            this.viaggioFornitoreFilterTb.Location = new System.Drawing.Point(9, 32);
+            this.viaggioFornitoreFilterTb.Name = "viaggioFornitoreFilterTb";
+            this.viaggioFornitoreFilterTb.Size = new System.Drawing.Size(133, 20);
+            this.viaggioFornitoreFilterTb.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Fornitore";
+            // 
+            // nuovoViaggioBtn
+            // 
+            this.nuovoViaggioBtn.Location = new System.Drawing.Point(6, 483);
+            this.nuovoViaggioBtn.Name = "nuovoViaggioBtn";
+            this.nuovoViaggioBtn.Size = new System.Drawing.Size(75, 23);
+            this.nuovoViaggioBtn.TabIndex = 1;
+            this.nuovoViaggioBtn.Text = "Nuovo";
+            this.nuovoViaggioBtn.UseVisualStyleBackColor = true;
+            // 
+            // elencoViaggiDg
+            // 
+            this.elencoViaggiDg.AllowUserToAddRows = false;
+            this.elencoViaggiDg.AllowUserToDeleteRows = false;
+            this.elencoViaggiDg.AutoGenerateColumns = false;
+            this.elencoViaggiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elencoViaggiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.dataDataGridViewTextBoxColumn,
+            this.Fornitore,
+            this.targaAutomezzoDataGridViewTextBoxColumn,
+            this.conducenteDataGridViewTextBoxColumn});
+            this.elencoViaggiDg.DataSource = this.elencoViaggiBs;
+            this.elencoViaggiDg.Location = new System.Drawing.Point(6, 119);
+            this.elencoViaggiDg.Name = "elencoViaggiDg";
+            this.elencoViaggiDg.ReadOnly = true;
+            this.elencoViaggiDg.Size = new System.Drawing.Size(762, 353);
+            this.elencoViaggiDg.TabIndex = 0;
+            this.elencoViaggiDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.elencoViaggiDg_CellFormatting);
+            // 
+            // Fornitore
+            // 
+            this.Fornitore.DataPropertyName = "Fornitore.RagioneSociale";
+            this.Fornitore.HeaderText = "Fornitore";
+            this.Fornitore.Name = "Fornitore";
+            this.Fornitore.ReadOnly = true;
+            this.Fornitore.Width = 200;
             // 
             // currentFornitoreBs
             // 
@@ -440,6 +658,10 @@
             this.elencoProdottiBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
             this.elencoProdottiBs.CurrentChanged += new System.EventHandler(this.elencoProdottiBs_CurrentChanged);
             // 
+            // elencoViaggiVMBs
+            // 
+            this.elencoViaggiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.ElencoViaggiVModel);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -482,23 +704,6 @@
             // 
             this.anagraficaProdottiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
             // 
-            // descrizioneProdottoFilterTb
-            // 
-            this.descrizioneProdottoFilterTb.Location = new System.Drawing.Point(7, 32);
-            this.descrizioneProdottoFilterTb.Name = "descrizioneProdottoFilterTb";
-            this.descrizioneProdottoFilterTb.Size = new System.Drawing.Size(352, 20);
-            this.descrizioneProdottoFilterTb.TabIndex = 5;
-            this.descrizioneProdottoFilterTb.TextChanged += new System.EventHandler(this.descrizioneProdottoFilterTb_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Filtra per descrizione";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,18 +728,22 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).EndInit();
             this.prodottiTabPage.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiDg)).EndInit();
             this.viaggiTabPage.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.viaggiFiltroDatePnl.ResumeLayout(false);
+            this.viaggiFiltroDatePnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiVMBs)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
@@ -592,6 +801,23 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox descrizioneProdottoFilterTb;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Panel viaggiFiltroDatePnl;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox viaggioMeseFilterCb;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.CheckBox viaggiAbilitaFiltroDateCb;
+        private System.Windows.Forms.Button viaggiRimuoviFiltroBtn;
+        private System.Windows.Forms.Button viaggiApplicaFiltroBtn;
+        private System.Windows.Forms.TextBox viaggioConducenteFilterTb;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox viaggioTargaFilterTb;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox viaggioFornitoreFilterTb;
+        private System.Windows.Forms.Label label5;
     }
 }
 

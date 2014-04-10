@@ -88,6 +88,7 @@
     <Compile Include="Model\Prodotto.cs" />
     <Compile Include="Model\RigaViaggio.cs" />
     <Compile Include="Model\Viaggio.cs" />
+    <Compile Include="Model\ViaggioFilter.cs" />
     <Compile Include="Presenter\AnagraficaFornitoriPresenter.cs" />
     <Compile Include="Presenter\AnagraficaProdottiPresenter.cs" />
     <Compile Include="Presenter\ElencoViaggiPresenter.cs" />
