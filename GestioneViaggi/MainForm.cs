@@ -126,6 +126,8 @@ namespace GestioneViaggi
             _anaforpr.refreshFornitori();
             _anapropr = new AnagraficaProdottiPresenter(this as IAnagraficaProdottiView);
             _anapropr.onProdottiRefreshed += new ProdottiRefreshedDelegate(_anapropr_onProdottiRefreshed);
+            _anapropr.onProdottiSaveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
+            _anapropr.onProdottiRemoveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
             _anapropr.refreshProdotti();
             _viaggipr = new ElencoViaggiPresenter(this as IElencoViaggiView);
             _viaggipr.onViaggiRefreshed += new ViaggiRefreshedDelegate(_viaggipr_onViaggiRefreshed);
@@ -133,37 +135,18 @@ namespace GestioneViaggi
             _viaggipr.refreshViaggi();
         }
 
-        void _viaggipr_onViaggiFilterFailed(Dictionary<string, List<string>> messages)
+        //Prodotti
+
+        void _anapropr_onProdottiSaveError(List<string> messages)
         {
-            //List<String> errori = messages.Select(kvp => String.Format("{0}: {1}\n", kvp.Key, kvp.Value.Aggregate((v,a) => a += v + ","))).ToList();
-            //String errore = errori.Aggregate((v, a) => a += v);
-            if (messages.Keys.Contains("data"))
-            {
-                String errore = messages["data"].Aggregate((v, a) => a += "- " + v + "\n");
-                MessageBox.Show(errore, "Errore filtro viaggi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            MessageBox.Show(String.Join("\n", messages),"Anagrafica prodotti", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        void IElencoViaggiView.SetVModel(ElencoViaggiVModel model)
+        private void terminaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _viaggivm = model;
-            elencoViaggiVMBs.DataSource = _viaggivm;
+            Application.Exit();
         }
-
-        void _viaggipr_onViaggiRefreshed(List<Viaggio> viaggi)
-        {
-            elencoViaggiBs.DataSource = viaggi;
-            elencoViaggiDg.DataSource = elencoViaggiBs;
-        }
-
-        private void elencoViaggiDg_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
-            {
-                e.Value = ViewHelpers.EvaluateValue(elencoViaggiDg.Rows[e.RowIndex].DataBoundItem, elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName);
-            }
-        }
-
+     
         void IAnagraficaProdottiView.SetVModel(AnagraficaProdottiVModel model)
         {
             _anaprovm = model;
@@ -174,6 +157,7 @@ namespace GestioneViaggi
         {
             elencoProdottiBs.DataSource = prodotti;
             elencoProdottiDg.DataSource = elencoProdottiBs;
+            elencoProdottiGb.Text = String.Format("Elenco prodotti: {0}",prodotti.Count());
         }
 
         private void elencoProdottiBs_CurrentChanged(object sender, EventArgs e)
@@ -183,11 +167,34 @@ namespace GestioneViaggi
             anagraficaProdottiVMBs.ResetBindings(false);
         }
 
-        void _anaforpr_onFornitoriSaveError(List<string> messages)
+        private void descrizioneProdottoFilterTb_TextChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(String.Join("\n", messages));
+            _anapropr.FilterProdottoByDescrizione(descrizioneProdottoFilterTb.Text);
         }
 
+        private void nuovoProdottoBtn_Click(object sender, EventArgs e)
+        {
+            _anaprovm.current = new Prodotto();
+            currentProdottoBs.DataSource = _anaprovm.current;
+            anagraficaProdottiVMBs.ResetBindings(false);
+        }
+
+        private void salvaProdottoBtn_Click(object sender, EventArgs e)
+        {
+            _anapropr.Save(_anaprovm.current);
+        }
+
+        private void eliminaProdottoBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Procedere con la rimozione del prodotto selezionato?", "Rimozione prodotto", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                _anapropr.Remove(_anaprovm.current);
+            }
+        }
+
+        //End Prodotti
+
+        //Fornitori
         void IAnagraficaFornitoriView.SetVModel(AnagraficaFornitoriVModel model)
         {
             _anaforvm = model;
@@ -198,6 +205,12 @@ namespace GestioneViaggi
         {
             elencoFornitoriBs.DataSource = fornitori;
             elencoFornitoriDg.DataSource = elencoFornitoriBs;
+            elencoFornitoriGb.Text = String.Format("Elenco fornitori: {0}", fornitori.Count());
+        }
+
+        void _anaforpr_onFornitoriSaveError(List<string> messages)
+        {
+            MessageBox.Show(String.Join("\n", messages), "Anagrafica fornitori", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void elencoFornitoriBs_CurrentChanged(object sender, EventArgs e)
@@ -227,19 +240,44 @@ namespace GestioneViaggi
             }
         }
 
-        private void terminaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void ragioneSocialeFilterTextBox_TextChanged(object sender, EventArgs e)
         {
             _anaforpr.FilterFornitoreByRagioneSociale(ragioneSocialeFilterTextBox.Text);
         }
 
-        private void descrizioneProdottoFilterTb_TextChanged(object sender, EventArgs e)
+        //End Fornitori
+
+        //Viaggi
+        void _viaggipr_onViaggiFilterFailed(Dictionary<string, List<string>> messages)
         {
-            _anapropr.FilterProdottoByDescrizione(descrizioneProdottoFilterTb.Text);
+            //List<String> errori = messages.Select(kvp => String.Format("{0}: {1}\n", kvp.Key, kvp.Value.Aggregate((v,a) => a += v + ","))).ToList();
+            //String errore = errori.Aggregate((v, a) => a += v);
+            if (messages.Keys.Contains("data"))
+            {
+                String errore = messages["data"].Aggregate((v, a) => a += "- " + v + "\n");
+                MessageBox.Show(errore, "Errore filtro viaggi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void IElencoViaggiView.SetVModel(ElencoViaggiVModel model)
+        {
+            _viaggivm = model;
+            elencoViaggiVMBs.DataSource = _viaggivm;
+        }
+
+        void _viaggipr_onViaggiRefreshed(List<Viaggio> viaggi)
+        {
+            elencoViaggiBs.DataSource = viaggi;
+            elencoViaggiDg.DataSource = elencoViaggiBs;
+            elencoViaggiGb.Text = String.Format("Elenco viaggi: {0}",viaggi.Count());
+        }
+
+        private void elencoViaggiDg_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+            {
+                e.Value = ViewHelpers.EvaluateValue(elencoViaggiDg.Rows[e.RowIndex].DataBoundItem, elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName);
+            }
         }
 
         private void viaggioMeseFilterCb_TextChanged(object sender, EventArgs e)
@@ -268,5 +306,14 @@ namespace GestioneViaggi
             _viaggipr.ApplyFilter();
         }
 
+        private void elencoFornitoriDg_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && (e.ColumnIndex >= 0))
+            {
+                e.CellStyle.BackColor = (e.RowIndex % 2) == 0 ? Color.White : Color.AntiqueWhite;
+            }
+        }
+
+        //End Viaggi
     }
 }

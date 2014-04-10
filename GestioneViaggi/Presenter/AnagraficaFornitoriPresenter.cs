@@ -63,6 +63,11 @@ namespace GestioneViaggi.Presenter
                 if (onFornitoriRemoveError != null)
                     onFornitoriRemoveError(errors);
             }
+            else
+            {
+                Dal.db.Fornitori.Delete(fornitore.Id);
+                refreshFornitori();
+            }
         }
 
         internal void FilterFornitoreByRagioneSociale(string p)

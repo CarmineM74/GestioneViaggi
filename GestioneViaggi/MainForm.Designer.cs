@@ -39,23 +39,42 @@
             this.salvaFornitoreBtn = new System.Windows.Forms.Button();
             this.nuovoFornitoreBtn = new System.Windows.Forms.Button();
             this.ragioneSocialeTb = new System.Windows.Forms.TextBox();
+            this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.elencoFornitoriGb = new System.Windows.Forms.GroupBox();
             this.elencoFornitoriDg = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.elencoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
             this.ragioneSocialeFilterTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.prodottiTabPage = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.costoProdottoTb = new System.Windows.Forms.TextBox();
+            this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
+            this.label11 = new System.Windows.Forms.Label();
             this.descrizioneProdottoTb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.eliminaProdottoBtn = new System.Windows.Forms.Button();
+            this.salvaProdottoBtn = new System.Windows.Forms.Button();
+            this.nuovoProdottoBtn = new System.Windows.Forms.Button();
+            this.elencoProdottiGb = new System.Windows.Forms.GroupBox();
             this.descrizioneProdottoFilterTb = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.elencoProdottiDg = new System.Windows.Forms.DataGridView();
+            this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.elencoProdottiBs = new System.Windows.Forms.BindingSource(this.components);
             this.viaggiTabPage = new System.Windows.Forms.TabPage();
+            this.elencoViaggiGb = new System.Windows.Forms.GroupBox();
+            this.elencoViaggiDg = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fornitore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targaAutomezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.conducenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.elencoViaggiBs = new System.Windows.Forms.BindingSource(this.components);
+            this.modificaViaggioBtn = new System.Windows.Forms.Button();
+            this.eliminaViaggioBtn = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.viaggiFiltroDatePnl = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -63,6 +82,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.elencoViaggiVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.viaggiAbilitaFiltroDateCb = new System.Windows.Forms.CheckBox();
             this.viaggiRimuoviFiltroBtn = new System.Windows.Forms.Button();
@@ -74,43 +94,45 @@
             this.viaggioFornitoreFilterTb = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.nuovoViaggioBtn = new System.Windows.Forms.Button();
-            this.elencoViaggiDg = new System.Windows.Forms.DataGridView();
-            this.Fornitore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.elencoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
-            this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
-            this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.elencoProdottiBs = new System.Windows.Forms.BindingSource(this.components);
-            this.elencoViaggiVMBs = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targaAutomezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.conducenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.elencoViaggiBs = new System.Windows.Forms.BindingSource(this.components);
+            this.riepiloghiTp = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.costoProdottoEp = new System.Windows.Forms.ErrorProvider(this.components);
             this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
+            this.elencoFornitoriGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).BeginInit();
             this.prodottiTabPage.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
+            this.elencoProdottiGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiDg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).BeginInit();
             this.viaggiTabPage.SuspendLayout();
+            this.elencoViaggiGb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.viaggiFiltroDatePnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiVMBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).BeginInit();
+            this.riepiloghiTp.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProdottoEp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
             this.SuspendLayout();
@@ -145,6 +167,7 @@
             this.mainTabControl.Controls.Add(this.FornitoriTabPage);
             this.mainTabControl.Controls.Add(this.prodottiTabPage);
             this.mainTabControl.Controls.Add(this.viaggiTabPage);
+            this.mainTabControl.Controls.Add(this.riepiloghiTp);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 24);
             this.mainTabControl.Name = "mainTabControl";
@@ -155,7 +178,7 @@
             // FornitoriTabPage
             // 
             this.FornitoriTabPage.Controls.Add(this.groupBox2);
-            this.FornitoriTabPage.Controls.Add(this.groupBox1);
+            this.FornitoriTabPage.Controls.Add(this.elencoFornitoriGb);
             this.FornitoriTabPage.Location = new System.Drawing.Point(4, 22);
             this.FornitoriTabPage.Name = "FornitoriTabPage";
             this.FornitoriTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -216,6 +239,10 @@
             this.ragioneSocialeTb.Size = new System.Drawing.Size(352, 20);
             this.ragioneSocialeTb.TabIndex = 2;
             // 
+            // currentFornitoreBs
+            // 
+            this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -225,17 +252,17 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Ragione Sociale";
             // 
-            // groupBox1
+            // elencoFornitoriGb
             // 
-            this.groupBox1.Controls.Add(this.elencoFornitoriDg);
-            this.groupBox1.Controls.Add(this.ragioneSocialeFilterTextBox);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 498);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Elenco Fornitori";
+            this.elencoFornitoriGb.Controls.Add(this.elencoFornitoriDg);
+            this.elencoFornitoriGb.Controls.Add(this.ragioneSocialeFilterTextBox);
+            this.elencoFornitoriGb.Controls.Add(this.label1);
+            this.elencoFornitoriGb.Location = new System.Drawing.Point(6, 6);
+            this.elencoFornitoriGb.Name = "elencoFornitoriGb";
+            this.elencoFornitoriGb.Size = new System.Drawing.Size(367, 498);
+            this.elencoFornitoriGb.TabIndex = 0;
+            this.elencoFornitoriGb.TabStop = false;
+            this.elencoFornitoriGb.Text = "Elenco Fornitori";
             // 
             // elencoFornitoriDg
             // 
@@ -251,6 +278,21 @@
             this.elencoFornitoriDg.ReadOnly = true;
             this.elencoFornitoriDg.Size = new System.Drawing.Size(352, 434);
             this.elencoFornitoriDg.TabIndex = 2;
+            this.elencoFornitoriDg.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.elencoFornitoriDg_CellPainting);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "RagioneSociale";
+            this.dataGridViewTextBoxColumn1.HeaderText = "RagioneSociale";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 280;
+            // 
+            // elencoFornitoriBs
+            // 
+            this.elencoFornitoriBs.DataMember = "items";
+            this.elencoFornitoriBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
+            this.elencoFornitoriBs.CurrentChanged += new System.EventHandler(this.elencoFornitoriBs_CurrentChanged);
             // 
             // ragioneSocialeFilterTextBox
             // 
@@ -272,7 +314,7 @@
             // prodottiTabPage
             // 
             this.prodottiTabPage.Controls.Add(this.groupBox4);
-            this.prodottiTabPage.Controls.Add(this.groupBox3);
+            this.prodottiTabPage.Controls.Add(this.elencoProdottiGb);
             this.prodottiTabPage.Location = new System.Drawing.Point(4, 22);
             this.prodottiTabPage.Name = "prodottiTabPage";
             this.prodottiTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -283,17 +325,40 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.costoProdottoTb);
+            this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.descrizioneProdottoTb);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.eliminaProdottoBtn);
+            this.groupBox4.Controls.Add(this.salvaProdottoBtn);
+            this.groupBox4.Controls.Add(this.nuovoProdottoBtn);
             this.groupBox4.Location = new System.Drawing.Point(391, 11);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(367, 498);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dettaglio prodotto";
+            // 
+            // costoProdottoTb
+            // 
+            this.costoProdottoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.currentProdottoBs, "Costo", true));
+            this.costoProdottoTb.Location = new System.Drawing.Point(6, 80);
+            this.costoProdottoTb.Name = "costoProdottoTb";
+            this.costoProdottoTb.Size = new System.Drawing.Size(148, 20);
+            this.costoProdottoTb.TabIndex = 11;
+            // 
+            // currentProdottoBs
+            // 
+            this.currentProdottoBs.DataSource = typeof(GestioneViaggi.Model.Prodotto);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 64);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 13);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Costo in €/Kg";
             // 
             // descrizioneProdottoTb
             // 
@@ -312,44 +377,47 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Descrizione";
             // 
-            // button1
+            // eliminaProdottoBtn
             // 
-            this.button1.Location = new System.Drawing.Point(283, 463);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Elimina";
-            this.button1.UseVisualStyleBackColor = true;
+            this.eliminaProdottoBtn.Location = new System.Drawing.Point(283, 463);
+            this.eliminaProdottoBtn.Name = "eliminaProdottoBtn";
+            this.eliminaProdottoBtn.Size = new System.Drawing.Size(75, 23);
+            this.eliminaProdottoBtn.TabIndex = 7;
+            this.eliminaProdottoBtn.Text = "Elimina";
+            this.eliminaProdottoBtn.UseVisualStyleBackColor = true;
+            this.eliminaProdottoBtn.Click += new System.EventHandler(this.eliminaProdottoBtn_Click);
             // 
-            // button2
+            // salvaProdottoBtn
             // 
-            this.button2.Location = new System.Drawing.Point(99, 463);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Salva";
-            this.button2.UseVisualStyleBackColor = true;
+            this.salvaProdottoBtn.Location = new System.Drawing.Point(99, 463);
+            this.salvaProdottoBtn.Name = "salvaProdottoBtn";
+            this.salvaProdottoBtn.Size = new System.Drawing.Size(75, 23);
+            this.salvaProdottoBtn.TabIndex = 6;
+            this.salvaProdottoBtn.Text = "Salva";
+            this.salvaProdottoBtn.UseVisualStyleBackColor = true;
+            this.salvaProdottoBtn.Click += new System.EventHandler(this.salvaProdottoBtn_Click);
             // 
-            // button3
+            // nuovoProdottoBtn
             // 
-            this.button3.Location = new System.Drawing.Point(9, 463);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Nuovo";
-            this.button3.UseVisualStyleBackColor = true;
+            this.nuovoProdottoBtn.Location = new System.Drawing.Point(9, 463);
+            this.nuovoProdottoBtn.Name = "nuovoProdottoBtn";
+            this.nuovoProdottoBtn.Size = new System.Drawing.Size(75, 23);
+            this.nuovoProdottoBtn.TabIndex = 5;
+            this.nuovoProdottoBtn.Text = "Nuovo";
+            this.nuovoProdottoBtn.UseVisualStyleBackColor = true;
+            this.nuovoProdottoBtn.Click += new System.EventHandler(this.nuovoProdottoBtn_Click);
             // 
-            // groupBox3
+            // elencoProdottiGb
             // 
-            this.groupBox3.Controls.Add(this.descrizioneProdottoFilterTb);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.elencoProdottiDg);
-            this.groupBox3.Location = new System.Drawing.Point(8, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 498);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Elenco prodotti";
+            this.elencoProdottiGb.Controls.Add(this.descrizioneProdottoFilterTb);
+            this.elencoProdottiGb.Controls.Add(this.label4);
+            this.elencoProdottiGb.Controls.Add(this.elencoProdottiDg);
+            this.elencoProdottiGb.Location = new System.Drawing.Point(8, 6);
+            this.elencoProdottiGb.Name = "elencoProdottiGb";
+            this.elencoProdottiGb.Size = new System.Drawing.Size(367, 498);
+            this.elencoProdottiGb.TabIndex = 0;
+            this.elencoProdottiGb.TabStop = false;
+            this.elencoProdottiGb.Text = "Elenco prodotti";
             // 
             // descrizioneProdottoFilterTb
             // 
@@ -383,12 +451,36 @@
             this.elencoProdottiDg.ReadOnly = true;
             this.elencoProdottiDg.Size = new System.Drawing.Size(352, 434);
             this.elencoProdottiDg.TabIndex = 3;
+            this.elencoProdottiDg.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.elencoFornitoriDg_CellPainting);
+            // 
+            // descrizioneDataGridViewTextBoxColumn
+            // 
+            this.descrizioneDataGridViewTextBoxColumn.DataPropertyName = "Descrizione";
+            this.descrizioneDataGridViewTextBoxColumn.HeaderText = "Descrizione";
+            this.descrizioneDataGridViewTextBoxColumn.Name = "descrizioneDataGridViewTextBoxColumn";
+            this.descrizioneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descrizioneDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // costoDataGridViewTextBoxColumn
+            // 
+            this.costoDataGridViewTextBoxColumn.DataPropertyName = "Costo";
+            this.costoDataGridViewTextBoxColumn.HeaderText = "Costo";
+            this.costoDataGridViewTextBoxColumn.Name = "costoDataGridViewTextBoxColumn";
+            this.costoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // elencoProdottiBs
+            // 
+            this.elencoProdottiBs.DataMember = "items";
+            this.elencoProdottiBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
+            this.elencoProdottiBs.CurrentChanged += new System.EventHandler(this.elencoProdottiBs_CurrentChanged);
             // 
             // viaggiTabPage
             // 
+            this.viaggiTabPage.Controls.Add(this.elencoViaggiGb);
+            this.viaggiTabPage.Controls.Add(this.modificaViaggioBtn);
+            this.viaggiTabPage.Controls.Add(this.eliminaViaggioBtn);
             this.viaggiTabPage.Controls.Add(this.groupBox5);
             this.viaggiTabPage.Controls.Add(this.nuovoViaggioBtn);
-            this.viaggiTabPage.Controls.Add(this.elencoViaggiDg);
             this.viaggiTabPage.Location = new System.Drawing.Point(4, 22);
             this.viaggiTabPage.Name = "viaggiTabPage";
             this.viaggiTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -396,6 +488,97 @@
             this.viaggiTabPage.TabIndex = 2;
             this.viaggiTabPage.Text = "Storico viaggi";
             this.viaggiTabPage.UseVisualStyleBackColor = true;
+            // 
+            // elencoViaggiGb
+            // 
+            this.elencoViaggiGb.Controls.Add(this.elencoViaggiDg);
+            this.elencoViaggiGb.Location = new System.Drawing.Point(8, 119);
+            this.elencoViaggiGb.Name = "elencoViaggiGb";
+            this.elencoViaggiGb.Size = new System.Drawing.Size(760, 358);
+            this.elencoViaggiGb.TabIndex = 5;
+            this.elencoViaggiGb.TabStop = false;
+            this.elencoViaggiGb.Text = "Elenco viaggi";
+            // 
+            // elencoViaggiDg
+            // 
+            this.elencoViaggiDg.AllowUserToAddRows = false;
+            this.elencoViaggiDg.AllowUserToDeleteRows = false;
+            this.elencoViaggiDg.AutoGenerateColumns = false;
+            this.elencoViaggiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elencoViaggiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.dataDataGridViewTextBoxColumn,
+            this.Fornitore,
+            this.targaAutomezzoDataGridViewTextBoxColumn,
+            this.conducenteDataGridViewTextBoxColumn});
+            this.elencoViaggiDg.DataSource = this.elencoViaggiBs;
+            this.elencoViaggiDg.Location = new System.Drawing.Point(6, 19);
+            this.elencoViaggiDg.Name = "elencoViaggiDg";
+            this.elencoViaggiDg.ReadOnly = true;
+            this.elencoViaggiDg.Size = new System.Drawing.Size(746, 333);
+            this.elencoViaggiDg.TabIndex = 1;
+            this.elencoViaggiDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.elencoViaggiDg_CellFormatting);
+            this.elencoViaggiDg.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.elencoFornitoriDg_CellPainting);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Fornitore
+            // 
+            this.Fornitore.DataPropertyName = "Fornitore.RagioneSociale";
+            this.Fornitore.HeaderText = "Fornitore";
+            this.Fornitore.Name = "Fornitore";
+            this.Fornitore.ReadOnly = true;
+            this.Fornitore.Width = 200;
+            // 
+            // targaAutomezzoDataGridViewTextBoxColumn
+            // 
+            this.targaAutomezzoDataGridViewTextBoxColumn.DataPropertyName = "TargaAutomezzo";
+            this.targaAutomezzoDataGridViewTextBoxColumn.HeaderText = "Targa Automezzo";
+            this.targaAutomezzoDataGridViewTextBoxColumn.Name = "targaAutomezzoDataGridViewTextBoxColumn";
+            this.targaAutomezzoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // conducenteDataGridViewTextBoxColumn
+            // 
+            this.conducenteDataGridViewTextBoxColumn.DataPropertyName = "Conducente";
+            this.conducenteDataGridViewTextBoxColumn.HeaderText = "Conducente";
+            this.conducenteDataGridViewTextBoxColumn.Name = "conducenteDataGridViewTextBoxColumn";
+            this.conducenteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // elencoViaggiBs
+            // 
+            this.elencoViaggiBs.DataMember = "items";
+            this.elencoViaggiBs.DataSource = typeof(GestioneViaggi.ViewModel.ElencoViaggiVModel);
+            // 
+            // modificaViaggioBtn
+            // 
+            this.modificaViaggioBtn.Location = new System.Drawing.Point(99, 483);
+            this.modificaViaggioBtn.Name = "modificaViaggioBtn";
+            this.modificaViaggioBtn.Size = new System.Drawing.Size(75, 23);
+            this.modificaViaggioBtn.TabIndex = 4;
+            this.modificaViaggioBtn.Text = "Modifica";
+            this.modificaViaggioBtn.UseVisualStyleBackColor = true;
+            // 
+            // eliminaViaggioBtn
+            // 
+            this.eliminaViaggioBtn.Location = new System.Drawing.Point(693, 483);
+            this.eliminaViaggioBtn.Name = "eliminaViaggioBtn";
+            this.eliminaViaggioBtn.Size = new System.Drawing.Size(75, 23);
+            this.eliminaViaggioBtn.TabIndex = 3;
+            this.eliminaViaggioBtn.Text = "Elimina";
+            this.eliminaViaggioBtn.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -459,6 +642,7 @@
             this.viaggioMeseFilterCb.Name = "viaggioMeseFilterCb";
             this.viaggioMeseFilterCb.Size = new System.Drawing.Size(105, 21);
             this.viaggioMeseFilterCb.TabIndex = 21;
+            this.viaggioMeseFilterCb.TextChanged += new System.EventHandler(this.viaggioMeseFilterCb_TextChanged);
             // 
             // label9
             // 
@@ -486,6 +670,10 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(105, 20);
             this.dateTimePicker2.TabIndex = 18;
+            // 
+            // elencoViaggiVMBs
+            // 
+            this.elencoViaggiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.ElencoViaggiVModel);
             // 
             // dateTimePicker1
             // 
@@ -587,114 +775,135 @@
             this.nuovoViaggioBtn.Text = "Nuovo";
             this.nuovoViaggioBtn.UseVisualStyleBackColor = true;
             // 
-            // elencoViaggiDg
+            // riepiloghiTp
             // 
-            this.elencoViaggiDg.AllowUserToAddRows = false;
-            this.elencoViaggiDg.AllowUserToDeleteRows = false;
-            this.elencoViaggiDg.AutoGenerateColumns = false;
-            this.elencoViaggiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elencoViaggiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.dataDataGridViewTextBoxColumn,
-            this.Fornitore,
-            this.targaAutomezzoDataGridViewTextBoxColumn,
-            this.conducenteDataGridViewTextBoxColumn});
-            this.elencoViaggiDg.DataSource = this.elencoViaggiBs;
-            this.elencoViaggiDg.Location = new System.Drawing.Point(6, 119);
-            this.elencoViaggiDg.Name = "elencoViaggiDg";
-            this.elencoViaggiDg.ReadOnly = true;
-            this.elencoViaggiDg.Size = new System.Drawing.Size(762, 353);
-            this.elencoViaggiDg.TabIndex = 0;
-            this.elencoViaggiDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.elencoViaggiDg_CellFormatting);
+            this.riepiloghiTp.Controls.Add(this.groupBox6);
+            this.riepiloghiTp.Location = new System.Drawing.Point(4, 22);
+            this.riepiloghiTp.Name = "riepiloghiTp";
+            this.riepiloghiTp.Padding = new System.Windows.Forms.Padding(3);
+            this.riepiloghiTp.Size = new System.Drawing.Size(776, 512);
+            this.riepiloghiTp.TabIndex = 3;
+            this.riepiloghiTp.Text = "Riepiloghi";
+            this.riepiloghiTp.UseVisualStyleBackColor = true;
             // 
-            // Fornitore
+            // groupBox6
             // 
-            this.Fornitore.DataPropertyName = "Fornitore.RagioneSociale";
-            this.Fornitore.HeaderText = "Fornitore";
-            this.Fornitore.Name = "Fornitore";
-            this.Fornitore.ReadOnly = true;
-            this.Fornitore.Width = 200;
+            this.groupBox6.Controls.Add(this.comboBox2);
+            this.groupBox6.Controls.Add(this.panel1);
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Location = new System.Drawing.Point(6, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(760, 107);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Filtri";
             // 
-            // currentFornitoreBs
+            // comboBox2
             // 
-            this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox2.DataSource = this.elencoFornitoriBs;
+            this.comboBox2.DisplayMember = "RagioneSociale";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(9, 32);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(263, 21);
+            this.comboBox2.TabIndex = 21;
+            this.comboBox2.ValueMember = "Id";
             // 
-            // dataGridViewTextBoxColumn1
+            // panel1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "RagioneSociale";
-            this.dataGridViewTextBoxColumn1.HeaderText = "RagioneSociale";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 280;
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.dateTimePicker3);
+            this.panel1.Controls.Add(this.dateTimePicker4);
+            this.panel1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.elencoViaggiVMBs, "dataFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.panel1.Location = new System.Drawing.Point(526, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(228, 85);
+            this.panel1.TabIndex = 20;
             // 
-            // elencoFornitoriBs
+            // label12
             // 
-            this.elencoFornitoriBs.DataMember = "items";
-            this.elencoFornitoriBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
-            this.elencoFornitoriBs.CurrentChanged += new System.EventHandler(this.elencoFornitoriBs_CurrentChanged);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 44);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 13);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "Mese";
             // 
-            // currentProdottoBs
+            // comboBox1
             // 
-            this.currentProdottoBs.DataSource = typeof(GestioneViaggi.Model.Prodotto);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Gennaio",
+            "Febbraio",
+            "Marzo",
+            "Aprile",
+            "Maggio",
+            "Giugno",
+            "Luglio",
+            "Agosto",
+            "Settembre",
+            "Ottobre",
+            "Novembre",
+            "Dicembre"});
+            this.comboBox1.Location = new System.Drawing.Point(7, 59);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(105, 21);
+            this.comboBox1.TabIndex = 21;
             // 
-            // descrizioneDataGridViewTextBoxColumn
+            // label13
             // 
-            this.descrizioneDataGridViewTextBoxColumn.DataPropertyName = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.HeaderText = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.Name = "descrizioneDataGridViewTextBoxColumn";
-            this.descrizioneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descrizioneDataGridViewTextBoxColumn.Width = 180;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(115, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(16, 13);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Al";
             // 
-            // costoDataGridViewTextBoxColumn
+            // label14
             // 
-            this.costoDataGridViewTextBoxColumn.DataPropertyName = "Costo";
-            this.costoDataGridViewTextBoxColumn.HeaderText = "Costo";
-            this.costoDataGridViewTextBoxColumn.Name = "costoDataGridViewTextBoxColumn";
-            this.costoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(4, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(23, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Dal";
             // 
-            // elencoProdottiBs
+            // dateTimePicker3
             // 
-            this.elencoProdottiBs.DataMember = "items";
-            this.elencoProdottiBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
-            this.elencoProdottiBs.CurrentChanged += new System.EventHandler(this.elencoProdottiBs_CurrentChanged);
+            this.dateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "alFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(118, 21);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(105, 20);
+            this.dateTimePicker3.TabIndex = 18;
             // 
-            // elencoViaggiVMBs
+            // dateTimePicker4
             // 
-            this.elencoViaggiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.ElencoViaggiVModel);
+            this.dateTimePicker4.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "dalFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker4.Location = new System.Drawing.Point(7, 21);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(105, 20);
+            this.dateTimePicker4.TabIndex = 17;
             // 
-            // idDataGridViewTextBoxColumn
+            // label17
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 60;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(48, 13);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Fornitore";
             // 
-            // dataDataGridViewTextBoxColumn
+            // costoProdottoEp
             // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // targaAutomezzoDataGridViewTextBoxColumn
-            // 
-            this.targaAutomezzoDataGridViewTextBoxColumn.DataPropertyName = "TargaAutomezzo";
-            this.targaAutomezzoDataGridViewTextBoxColumn.HeaderText = "Targa Automezzo";
-            this.targaAutomezzoDataGridViewTextBoxColumn.Name = "targaAutomezzoDataGridViewTextBoxColumn";
-            this.targaAutomezzoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // conducenteDataGridViewTextBoxColumn
-            // 
-            this.conducenteDataGridViewTextBoxColumn.DataPropertyName = "Conducente";
-            this.conducenteDataGridViewTextBoxColumn.HeaderText = "Conducente";
-            this.conducenteDataGridViewTextBoxColumn.Name = "conducenteDataGridViewTextBoxColumn";
-            this.conducenteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // elencoViaggiBs
-            // 
-            this.elencoViaggiBs.DataMember = "items";
-            this.elencoViaggiBs.DataSource = typeof(GestioneViaggi.ViewModel.ElencoViaggiVModel);
+            this.costoProdottoEp.ContainerControl = this;
+            this.costoProdottoEp.DataSource = this.currentProdottoBs;
             // 
             // anagraficaFornitoriVMBs
             // 
@@ -724,27 +933,34 @@
             this.FornitoriTabPage.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
+            this.elencoFornitoriGb.ResumeLayout(false);
+            this.elencoFornitoriGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).EndInit();
             this.prodottiTabPage.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
+            this.elencoProdottiGb.ResumeLayout(false);
+            this.elencoProdottiGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiDg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).EndInit();
             this.viaggiTabPage.ResumeLayout(false);
+            this.elencoViaggiGb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.viaggiFiltroDatePnl.ResumeLayout(false);
             this.viaggiFiltroDatePnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiVMBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiBs)).EndInit();
+            this.riepiloghiTp.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costoProdottoEp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
             this.ResumeLayout(false);
@@ -762,7 +978,7 @@
         private System.Windows.Forms.TabPage prodottiTabPage;
         private System.Windows.Forms.TabPage viaggiTabPage;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox elencoFornitoriGb;
         private System.Windows.Forms.TextBox ragioneSocialeFilterTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView elencoFornitoriDg;
@@ -775,7 +991,7 @@
         private System.Windows.Forms.Button salvaFornitoreBtn;
         private System.Windows.Forms.Button nuovoFornitoreBtn;
         private System.Windows.Forms.BindingSource currentFornitoreBs;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox elencoProdottiGb;
         private System.Windows.Forms.BindingSource elencoProdottiBs;
         private System.Windows.Forms.DataGridView elencoProdottiDg;
         private System.Windows.Forms.DataGridViewTextBoxColumn ragioneSocialeDataGridViewTextBoxColumn;
@@ -785,18 +1001,12 @@
         private System.Windows.Forms.BindingSource anagraficaProdottiVMBs;
         private System.Windows.Forms.BindingSource currentProdottoBs;
         private System.Windows.Forms.Button nuovoViaggioBtn;
-        private System.Windows.Forms.DataGridView elencoViaggiDg;
         private System.Windows.Forms.BindingSource elencoViaggiBs;
         private System.Windows.Forms.BindingSource elencoViaggiVMBs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fornitore;
-        private System.Windows.Forms.DataGridViewTextBoxColumn targaAutomezzoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn conducenteDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button eliminaProdottoBtn;
+        private System.Windows.Forms.Button salvaProdottoBtn;
+        private System.Windows.Forms.Button nuovoProdottoBtn;
         private System.Windows.Forms.TextBox descrizioneProdottoTb;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox descrizioneProdottoFilterTb;
@@ -818,6 +1028,29 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox viaggioFornitoreFilterTb;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox costoProdottoTb;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ErrorProvider costoProdottoEp;
+        private System.Windows.Forms.Button eliminaViaggioBtn;
+        private System.Windows.Forms.Button modificaViaggioBtn;
+        private System.Windows.Forms.TabPage riepiloghiTp;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.GroupBox elencoViaggiGb;
+        private System.Windows.Forms.DataGridView elencoViaggiDg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fornitore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn targaAutomezzoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn conducenteDataGridViewTextBoxColumn;
     }
 }
 

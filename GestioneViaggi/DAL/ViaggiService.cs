@@ -58,5 +58,11 @@ namespace GestioneViaggi.DAL
             String sql = String.Format(@"Select * from viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId where FornitoreId={0}",fornitore.Id);
             return AllBySql(sql).ToList();
         }
+
+        public static List<Viaggio> FindByProdotto(Prodotto prodotto)
+        {
+            String sql = String.Format(@"Select * from viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId where RigaViaggio.ProdottoId={0}", prodotto.Id);
+            return AllBySql(sql).ToList();
+        }
     }
 }

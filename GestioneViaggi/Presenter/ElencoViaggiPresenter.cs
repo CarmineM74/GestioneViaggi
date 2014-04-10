@@ -67,7 +67,7 @@ namespace GestioneViaggi.Presenter
                    viaggi = viaggi.Where(v => v.Conducente.Contains(_vmodel.filtro.conducente)).ToList();
                if ((_vmodel.filtro.dataEnabled) && (_vmodel.filtro.dataValid))
                {
-                   viaggi = viaggi.Where(v => (v.Data >= _vmodel.filtro.dal) && (v.Data <= _vmodel.filtro.al)).ToList();
+                   viaggi = viaggi.Where(v => (v.Data.Date >= _vmodel.filtro.dal) && (v.Data.Date <= _vmodel.filtro.al)).ToList();
                }
                if (onViaggiRefreshed != null)
                    onViaggiRefreshed(viaggi);

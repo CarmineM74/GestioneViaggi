@@ -16,6 +16,8 @@ namespace GestioneViaggi.Presenter
         private AnagraficaProdottiVModel _vmodel;
 
         public event ProdottiRefreshedDelegate onProdottiRefreshed;
+        public event NotifyMessagesDelegate onProdottiSaveError;
+        public event NotifyMessagesDelegate onProdottiRemoveError;
 
         public AnagraficaProdottiPresenter(IAnagraficaProdottiView iAnagraficaProdottiView)
         {
@@ -41,6 +43,37 @@ namespace GestioneViaggi.Presenter
                 filtered = _vmodel.items.Where(f => f.Descrizione.Contains(p)).ToList();
             if (onProdottiRefreshed != null)
                 onProdottiRefreshed(filtered);
+        }
+
+        public void Save(Prodotto prodotto)
+        {
+            if (!prodotto.isValid())
+            {
+                if (onProdottiSaveError != null)
+                    onProdottiSaveError(prodotto.Errors);
+            }
+            else
+            {
+                Dal.db.Prodotti.InsertOrUpdate(prodotto);
+                refreshProdotti();
+            }
+        }
+
+        public void Remove(Prodotto prodotto)
+        {
+            List<String> errors = new List<string>();
+            var viaggi = ViaggiService.FindByProdotto(prodotto);
+            if (viaggi.Count() > 0)
+            {
+                errors.Add(String.Format("Impossibile rimuovere il prodotto: {0} viaggi associati", viaggi.Count()));
+                if (onProdottiRemoveError != null)
+                    onProdottiRemoveError(errors);
+            }
+            else
+            {
+                Dal.db.Prodotti.Delete(prodotto.Id);
+                refreshProdotti();
+            }
         }
     }
 }
