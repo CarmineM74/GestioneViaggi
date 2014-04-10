@@ -72,28 +72,38 @@ namespace GestioneViaggi
 
             }
 
-            Viaggio v;
-            foreach (int j in Enumerable.Range(1, 20))
+            List<Viaggio> viaggi = new List<Viaggio>();
+            Random rndDate = new Random(DateTime.Now.Millisecond);
+            foreach (int j in Enumerable.Range(1, 1000))
             {
-                v = new Viaggio
+                Viaggio v = new Viaggio
                 {
                     FornitoreId = new Random(DateTime.Now.Millisecond).Next(1, 10),
-                    Data = DateTime.Now,
-                    TargaAutomezzo = targhe[new Random(DateTime.Now.Millisecond).Next(0,targhe.Count-1)],
-                    Conducente = conducenti[new Random(DateTime.Now.Millisecond).Next(0,conducenti.Count-1)]
+                    Data = DateTime.Now.AddDays(rndDate.Next(600)*-1),
+                    TargaAutomezzo = targhe[rndDate.Next(0,targhe.Count-1)],
+                    Conducente = conducenti[rndDate.Next(0,conducenti.Count-1)]
                 };
+                viaggi.Add(v);
+            }
+            viaggi.Sort((v1, v2) => v1.Data.CompareTo(v2.Data));
+            foreach (Viaggio v in viaggi)
+            {
                 v.Id = Dal.connection.Insert(v);
+            }
 
+            rndDate = new Random(DateTime.Now.Millisecond);
+            foreach (int j in Enumerable.Range(1, 1000))
+            {
                 foreach (int i in Enumerable.Range(1, 5))
                 {
-                    p = Dal.db.Prodotti.Get(new Random(DateTime.Now.Millisecond).Next(1, 10));
-                    Decimal pesata = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(10000).ToString());
+                    p = Dal.db.Prodotti.Get(rndDate.Next(1, 10));
+                    Decimal pesata = Decimal.Parse(rndDate.Next(10000).ToString());
                     RigaViaggio rv = new RigaViaggio
                     {
-                        ViaggioId = v.Id,
+                        ViaggioId = viaggi[j-1].Id,
                         ProdottoId = p.Id,
                         Pesata = pesata,
-                        CaloPesoPercentuale = new Random(DateTime.Now.Millisecond).Next(100),
+                        CaloPesoPercentuale = rndDate.Next(100),
                         Costo = p.Costo * pesata
                     };
                     Dal.connection.Insert(rv);
@@ -245,6 +255,14 @@ namespace GestioneViaggi
             _anaforpr.FilterFornitoreByRagioneSociale(ragioneSocialeFilterTextBox.Text);
         }
 
+        private void elencoFornitoriDg_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && (e.ColumnIndex >= 0))
+            {
+                e.CellStyle.BackColor = (e.RowIndex % 2) == 0 ? Color.White : Color.AntiqueWhite;
+            }
+        }
+
         //End Fornitori
 
         //Viaggi
@@ -304,14 +322,6 @@ namespace GestioneViaggi
         private void viaggiApplicaFiltroBtn_Click(object sender, EventArgs e)
         {
             _viaggipr.ApplyFilter();
-        }
-
-        private void elencoFornitoriDg_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if ((e.RowIndex >= 0) && (e.ColumnIndex >= 0))
-            {
-                e.CellStyle.BackColor = (e.RowIndex % 2) == 0 ? Color.White : Color.AntiqueWhite;
-            }
         }
 
         //End Viaggi
