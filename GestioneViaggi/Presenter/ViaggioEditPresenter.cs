@@ -6,6 +6,8 @@ using GestioneViaggi.View;
 using GestioneViaggi.ViewModel;
 using GestioneViaggi.Model;
 using GestioneViaggi.DAL;
+using Dapper;
+using Dapper.Contrib;
 
 namespace GestioneViaggi.Presenter
 {
@@ -48,29 +50,23 @@ namespace GestioneViaggi.Presenter
 
         internal void AggiungiRigaAlViaggio()
         {
+            _vmodel.riga.Prodotto = _vmodel.prodotti.First(p => p.Id == _vmodel.prodottoId);
             _vmodel.current.Righe.Add(_vmodel.riga);
-            _vmodel.riga = new RigaViaggio();
         }
 
-        internal Decimal CalcolaCostoRiga(RigaViaggio riga)
+        internal Decimal CalcolaCostoRiga(long prodottoId)
         {
-            if (riga.ProdottoId <= 0)
+            if (prodottoId <= 0)
                 return 0;
-            return riga.Prodotto.Costo * riga.Pesata;
-        }
-
-        internal void SetCurrentProdotto(Prodotto prodotto)
-        {
-            _vmodel.riga.Prodotto = prodotto;
-            if (prodotto == null)
-                _vmodel.riga.ProdottoId = 0;
-            else
-                _vmodel.riga.ProdottoId = prodotto.Id;
+            Prodotto pp = _vmodel.prodotti.First(p => p.Id == prodottoId);
+            return pp.Costo * _vmodel.pesata;
         }
 
         internal void EliminaRigaDalViaggio(RigaViaggio riga)
         {
-            if (riga.Id != 0)
+            if (riga == null)
+                return;
+            if (riga.Id == 0)
             {
                 // Riga non ancora salvata
                 _vmodel.current.Righe.Remove(riga);
@@ -79,6 +75,11 @@ namespace GestioneViaggi.Presenter
             {
                 // Riga già salvata
             }
+        }
+
+        internal void ImpostaRigaCorrente(RigaViaggio riga)
+        {
+            _vmodel.riga = riga;
         }
     }
 }

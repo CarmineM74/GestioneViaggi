@@ -46,7 +46,6 @@
             this.annullaNuovaRigaBtn = new System.Windows.Forms.Button();
             this.rigaViaggioPnl = new System.Windows.Forms.Panel();
             this.caloPesoTb = new System.Windows.Forms.TextBox();
-            this.rigaBs = new System.Windows.Forms.BindingSource(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.costoTb = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -65,16 +64,17 @@
             this.caloPesoPercentualeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.righeBs = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.annullaBtn = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoriBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.rigaViaggioPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rigaBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prodottiBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.righeDg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.righeBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -198,6 +198,7 @@
             // 
             // annullaNuovaRigaBtn
             // 
+            this.annullaNuovaRigaBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "canCancelRiga", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.annullaNuovaRigaBtn.Location = new System.Drawing.Point(218, 294);
             this.annullaNuovaRigaBtn.Name = "annullaNuovaRigaBtn";
             this.annullaNuovaRigaBtn.Size = new System.Drawing.Size(68, 23);
@@ -224,20 +225,16 @@
             // 
             // caloPesoTb
             // 
-            this.caloPesoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rigaBs, "CaloPesoPercentuale", true));
-            this.caloPesoTb.Location = new System.Drawing.Point(317, 36);
+            this.caloPesoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "caloPeso", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.caloPesoTb.Location = new System.Drawing.Point(324, 36);
             this.caloPesoTb.Name = "caloPesoTb";
-            this.caloPesoTb.Size = new System.Drawing.Size(85, 20);
+            this.caloPesoTb.Size = new System.Drawing.Size(48, 20);
             this.caloPesoTb.TabIndex = 22;
-            // 
-            // rigaBs
-            // 
-            this.rigaBs.DataSource = typeof(GestioneViaggi.Model.RigaViaggio);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(222, 39);
+            this.label9.Location = new System.Drawing.Point(241, 39);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 13);
             this.label9.TabIndex = 21;
@@ -245,7 +242,7 @@
             // 
             // costoTb
             // 
-            this.costoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rigaBs, "Costo", true));
+            this.costoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "costo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.costoTb.Location = new System.Drawing.Point(97, 68);
             this.costoTb.Name = "costoTb";
             this.costoTb.Size = new System.Drawing.Size(119, 20);
@@ -262,7 +259,8 @@
             // 
             // pesataTb
             // 
-            this.pesataTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rigaBs, "Pesata", true));
+            this.pesataTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "pesata", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.errorProvider1.SetError(this.pesataTb, "Pesata non valida!");
             this.pesataTb.Location = new System.Drawing.Point(97, 36);
             this.pesataTb.Name = "pesataTb";
             this.pesataTb.Size = new System.Drawing.Size(119, 20);
@@ -280,6 +278,7 @@
             // 
             // prodottoCb
             // 
+            this.prodottoCb.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.viaggioVMBs, "prodottoId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.prodottoCb.DataSource = this.prodottiBs;
             this.prodottoCb.DisplayMember = "Descrizione";
             this.prodottoCb.FormattingEnabled = true;
@@ -287,6 +286,7 @@
             this.prodottoCb.Name = "prodottoCb";
             this.prodottoCb.Size = new System.Drawing.Size(305, 21);
             this.prodottoCb.TabIndex = 16;
+            this.prodottoCb.ValueMember = "Id";
             this.prodottoCb.SelectedIndexChanged += new System.EventHandler(this.prodottoCb_SelectedIndexChanged);
             // 
             // prodottiBs
@@ -305,6 +305,7 @@
             // 
             // eliminaRigaBtn
             // 
+            this.eliminaRigaBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "canDeleteRiga", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.eliminaRigaBtn.Location = new System.Drawing.Point(313, 294);
             this.eliminaRigaBtn.Name = "eliminaRigaBtn";
             this.eliminaRigaBtn.Size = new System.Drawing.Size(98, 23);
@@ -315,6 +316,7 @@
             // 
             // aggiungiRigaBtn
             // 
+            this.aggiungiRigaBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "canAddRiga", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.aggiungiRigaBtn.Location = new System.Drawing.Point(114, 294);
             this.aggiungiRigaBtn.Name = "aggiungiRigaBtn";
             this.aggiungiRigaBtn.Size = new System.Drawing.Size(98, 23);
@@ -348,8 +350,10 @@
             this.righeDg.Location = new System.Drawing.Point(6, 19);
             this.righeDg.Name = "righeDg";
             this.righeDg.ReadOnly = true;
+            this.righeDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.righeDg.Size = new System.Drawing.Size(405, 159);
             this.righeDg.TabIndex = 0;
+            this.righeDg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.righeDg_CellClick);
             this.righeDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.righeDg_CellFormatting);
             // 
             // Prodotto
@@ -358,6 +362,7 @@
             this.Prodotto.HeaderText = "Prodotto";
             this.Prodotto.Name = "Prodotto";
             this.Prodotto.ReadOnly = true;
+            this.Prodotto.Width = 140;
             // 
             // pesataDataGridViewTextBoxColumn
             // 
@@ -365,6 +370,7 @@
             this.pesataDataGridViewTextBoxColumn.HeaderText = "Pesata";
             this.pesataDataGridViewTextBoxColumn.Name = "pesataDataGridViewTextBoxColumn";
             this.pesataDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pesataDataGridViewTextBoxColumn.Width = 60;
             // 
             // costoDataGridViewTextBoxColumn
             // 
@@ -372,13 +378,15 @@
             this.costoDataGridViewTextBoxColumn.HeaderText = "Costo";
             this.costoDataGridViewTextBoxColumn.Name = "costoDataGridViewTextBoxColumn";
             this.costoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.costoDataGridViewTextBoxColumn.Width = 70;
             // 
             // caloPesoPercentualeDataGridViewTextBoxColumn
             // 
             this.caloPesoPercentualeDataGridViewTextBoxColumn.DataPropertyName = "CaloPesoPercentuale";
-            this.caloPesoPercentualeDataGridViewTextBoxColumn.HeaderText = "CaloPesoPercentuale";
+            this.caloPesoPercentualeDataGridViewTextBoxColumn.HeaderText = "Calo %";
             this.caloPesoPercentualeDataGridViewTextBoxColumn.Name = "caloPesoPercentualeDataGridViewTextBoxColumn";
             this.caloPesoPercentualeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.caloPesoPercentualeDataGridViewTextBoxColumn.Width = 68;
             // 
             // righeBs
             // 
@@ -387,6 +395,8 @@
             // 
             // button1
             // 
+            this.button1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "CanSaveViaggio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Location = new System.Drawing.Point(15, 489);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 23);
@@ -394,21 +404,27 @@
             this.button1.Text = "Salva modifiche";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // annullaBtn
             // 
-            this.button2.Location = new System.Drawing.Point(357, 489);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Annulla";
-            this.button2.UseVisualStyleBackColor = true;
+            this.annullaBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.annullaBtn.Location = new System.Drawing.Point(357, 489);
+            this.annullaBtn.Name = "annullaBtn";
+            this.annullaBtn.Size = new System.Drawing.Size(75, 23);
+            this.annullaBtn.TabIndex = 12;
+            this.annullaBtn.Text = "Annulla";
+            this.annullaBtn.UseVisualStyleBackColor = true;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.DataSource = this.viaggioVMBs;
             // 
             // ViaggioEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 521);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.annullaBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataViaggioDtp);
@@ -433,10 +449,10 @@
             this.groupBox1.ResumeLayout(false);
             this.rigaViaggioPnl.ResumeLayout(false);
             this.rigaViaggioPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rigaBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prodottiBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.righeDg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.righeBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,7 +473,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView righeDg;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button annullaBtn;
         private System.Windows.Forms.Button eliminaRigaBtn;
         private System.Windows.Forms.Button aggiungiRigaBtn;
         private System.Windows.Forms.Button nuovaRigaBtn;
@@ -466,7 +482,6 @@
         private System.Windows.Forms.BindingSource righeBs;
         private System.Windows.Forms.BindingSource prodottiBs;
         private System.Windows.Forms.BindingSource fornitoriBs;
-        private System.Windows.Forms.BindingSource rigaBs;
         private System.Windows.Forms.Panel rigaViaggioPnl;
         private System.Windows.Forms.TextBox caloPesoTb;
         private System.Windows.Forms.Label label9;
@@ -477,6 +492,7 @@
         private System.Windows.Forms.ComboBox prodottoCb;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button annullaNuovaRigaBtn;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prodotto;
         private System.Windows.Forms.DataGridViewTextBoxColumn pesataDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn costoDataGridViewTextBoxColumn;
