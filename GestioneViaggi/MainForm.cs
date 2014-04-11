@@ -29,6 +29,7 @@ namespace GestioneViaggi
         private AnagraficaProdottiPresenter _anapropr = null;
         private ElencoViaggiPresenter _viaggipr = null;
         private ElencoViaggiVModel _viaggivm = null;
+        private ViaggioEditPresenter _viaggioeditpr = null;
 
         public MainForm()
         {
@@ -322,6 +323,32 @@ namespace GestioneViaggi
         private void viaggiApplicaFiltroBtn_Click(object sender, EventArgs e)
         {
             _viaggipr.ApplyFilter();
+        }
+
+        private void nuovoViaggioBtn_Click(object sender, EventArgs e)
+        {
+            using (ViaggioEditView form = new ViaggioEditView())
+            {
+                using (_viaggioeditpr = new ViaggioEditPresenter(form))
+                {
+                    _viaggioeditpr.SetCurrentViaggio(new Viaggio());
+                    form.Text = "Inserimento nuovo viaggio";
+                    form.ShowDialog();
+                }
+            }
+        }
+
+        private void modificaViaggioBtn_Click(object sender, EventArgs e)
+        {
+            using (ViaggioEditView form = new ViaggioEditView())
+            {
+                using (_viaggioeditpr = new ViaggioEditPresenter(form))
+                {
+                    _viaggioeditpr.SetCurrentViaggio(_viaggivm.current);
+                    form.Text = "Modifica viaggio";
+                    form.ShowDialog();
+                }
+            }
         }
 
         //End Viaggi

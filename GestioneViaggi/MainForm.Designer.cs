@@ -570,6 +570,7 @@
             this.modificaViaggioBtn.TabIndex = 4;
             this.modificaViaggioBtn.Text = "Modifica";
             this.modificaViaggioBtn.UseVisualStyleBackColor = true;
+            this.modificaViaggioBtn.Click += new System.EventHandler(this.modificaViaggioBtn_Click);
             // 
             // eliminaViaggioBtn
             // 
@@ -774,6 +775,7 @@
             this.nuovoViaggioBtn.TabIndex = 1;
             this.nuovoViaggioBtn.Text = "Nuovo";
             this.nuovoViaggioBtn.UseVisualStyleBackColor = true;
+            this.nuovoViaggioBtn.Click += new System.EventHandler(this.nuovoViaggioBtn_Click);
             // 
             // riepiloghiTp
             // 
