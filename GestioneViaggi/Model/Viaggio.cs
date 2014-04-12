@@ -37,6 +37,7 @@ namespace GestioneViaggi.Model
         public Viaggio()
         {
             this.Righe = new List<RigaViaggio>();
+            this.Data = DateTime.Now;
         }
 
     }

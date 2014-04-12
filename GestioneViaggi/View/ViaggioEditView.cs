@@ -23,6 +23,13 @@ namespace GestioneViaggi.View
             InitializeComponent();
         }
 
+        private void ViaggioEditView_Shown(object sender, EventArgs e)
+        {
+            // Fix DateTime 
+            // Prevents errorProvider from complaining about dtp.Value not being valid!
+            dataViaggioDtp.Value = DateTime.Now;
+        }
+
         public void SetVModel(ViaggioEditVModel vmodel)
         {
             _vmodel = vmodel;
@@ -76,6 +83,7 @@ namespace GestioneViaggi.View
         private void nuovaRigaBtn_Click(object sender, EventArgs e)
         {
             _presenter.NuovaRiga();
+            prodottoCb.Focus();
         }
 
         private void annullaNuovaRigaBtn_Click(object sender, EventArgs e)
@@ -103,5 +111,12 @@ namespace GestioneViaggi.View
             righeBs.ResetBindings(false);
             _presenter.AnnullaNuovaRiga();
         }
+
+        private void salvaViaggioBtn_Click(object sender, EventArgs e)
+        {
+            _presenter.SalvaViaggio();
+        }
+
+
     }
 }

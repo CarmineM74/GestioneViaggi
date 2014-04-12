@@ -20,6 +20,26 @@ namespace GestioneViaggi.ViewModel
 
         public Viaggio current { get; set; }
 
+        public DateTime DataViaggio {
+            get { return current.Data; }
+            set
+            {
+                current.Data = value;
+                NotifyPropertyChanged("DataViaggio");
+            }
+        }
+
+        public long fornitoreId
+        {
+            get { return current.FornitoreId; }
+            set
+            {
+                current.FornitoreId = value;
+                current.Fornitore = fornitori.First(f => f.Id == value);
+                NotifyPropertyChanged("fornitoreId");
+            }
+        }
+
         private RigaViaggio _riga;
         public RigaViaggio riga {
             get { return _riga; }

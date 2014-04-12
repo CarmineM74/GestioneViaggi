@@ -7,7 +7,8 @@ using GestioneViaggi.ViewModel;
 using GestioneViaggi.Model;
 using GestioneViaggi.DAL;
 using Dapper;
-using Dapper.Contrib;
+using Dapper.Contrib.Extensions;
+using Dapper.Mapper;
 
 namespace GestioneViaggi.Presenter
 {
@@ -15,6 +16,8 @@ namespace GestioneViaggi.Presenter
     {
         private IViaggioEditView _view;
         private ViaggioEditVModel _vmodel;
+
+        public event NotifyMessagesDelegate onViaggioSaveError;
 
         public ViaggioEditPresenter(IViaggioEditView view)
         {
@@ -80,6 +83,13 @@ namespace GestioneViaggi.Presenter
         internal void ImpostaRigaCorrente(RigaViaggio riga)
         {
             _vmodel.riga = riga;
+        }
+
+        internal void SalvaViaggio()
+        {
+            List<String> errori = ViaggiService.Save(_vmodel.current);
+            if ((errori.Count() > 0) && (onViaggioSaveError != null))
+                onViaggioSaveError(errori);
         }
     }
 }

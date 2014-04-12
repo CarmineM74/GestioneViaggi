@@ -67,6 +67,11 @@
             this.viaggiTabPage = new System.Windows.Forms.TabPage();
             this.elencoViaggiGb = new System.Windows.Forms.GroupBox();
             this.elencoViaggiDg = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fornitore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targaAutomezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.conducenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.elencoViaggiBs = new System.Windows.Forms.BindingSource(this.components);
             this.modificaViaggioBtn = new System.Windows.Forms.Button();
             this.eliminaViaggioBtn = new System.Windows.Forms.Button();
@@ -103,11 +108,6 @@
             this.costoProdottoEp = new System.Windows.Forms.ErrorProvider(this.components);
             this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fornitore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.targaAutomezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.conducenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
@@ -520,8 +520,47 @@
             this.elencoViaggiDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.elencoViaggiDg.Size = new System.Drawing.Size(746, 333);
             this.elencoViaggiDg.TabIndex = 1;
+            this.elencoViaggiDg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elencoViaggiDg_CellClick);
             this.elencoViaggiDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.elencoViaggiDg_CellFormatting);
             this.elencoViaggiDg.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.elencoFornitoriDg_CellPainting);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Fornitore
+            // 
+            this.Fornitore.DataPropertyName = "Fornitore.RagioneSociale";
+            this.Fornitore.HeaderText = "Fornitore";
+            this.Fornitore.Name = "Fornitore";
+            this.Fornitore.ReadOnly = true;
+            this.Fornitore.Width = 200;
+            // 
+            // targaAutomezzoDataGridViewTextBoxColumn
+            // 
+            this.targaAutomezzoDataGridViewTextBoxColumn.DataPropertyName = "TargaAutomezzo";
+            this.targaAutomezzoDataGridViewTextBoxColumn.HeaderText = "Targa Automezzo";
+            this.targaAutomezzoDataGridViewTextBoxColumn.Name = "targaAutomezzoDataGridViewTextBoxColumn";
+            this.targaAutomezzoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // conducenteDataGridViewTextBoxColumn
+            // 
+            this.conducenteDataGridViewTextBoxColumn.DataPropertyName = "Conducente";
+            this.conducenteDataGridViewTextBoxColumn.HeaderText = "Conducente";
+            this.conducenteDataGridViewTextBoxColumn.Name = "conducenteDataGridViewTextBoxColumn";
+            this.conducenteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.conducenteDataGridViewTextBoxColumn.Width = 180;
             // 
             // elencoViaggiBs
             // 
@@ -880,44 +919,6 @@
             // anagraficaProdottiVMBs
             // 
             this.anagraficaProdottiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Fornitore
-            // 
-            this.Fornitore.DataPropertyName = "Fornitore.RagioneSociale";
-            this.Fornitore.HeaderText = "Fornitore";
-            this.Fornitore.Name = "Fornitore";
-            this.Fornitore.ReadOnly = true;
-            this.Fornitore.Width = 200;
-            // 
-            // targaAutomezzoDataGridViewTextBoxColumn
-            // 
-            this.targaAutomezzoDataGridViewTextBoxColumn.DataPropertyName = "TargaAutomezzo";
-            this.targaAutomezzoDataGridViewTextBoxColumn.HeaderText = "Targa Automezzo";
-            this.targaAutomezzoDataGridViewTextBoxColumn.Name = "targaAutomezzoDataGridViewTextBoxColumn";
-            this.targaAutomezzoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // conducenteDataGridViewTextBoxColumn
-            // 
-            this.conducenteDataGridViewTextBoxColumn.DataPropertyName = "Conducente";
-            this.conducenteDataGridViewTextBoxColumn.HeaderText = "Conducente";
-            this.conducenteDataGridViewTextBoxColumn.Name = "conducenteDataGridViewTextBoxColumn";
-            this.conducenteDataGridViewTextBoxColumn.ReadOnly = true;
-            this.conducenteDataGridViewTextBoxColumn.Width = 180;
             // 
             // MainForm
             // 

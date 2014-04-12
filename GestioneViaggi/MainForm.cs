@@ -325,15 +325,30 @@ namespace GestioneViaggi
             _viaggipr.ApplyFilter();
         }
 
+        private void elencoViaggiDg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _viaggipr.ImpostaViaggioCorrente(elencoViaggiBs.Current as Viaggio);
+        }
+
+        void _viaggioeditpr_onViaggioSaveError(List<string> messages)
+        {
+            MessageBox.Show(String.Join("\n", messages), "Elenco viaggi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void nuovoViaggioBtn_Click(object sender, EventArgs e)
         {
             using (ViaggioEditView form = new ViaggioEditView())
             {
                 using (_viaggioeditpr = new ViaggioEditPresenter(form))
                 {
+                    _viaggioeditpr.onViaggioSaveError += new NotifyMessagesDelegate(_viaggioeditpr_onViaggioSaveError);
                     _viaggioeditpr.SetCurrentViaggio(new Viaggio());
                     form.Text = "Inserimento nuovo viaggio";
-                    form.ShowDialog();
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        _viaggipr.refreshViaggi();
+                        MessageBox.Show("Operazione completata!", "Nuovo viaggio", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
@@ -344,6 +359,7 @@ namespace GestioneViaggi
             {
                 using (_viaggioeditpr = new ViaggioEditPresenter(form))
                 {
+                    _viaggioeditpr.onViaggioSaveError += new NotifyMessagesDelegate(_viaggioeditpr_onViaggioSaveError);
                     _viaggioeditpr.SetCurrentViaggio(_viaggivm.current);
                     form.Text = "Modifica viaggio";
                     form.ShowDialog();

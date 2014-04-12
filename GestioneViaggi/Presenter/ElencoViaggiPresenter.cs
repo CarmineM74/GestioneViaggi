@@ -73,5 +73,10 @@ namespace GestioneViaggi.Presenter
                    onViaggiRefreshed(viaggi);
             }
         }
+
+        internal void ImpostaViaggioCorrente(Viaggio viaggio)
+        {
+            _vmodel.current = viaggio;
+        }
     }
 }
