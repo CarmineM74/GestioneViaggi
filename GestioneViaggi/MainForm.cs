@@ -245,7 +245,7 @@ namespace GestioneViaggi
 
         private void eliminaFornitoreBtn_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Procedere con la rimozione del cliente selezionato?", "Rimozione cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show("Procedere con la rimozione del fornitore selezionato?", "Rimozione fornitore", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 _anaforpr.Remove(_anaforvm.current);
             }
@@ -364,7 +364,16 @@ namespace GestioneViaggi
                     form.Text = "Modifica viaggio";
                     form.ShowDialog();
                 }
+                _viaggipr.refreshViaggi();
             }
+        }
+
+        private void eliminaViaggioBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Sicuro di voler eliminare il viaggio selezionato?", "Elimina viaggio", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+            _viaggipr.EliminaViaggioSelezionato();
+            _viaggipr.refreshViaggi();
         }
 
         //End Viaggi

@@ -69,15 +69,9 @@ namespace GestioneViaggi.Presenter
         {
             if (riga == null)
                 return;
-            if (riga.Id == 0)
-            {
-                // Riga non ancora salvata
-                _vmodel.current.Righe.Remove(riga);
-            }
-            else
-            {
-                // Riga già salvata
-            }
+            _vmodel.current.Righe.Remove(riga);
+            if (riga.Id != 0)
+                ViaggiService.DeleteRiga(riga);
         }
 
         internal void ImpostaRigaCorrente(RigaViaggio riga)

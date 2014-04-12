@@ -78,5 +78,12 @@ namespace GestioneViaggi.Presenter
         {
             _vmodel.current = viaggio;
         }
+
+        internal void EliminaViaggioSelezionato()
+        {
+            if (_vmodel.current == null)
+                return;
+            ViaggiService.Delete(_vmodel.current);
+        }
     }
 }

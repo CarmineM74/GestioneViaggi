@@ -113,5 +113,17 @@ namespace GestioneViaggi.DAL
             }
             return errori;
         }
+
+        internal static void DeleteRiga(RigaViaggio riga)
+        {
+            Dal.connection.Delete<RigaViaggio>(riga);
+        }
+
+        internal static void Delete(Viaggio viaggio)
+        {
+            foreach (RigaViaggio rv in viaggio.Righe)
+                Dal.connection.Delete<RigaViaggio>(rv);
+            Dal.connection.Delete<Viaggio>(viaggio);
+        }
     }
 }

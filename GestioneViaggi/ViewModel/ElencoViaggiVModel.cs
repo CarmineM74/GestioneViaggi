@@ -12,8 +12,22 @@ namespace GestioneViaggi.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private void NotifyPropertyChanged(String propName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+
         public List<Viaggio> items { get; set; }
-        public Viaggio current { get; set; }
+
+        private Viaggio _current = null;
+        public Viaggio current { get { return _current; }
+            set
+            {
+                _current = value;
+                NotifyPropertyChanged("current");
+            }
+        }
         public Boolean isSelected { get { return current != null; } }
 
         public ViaggioFilter filtro = new ViaggioFilter();
@@ -26,8 +40,7 @@ namespace GestioneViaggi.ViewModel
             get { return filtro.dal; } 
             set { 
                 filtro.dal = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("dalFilter"));
+                NotifyPropertyChanged("dalFilter");
             } 
         }
         
@@ -35,19 +48,15 @@ namespace GestioneViaggi.ViewModel
             get { return filtro.al; } 
             set { 
                 filtro.al = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("alFilter"));
+                NotifyPropertyChanged("alFilter");
             } 
         }
 
         public Boolean dataFilterEnabled { 
             get { return filtro.dataEnabled; } 
             set { 
-                filtro.dataEnabled = value; 
-                if (PropertyChanged != null) 
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("dataFilterEnabled"));
-                }
+                filtro.dataEnabled = value;
+                NotifyPropertyChanged("dataFilterEnabled");
             } 
         }
 
