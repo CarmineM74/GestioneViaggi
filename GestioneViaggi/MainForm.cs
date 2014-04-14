@@ -373,7 +373,15 @@ namespace GestioneViaggi
             if (MessageBox.Show("Sicuro di voler eliminare il viaggio selezionato?", "Elimina viaggio", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             _viaggipr.EliminaViaggioSelezionato();
-            _viaggipr.refreshViaggi();
+            _viaggipr.refreshViaggi();            
+        }
+
+        private void riepilogoGeneraleBtn_Click(object sender, EventArgs e)
+        {
+            using (RiepiloghiPresenter pr = new RiepiloghiPresenter())
+            {
+                pr.RiepilogoGenerale();
+            }
         }
 
         //End Viaggi

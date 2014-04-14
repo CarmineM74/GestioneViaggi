@@ -87,17 +87,28 @@
     <Compile Include="Model\Fornitore.cs" />
     <Compile Include="Model\Prodotto.cs" />
     <Compile Include="Model\RigaViaggio.cs" />
+    <Compile Include="Model\StatisticheDs.cs">
+      <DependentUpon>StatisticheDs.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model\StatisticheDs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatisticheDs.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\Viaggio.cs" />
     <Compile Include="Model\ViaggioFilter.cs" />
     <Compile Include="Presenter\AnagraficaFornitoriPresenter.cs" />
     <Compile Include="Presenter\AnagraficaProdottiPresenter.cs" />
     <Compile Include="Presenter\ElencoViaggiPresenter.cs" />
     <Compile Include="Presenter\PresenterHelpers.cs" />
+    <Compile Include="Presenter\RiepiloghiPresenter.cs" />
     <Compile Include="Presenter\ViaggioEditPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AnagraficaFornitoriVModel.cs" />
     <Compile Include="ViewModel\AnagraficaProdottiVModel.cs" />
+    <Compile Include="ViewModel\StatisticheVModel.cs" />
     <Compile Include="ViewModel\ViaggioEditVModel.cs" />
     <Compile Include="ViewModel\ElencoViaggiVModel.cs" />
     <Compile Include="ViewModel\IVModel.cs" />
@@ -132,6 +143,17 @@
     <None Include="App.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>App.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\StatisticheDs.xsc">
+      <DependentUpon>StatisticheDs.xsd</DependentUpon>
+    </None>
+    <None Include="Model\StatisticheDs.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StatisticheDs.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Model\StatisticheDs.xss">
+      <DependentUpon>StatisticheDs.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GestioneViaggi.Model.Cliente.datasource" />

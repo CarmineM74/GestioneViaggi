@@ -39,7 +39,7 @@
             this.salvaFornitoreBtn = new System.Windows.Forms.Button();
             this.nuovoFornitoreBtn = new System.Windows.Forms.Button();
             this.ragioneSocialeTb = new System.Windows.Forms.TextBox();
-            this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
+            this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.elencoFornitoriGb = new System.Windows.Forms.GroupBox();
             this.elencoFornitoriDg = new System.Windows.Forms.DataGridView();
@@ -106,15 +106,15 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
+            this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
             this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
             this.prodottoEp = new System.Windows.Forms.ErrorProvider(this.components);
-            this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.fornitoreEp = new System.Windows.Forms.ErrorProvider(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
             this.elencoFornitoriGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).BeginInit();
@@ -134,9 +134,9 @@
             this.riepiloghiTp.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prodottoEp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoreEp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -242,9 +242,9 @@
             this.ragioneSocialeTb.Size = new System.Drawing.Size(336, 20);
             this.ragioneSocialeTb.TabIndex = 2;
             // 
-            // currentFornitoreBs
+            // anagraficaFornitoriVMBs
             // 
-            this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
+            this.anagraficaFornitoriVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             // 
             // label2
             // 
@@ -809,6 +809,7 @@
             this.riepilogoGeneraleBtn.TabIndex = 4;
             this.riepilogoGeneraleBtn.Text = "Riepilogo generale";
             this.riepilogoGeneraleBtn.UseVisualStyleBackColor = true;
+            this.riepilogoGeneraleBtn.Click += new System.EventHandler(this.riepilogoGeneraleBtn_Click);
             // 
             // groupBox6
             // 
@@ -924,6 +925,10 @@
             this.label17.TabIndex = 5;
             this.label17.Text = "Fornitore";
             // 
+            // currentFornitoreBs
+            // 
+            this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
+            // 
             // currentProdottoBs
             // 
             this.currentProdottoBs.DataSource = typeof(GestioneViaggi.Model.Prodotto);
@@ -932,10 +937,6 @@
             // 
             this.prodottoEp.ContainerControl = this;
             this.prodottoEp.DataSource = this.anagraficaProdottiVMBs;
-            // 
-            // anagraficaFornitoriVMBs
-            // 
-            this.anagraficaFornitoriVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             // 
             // fornitoreEp
             // 
@@ -962,7 +963,7 @@
             this.FornitoriTabPage.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
             this.elencoFornitoriGb.ResumeLayout(false);
             this.elencoFornitoriGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).EndInit();
@@ -989,9 +990,9 @@
             this.groupBox6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prodottoEp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoreEp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

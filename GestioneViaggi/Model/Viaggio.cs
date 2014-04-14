@@ -40,5 +40,15 @@ namespace GestioneViaggi.Model
             this.Data = DateTime.Now;
         }
 
+        public Decimal TotaleKg()
+        {
+            return Righe.Aggregate(0m, (a, r) => a += r.Pesata);
+        }
+
+        public Decimal TotaleCosto()
+        {
+            return Righe.Aggregate(0m, (a, r) => a += r.Costo);
+        }
+
     }
 }
