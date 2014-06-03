@@ -35,7 +35,7 @@ namespace GestioneViaggi
         {
             InitializeComponent();
             Setup();
-            //testData();
+            testData();
         }
 
         private void testData()
@@ -54,6 +54,8 @@ namespace GestioneViaggi
             targhe.Add("BX762ZY");
             targhe.Add("FC888DQ");
 
+            Random rndDate = new Random(DateTime.Now.Millisecond);
+            List<Fornitore> fornitori = new List<Fornitore>();
             Fornitore c;
             Prodotto p;
             foreach (int i in Enumerable.Range(1, 10))
@@ -63,18 +65,20 @@ namespace GestioneViaggi
                     RagioneSociale = "Fornitore di prova " + DateTime.Now.Millisecond.ToString()
                 };
                 c.Id = Dal.connection.Insert(c);
+                fornitori.Add(c);
 
                 p = new Prodotto
                 {
                     Descrizione = "Prodotto di prova " + DateTime.Now.Millisecond.ToString(),
+                    FornitoreId = rndDate.Next(1,10),
+                    ValidoDal = DateTime.Today,
                     Costo = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(100).ToString())
                 };
                 p.Id = Dal.connection.Insert(p);
-
             }
 
             List<Viaggio> viaggi = new List<Viaggio>();
-            Random rndDate = new Random(DateTime.Now.Millisecond);
+            rndDate = new Random(DateTime.Now.Millisecond);
             foreach (int j in Enumerable.Range(1, 1000))
             {
                 Viaggio v = new Viaggio

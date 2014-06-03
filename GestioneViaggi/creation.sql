@@ -7,8 +7,12 @@ CREATE TABLE "Fornitore"
 CREATE TABLE "Prodotto" 
 (
   "Id" INTEGER PRIMARY KEY AUTOINCREMENT, 
+  "FornitoreId" INTEGER NOT NULL, 
   "Descrizione" VARCHAR(60) NOT NULL,
-   "Costo" DECIMAL NOT NULL 
+  "ValidoDal" VARCHAR(8000) NOT NULL, 
+   "Costo" DECIMAL NOT NULL ,
+
+  CONSTRAINT "FK_Prodotto_Fornitore_FornitoreId" FOREIGN KEY ("FornitoreId") REFERENCES "Fornitore" ("Id") 
 );
 
 CREATE TABLE "Viaggio" 
@@ -20,7 +24,7 @@ CREATE TABLE "Viaggio"
   "Conducente" VARCHAR(60) NULL,
   "CaloPeso" DECIMAL NOT NULL, 
   
-  CONSTRAINT "FK_Viaggio_Cliente_ClienteId" FOREIGN KEY ("FornitoreId") REFERENCES "Fornitore" ("Id") 
+  CONSTRAINT "FK_Viaggio_Fornitore_FornitoreId" FOREIGN KEY ("FornitoreId") REFERENCES "Fornitore" ("Id") 
 );
 
 CREATE TABLE "RigaViaggio" 
