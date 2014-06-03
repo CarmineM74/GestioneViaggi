@@ -13,7 +13,6 @@ namespace GestioneViaggi.Model
         long ViaggioId { get; set; }
         long ProdottoId { get; set; }
         Decimal Pesata { get; set; }
-        int CaloPesoPercentuale { get; set; }
         Decimal Costo { get; set; }
 
         Prodotto Prodotto { get; set; }
@@ -26,7 +25,6 @@ namespace GestioneViaggi.Model
         public long ViaggioId { get; set; }
         public long ProdottoId { get; set; }
         public Decimal Pesata { get; set; }
-        public int CaloPesoPercentuale { get; set; }
         public Decimal Costo { get; set; }
     
         [Write(false)]

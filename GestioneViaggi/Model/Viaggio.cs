@@ -14,6 +14,7 @@ namespace GestioneViaggi.Model
         DateTime Data { get; set; }
         String TargaAutomezzo { get; set; }
         String Conducente { get; set; }
+        Decimal CaloPeso { get; set; }
 
         Fornitore Fornitore { get; set; }
         List<RigaViaggio> Righe { get; set; }
@@ -27,7 +28,8 @@ namespace GestioneViaggi.Model
         public DateTime Data { get; set; }
         public String TargaAutomezzo { get; set; }
         public String Conducente { get; set; }
-        
+        public Decimal CaloPeso { get; set; }
+       
         [Write(false)]
         public Fornitore Fornitore { get; set; }
 

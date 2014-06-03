@@ -104,7 +104,6 @@ namespace GestioneViaggi
                         ViaggioId = viaggi[j-1].Id,
                         ProdottoId = p.Id,
                         Pesata = pesata,
-                        CaloPesoPercentuale = rndDate.Next(100),
                         Costo = p.Costo * pesata
                     };
                     Dal.connection.Insert(rv);

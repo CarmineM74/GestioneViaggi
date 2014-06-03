@@ -99,7 +99,7 @@ namespace GestioneViaggi.DAL
                     }
                     catch (Exception erv)
                     {
-                        errori.Add(String.Format("Riga non salvata: {0} - {1} - {2} - {3} ({4})", rv.Prodotto.Descrizione, rv.Pesata, rv.Costo, rv.CaloPesoPercentuale, erv.Message));
+                        errori.Add(String.Format("Riga non salvata: {0} - {1} - {2} ({3})", rv.Prodotto.Descrizione, rv.Pesata, rv.Costo, erv.Message));
                     }
                 }
                 if (righe_salvate == 0)
@@ -109,7 +109,7 @@ namespace GestioneViaggi.DAL
             {
                 if (viaggio_salvato)
                     Dal.connection.Delete<Viaggio>(viaggio);
-                errori.Add(String.Format("Viaggio non salvato: {0} - {1} - {2} - {3} - {4} ({5})",viaggio.Id,viaggio.Data,viaggio.Fornitore.RagioneSociale,viaggio.Conducente,viaggio.TargaAutomezzo,ev.Message));
+                errori.Add(String.Format("Viaggio non salvato: {0} - {1} - {2} - {3} - {4} - {5} ({6})",viaggio.Id,viaggio.Data,viaggio.Fornitore.RagioneSociale,viaggio.Conducente,viaggio.TargaAutomezzo,viaggio.CaloPeso,ev.Message));
             }
             return errori;
         }

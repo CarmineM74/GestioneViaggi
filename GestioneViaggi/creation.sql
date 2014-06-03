@@ -18,6 +18,7 @@ CREATE TABLE "Viaggio"
   "Data" VARCHAR(8000) NOT NULL, 
   "TargaAutomezzo" VARCHAR(30) NULL, 
   "Conducente" VARCHAR(60) NULL,
+  "CaloPesoPercentuale" DECIMAL NOT NULL, 
   
   CONSTRAINT "FK_Viaggio_Cliente_ClienteId" FOREIGN KEY ("FornitoreId") REFERENCES "Fornitore" ("Id") 
 );
@@ -28,7 +29,6 @@ CREATE TABLE "RigaViaggio"
   "ViaggioId" INTEGER NOT NULL, 
   "ProdottoId" INTEGER NOT NULL, 
   "Pesata" DECIMAL NOT NULL, 
-  "CaloPesoPercentuale" INTEGER NOT NULL, 
   "Costo" DECIMAL NOT NULL, 
 
   CONSTRAINT "FK_RigaViaggio_Viaggio_ViaggioId" FOREIGN KEY ("ViaggioId") REFERENCES "Viaggio" ("Id"), 

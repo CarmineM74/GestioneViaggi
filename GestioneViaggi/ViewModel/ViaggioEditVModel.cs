@@ -84,16 +84,16 @@ namespace GestioneViaggi.ViewModel
             } 
         }
         
-        public int caloPeso { 
-            get { return _riga == null ? 0 : _riga.CaloPesoPercentuale; } 
+        public decimal caloPeso { 
+            get { return current.CaloPeso; } 
             set {
                 if (value < 0)
-                    throw new Exception("Il calo peso % non può essere inferiore a 0!");
-                else if (value > 100)
-                    throw new Exception("Il calo peso % non può essere superiore a 100!");
+                    throw new Exception("Il calo peso non può essere inferiore a 0!");
+                else if (value > current.TotaleKg())
+                    throw new Exception("Il calo peso non può essere superiore al peso totale del viaggio!");
                 else
                 {
-                    _riga.CaloPesoPercentuale = value;
+                    current.CaloPeso = value;
                     NotifyPropertyChanged("caloPeso");
                 }
             } 
