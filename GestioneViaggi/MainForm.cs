@@ -20,7 +20,7 @@ using GestioneViaggi.ViewModel;
 
 namespace GestioneViaggi
 {
-    public partial class MainForm : Form, IAnagraficaFornitoriView, IAnagraficaProdottiView, IElencoViaggiView
+    public partial class MainForm : Form, IAnagraficaFornitoriView, IElencoViaggiView
     {
         private Dal _dal;
         private AnagraficaFornitoriVModel _anaforvm = null;
@@ -35,7 +35,7 @@ namespace GestioneViaggi
         {
             InitializeComponent();
             Setup();
-            testData();
+            //testData();
         }
 
         private void testData()
@@ -138,73 +138,73 @@ namespace GestioneViaggi
             _anaforpr.onFornitoriSaveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
             _anaforpr.onFornitoriRemoveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
             _anaforpr.refreshFornitori();
-            _anapropr = new AnagraficaProdottiPresenter(this as IAnagraficaProdottiView);
-            _anapropr.onProdottiRefreshed += new ProdottiRefreshedDelegate(_anapropr_onProdottiRefreshed);
-            _anapropr.onProdottiSaveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
-            _anapropr.onProdottiRemoveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
-            _anapropr.refreshProdotti();
+            //_anapropr = new AnagraficaProdottiPresenter(this as IAnagraficaProdottiView);
+            //_anapropr.onProdottiRefreshed += new ProdottiRefreshedDelegate(_anapropr_onProdottiRefreshed);
+            //_anapropr.onProdottiSaveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
+            //_anapropr.onProdottiRemoveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
+            //_anapropr.refreshProdotti();
             _viaggipr = new ElencoViaggiPresenter(this as IElencoViaggiView);
             _viaggipr.onViaggiRefreshed += new ViaggiRefreshedDelegate(_viaggipr_onViaggiRefreshed);
             _viaggipr.onViaggiFilterFailed += new NotifyMessagesMapDelegate(_viaggipr_onViaggiFilterFailed);
             _viaggipr.refreshViaggi();
         }
 
-        //Prodotti
-
-        void _anapropr_onProdottiSaveError(List<string> messages)
-        {
-            MessageBox.Show(String.Join("\n", messages),"Anagrafica prodotti", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
         private void terminaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-     
-        void IAnagraficaProdottiView.SetVModel(AnagraficaProdottiVModel model)
-        {
-            _anaprovm = model;
-            anagraficaProdottiVMBs.DataSource = _anaprovm;
-        }
 
-        void _anapropr_onProdottiRefreshed(List<Prodotto> prodotti)
-        {
-            elencoProdottiBs.DataSource = prodotti;
-            elencoProdottiDg.DataSource = elencoProdottiBs;
-            elencoProdottiGb.Text = String.Format("Elenco prodotti: {0}",prodotti.Count());
-        }
+        //Prodotti
 
-        private void elencoProdottiBs_CurrentChanged(object sender, EventArgs e)
-        {
-            _anaprovm.current = (elencoProdottiBs.Current as Prodotto).Clone();
-            currentProdottoBs.DataSource = _anaprovm.current;
-            anagraficaProdottiVMBs.ResetBindings(false);
-        }
+        //void _anapropr_onProdottiSaveError(List<string> messages)
+        //{
+        //    MessageBox.Show(String.Join("\n", messages),"Anagrafica prodotti", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //}
 
-        private void descrizioneProdottoFilterTb_TextChanged(object sender, EventArgs e)
-        {
-            _anapropr.FilterProdottoByDescrizione(descrizioneProdottoFilterTb.Text);
-        }
+        //void IAnagraficaProdottiView.SetVModel(AnagraficaProdottiVModel model)
+        //{
+        //    _anaprovm = model;
+        //    anagraficaProdottiVMBs.DataSource = _anaprovm;
+        //}
 
-        private void nuovoProdottoBtn_Click(object sender, EventArgs e)
-        {
-            _anaprovm.current = new Prodotto();
-            currentProdottoBs.DataSource = _anaprovm.current;
-            anagraficaProdottiVMBs.ResetBindings(false);
-        }
+        //void _anapropr_onProdottiRefreshed(List<Prodotto> prodotti)
+        //{
+        //    elencoProdottiBs.DataSource = prodotti;
+        //    elencoProdottiDg.DataSource = elencoProdottiBs;
+        //    elencoProdottiGb.Text = String.Format("Elenco prodotti: {0}",prodotti.Count());
+        //}
 
-        private void salvaProdottoBtn_Click(object sender, EventArgs e)
-        {
-            _anapropr.Save(_anaprovm.current);
-        }
+        //private void elencoProdottiBs_CurrentChanged(object sender, EventArgs e)
+        //{
+        //    _anaprovm.current = (elencoProdottiBs.Current as Prodotto).Clone();
+        //    currentProdottoBs.DataSource = _anaprovm.current;
+        //    anagraficaProdottiVMBs.ResetBindings(false);
+        //}
 
-        private void eliminaProdottoBtn_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Procedere con la rimozione del prodotto selezionato?", "Rimozione prodotto", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                _anapropr.Remove(_anaprovm.current);
-            }
-        }
+        //private void descrizioneProdottoFilterTb_TextChanged(object sender, EventArgs e)
+        //{
+        //    _anapropr.FilterProdottoByDescrizione(descrizioneProdottoFilterTb.Text);
+        //}
+
+        //private void nuovoProdottoBtn_Click(object sender, EventArgs e)
+        //{
+        //    _anaprovm.current = new Prodotto();
+        //    currentProdottoBs.DataSource = _anaprovm.current;
+        //    anagraficaProdottiVMBs.ResetBindings(false);
+        //}
+
+        //private void salvaProdottoBtn_Click(object sender, EventArgs e)
+        //{
+        //    _anapropr.Save(_anaprovm.current);
+        //}
+
+        //private void eliminaProdottoBtn_Click(object sender, EventArgs e)
+        //{
+        //    if (MessageBox.Show("Procedere con la rimozione del prodotto selezionato?", "Rimozione prodotto", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+        //    {
+        //        _anapropr.Remove(_anaprovm.current);
+        //    }
+        //}
 
         //End Prodotti
 
@@ -229,8 +229,10 @@ namespace GestioneViaggi
 
         private void elencoFornitoriBs_CurrentChanged(object sender, EventArgs e)
         {
+            // 2014.06.03 - Dobbiamo associare il listino associato al fornitore
             _anaforvm.current = (elencoFornitoriBs.Current as Fornitore).Clone();
             currentFornitoreBs.DataSource = _anaforvm.current;
+            listinoBs.DataSource = _anaforvm.currentListino;
             anagraficaFornitoriVMBs.ResetBindings(false);
         }
 
@@ -265,6 +267,11 @@ namespace GestioneViaggi
             {
                 e.CellStyle.BackColor = (e.RowIndex % 2) == 0 ? Color.White : Color.AntiqueWhite;
             }
+        }
+
+        private void listinoBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _anaforvm.currentProdotto = (listinoBs.Current as Prodotto);
         }
 
         //End Fornitori

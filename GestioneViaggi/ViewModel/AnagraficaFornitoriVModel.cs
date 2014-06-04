@@ -31,10 +31,9 @@ namespace GestioneViaggi.ViewModel
             set { _current = value; NotifyPropertyChanged("current"); }
         }
 
-        private String _ragioneSociale;
         public String RagioneSociale
         {
-            get { return _ragioneSociale; }
+            get { return (current == null ? "" : current.RagioneSociale); }
             set 
             {
                 Fornitore fr = _items.SingleOrDefault(f => f.RagioneSociale == value);
@@ -42,13 +41,31 @@ namespace GestioneViaggi.ViewModel
                     throw new Exception("Esiste già un fornitore con la stessa ragione sociale!");
                 else
                 {
-                    _ragioneSociale = value;
+                    current.RagioneSociale = value;
                     NotifyPropertyChanged("RagioneSociale");
                 }
             }
         }
 
         public Boolean isSelected { get { return _current != null; } }
+
+        public List<Prodotto> currentListino
+        {
+            get { return (isSelected ? current.Listino : null);  }
+        }
+
+        public Boolean canEditListino { get { return (isSelected && (_current.Id > 0)); } }
+
+        private Prodotto _currentProdotto;
+        public Prodotto currentProdotto
+        {
+            get { return _currentProdotto; }
+            set { _currentProdotto = value; NotifyPropertyChanged("currentProdotto"); }
+        }
+
+        public Boolean isSelectedProdotto { get { return _currentProdotto != null; } }
+        public Boolean canDeleteProdotto { get { return isSelectedProdotto; } }
+        public Boolean canEditProdotto { get { return isSelectedProdotto; } }
 
     }
 }

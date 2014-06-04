@@ -34,7 +34,7 @@ namespace GestioneViaggi.Presenter
 
         public void refreshFornitori()
         {
-            _vmodel.items = Dal.db.Fornitori.All().ToList();
+            _vmodel.items = FornitoreService.All();
             if (onFornitoriRefreshed != null)
                 onFornitoriRefreshed(_vmodel.items);
         }
@@ -48,7 +48,7 @@ namespace GestioneViaggi.Presenter
             }
             else
             {
-                Dal.db.Fornitori.InsertOrUpdate(fornitore);
+                FornitoreService.Save(fornitore);
                 refreshFornitori();
             }
         }
@@ -65,7 +65,7 @@ namespace GestioneViaggi.Presenter
             }
             else
             {
-                Dal.db.Fornitori.Delete(fornitore.Id);
+                FornitoreService.Delete(fornitore);
                 refreshFornitori();
             }
         }

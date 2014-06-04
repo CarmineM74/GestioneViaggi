@@ -23,9 +23,13 @@ namespace GestioneViaggi.DAL
         private static IEnumerable<Viaggio> RehidrateAllFields(IEnumerable<Viaggio> vs) 
         {
             Dictionary<long, Viaggio> viaggiLookup = vs.ToDictionary<Viaggio, long>(v => v.Id);
+            // Elenco degli Id dei fornitori di tutti i viaggi
             List<long> viaggio_fornitore_map = vs.Select<Viaggio, long>(v => v.FornitoreId).ToList();
+            // Elenco degli Id dei prodotti presenti in tutti i viaggi
             List<long> viaggio_prodotti_map = vs.Select<Viaggio, List<long>>(v => v.Righe.Select<RigaViaggio, long>(r => (r == null) ? 0 : r.ProdottoId).ToList()).SelectMany(x => x).ToList();
+            // Prodotti effettivamente utilizzati nei viaggi
             Dictionary<long, Prodotto> prodLookup = Dal.connection.Query<Prodotto>("select * from Prodotto where Id in @Ids", new { Ids = viaggio_prodotti_map.Select(p => p).Distinct() }).ToDictionary<Prodotto, long>(p => p.Id);
+            // Fornitori effettivamente associati ai viaggi
             Dictionary<long, Fornitore> fornLookup = Dal.connection.Query<Fornitore>("select * from Fornitore where Id in @Ids", new { Ids = viaggio_fornitore_map.Select(f => f).Distinct() }).ToDictionary<Fornitore, long>(f => f.Id);
 
             vs = vs.Select(v =>

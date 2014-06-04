@@ -11,6 +11,7 @@ namespace GestioneViaggi.Model
         [Key]
         long Id { get; set; }
         String RagioneSociale { get; set; }
+        List<Prodotto> Listino { get; set; }
     }
 
     [Table("Fornitore")]
@@ -18,6 +19,14 @@ namespace GestioneViaggi.Model
     {
         public long Id { get; set; }
         public String RagioneSociale { get; set; }
+        
+        [Write(false)]
+        public List<Prodotto> Listino { get; set; }
+
+        public Fornitore()
+        {
+            this.Listino = new List<Prodotto>();
+        }
 
         public Fornitore Clone()
         {
@@ -25,6 +34,7 @@ namespace GestioneViaggi.Model
             {
                 Id = this.Id,
                 RagioneSociale = this.RagioneSociale,
+                Listino = this.Listino.ToList()
             };
         }
 

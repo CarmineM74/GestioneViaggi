@@ -34,12 +34,27 @@
             this.terminaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.FornitoriTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.editProdottoBtn = new System.Windows.Forms.Button();
+            this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
+            this.eliminaProdottoBtn = new System.Windows.Forms.Button();
+            this.nuovoProdottoBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.listinoDg = new System.Windows.Forms.DataGridView();
+            this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ragioneSocialeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isSelectedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.canEditListinoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.listinoBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.eliminaFornitoreBtn = new System.Windows.Forms.Button();
             this.salvaFornitoreBtn = new System.Windows.Forms.Button();
             this.nuovoFornitoreBtn = new System.Windows.Forms.Button();
             this.ragioneSocialeTb = new System.Windows.Forms.TextBox();
-            this.anagraficaFornitoriVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.elencoFornitoriGb = new System.Windows.Forms.GroupBox();
             this.elencoFornitoriDg = new System.Windows.Forms.DataGridView();
@@ -47,23 +62,6 @@
             this.elencoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
             this.ragioneSocialeFilterTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.prodottiTabPage = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.costoProdottoTb = new System.Windows.Forms.TextBox();
-            this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.descrizioneProdottoTb = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.eliminaProdottoBtn = new System.Windows.Forms.Button();
-            this.salvaProdottoBtn = new System.Windows.Forms.Button();
-            this.nuovoProdottoBtn = new System.Windows.Forms.Button();
-            this.elencoProdottiGb = new System.Windows.Forms.GroupBox();
-            this.descrizioneProdottoFilterTb = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.elencoProdottiDg = new System.Windows.Forms.DataGridView();
-            this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.elencoProdottiBs = new System.Windows.Forms.BindingSource(this.components);
             this.viaggiTabPage = new System.Windows.Forms.TabPage();
             this.elencoViaggiGb = new System.Windows.Forms.GroupBox();
             this.elencoViaggiDg = new System.Windows.Forms.DataGridView();
@@ -106,6 +104,7 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
+            this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
             this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
             this.prodottoEp = new System.Windows.Forms.ErrorProvider(this.components);
@@ -113,17 +112,14 @@
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listinoDg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listinoBs)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.elencoFornitoriGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).BeginInit();
-            this.prodottiTabPage.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
-            this.elencoProdottiGb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiDg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).BeginInit();
             this.viaggiTabPage.SuspendLayout();
             this.elencoViaggiGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).BeginInit();
@@ -134,6 +130,7 @@
             this.riepiloghiTp.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prodottoEp)).BeginInit();
@@ -168,7 +165,6 @@
             // mainTabControl
             // 
             this.mainTabControl.Controls.Add(this.FornitoriTabPage);
-            this.mainTabControl.Controls.Add(this.prodottiTabPage);
             this.mainTabControl.Controls.Add(this.viaggiTabPage);
             this.mainTabControl.Controls.Add(this.riepiloghiTp);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -180,6 +176,7 @@
             // 
             // FornitoriTabPage
             // 
+            this.FornitoriTabPage.Controls.Add(this.groupBox1);
             this.FornitoriTabPage.Controls.Add(this.groupBox2);
             this.FornitoriTabPage.Controls.Add(this.elencoFornitoriGb);
             this.FornitoriTabPage.Location = new System.Drawing.Point(4, 22);
@@ -190,6 +187,149 @@
             this.FornitoriTabPage.Text = "Anagrafica Fornitori";
             this.FornitoriTabPage.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.editProdottoBtn);
+            this.groupBox1.Controls.Add(this.eliminaProdottoBtn);
+            this.groupBox1.Controls.Add(this.nuovoProdottoBtn);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.listinoDg);
+            this.groupBox1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "canEditListino", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.groupBox1.Location = new System.Drawing.Point(401, 118);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(367, 386);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Listino prodotti";
+            // 
+            // editProdottoBtn
+            // 
+            this.editProdottoBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "canEditProdotto", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.editProdottoBtn.Location = new System.Drawing.Point(102, 357);
+            this.editProdottoBtn.Name = "editProdottoBtn";
+            this.editProdottoBtn.Size = new System.Drawing.Size(75, 23);
+            this.editProdottoBtn.TabIndex = 10;
+            this.editProdottoBtn.Text = "Modifica";
+            this.editProdottoBtn.UseVisualStyleBackColor = true;
+            // 
+            // anagraficaFornitoriVMBs
+            // 
+            this.anagraficaFornitoriVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
+            // 
+            // eliminaProdottoBtn
+            // 
+            this.eliminaProdottoBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "canDeleteProdotto", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.eliminaProdottoBtn.Location = new System.Drawing.Point(283, 357);
+            this.eliminaProdottoBtn.Name = "eliminaProdottoBtn";
+            this.eliminaProdottoBtn.Size = new System.Drawing.Size(75, 23);
+            this.eliminaProdottoBtn.TabIndex = 9;
+            this.eliminaProdottoBtn.Text = "Elimina";
+            this.eliminaProdottoBtn.UseVisualStyleBackColor = true;
+            // 
+            // nuovoProdottoBtn
+            // 
+            this.nuovoProdottoBtn.Location = new System.Drawing.Point(6, 357);
+            this.nuovoProdottoBtn.Name = "nuovoProdottoBtn";
+            this.nuovoProdottoBtn.Size = new System.Drawing.Size(75, 23);
+            this.nuovoProdottoBtn.TabIndex = 8;
+            this.nuovoProdottoBtn.Text = "Nuovo";
+            this.nuovoProdottoBtn.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(7, 32);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(352, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Filtra per descrizione";
+            // 
+            // listinoDg
+            // 
+            this.listinoDg.AllowUserToAddRows = false;
+            this.listinoDg.AllowUserToDeleteRows = false;
+            this.listinoDg.AutoGenerateColumns = false;
+            this.listinoDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listinoDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Descrizione,
+            this.ValidoDal,
+            this.Costo,
+            this.currentDataGridViewTextBoxColumn,
+            this.ragioneSocialeDataGridViewTextBoxColumn,
+            this.isSelectedDataGridViewCheckBoxColumn,
+            this.canEditListinoDataGridViewCheckBoxColumn});
+            this.listinoDg.DataSource = this.listinoBs;
+            this.listinoDg.Location = new System.Drawing.Point(6, 58);
+            this.listinoDg.Name = "listinoDg";
+            this.listinoDg.ReadOnly = true;
+            this.listinoDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listinoDg.Size = new System.Drawing.Size(352, 289);
+            this.listinoDg.TabIndex = 3;
+            // 
+            // Descrizione
+            // 
+            this.Descrizione.DataPropertyName = "Descrizione";
+            this.Descrizione.HeaderText = "Descrizione";
+            this.Descrizione.Name = "Descrizione";
+            this.Descrizione.ReadOnly = true;
+            // 
+            // ValidoDal
+            // 
+            this.ValidoDal.DataPropertyName = "ValidoDal";
+            this.ValidoDal.HeaderText = "Valido Dal";
+            this.ValidoDal.Name = "ValidoDal";
+            this.ValidoDal.ReadOnly = true;
+            this.ValidoDal.Width = 80;
+            // 
+            // Costo
+            // 
+            this.Costo.DataPropertyName = "Costo";
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
+            this.Costo.Width = 60;
+            // 
+            // currentDataGridViewTextBoxColumn
+            // 
+            this.currentDataGridViewTextBoxColumn.DataPropertyName = "current";
+            this.currentDataGridViewTextBoxColumn.HeaderText = "current";
+            this.currentDataGridViewTextBoxColumn.Name = "currentDataGridViewTextBoxColumn";
+            this.currentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ragioneSocialeDataGridViewTextBoxColumn
+            // 
+            this.ragioneSocialeDataGridViewTextBoxColumn.DataPropertyName = "RagioneSociale";
+            this.ragioneSocialeDataGridViewTextBoxColumn.HeaderText = "RagioneSociale";
+            this.ragioneSocialeDataGridViewTextBoxColumn.Name = "ragioneSocialeDataGridViewTextBoxColumn";
+            this.ragioneSocialeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isSelectedDataGridViewCheckBoxColumn
+            // 
+            this.isSelectedDataGridViewCheckBoxColumn.DataPropertyName = "isSelected";
+            this.isSelectedDataGridViewCheckBoxColumn.HeaderText = "isSelected";
+            this.isSelectedDataGridViewCheckBoxColumn.Name = "isSelectedDataGridViewCheckBoxColumn";
+            this.isSelectedDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // canEditListinoDataGridViewCheckBoxColumn
+            // 
+            this.canEditListinoDataGridViewCheckBoxColumn.DataPropertyName = "canEditListino";
+            this.canEditListinoDataGridViewCheckBoxColumn.HeaderText = "canEditListino";
+            this.canEditListinoDataGridViewCheckBoxColumn.Name = "canEditListinoDataGridViewCheckBoxColumn";
+            this.canEditListinoDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // listinoBs
+            // 
+            this.listinoBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
+            this.listinoBs.CurrentChanged += new System.EventHandler(this.listinoBs_CurrentChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.eliminaFornitoreBtn);
@@ -199,14 +339,14 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(401, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 492);
+            this.groupBox2.Size = new System.Drawing.Size(367, 106);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dettaglio fornitore";
             // 
             // eliminaFornitoreBtn
             // 
-            this.eliminaFornitoreBtn.Location = new System.Drawing.Point(283, 463);
+            this.eliminaFornitoreBtn.Location = new System.Drawing.Point(283, 74);
             this.eliminaFornitoreBtn.Name = "eliminaFornitoreBtn";
             this.eliminaFornitoreBtn.Size = new System.Drawing.Size(75, 23);
             this.eliminaFornitoreBtn.TabIndex = 7;
@@ -216,7 +356,7 @@
             // 
             // salvaFornitoreBtn
             // 
-            this.salvaFornitoreBtn.Location = new System.Drawing.Point(99, 463);
+            this.salvaFornitoreBtn.Location = new System.Drawing.Point(102, 74);
             this.salvaFornitoreBtn.Name = "salvaFornitoreBtn";
             this.salvaFornitoreBtn.Size = new System.Drawing.Size(75, 23);
             this.salvaFornitoreBtn.TabIndex = 6;
@@ -226,7 +366,7 @@
             // 
             // nuovoFornitoreBtn
             // 
-            this.nuovoFornitoreBtn.Location = new System.Drawing.Point(9, 463);
+            this.nuovoFornitoreBtn.Location = new System.Drawing.Point(6, 74);
             this.nuovoFornitoreBtn.Name = "nuovoFornitoreBtn";
             this.nuovoFornitoreBtn.Size = new System.Drawing.Size(75, 23);
             this.nuovoFornitoreBtn.TabIndex = 5;
@@ -239,12 +379,8 @@
             this.ragioneSocialeTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.anagraficaFornitoriVMBs, "RagioneSociale", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ragioneSocialeTb.Location = new System.Drawing.Point(6, 32);
             this.ragioneSocialeTb.Name = "ragioneSocialeTb";
-            this.ragioneSocialeTb.Size = new System.Drawing.Size(336, 20);
+            this.ragioneSocialeTb.Size = new System.Drawing.Size(352, 20);
             this.ragioneSocialeTb.TabIndex = 2;
-            // 
-            // anagraficaFornitoriVMBs
-            // 
-            this.anagraficaFornitoriVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             // 
             // label2
             // 
@@ -314,171 +450,6 @@
             this.label1.Size = new System.Drawing.Size(128, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Filtra per Ragione Sociale";
-            // 
-            // prodottiTabPage
-            // 
-            this.prodottiTabPage.Controls.Add(this.groupBox4);
-            this.prodottiTabPage.Controls.Add(this.elencoProdottiGb);
-            this.prodottiTabPage.Location = new System.Drawing.Point(4, 22);
-            this.prodottiTabPage.Name = "prodottiTabPage";
-            this.prodottiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.prodottiTabPage.Size = new System.Drawing.Size(776, 512);
-            this.prodottiTabPage.TabIndex = 1;
-            this.prodottiTabPage.Text = "Anagrafica prodotti";
-            this.prodottiTabPage.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.costoProdottoTb);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.descrizioneProdottoTb);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.eliminaProdottoBtn);
-            this.groupBox4.Controls.Add(this.salvaProdottoBtn);
-            this.groupBox4.Controls.Add(this.nuovoProdottoBtn);
-            this.groupBox4.Location = new System.Drawing.Point(391, 11);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(367, 498);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Dettaglio prodotto";
-            // 
-            // costoProdottoTb
-            // 
-            this.costoProdottoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.anagraficaProdottiVMBs, "costo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.prodottoEp.SetError(this.costoProdottoTb, "Formato numero non valido!");
-            this.costoProdottoTb.Location = new System.Drawing.Point(6, 80);
-            this.costoProdottoTb.Name = "costoProdottoTb";
-            this.costoProdottoTb.Size = new System.Drawing.Size(148, 20);
-            this.costoProdottoTb.TabIndex = 11;
-            // 
-            // anagraficaProdottiVMBs
-            // 
-            this.anagraficaProdottiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 64);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Costo in €/Kg";
-            // 
-            // descrizioneProdottoTb
-            // 
-            this.descrizioneProdottoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.anagraficaProdottiVMBs, "descrizione", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.descrizioneProdottoTb.Location = new System.Drawing.Point(6, 41);
-            this.descrizioneProdottoTb.Name = "descrizioneProdottoTb";
-            this.descrizioneProdottoTb.Size = new System.Drawing.Size(331, 20);
-            this.descrizioneProdottoTb.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Descrizione";
-            // 
-            // eliminaProdottoBtn
-            // 
-            this.eliminaProdottoBtn.Location = new System.Drawing.Point(283, 463);
-            this.eliminaProdottoBtn.Name = "eliminaProdottoBtn";
-            this.eliminaProdottoBtn.Size = new System.Drawing.Size(75, 23);
-            this.eliminaProdottoBtn.TabIndex = 7;
-            this.eliminaProdottoBtn.Text = "Elimina";
-            this.eliminaProdottoBtn.UseVisualStyleBackColor = true;
-            this.eliminaProdottoBtn.Click += new System.EventHandler(this.eliminaProdottoBtn_Click);
-            // 
-            // salvaProdottoBtn
-            // 
-            this.salvaProdottoBtn.Location = new System.Drawing.Point(99, 463);
-            this.salvaProdottoBtn.Name = "salvaProdottoBtn";
-            this.salvaProdottoBtn.Size = new System.Drawing.Size(75, 23);
-            this.salvaProdottoBtn.TabIndex = 6;
-            this.salvaProdottoBtn.Text = "Salva";
-            this.salvaProdottoBtn.UseVisualStyleBackColor = true;
-            this.salvaProdottoBtn.Click += new System.EventHandler(this.salvaProdottoBtn_Click);
-            // 
-            // nuovoProdottoBtn
-            // 
-            this.nuovoProdottoBtn.Location = new System.Drawing.Point(9, 463);
-            this.nuovoProdottoBtn.Name = "nuovoProdottoBtn";
-            this.nuovoProdottoBtn.Size = new System.Drawing.Size(75, 23);
-            this.nuovoProdottoBtn.TabIndex = 5;
-            this.nuovoProdottoBtn.Text = "Nuovo";
-            this.nuovoProdottoBtn.UseVisualStyleBackColor = true;
-            this.nuovoProdottoBtn.Click += new System.EventHandler(this.nuovoProdottoBtn_Click);
-            // 
-            // elencoProdottiGb
-            // 
-            this.elencoProdottiGb.Controls.Add(this.descrizioneProdottoFilterTb);
-            this.elencoProdottiGb.Controls.Add(this.label4);
-            this.elencoProdottiGb.Controls.Add(this.elencoProdottiDg);
-            this.elencoProdottiGb.Location = new System.Drawing.Point(8, 6);
-            this.elencoProdottiGb.Name = "elencoProdottiGb";
-            this.elencoProdottiGb.Size = new System.Drawing.Size(367, 498);
-            this.elencoProdottiGb.TabIndex = 0;
-            this.elencoProdottiGb.TabStop = false;
-            this.elencoProdottiGb.Text = "Elenco prodotti";
-            // 
-            // descrizioneProdottoFilterTb
-            // 
-            this.descrizioneProdottoFilterTb.Location = new System.Drawing.Point(7, 32);
-            this.descrizioneProdottoFilterTb.Name = "descrizioneProdottoFilterTb";
-            this.descrizioneProdottoFilterTb.Size = new System.Drawing.Size(352, 20);
-            this.descrizioneProdottoFilterTb.TabIndex = 5;
-            this.descrizioneProdottoFilterTb.TextChanged += new System.EventHandler(this.descrizioneProdottoFilterTb_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Filtra per descrizione";
-            // 
-            // elencoProdottiDg
-            // 
-            this.elencoProdottiDg.AllowUserToAddRows = false;
-            this.elencoProdottiDg.AllowUserToDeleteRows = false;
-            this.elencoProdottiDg.AutoGenerateColumns = false;
-            this.elencoProdottiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elencoProdottiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.descrizioneDataGridViewTextBoxColumn,
-            this.costoDataGridViewTextBoxColumn});
-            this.elencoProdottiDg.DataSource = this.elencoProdottiBs;
-            this.elencoProdottiDg.Location = new System.Drawing.Point(6, 58);
-            this.elencoProdottiDg.Name = "elencoProdottiDg";
-            this.elencoProdottiDg.ReadOnly = true;
-            this.elencoProdottiDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.elencoProdottiDg.Size = new System.Drawing.Size(352, 434);
-            this.elencoProdottiDg.TabIndex = 3;
-            this.elencoProdottiDg.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.elencoFornitoriDg_CellPainting);
-            // 
-            // descrizioneDataGridViewTextBoxColumn
-            // 
-            this.descrizioneDataGridViewTextBoxColumn.DataPropertyName = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.HeaderText = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.Name = "descrizioneDataGridViewTextBoxColumn";
-            this.descrizioneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descrizioneDataGridViewTextBoxColumn.Width = 180;
-            // 
-            // costoDataGridViewTextBoxColumn
-            // 
-            this.costoDataGridViewTextBoxColumn.DataPropertyName = "Costo";
-            this.costoDataGridViewTextBoxColumn.HeaderText = "Costo";
-            this.costoDataGridViewTextBoxColumn.Name = "costoDataGridViewTextBoxColumn";
-            this.costoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // elencoProdottiBs
-            // 
-            this.elencoProdottiBs.DataMember = "items";
-            this.elencoProdottiBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
-            this.elencoProdottiBs.CurrentChanged += new System.EventHandler(this.elencoProdottiBs_CurrentChanged);
             // 
             // viaggiTabPage
             // 
@@ -925,6 +896,10 @@
             this.label17.TabIndex = 5;
             this.label17.Text = "Fornitore";
             // 
+            // anagraficaProdottiVMBs
+            // 
+            this.anagraficaProdottiVMBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaProdottiVModel);
+            // 
             // currentFornitoreBs
             // 
             this.currentFornitoreBs.DataSource = typeof(GestioneViaggi.Model.Fornitore);
@@ -961,21 +936,17 @@
             this.mainMenuStrip.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
             this.FornitoriTabPage.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listinoDg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listinoBs)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaFornitoriVMBs)).EndInit();
             this.elencoFornitoriGb.ResumeLayout(false);
             this.elencoFornitoriGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriDg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elencoFornitoriBs)).EndInit();
-            this.prodottiTabPage.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
-            this.elencoProdottiGb.ResumeLayout(false);
-            this.elencoProdottiGb.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiDg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.elencoProdottiBs)).EndInit();
             this.viaggiTabPage.ResumeLayout(false);
             this.elencoViaggiGb.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.elencoViaggiDg)).EndInit();
@@ -990,6 +961,7 @@
             this.groupBox6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prodottoEp)).EndInit();
@@ -1006,7 +978,6 @@
         private System.Windows.Forms.ToolStripMenuItem terminaToolStripMenuItem;
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage FornitoriTabPage;
-        private System.Windows.Forms.TabPage prodottiTabPage;
         private System.Windows.Forms.TabPage viaggiTabPage;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox elencoFornitoriGb;
@@ -1022,26 +993,14 @@
         private System.Windows.Forms.Button salvaFornitoreBtn;
         private System.Windows.Forms.Button nuovoFornitoreBtn;
         private System.Windows.Forms.BindingSource currentFornitoreBs;
-        private System.Windows.Forms.GroupBox elencoProdottiGb;
-        private System.Windows.Forms.BindingSource elencoProdottiBs;
-        private System.Windows.Forms.DataGridView elencoProdottiDg;
+        private System.Windows.Forms.BindingSource listinoBs;
         private System.Windows.Forms.DataGridViewTextBoxColumn ragioneSocialeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descrizioneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costoDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource anagraficaProdottiVMBs;
         private System.Windows.Forms.BindingSource currentProdottoBs;
         private System.Windows.Forms.Button nuovoViaggioBtn;
         private System.Windows.Forms.BindingSource elencoViaggiBs;
         private System.Windows.Forms.BindingSource elencoViaggiVMBs;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button eliminaProdottoBtn;
-        private System.Windows.Forms.Button salvaProdottoBtn;
-        private System.Windows.Forms.Button nuovoProdottoBtn;
-        private System.Windows.Forms.TextBox descrizioneProdottoTb;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox descrizioneProdottoFilterTb;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel viaggiFiltroDatePnl;
         private System.Windows.Forms.Label label10;
@@ -1059,8 +1018,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox viaggioFornitoreFilterTb;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox costoProdottoTb;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ErrorProvider prodottoEp;
         private System.Windows.Forms.Button eliminaViaggioBtn;
         private System.Windows.Forms.Button modificaViaggioBtn;
@@ -1084,6 +1041,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn conducenteDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button riepilogoGeneraleBtn;
         private System.Windows.Forms.ErrorProvider fornitoreEp;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button editProdottoBtn;
+        private System.Windows.Forms.Button eliminaProdottoBtn;
+        private System.Windows.Forms.Button nuovoProdottoBtn;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView listinoDg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrizione;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isSelectedDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn canEditListinoDataGridViewCheckBoxColumn;
     }
 }
 

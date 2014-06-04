@@ -11,6 +11,7 @@ namespace GestioneViaggi.Model
         [Key]
         long Id { get; set; }
         long FornitoreId { get; set; }
+        Fornitore Fornitore { get; set; }
         String Descrizione { get; set; }
         DateTime ValidoDal { get; set; }
         Decimal Costo { get; set; }
@@ -21,6 +22,10 @@ namespace GestioneViaggi.Model
     {
         public long Id { get; set; }
         public long FornitoreId { get; set; }
+
+        [Write(false)]
+        public Fornitore Fornitore { get; set; }
+
         public String Descrizione { get; set; }
         public DateTime ValidoDal { get; set; }
         public Decimal Costo { get; set; }
