@@ -137,6 +137,7 @@ namespace GestioneViaggi
             _anaforpr.onFornitoriRefreshed += new FornitoriRefreshedDelegate(_anaforpr_onFornitoriRefreshed);
             _anaforpr.onFornitoriSaveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
             _anaforpr.onFornitoriRemoveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
+            _anaforpr.onProductRemoveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
             _anaforpr.refreshFornitori();
             //_anapropr = new AnagraficaProdottiPresenter(this as IAnagraficaProdottiView);
             //_anapropr.onProdottiRefreshed += new ProdottiRefreshedDelegate(_anapropr_onProdottiRefreshed);
@@ -273,6 +274,12 @@ namespace GestioneViaggi
         {
             _anaforvm.currentProdotto = (listinoBs.Current as Prodotto);
         }
+
+        private void eliminaProdottoBtn_Click(object sender, EventArgs e)
+        {
+            _anaforpr.DeleteProduct(_anaforvm.currentProdotto);
+        }
+
 
         //End Fornitori
 

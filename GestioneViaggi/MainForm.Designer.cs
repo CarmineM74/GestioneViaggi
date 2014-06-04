@@ -226,6 +226,7 @@
             this.eliminaProdottoBtn.TabIndex = 9;
             this.eliminaProdottoBtn.Text = "Elimina";
             this.eliminaProdottoBtn.UseVisualStyleBackColor = true;
+            this.eliminaProdottoBtn.Click += new System.EventHandler(this.eliminaProdottoBtn_Click);
             // 
             // nuovoProdottoBtn
             // 

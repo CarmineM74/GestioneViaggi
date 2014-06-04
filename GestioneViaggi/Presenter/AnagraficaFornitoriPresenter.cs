@@ -23,6 +23,7 @@ namespace GestioneViaggi.Presenter
         public event FornitoriRefreshedDelegate onFornitoriRefreshed;
         public event NotifyMessagesDelegate onFornitoriSaveError;
         public event NotifyMessagesDelegate onFornitoriRemoveError;
+        public event NotifyMessagesDelegate onProductRemoveError;
 
         public AnagraficaFornitoriPresenter(IAnagraficaFornitoriView iAnagraficaFornitoriView)
         {
@@ -53,6 +54,33 @@ namespace GestioneViaggi.Presenter
             }
         }
 
+        //private void TryRemove(Object obj, Func<Object,int> cnt,Func<Object,int> success, Func<Object,int> failure) 
+        //{
+        //    if (cnt(obj) > 0)
+        //    {
+        //        failure(obj);
+        //    }
+        //    else
+        //    {
+        //        success(obj);
+        //    }
+        //}
+
+        //private int RemoveSuccess(Fornitore f)
+        //{
+        //    return 0;
+        //}
+
+        //private int RemoveFailure(Fornitore f)
+        //{
+        //    return 0;
+        //}
+
+        //private void test(Fornitore fornitore)
+        //{
+        //    TryRemove(fornitore, (f => ViaggiService.FindByFornitore(f as Fornitore).Count()), (f => RemoveSuccess(f as Fornitore)), (f => RemoveFailure(f as Fornitore)));
+        //}
+
         internal void Remove(Fornitore fornitore)
         {
             List<String> errors = new List<string>();
@@ -70,6 +98,23 @@ namespace GestioneViaggi.Presenter
             }
         }
 
+        internal void DeleteProduct(Prodotto prodotto)
+        {
+            List<String> errors = new List<string>();
+            var viaggi = ViaggiService.FindByProdotto(prodotto);
+            if (viaggi.Count() > 0)
+            {
+                errors.Add(String.Format("Impossibile rimuovere il prodotto: {0} viaggi associati", viaggi.Count()));
+                if (onProductRemoveError != null)
+                    onProductRemoveError(errors);
+            }
+            else
+            {
+                FornitoreService.DeleteProduct(prodotto);
+                refreshFornitori();
+            }
+        }
+
         internal void FilterFornitoreByRagioneSociale(string p)
         {
             List<Fornitore> filtered;
@@ -80,5 +125,6 @@ namespace GestioneViaggi.Presenter
             if (onFornitoriRefreshed != null)
                 onFornitoriRefreshed(filtered);
         }
+
     }
 }

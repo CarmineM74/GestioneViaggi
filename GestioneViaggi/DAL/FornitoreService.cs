@@ -64,5 +64,10 @@ namespace GestioneViaggi.DAL
             Dal.connection.Execute(@"delete from Prodotto where Prodotto.FornitoreId = @Id", new { Id = fornitore.Id });
             Dal.connection.Delete(fornitore);
         }
+
+        internal static void DeleteProduct(Prodotto prodotto)
+        {
+            Dal.connection.Delete(prodotto);
+        }
     }
 }
