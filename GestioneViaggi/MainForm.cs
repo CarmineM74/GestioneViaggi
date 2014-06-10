@@ -277,10 +277,51 @@ namespace GestioneViaggi
 
         private void eliminaProdottoBtn_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Procedo con l'eliminazione del prodotto selezionato?", "Elimina prodotto", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                return;
             _anaforpr.DeleteProduct(_anaforvm.currentProdotto);
         }
 
+        void _prodottoeditpr_onProdottoSaveError(List<string> messages)
+        {
+            MessageBox.Show(String.Join("\n", messages), "Listino prodotti", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        private void nuovoProdottoBtn_Click(object sender, EventArgs e)
+        {
+            using (ProdottoEditView form = new ProdottoEditView())
+            {
+                using (ProdottoEditPresenter _prodottoeditpr = new ProdottoEditPresenter(form))
+                {
+                    _prodottoeditpr.SetFornitore(_anaforvm.current);
+                    _prodottoeditpr.onProdottoSaveError += new NotifyMessagesDelegate(_prodottoeditpr_onProdottoSaveError);
+                    _prodottoeditpr.SetCurrentProdotto(new Prodotto());
+                    form.Text = "Inserimento nuovo prodotto";
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        _anaforpr.refreshFornitori();
+                        if (_prodottoeditpr.vmodel.current.isValid())
+                            MessageBox.Show("Operazione completata!", "Nuovo prodotto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        private void editProdottoBtn_Click(object sender, EventArgs e)
+        {
+            using (ProdottoEditView form = new ProdottoEditView())
+            {
+                using (ProdottoEditPresenter _prodottoeditpr = new ProdottoEditPresenter(form))
+                {
+                    _prodottoeditpr.SetFornitore(_anaforvm.current);
+                    _prodottoeditpr.onProdottoSaveError += new NotifyMessagesDelegate(_prodottoeditpr_onProdottoSaveError);
+                    _prodottoeditpr.SetCurrentProdotto(_anaforvm.currentProdotto);
+                    form.Text = "Modifica prodotto";
+                    form.ShowDialog();
+                }
+                _anaforpr.refreshFornitori();
+            }
+        }
         //End Fornitori
 
         //Viaggi

@@ -18,7 +18,6 @@ namespace GestioneViaggi.ViewModel
         }
 
         public List<Prodotto> items { get; set; }
-        public List<Fornitore> fornitori { get; set; }
         public Prodotto current { get; set; }
 
         public DateTime ValidoDal
@@ -31,16 +30,7 @@ namespace GestioneViaggi.ViewModel
             }
         }
 
-        public long fornitoreId
-        {
-            get { return current.FornitoreId; }
-            set
-            {
-                current.FornitoreId = value;
-                current.Fornitore = fornitori.First(f => f.Id == value);
-                NotifyPropertyChanged("fornitoreId");
-            }
-        }
+        public Fornitore fornitore { get; set; }
 
         public decimal costo
         {
@@ -62,7 +52,9 @@ namespace GestioneViaggi.ViewModel
             get { return (current == null ? "" : current.Descrizione); }
             set
             {
-                Prodotto pr = items.SingleOrDefault(p => (p.Descrizione == value) && (DateTime.Compare(p.ValidoDal.Date,ValidoDal.Date) == 0));
+                if (String.IsNullOrWhiteSpace(value))
+                    throw new Exception("La descrizione non può essere vuota!");
+                Prodotto pr = items.SingleOrDefault(p => (p.Id != current.Id) && (p.Descrizione == value) && (DateTime.Compare(p.ValidoDal.Date,ValidoDal.Date) == 0));
                 if (pr != null)
                     throw new Exception("Esiste già un prodotto con la stessa descrizione e validità!");
                 else
@@ -70,6 +62,14 @@ namespace GestioneViaggi.ViewModel
                     current.Descrizione = value;
                     NotifyPropertyChanged("Descrizione");
                 }
+            }
+        }
+
+        public Boolean CanSave
+        {
+            get
+            {
+                return (!String.IsNullOrEmpty(Descrizione) && (costo >= 0));
             }
         }
 

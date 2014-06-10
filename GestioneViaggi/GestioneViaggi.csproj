@@ -179,6 +179,7 @@
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.AnagraficaClientiVModel.datasource" />
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.AnagraficaProdottiVModel.datasource" />
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.ElencoViaggiVModel.datasource" />
+    <None Include="Properties\DataSources\GestioneViaggi.ViewModel.ProdottoEditVModel.datasource" />
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.ViaggioEditVModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -212,6 +212,7 @@
             this.editProdottoBtn.TabIndex = 10;
             this.editProdottoBtn.Text = "Modifica";
             this.editProdottoBtn.UseVisualStyleBackColor = true;
+            this.editProdottoBtn.Click += new System.EventHandler(this.editProdottoBtn_Click);
             // 
             // anagraficaFornitoriVMBs
             // 
@@ -236,6 +237,7 @@
             this.nuovoProdottoBtn.TabIndex = 8;
             this.nuovoProdottoBtn.Text = "Nuovo";
             this.nuovoProdottoBtn.UseVisualStyleBackColor = true;
+            this.nuovoProdottoBtn.Click += new System.EventHandler(this.nuovoProdottoBtn_Click);
             // 
             // textBox1
             // 
