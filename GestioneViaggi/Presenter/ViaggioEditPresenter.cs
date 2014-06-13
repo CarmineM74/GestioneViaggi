@@ -9,6 +9,7 @@ using GestioneViaggi.DAL;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Dapper.Mapper;
+using System.ComponentModel;
 
 namespace GestioneViaggi.Presenter
 {
@@ -23,11 +24,22 @@ namespace GestioneViaggi.Presenter
         {
             _view = view;
             _vmodel = new ViaggioEditVModel();
+            _vmodel.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(_vmodel_PropertyChanged);
             _vmodel.current = new Viaggio();
             _vmodel.prodotti = Dal.db.Prodotti.All().ToList();
             _vmodel.fornitori = Dal.db.Fornitori.All().ToList();
             _vmodel.riga = null;
 
+        }
+
+        void _vmodel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "fornitoreId") 
+            {
+                // Recuperiamo il listino per il fornitore selezionato
+                _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore,_vmodel.DataViaggio);
+                _view.SetVModel(_vmodel);
+            }
         }
 
         public void Dispose()

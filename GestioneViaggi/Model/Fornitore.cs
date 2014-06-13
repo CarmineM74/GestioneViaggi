@@ -38,6 +38,11 @@ namespace GestioneViaggi.Model
             };
         }
 
+        public Boolean isNew()
+        {
+            return (Id == 0);
+        }
+
         public List<String> Errors;
         public Boolean isValid()
         {

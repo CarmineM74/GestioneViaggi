@@ -10,6 +10,7 @@ CREATE TABLE "Prodotto"
   "FornitoreId" INTEGER NOT NULL, 
   "Descrizione" VARCHAR(60) NOT NULL,
   "ValidoDal" VARCHAR(8000) NOT NULL, 
+  "ValidoAl" VARCHAR(8000) NOT NULL, 
    "Costo" DECIMAL NOT NULL ,
 
   CONSTRAINT "FK_Prodotto_Fornitore_FornitoreId" FOREIGN KEY ("FornitoreId") REFERENCES "Fornitore" ("Id") 
@@ -40,4 +41,4 @@ CREATE TABLE "RigaViaggio"
 );
 
 CREATE UNIQUE INDEX uidx_fornitore_ragionesociale ON "Fornitore" ("RagioneSociale" ASC);
-CREATE UNIQUE INDEX uidx_prodotto_descrizione ON "Prodotto" ("Descrizione" ASC);
+--CREATE UNIQUE INDEX uidx_prodotto_descrizione ON "Prodotto" ("Descrizione" ASC);

@@ -20,13 +20,42 @@ namespace GestioneViaggi.ViewModel
         public List<Prodotto> items { get; set; }
         public Prodotto current { get; set; }
 
+        private Boolean CheckValidita()
+        {
+            return (DateTime.Compare(current.ValidoDal.Date,current.ValidoAl.Date) <= 0);
+        }
+
         public DateTime ValidoDal
         {
             get { return current.ValidoDal; }
             set
             {
+//                DateTime _oldval = current.ValidoDal;
                 current.ValidoDal = value;
-                NotifyPropertyChanged("ValidoDal");
+//                if (CheckValidita())
+                    NotifyPropertyChanged("ValidoDal");
+                //else
+                //{
+                //    current.ValidoDal = _oldval;
+                //    throw new Exception("L'intervallo di validità specificato NON è valido!");
+                //}
+            }
+        }
+
+        public DateTime ValidoAl
+        {
+            get { return current.ValidoAl; }
+            set
+            {
+//                DateTime _oldval = current.ValidoAl;
+                current.ValidoAl = value;
+//                if (CheckValidita())
+                    NotifyPropertyChanged("ValidoAl");
+                //else
+                //{
+                //    current.ValidoAl = _oldval;
+                //    throw new Exception("L'intervallo di validità specificato NON è valido!");
+                //}
             }
         }
 
@@ -54,9 +83,6 @@ namespace GestioneViaggi.ViewModel
             {
                 if (String.IsNullOrWhiteSpace(value))
                     throw new Exception("La descrizione non può essere vuota!");
-                Prodotto pr = items.SingleOrDefault(p => (p.Id != current.Id) && (p.Descrizione == value) && (DateTime.Compare(p.ValidoDal.Date,ValidoDal.Date) == 0));
-                if (pr != null)
-                    throw new Exception("Esiste già un prodotto con la stessa descrizione e validità!");
                 else
                 {
                     current.Descrizione = value;
@@ -69,7 +95,7 @@ namespace GestioneViaggi.ViewModel
         {
             get
             {
-                return (!String.IsNullOrEmpty(Descrizione) && (costo >= 0));
+                return (!String.IsNullOrEmpty(Descrizione) && (costo >= 0) && CheckValidita());
             }
         }
 

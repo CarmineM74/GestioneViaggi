@@ -15,6 +15,7 @@ namespace GestioneViaggi.View
     {
         private ProdottoEditVModel _vmodel;
         private ProdottoEditPresenter _presenter;
+        private Boolean _canClose;
 
         public ProdottoEditView()
         {
@@ -25,23 +26,37 @@ namespace GestioneViaggi.View
         {
             // Fix DateTime 
             // Prevents errorProvider from complaining about dtp.Value not being valid!
-            validoDalDtp.Value = DateTime.Now;
+            //validoDalDtp.Value = DateTime.Now;
         }
 
         public void SetVModel(ProdottoEditVModel vmodel)
         {
             _vmodel = vmodel;
             prodottoVMBs.DataSource = _vmodel;
+            errorProvider1.DataSource = prodottoVMBs;
         }
 
         public void SetPresenter(ProdottoEditPresenter presenter)
         {
             _presenter = presenter;
+            _canClose = true;
+            _presenter.onProdottoSaveError += new NotifyMessagesDelegate(_presenter_onProdottoSaveError);
+        }
+
+        void _presenter_onProdottoSaveError(List<string> messages)
+        {
+            _canClose = false;
         }
 
         private void salvaProdottoBtn_Click(object sender, EventArgs e)
         {
             _presenter.SalvaProdotto();
+        }
+
+        private void ProdottoEditView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !_canClose;
+            _canClose = true;
         }
     }
 }

@@ -28,6 +28,12 @@ namespace GestioneViaggi.Presenter
         {
         }
 
+        private void NotifySaveError(List<String> errors)
+        {
+            if ((errors.Count > 0) && (onProdottoSaveError != null))
+                onProdottoSaveError(errors);
+        }
+
         public void SetFornitore(Fornitore fornitore)
         {
             _vmodel.fornitore = fornitore;
@@ -39,15 +45,48 @@ namespace GestioneViaggi.Presenter
             _vmodel.current = prodotto;
             _vmodel.current.Fornitore = _vmodel.fornitore;
             _vmodel.current.FornitoreId = _vmodel.fornitore.Id;
+            if (_vmodel.current.isNew())
+            {
+                _vmodel.current.ValidoDal = DateTime.Today;
+                _vmodel.current.ValidoAl = DateTime.Today;
+            }
             _view.SetPresenter(this);
             _view.SetVModel(_vmodel);
         }
 
         internal void SalvaProdotto()
         {
-            List<String> errori = FornitoreService.SaveProduct(_vmodel.current);
-            if ((errori.Count() > 0) && (onProdottoSaveError != null))
-                onProdottoSaveError(errori);
+            Prodotto prodotto = _vmodel.current;
+            List<String> errori = new List<string>();
+            if (ProdottoValidationService.isValid(prodotto))
+            {
+                if (!prodotto.isNew())
+                {
+                    List<String> cu = ProdottoValidationService.CanUpdate(prodotto);
+                    errori.AddRange(cu);
+                }
+                else
+                {
+                    List<String> ci = ProdottoValidationService.CanInsert(prodotto);
+                    errori.AddRange(ci);
+                }
+            }
+            else
+            {
+                errori.AddRange(ProdottoValidationService.Validate(prodotto));
+            }
+            if (errori.Count() > 0)
+                NotifySaveError(errori);
+            else
+                try
+                {
+                    FornitoreService.SaveProduct(prodotto);
+                }
+                catch (Exception ev)
+                {
+                    errori.Add(String.Format("Prodotto non salvato: {0} - {1} - {2} ({3})", prodotto.Descrizione, prodotto.ValidoDal.ToString(), prodotto.Costo, ev.Message));
+                    NotifySaveError(errori);
+                }
         }
     }
 }

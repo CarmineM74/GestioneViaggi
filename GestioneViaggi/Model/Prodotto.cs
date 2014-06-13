@@ -14,6 +14,7 @@ namespace GestioneViaggi.Model
         Fornitore Fornitore { get; set; }
         String Descrizione { get; set; }
         DateTime ValidoDal { get; set; }
+        DateTime ValidoAl { get; set; }
         Decimal Costo { get; set; }
     }
 
@@ -28,7 +29,13 @@ namespace GestioneViaggi.Model
 
         public String Descrizione { get; set; }
         public DateTime ValidoDal { get; set; }
+        public DateTime ValidoAl { get; set; }
         public Decimal Costo { get; set; }
+
+        public Boolean isNew()
+        {
+            return (Id == 0);
+        }
 
         public Prodotto Clone()
         {
@@ -38,29 +45,9 @@ namespace GestioneViaggi.Model
                 FornitoreId = this.FornitoreId,
                 Descrizione = this.Descrizione,
                 ValidoDal = this.ValidoDal,
+                ValidoAl = this.ValidoAl,
                 Costo = this.Costo
             };
-        }
-
-        public List<String> Errors;
-        public Boolean isValid()
-        {
-            Errors = new List<string>();
-            if (this.FornitoreId <= 0)
-                Errors.Add("Nessun fornitore specificato");
-            if (String.IsNullOrEmpty(this.Descrizione))
-                Errors.Add("La descrizione è obbligatoria");
-            Decimal res;
-            if (!Decimal.TryParse(this.Costo.ToString(), out res))
-            {
-                Errors.Add("Il costo deve essere un campo decimale");
-            }
-            else
-            {
-                if (res < 0)
-                    Errors.Add("Il costo non può essere inferiore a 0");
-            }
-            return Errors.Count == 0;
         }
     }
 

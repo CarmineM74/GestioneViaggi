@@ -27,7 +27,7 @@ namespace GestioneViaggi.View
         {
             // Fix DateTime 
             // Prevents errorProvider from complaining about dtp.Value not being valid!
-            dataViaggioDtp.Value = DateTime.Now;
+            //dataViaggioDtp.Value = DateTime.Now;
         }
 
         public void SetVModel(ViaggioEditVModel vmodel)
@@ -39,6 +39,7 @@ namespace GestioneViaggi.View
             righeDg.DataSource = righeBs;
             prodottiBs.DataSource = _vmodel.prodotti;
             fornitoriBs.DataSource = _vmodel.fornitori;
+            errorProvider1.DataSource = viaggioVMBs;
         }
 
         public void SetPresenter(ViaggioEditPresenter presenter)
@@ -61,7 +62,6 @@ namespace GestioneViaggi.View
             _presenter.ImpostaRigaCorrente(righeBs.Current as RigaViaggio);
             if (_vmodel.riga == null)
                 return;
-            prodottoCb.SelectedValue = _vmodel.riga.ProdottoId;
         }
 
         private void prodottoCb_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,15 +75,16 @@ namespace GestioneViaggi.View
             Decimal.TryParse(costoTb.Text, out costo);
             if ((_nuovoProdottoSelezionato) || (costo == 0))
             {
-                costoTb.Text = _presenter.CalcolaCostoRiga((long)prodottoCb.SelectedValue).ToString();
+                costoTb.Text = _presenter.CalcolaCostoRiga(_vmodel.prodottoId).ToString();
                 _nuovoProdottoSelezionato = false;
             }
         }
 
         private void nuovaRigaBtn_Click(object sender, EventArgs e)
         {
+            //TODO:
+            //Inserimento righe viaggio
             _presenter.NuovaRiga();
-            prodottoCb.Focus();
         }
 
         private void annullaNuovaRigaBtn_Click(object sender, EventArgs e)
@@ -116,7 +117,5 @@ namespace GestioneViaggi.View
         {
             _presenter.SalvaViaggio();
         }
-
-
     }
 }

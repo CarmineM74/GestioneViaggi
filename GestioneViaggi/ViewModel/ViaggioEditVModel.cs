@@ -5,6 +5,7 @@ using System.Text;
 using GestioneViaggi.Model;
 using System.ComponentModel;
 using System.Windows.Forms;
+using GestioneViaggi.DAL;
 
 namespace GestioneViaggi.ViewModel
 {
@@ -18,7 +19,11 @@ namespace GestioneViaggi.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-        public Viaggio current { get; set; }
+        private Viaggio _current;
+        public Viaggio current {
+            get { return _current; }
+            set { _current = value; NotifyPropertyChanged("current"); }
+        }
 
         public DateTime DataViaggio {
             get { return current.Data; }
@@ -50,9 +55,13 @@ namespace GestioneViaggi.ViewModel
             } 
         }
 
+        public Boolean CanChangeFornitore { get { return (_current.Righe.Count == 0); } }
+
         public long prodottoId { 
             get { return _riga == null ? 0 : _riga.ProdottoId; } 
-            set { 
+            set {
+                if (_riga == null)
+                    return;
                 _riga.ProdottoId = value;
                 NotifyPropertyChanged("prodottoId");
             } 

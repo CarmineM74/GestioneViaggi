@@ -72,6 +72,7 @@ namespace GestioneViaggi
                     Descrizione = "Prodotto di prova " + DateTime.Now.Millisecond.ToString(),
                     FornitoreId = rndDate.Next(1,10),
                     ValidoDal = DateTime.Today,
+                    ValidoAl = DateTime.Today.AddDays(rndDate.Next(1,10)),
                     Costo = Decimal.Parse(new Random(DateTime.Now.Millisecond).Next(100).ToString())
                 };
                 p.Id = Dal.connection.Insert(p);
@@ -139,11 +140,6 @@ namespace GestioneViaggi
             _anaforpr.onFornitoriRemoveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
             _anaforpr.onProductRemoveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
             _anaforpr.refreshFornitori();
-            //_anapropr = new AnagraficaProdottiPresenter(this as IAnagraficaProdottiView);
-            //_anapropr.onProdottiRefreshed += new ProdottiRefreshedDelegate(_anapropr_onProdottiRefreshed);
-            //_anapropr.onProdottiSaveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
-            //_anapropr.onProdottiRemoveError += new NotifyMessagesDelegate(_anapropr_onProdottiSaveError);
-            //_anapropr.refreshProdotti();
             _viaggipr = new ElencoViaggiPresenter(this as IElencoViaggiView);
             _viaggipr.onViaggiRefreshed += new ViaggiRefreshedDelegate(_viaggipr_onViaggiRefreshed);
             _viaggipr.onViaggiFilterFailed += new NotifyMessagesMapDelegate(_viaggipr_onViaggiFilterFailed);
@@ -154,60 +150,6 @@ namespace GestioneViaggi
         {
             Application.Exit();
         }
-
-        //Prodotti
-
-        //void _anapropr_onProdottiSaveError(List<string> messages)
-        //{
-        //    MessageBox.Show(String.Join("\n", messages),"Anagrafica prodotti", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //}
-
-        //void IAnagraficaProdottiView.SetVModel(AnagraficaProdottiVModel model)
-        //{
-        //    _anaprovm = model;
-        //    anagraficaProdottiVMBs.DataSource = _anaprovm;
-        //}
-
-        //void _anapropr_onProdottiRefreshed(List<Prodotto> prodotti)
-        //{
-        //    elencoProdottiBs.DataSource = prodotti;
-        //    elencoProdottiDg.DataSource = elencoProdottiBs;
-        //    elencoProdottiGb.Text = String.Format("Elenco prodotti: {0}",prodotti.Count());
-        //}
-
-        //private void elencoProdottiBs_CurrentChanged(object sender, EventArgs e)
-        //{
-        //    _anaprovm.current = (elencoProdottiBs.Current as Prodotto).Clone();
-        //    currentProdottoBs.DataSource = _anaprovm.current;
-        //    anagraficaProdottiVMBs.ResetBindings(false);
-        //}
-
-        //private void descrizioneProdottoFilterTb_TextChanged(object sender, EventArgs e)
-        //{
-        //    _anapropr.FilterProdottoByDescrizione(descrizioneProdottoFilterTb.Text);
-        //}
-
-        //private void nuovoProdottoBtn_Click(object sender, EventArgs e)
-        //{
-        //    _anaprovm.current = new Prodotto();
-        //    currentProdottoBs.DataSource = _anaprovm.current;
-        //    anagraficaProdottiVMBs.ResetBindings(false);
-        //}
-
-        //private void salvaProdottoBtn_Click(object sender, EventArgs e)
-        //{
-        //    _anapropr.Save(_anaprovm.current);
-        //}
-
-        //private void eliminaProdottoBtn_Click(object sender, EventArgs e)
-        //{
-        //    if (MessageBox.Show("Procedere con la rimozione del prodotto selezionato?", "Rimozione prodotto", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-        //    {
-        //        _anapropr.Remove(_anaprovm.current);
-        //    }
-        //}
-
-        //End Prodotti
 
         //Fornitori
         void IAnagraficaFornitoriView.SetVModel(AnagraficaFornitoriVModel model)
@@ -234,6 +176,8 @@ namespace GestioneViaggi
             _anaforvm.current = (elencoFornitoriBs.Current as Fornitore).Clone();
             currentFornitoreBs.DataSource = _anaforvm.current;
             listinoBs.DataSource = _anaforvm.currentListino;
+            listinoDg.DataSource = listinoBs;
+            listinoBs.ResetBindings(false);
             anagraficaFornitoriVMBs.ResetBindings(false);
         }
 
@@ -300,7 +244,7 @@ namespace GestioneViaggi
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         _anaforpr.refreshFornitori();
-                        if (_prodottoeditpr.vmodel.current.isValid())
+                        if (ProdottoValidationService.isValid(_prodottoeditpr.vmodel.current))
                             MessageBox.Show("Operazione completata!", "Nuovo prodotto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

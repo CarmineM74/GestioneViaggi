@@ -45,20 +45,6 @@ namespace GestioneViaggi.Presenter
                 onProdottiRefreshed(filtered);
         }
 
-        public void Save(Prodotto prodotto)
-        {
-            if (!prodotto.isValid())
-            {
-                if (onProdottiSaveError != null)
-                    onProdottiSaveError(prodotto.Errors);
-            }
-            else
-            {
-                Dal.db.Prodotti.InsertOrUpdate(prodotto);
-                refreshProdotti();
-            }
-        }
-
         public void Remove(Prodotto prodotto)
         {
             List<String> errors = new List<string>();

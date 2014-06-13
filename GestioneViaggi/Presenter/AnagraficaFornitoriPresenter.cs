@@ -100,14 +100,11 @@ namespace GestioneViaggi.Presenter
 
         internal void DeleteProduct(Prodotto prodotto)
         {
-            List<String> errors = new List<string>();
-            var viaggi = ViaggiService.FindByProdotto(prodotto);
-            if (viaggi.Count() > 0)
-            {
-                errors.Add(String.Format("Impossibile rimuovere il prodotto: {0} viaggi associati", viaggi.Count()));
+            List<String> cd = ProdottoValidationService.CanDelete(prodotto);
+            if (cd.Count > 0) {
                 if (onProductRemoveError != null)
-                    onProductRemoveError(errors);
-            }
+                    onProductRemoveError(cd);
+            } 
             else
             {
                 FornitoreService.DeleteProduct(prodotto);

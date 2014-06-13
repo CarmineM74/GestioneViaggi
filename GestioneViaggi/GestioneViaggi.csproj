@@ -77,6 +77,7 @@
     <Compile Include="DAL\Db.cs" />
     <Compile Include="DAL\Extensions.cs" />
     <Compile Include="DAL\FornitoreService.cs" />
+    <Compile Include="DAL\ProdottoValidationService.cs" />
     <Compile Include="DAL\ViaggiService.cs" />
     <Compile Include="Dapper\SqlMapperExtensions.cs" />
     <Compile Include="MainForm.cs">

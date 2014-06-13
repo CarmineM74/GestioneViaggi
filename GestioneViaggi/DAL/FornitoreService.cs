@@ -6,6 +6,7 @@ using GestioneViaggi.Model;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Dapper.Mapper;
+using System.Windows.Forms;
 
 namespace GestioneViaggi.DAL
 {
@@ -49,14 +50,10 @@ namespace GestioneViaggi.DAL
 
         public static void Save(Fornitore fornitore)
         {
-            long id = (fornitore.Id == 0) ? 0 : fornitore.Id;
-            if (id != 0)
+            if (!fornitore.isNew())
                 Dal.connection.Update<Fornitore>(fornitore);
             else
-            {
-                id = Dal.connection.Insert<Fornitore>(fornitore);
-                fornitore.Id = id;
-            }
+                fornitore.Id = Dal.connection.Insert<Fornitore>(fornitore);
         }
 
         public static void Delete(Fornitore fornitore)
@@ -70,44 +67,26 @@ namespace GestioneViaggi.DAL
             Dal.connection.Delete(prodotto);
         }
 
-        internal static List<String> SaveProduct(Prodotto prodotto)
+        internal static void SaveProduct(Prodotto prodotto)
         {
-            List<String> errori = new List<string>();
-            if (prodotto.isValid())
+            if (prodotto.isNew())
             {
-                try
-                {
-                    long id = (prodotto.Id == 0) ? 0 : prodotto.Id;
-                    if (id != 0)
-                    {
-                        // Se esistono viaggi con questo prodotto
-                        // - Non possiamo aggiornare:
-                        //   - se abbiamo modificato il costo
-                        //   - se abbiamo modificato la validità
-                        if (ViaggiService.FindByProdotto(prodotto).Count > 0)
-                        {
-                            Prodotto tmp = Dal.connection.Get<Prodotto>(prodotto.Id);
-                            if ((tmp.Costo != prodotto.Costo) || (DateTime.Compare(tmp.ValidoDal.Date, prodotto.ValidoDal.Date) != 0))
-                                errori.Add("Il prodotto è stato utilizzato in almeno un viaggio, e si sta modificando il costo e/o la validità!");
-                        }
-                        Dal.connection.Update<Prodotto>(prodotto);
-                    }
-                    else
-                    {
-                        id = Dal.connection.Insert<Prodotto>(prodotto);
-                        prodotto.Id = id;
-                    }
-                }
-                catch (Exception ev)
-                {
-                    errori.Add(String.Format("Prodotto non salvato: {0} - {1} - {2} ({3})", prodotto.Descrizione, prodotto.ValidoDal.ToString(),prodotto.Costo, ev.Message));
-                }
+                prodotto.Id = Dal.connection.Insert<Prodotto>(prodotto);
             }
             else
             {
-                errori.AddRange(prodotto.Errors);
+                Dal.connection.Update<Prodotto>(prodotto);
             }
-            return errori;
+        }
+
+        internal static List<Prodotto> ListinoValidoPerFornitore(Fornitore fornitore,DateTime validita)
+        {
+            String sql = "Select * from Prodotto where FornitoreId={0} ";
+            sql += "and ValidoDal <= DateTime('{1}') ";
+            sql += "and ValidoAl >= DateTime('{1}')";
+            sql = String.Format(sql, fornitore.Id, validita.ToString("yyyy-MM-dd"));
+            //MessageBox.Show(sql);
+            return Dal.connection.Query<Prodotto>(sql).ToList();
         }
     }
 }

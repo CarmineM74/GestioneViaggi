@@ -44,11 +44,8 @@
             this.listinoDg = new System.Windows.Forms.DataGridView();
             this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validoAlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ragioneSocialeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isSelectedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.canEditListinoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.listinoBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.eliminaFornitoreBtn = new System.Windows.Forms.Button();
@@ -264,11 +261,8 @@
             this.listinoDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Descrizione,
             this.ValidoDal,
-            this.Costo,
-            this.currentDataGridViewTextBoxColumn,
-            this.ragioneSocialeDataGridViewTextBoxColumn,
-            this.isSelectedDataGridViewCheckBoxColumn,
-            this.canEditListinoDataGridViewCheckBoxColumn});
+            this.validoAlDataGridViewTextBoxColumn,
+            this.Costo});
             this.listinoDg.DataSource = this.listinoBs;
             this.listinoDg.Location = new System.Drawing.Point(6, 58);
             this.listinoDg.Name = "listinoDg";
@@ -292,6 +286,13 @@
             this.ValidoDal.ReadOnly = true;
             this.ValidoDal.Width = 80;
             // 
+            // validoAlDataGridViewTextBoxColumn
+            // 
+            this.validoAlDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
+            this.validoAlDataGridViewTextBoxColumn.HeaderText = "ValidoAl";
+            this.validoAlDataGridViewTextBoxColumn.Name = "validoAlDataGridViewTextBoxColumn";
+            this.validoAlDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Costo
             // 
             this.Costo.DataPropertyName = "Costo";
@@ -300,36 +301,9 @@
             this.Costo.ReadOnly = true;
             this.Costo.Width = 60;
             // 
-            // currentDataGridViewTextBoxColumn
-            // 
-            this.currentDataGridViewTextBoxColumn.DataPropertyName = "current";
-            this.currentDataGridViewTextBoxColumn.HeaderText = "current";
-            this.currentDataGridViewTextBoxColumn.Name = "currentDataGridViewTextBoxColumn";
-            this.currentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ragioneSocialeDataGridViewTextBoxColumn
-            // 
-            this.ragioneSocialeDataGridViewTextBoxColumn.DataPropertyName = "RagioneSociale";
-            this.ragioneSocialeDataGridViewTextBoxColumn.HeaderText = "RagioneSociale";
-            this.ragioneSocialeDataGridViewTextBoxColumn.Name = "ragioneSocialeDataGridViewTextBoxColumn";
-            this.ragioneSocialeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // isSelectedDataGridViewCheckBoxColumn
-            // 
-            this.isSelectedDataGridViewCheckBoxColumn.DataPropertyName = "isSelected";
-            this.isSelectedDataGridViewCheckBoxColumn.HeaderText = "isSelected";
-            this.isSelectedDataGridViewCheckBoxColumn.Name = "isSelectedDataGridViewCheckBoxColumn";
-            this.isSelectedDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // canEditListinoDataGridViewCheckBoxColumn
-            // 
-            this.canEditListinoDataGridViewCheckBoxColumn.DataPropertyName = "canEditListino";
-            this.canEditListinoDataGridViewCheckBoxColumn.HeaderText = "canEditListino";
-            this.canEditListinoDataGridViewCheckBoxColumn.Name = "canEditListinoDataGridViewCheckBoxColumn";
-            this.canEditListinoDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
             // listinoBs
             // 
+            this.listinoBs.DataMember = "currentListino";
             this.listinoBs.DataSource = typeof(GestioneViaggi.ViewModel.AnagraficaFornitoriVModel);
             this.listinoBs.CurrentChanged += new System.EventHandler(this.listinoBs_CurrentChanged);
             // 
@@ -997,7 +971,6 @@
         private System.Windows.Forms.Button nuovoFornitoreBtn;
         private System.Windows.Forms.BindingSource currentFornitoreBs;
         private System.Windows.Forms.BindingSource listinoBs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ragioneSocialeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource anagraficaProdottiVMBs;
         private System.Windows.Forms.BindingSource currentProdottoBs;
@@ -1053,10 +1026,8 @@
         private System.Windows.Forms.DataGridView listinoDg;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrizione;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validoAlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isSelectedDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn canEditListinoDataGridViewCheckBoxColumn;
     }
 }
 
