@@ -117,5 +117,10 @@ namespace GestioneViaggi.View
         {
             _presenter.SalvaViaggio();
         }
+
+        private void prodottiBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _vmodel.selectedProduct = prodottiBs.Current as Prodotto;
+        }
     }
 }

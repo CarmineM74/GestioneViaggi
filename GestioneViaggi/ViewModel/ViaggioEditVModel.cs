@@ -25,6 +25,13 @@ namespace GestioneViaggi.ViewModel
             set { _current = value; NotifyPropertyChanged("current"); }
         }
 
+        private Prodotto _selectedProduct;
+        public Prodotto selectedProduct
+        {
+            get { return _selectedProduct; }
+            set { _selectedProduct = value; NotifyPropertyChanged("selectedProduct"); }
+        }
+
         public DateTime DataViaggio {
             get { return current.Data; }
             set
@@ -119,6 +126,16 @@ namespace GestioneViaggi.ViewModel
                 deletable = deletable && current.Righe.Contains(riga);
                 return deletable;
             }
+        }
+
+        public Boolean canPickProdotto
+        {
+            get { return (fornitoreId > 0); }
+        }
+
+        public Boolean canNuovaRiga
+        {
+            get { return (selectedProduct != null); }
         }
 
         public Boolean canAddRiga
