@@ -45,11 +45,6 @@ namespace GestioneViaggi.Presenter
             _vmodel.current = prodotto;
             _vmodel.current.Fornitore = _vmodel.fornitore;
             _vmodel.current.FornitoreId = _vmodel.fornitore.Id;
-            if (_vmodel.current.isNew())
-            {
-                _vmodel.current.ValidoDal = DateTime.Today;
-                _vmodel.current.ValidoAl = DateTime.Today;
-            }
             _view.SetPresenter(this);
             _view.SetVModel(_vmodel);
         }

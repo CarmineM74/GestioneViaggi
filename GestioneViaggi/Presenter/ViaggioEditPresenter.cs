@@ -49,6 +49,7 @@ namespace GestioneViaggi.Presenter
         public void SetCurrentViaggio(Viaggio viaggio)
         {
             _vmodel.current = viaggio;
+            _vmodel.DataViaggio = viaggio.Data;
             _view.SetPresenter(this);
             _view.SetVModel(_vmodel);
         }

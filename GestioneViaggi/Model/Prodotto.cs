@@ -32,6 +32,12 @@ namespace GestioneViaggi.Model
         public DateTime ValidoAl { get; set; }
         public Decimal Costo { get; set; }
 
+        public Prodotto()
+        {
+            ValidoDal = DateTime.Today;
+            ValidoAl = DateTime.Today;
+        }
+
         public Boolean isNew()
         {
             return (Id == 0);
