@@ -40,6 +40,10 @@ namespace GestioneViaggi.Presenter
                 _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore,_vmodel.DataViaggio);
                 _view.SetVModel(_vmodel);
             }
+            if (e.PropertyName == "pesata")
+                ricalcolaCostoRiga(_vmodel.riga);
+            if (e.PropertyName == "caloPeso")
+                ricalcolaCostiRighe();
         }
 
         public void Dispose()
@@ -54,28 +58,30 @@ namespace GestioneViaggi.Presenter
             _view.SetVModel(_vmodel);
         }
 
+        private void ricalcolaCostoRiga(RigaViaggio riga)
+        {
+            // 2014.06.16
+            // La richiesta del cliente di usare un Calo Peso unico ed in valore assoluto
+            // per tutto il documento ci espone ad un grave problema.
+            // Tutte le righe con Pesata < del Calo Peso avranno un Costo < 0!
+            // Come ci regoliamo ?
+            riga.Costo = riga.Prodotto.Costo * (riga.Pesata - _vmodel.caloPeso);
+        }
+
+        private void ricalcolaCostiRighe()
+        {
+            foreach (RigaViaggio r in _vmodel.current.Righe)
+                ricalcolaCostoRiga(r);
+        }
+
         internal void NuovaRiga()
         {
+            // 1. Nuova RigaViaggio()
+            // 2. Assegnazione Prodotto selezionato alla riga
+            // 3. Inserimento nuova riga nel corpo del viaggio
             _vmodel.riga = new RigaViaggio();
-        }
-
-        internal void AnnullaNuovaRiga()
-        {
-            _vmodel.riga = null;
-        }
-
-        internal void AggiungiRigaAlViaggio()
-        {
-            _vmodel.riga.Prodotto = _vmodel.prodotti.First(p => p.Id == _vmodel.prodottoId);
+            _vmodel.riga.Prodotto = _vmodel.selectedProduct;
             _vmodel.current.Righe.Add(_vmodel.riga);
-        }
-
-        internal Decimal CalcolaCostoRiga(long prodottoId)
-        {
-            if (prodottoId <= 0)
-                return 0;
-            Prodotto pp = _vmodel.prodotti.First(p => p.Id == prodottoId);
-            return pp.Costo * _vmodel.pesata;
         }
 
         internal void EliminaRigaDalViaggio(RigaViaggio riga)

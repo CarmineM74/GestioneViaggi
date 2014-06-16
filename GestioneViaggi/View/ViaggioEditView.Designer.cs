@@ -43,14 +43,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dataViaggioDtp = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.annullaNuovaRigaBtn = new System.Windows.Forms.Button();
             this.rigaViaggioPnl = new System.Windows.Forms.Panel();
             this.costoTb = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pesataTb = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.eliminaRigaBtn = new System.Windows.Forms.Button();
-            this.aggiungiRigaBtn = new System.Windows.Forms.Button();
             this.righeDg = new System.Windows.Forms.DataGridView();
             this.Prodotto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -196,10 +194,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.annullaNuovaRigaBtn);
             this.groupBox1.Controls.Add(this.rigaViaggioPnl);
             this.groupBox1.Controls.Add(this.eliminaRigaBtn);
-            this.groupBox1.Controls.Add(this.aggiungiRigaBtn);
             this.groupBox1.Controls.Add(this.righeDg);
             this.groupBox1.Location = new System.Drawing.Point(351, 122);
             this.groupBox1.Name = "groupBox1";
@@ -207,17 +203,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Elenco prodotti nel viaggio";
-            // 
-            // annullaNuovaRigaBtn
-            // 
-            this.annullaNuovaRigaBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "canCancelRiga", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.annullaNuovaRigaBtn.Location = new System.Drawing.Point(95, 260);
-            this.annullaNuovaRigaBtn.Name = "annullaNuovaRigaBtn";
-            this.annullaNuovaRigaBtn.Size = new System.Drawing.Size(68, 23);
-            this.annullaNuovaRigaBtn.TabIndex = 3;
-            this.annullaNuovaRigaBtn.Text = "Annulla";
-            this.annullaNuovaRigaBtn.UseVisualStyleBackColor = true;
-            this.annullaNuovaRigaBtn.Click += new System.EventHandler(this.annullaNuovaRigaBtn_Click);
             // 
             // rigaViaggioPnl
             // 
@@ -256,7 +241,6 @@
             this.pesataTb.Name = "pesataTb";
             this.pesataTb.Size = new System.Drawing.Size(83, 20);
             this.pesataTb.TabIndex = 1;
-            this.pesataTb.Leave += new System.EventHandler(this.pesataTb_Leave);
             // 
             // label7
             // 
@@ -277,17 +261,6 @@
             this.eliminaRigaBtn.Text = "Elimina riga";
             this.eliminaRigaBtn.UseVisualStyleBackColor = true;
             this.eliminaRigaBtn.Click += new System.EventHandler(this.eliminaRigaBtn_Click);
-            // 
-            // aggiungiRigaBtn
-            // 
-            this.aggiungiRigaBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "canAddRiga", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.aggiungiRigaBtn.Location = new System.Drawing.Point(6, 260);
-            this.aggiungiRigaBtn.Name = "aggiungiRigaBtn";
-            this.aggiungiRigaBtn.Size = new System.Drawing.Size(83, 23);
-            this.aggiungiRigaBtn.TabIndex = 2;
-            this.aggiungiRigaBtn.Text = "Salva";
-            this.aggiungiRigaBtn.UseVisualStyleBackColor = true;
-            this.aggiungiRigaBtn.Click += new System.EventHandler(this.aggiungiRigaBtn_Click);
             // 
             // righeDg
             // 
@@ -531,7 +504,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViaggioEditView";
-            this.Shown += new System.EventHandler(this.ViaggioEditView_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoriBs)).EndInit();
@@ -567,7 +539,6 @@
         private System.Windows.Forms.Button salvaViaggioBtn;
         private System.Windows.Forms.Button annullaBtn;
         private System.Windows.Forms.Button eliminaRigaBtn;
-        private System.Windows.Forms.Button aggiungiRigaBtn;
         private System.Windows.Forms.BindingSource viaggioVMBs;
         private System.Windows.Forms.BindingSource viaggioBs;
         private System.Windows.Forms.BindingSource righeBs;
@@ -578,7 +549,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox pesataTb;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button annullaNuovaRigaBtn;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prodotto;
         private System.Windows.Forms.DataGridViewTextBoxColumn pesataDataGridViewTextBoxColumn;

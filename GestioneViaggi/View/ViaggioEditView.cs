@@ -16,18 +16,10 @@ namespace GestioneViaggi.View
     {
         private ViaggioEditVModel _vmodel;
         private ViaggioEditPresenter _presenter;
-        private Boolean _nuovoProdottoSelezionato = true;
 
         public ViaggioEditView()
         {
             InitializeComponent();
-        }
-
-        private void ViaggioEditView_Shown(object sender, EventArgs e)
-        {
-            // Fix DateTime 
-            // Prevents errorProvider from complaining about dtp.Value not being valid!
-            //dataViaggioDtp.Value = DateTime.Now;
         }
 
         public void SetVModel(ViaggioEditVModel vmodel)
@@ -64,42 +56,17 @@ namespace GestioneViaggi.View
                 return;
         }
 
-        private void prodottoCb_SelectedIndexChanged(object sender, EventArgs e)
+        private void updateListRighe()
         {
-            _nuovoProdottoSelezionato = true;
-        }
-
-        private void pesataTb_Leave(object sender, EventArgs e)
-        {
-            Decimal costo = 0;
-            Decimal.TryParse(costoTb.Text, out costo);
-            if ((_nuovoProdottoSelezionato) || (costo == 0))
-            {
-                costoTb.Text = _presenter.CalcolaCostoRiga(_vmodel.prodottoId).ToString();
-                _nuovoProdottoSelezionato = false;
-            }
+            righeBs.DataSource = _vmodel.current.Righe;
+            righeDg.DataSource = righeBs;
+            righeBs.ResetBindings(false);
         }
 
         private void nuovaRigaBtn_Click(object sender, EventArgs e)
         {
-            //TODO:
-            //Inserimento righe viaggio
             _presenter.NuovaRiga();
-        }
-
-        private void annullaNuovaRigaBtn_Click(object sender, EventArgs e)
-        {
-            _presenter.AnnullaNuovaRiga();
-        }
-
-        private void aggiungiRigaBtn_Click(object sender, EventArgs e)
-        {
-            _presenter.AggiungiRigaAlViaggio();
-            righeBs.DataSource = _vmodel.current.Righe;
-            righeDg.DataSource = righeBs;
-            righeBs.ResetBindings(false);
-            _presenter.AnnullaNuovaRiga();
-            _presenter.NuovaRiga();
+            updateListRighe();
         }
 
         private void eliminaRigaBtn_Click(object sender, EventArgs e)
@@ -107,10 +74,7 @@ namespace GestioneViaggi.View
             if (MessageBox.Show("Sicuro di voler eliminare la riga corrente?", "Eliminazione riga", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
             _presenter.EliminaRigaDalViaggio(_vmodel.riga);
-            righeBs.DataSource = _vmodel.current.Righe;
-            righeDg.DataSource = righeBs;
-            righeBs.ResetBindings(false);
-            _presenter.AnnullaNuovaRiga();
+            updateListRighe();
         }
 
         private void salvaViaggioBtn_Click(object sender, EventArgs e)
