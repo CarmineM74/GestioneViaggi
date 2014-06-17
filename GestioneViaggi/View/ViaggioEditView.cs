@@ -64,6 +64,9 @@ namespace GestioneViaggi.View
 
         private void nuovaRigaBtn_Click(object sender, EventArgs e)
         {
+            if (_vmodel.current.Righe.Where(r => r.Prodotto.Descrizione == _vmodel.selectedProduct.Descrizione).Count() > 0)
+                if (MessageBox.Show("Prodotto già presente nel viaggio!\nVuoi inserirlo comunque?", "Prodotto già presente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    return;
             _presenter.NuovaRiga();
             updateListRighe();
             righeBs.MoveLast();
