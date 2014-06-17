@@ -43,17 +43,16 @@ namespace GestioneViaggi.View
         {
             if (righeDg.Rows[e.RowIndex] == null)
                 return;
-            if (righeDg.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+            try
             {
-                e.Value = ViewHelpers.EvaluateValue(righeDg.Rows[e.RowIndex].DataBoundItem, righeDg.Columns[e.ColumnIndex].DataPropertyName);
+                if (righeDg.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+                {
+                    e.Value = ViewHelpers.EvaluateValue(righeDg.Rows[e.RowIndex].DataBoundItem, righeDg.Columns[e.ColumnIndex].DataPropertyName);
+                }
             }
-        }
-
-        private void righeDg_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _presenter.ImpostaRigaCorrente(righeBs.Current as RigaViaggio);
-            if (_vmodel.riga == null)
-                return;
+            catch (Exception)
+            {
+            }
         }
 
         private void updateListRighe()
@@ -67,6 +66,8 @@ namespace GestioneViaggi.View
         {
             _presenter.NuovaRiga();
             updateListRighe();
+            righeBs.MoveLast();
+            pesataTb.Focus();
         }
 
         private void eliminaRigaBtn_Click(object sender, EventArgs e)
@@ -85,6 +86,11 @@ namespace GestioneViaggi.View
         private void prodottiBs_CurrentChanged(object sender, EventArgs e)
         {
             _vmodel.selectedProduct = prodottiBs.Current as Prodotto;
+        }
+
+        private void righeBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _presenter.ImpostaRigaCorrente(righeBs.Current as RigaViaggio);
         }
     }
 }

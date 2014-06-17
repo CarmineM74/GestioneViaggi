@@ -129,7 +129,6 @@ namespace GestioneViaggi.ViewModel
             {
                 Boolean deletable = true;
                 deletable = deletable && (riga != null) && (riga.ProdottoId > 0);
-                deletable = deletable && current.Righe.Contains(riga);
                 return deletable;
             }
         }

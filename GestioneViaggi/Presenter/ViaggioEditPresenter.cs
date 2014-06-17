@@ -79,8 +79,7 @@ namespace GestioneViaggi.Presenter
             // 1. Nuova RigaViaggio()
             // 2. Assegnazione Prodotto selezionato alla riga
             // 3. Inserimento nuova riga nel corpo del viaggio
-            _vmodel.riga = new RigaViaggio();
-            _vmodel.riga.Prodotto = _vmodel.selectedProduct;
+            _vmodel.riga = new RigaViaggio(_vmodel.selectedProduct);
             _vmodel.current.Righe.Add(_vmodel.riga);
         }
 

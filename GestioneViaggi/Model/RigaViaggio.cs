@@ -29,5 +29,16 @@ namespace GestioneViaggi.Model
     
         [Write(false)]
         public Prodotto Prodotto { get; set; }
+
+        public RigaViaggio()
+        {
+        }
+
+        public RigaViaggio(Prodotto prodotto)
+        {
+            this.Prodotto = prodotto;
+            this.ProdottoId = prodotto.Id;
+        }
+
     }
 }

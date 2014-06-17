@@ -65,17 +65,11 @@
             this.listinoDg = new System.Windows.Forms.DataGridView();
             this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fornitoreIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fornitoreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.validoDalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prodottiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).BeginInit();
@@ -89,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listinoDg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prodottiBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -203,9 +196,9 @@
             this.groupBox1.Controls.Add(this.rigaViaggioPnl);
             this.groupBox1.Controls.Add(this.eliminaRigaBtn);
             this.groupBox1.Controls.Add(this.righeDg);
-            this.groupBox1.Location = new System.Drawing.Point(351, 122);
+            this.groupBox1.Location = new System.Drawing.Point(463, 131);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(417, 289);
+            this.groupBox1.Size = new System.Drawing.Size(355, 289);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Elenco prodotti nel viaggio";
@@ -219,7 +212,7 @@
             this.rigaViaggioPnl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "isSelectedRiga", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rigaViaggioPnl.Location = new System.Drawing.Point(6, 216);
             this.rigaViaggioPnl.Name = "rigaViaggioPnl";
-            this.rigaViaggioPnl.Size = new System.Drawing.Size(405, 37);
+            this.rigaViaggioPnl.Size = new System.Drawing.Size(338, 37);
             this.rigaViaggioPnl.TabIndex = 15;
             // 
             // costoTb
@@ -260,7 +253,7 @@
             // eliminaRigaBtn
             // 
             this.eliminaRigaBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "canDeleteRiga", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.eliminaRigaBtn.Location = new System.Drawing.Point(313, 256);
+            this.eliminaRigaBtn.Location = new System.Drawing.Point(246, 259);
             this.eliminaRigaBtn.Name = "eliminaRigaBtn";
             this.eliminaRigaBtn.Size = new System.Drawing.Size(98, 23);
             this.eliminaRigaBtn.TabIndex = 1;
@@ -283,9 +276,8 @@
             this.righeDg.Name = "righeDg";
             this.righeDg.ReadOnly = true;
             this.righeDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.righeDg.Size = new System.Drawing.Size(405, 192);
+            this.righeDg.Size = new System.Drawing.Size(338, 192);
             this.righeDg.TabIndex = 0;
-            this.righeDg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.righeDg_CellClick);
             this.righeDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.righeDg_CellFormatting);
             // 
             // Prodotto
@@ -316,6 +308,7 @@
             // 
             this.righeBs.DataMember = "Righe";
             this.righeBs.DataSource = this.viaggioBs;
+            this.righeBs.CurrentChanged += new System.EventHandler(this.righeBs_CurrentChanged);
             // 
             // prodottiBs
             // 
@@ -338,7 +331,7 @@
             // annullaBtn
             // 
             this.annullaBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.annullaBtn.Location = new System.Drawing.Point(693, 439);
+            this.annullaBtn.Location = new System.Drawing.Point(743, 439);
             this.annullaBtn.Name = "annullaBtn";
             this.annullaBtn.Size = new System.Drawing.Size(75, 23);
             this.annullaBtn.TabIndex = 9;
@@ -371,9 +364,9 @@
             this.groupBox2.Controls.Add(this.nuovaRigaBtn);
             this.groupBox2.Controls.Add(this.listinoDg);
             this.groupBox2.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "canPickProdotto", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.groupBox2.Location = new System.Drawing.Point(3, 122);
+            this.groupBox2.Location = new System.Drawing.Point(5, 131);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(330, 289);
+            this.groupBox2.Size = new System.Drawing.Size(452, 289);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listino prodotti";
@@ -398,19 +391,14 @@
             this.listinoDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Descrizione,
             this.ValidoDal,
-            this.Costo,
-            this.idDataGridViewTextBoxColumn,
-            this.fornitoreIdDataGridViewTextBoxColumn,
-            this.fornitoreDataGridViewTextBoxColumn,
-            this.descrizioneDataGridViewTextBoxColumn,
             this.validoDalDataGridViewTextBoxColumn,
-            this.costoDataGridViewTextBoxColumn1});
-            this.listinoDg.DataSource = this.prodottiBindingSource;
+            this.Costo});
+            this.listinoDg.DataSource = this.prodottiBs;
             this.listinoDg.Location = new System.Drawing.Point(7, 19);
             this.listinoDg.Name = "listinoDg";
             this.listinoDg.ReadOnly = true;
             this.listinoDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listinoDg.Size = new System.Drawing.Size(310, 234);
+            this.listinoDg.Size = new System.Drawing.Size(439, 234);
             this.listinoDg.TabIndex = 0;
             // 
             // Descrizione
@@ -419,6 +407,7 @@
             this.Descrizione.HeaderText = "Descrizione";
             this.Descrizione.Name = "Descrizione";
             this.Descrizione.ReadOnly = true;
+            this.Descrizione.Width = 150;
             // 
             // ValidoDal
             // 
@@ -428,6 +417,13 @@
             this.ValidoDal.ReadOnly = true;
             this.ValidoDal.Width = 80;
             // 
+            // validoDalDataGridViewTextBoxColumn
+            // 
+            this.validoDalDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
+            this.validoDalDataGridViewTextBoxColumn.HeaderText = "Valido Al";
+            this.validoDalDataGridViewTextBoxColumn.Name = "validoDalDataGridViewTextBoxColumn";
+            this.validoDalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Costo
             // 
             this.Costo.DataPropertyName = "Costo";
@@ -436,72 +432,16 @@
             this.Costo.ReadOnly = true;
             this.Costo.Width = 60;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fornitoreIdDataGridViewTextBoxColumn
-            // 
-            this.fornitoreIdDataGridViewTextBoxColumn.DataPropertyName = "FornitoreId";
-            this.fornitoreIdDataGridViewTextBoxColumn.HeaderText = "FornitoreId";
-            this.fornitoreIdDataGridViewTextBoxColumn.Name = "fornitoreIdDataGridViewTextBoxColumn";
-            this.fornitoreIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fornitoreDataGridViewTextBoxColumn
-            // 
-            this.fornitoreDataGridViewTextBoxColumn.DataPropertyName = "Fornitore";
-            this.fornitoreDataGridViewTextBoxColumn.HeaderText = "Fornitore";
-            this.fornitoreDataGridViewTextBoxColumn.Name = "fornitoreDataGridViewTextBoxColumn";
-            this.fornitoreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descrizioneDataGridViewTextBoxColumn
-            // 
-            this.descrizioneDataGridViewTextBoxColumn.DataPropertyName = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.HeaderText = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.Name = "descrizioneDataGridViewTextBoxColumn";
-            this.descrizioneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // validoDalDataGridViewTextBoxColumn
-            // 
-            this.validoDalDataGridViewTextBoxColumn.DataPropertyName = "ValidoDal";
-            this.validoDalDataGridViewTextBoxColumn.HeaderText = "ValidoDal";
-            this.validoDalDataGridViewTextBoxColumn.Name = "validoDalDataGridViewTextBoxColumn";
-            this.validoDalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // costoDataGridViewTextBoxColumn1
-            // 
-            this.costoDataGridViewTextBoxColumn1.DataPropertyName = "Costo";
-            this.costoDataGridViewTextBoxColumn1.HeaderText = "Costo";
-            this.costoDataGridViewTextBoxColumn1.Name = "costoDataGridViewTextBoxColumn1";
-            this.costoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // prodottiBindingSource
-            // 
-            this.prodottiBindingSource.DataMember = "prodotti";
-            this.prodottiBindingSource.DataSource = this.viaggioVMBs;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(584, 7);
+            this.groupBox3.Location = new System.Drawing.Point(634, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(184, 118);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Totali";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Peso: ---";
             // 
             // label10
             // 
@@ -511,6 +451,15 @@
             this.label10.Size = new System.Drawing.Size(49, 13);
             this.label10.TabIndex = 1;
             this.label10.Text = "Costo: ---";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Peso: ---";
             // 
             // textBox1
             // 
@@ -532,7 +481,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 464);
+            this.ClientSize = new System.Drawing.Size(824, 462);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox3);
@@ -570,7 +519,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listinoDg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prodottiBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -614,21 +562,15 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView listinoDg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descrizione;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
-        private System.Windows.Forms.BindingSource prodottiBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fornitoreIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fornitoreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descrizioneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn validoDalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costoDataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button nuovaRigaBtn;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrizione;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validoDalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
     }
 }
