@@ -34,28 +34,42 @@ namespace GestioneViaggi.Presenter
 
         void _vmodel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "fornitoreId") 
-            {
-                // Recuperiamo il listino per il fornitore selezionato
-                _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore,_vmodel.DataViaggio);
-                _view.SetVModel(_vmodel);
+            switch (e.PropertyName)
+            {   
+                case "fornitoreId":
+                    // Recuperiamo il listino per il fornitore selezionato
+                    _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore,_vmodel.DataViaggio);
+                    _view.SetVModel(_vmodel);
+                    break;
+                case "pesata":
+                    ricalcolaCostoRiga(_vmodel.riga);
+                    break;
+                case "caloPeso":
+                    ricalcolaCostiRighe();
+                    break;
+                default:
+                    break;
             }
-            if (e.PropertyName == "pesata")
-                ricalcolaCostoRiga(_vmodel.riga);
-            if (e.PropertyName == "caloPeso")
-                ricalcolaCostiRighe();
         }
 
         public void Dispose()
         {
         }
 
+        private void NotifySaveError(List<String> errors)
+        {
+            if ((errors.Count > 0) && (onViaggioSaveError != null))
+                onViaggioSaveError(errors);
+        }
+
+
         public void SetCurrentViaggio(Viaggio viaggio)
         {
-            _vmodel.current = viaggio;
-            _vmodel.DataViaggio = viaggio.Data;
             _view.SetPresenter(this);
+            _vmodel.current = viaggio;
             _view.SetVModel(_vmodel);
+            if (!viaggio.isNew())
+                _vmodel.fornitoreId = viaggio.FornitoreId;
         }
 
         private void ricalcolaCostoRiga(RigaViaggio riga)
@@ -99,9 +113,22 @@ namespace GestioneViaggi.Presenter
 
         internal void SalvaViaggio()
         {
-            List<String> errori = ViaggiService.Save(_vmodel.current);
-            if ((errori.Count() > 0) && (onViaggioSaveError != null))
-                onViaggioSaveError(errori);
+            List<String> errori = new List<string>();
+            if (!ViaggioValidationService.isValid(_vmodel.current))
+            {
+                errori.AddRange(ViaggioValidationService.Validate(_vmodel.current));
+            }
+            if (errori.Count() > 0)
+                NotifySaveError(errori);
+            else
+                try {
+                    ViaggiService.Save(_vmodel.current);
+                }
+                catch (Exception ev)
+                {
+                    errori.Add(String.Format("Impossibile salvare il viaggio: {0}",ev.Message));
+                    NotifySaveError(errori);
+                }
         }
     }
 }

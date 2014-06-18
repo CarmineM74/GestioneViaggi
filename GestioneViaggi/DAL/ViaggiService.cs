@@ -72,30 +72,24 @@ namespace GestioneViaggi.DAL
             return AllBySql(sql).ToList();
         }
 
-        public static List<String> Save(Viaggio viaggio) 
+        public static void Save(Viaggio viaggio) 
         {
-            List<String> errori = new List<string>();
             int righe_salvate = 0;
-            Boolean viaggio_salvato = false;
-            Boolean aggiorna_riga = false;
+            System.Data.SQLite.SQLiteTransaction trans = Dal.connection.BeginTransaction();
             try
             {
-                long id = (viaggio.Id == 0) ? 0 : viaggio.Id;
-                if (id != 0)
+                if (!viaggio.isNew())
                     Dal.connection.Update<Viaggio>(viaggio);
                 else
                 {
-                    id = Dal.connection.Insert<Viaggio>(viaggio);
-                    viaggio.Id = id;
-                    viaggio_salvato = true;
+                    viaggio.Id = Dal.connection.Insert<Viaggio>(viaggio);
                 }
                 foreach (RigaViaggio rv in viaggio.Righe)
                 {
-                    aggiorna_riga = rv.ViaggioId != 0;
-                    rv.ViaggioId = id;
+                    rv.ViaggioId = viaggio.Id;
                     try
                     {
-                        if (aggiorna_riga)
+                        if (!rv.isNew())
                             Dal.connection.Update<RigaViaggio>(rv);
                         else
                             rv.Id = Dal.connection.Insert<RigaViaggio>(rv);
@@ -103,7 +97,7 @@ namespace GestioneViaggi.DAL
                     }
                     catch (Exception erv)
                     {
-                        errori.Add(String.Format("Riga non salvata: {0} - {1} - {2} ({3})", rv.Prodotto.Descrizione, rv.Pesata, rv.Costo, erv.Message));
+                        throw erv;
                     }
                 }
                 if (righe_salvate == 0)
@@ -111,11 +105,13 @@ namespace GestioneViaggi.DAL
             }
             catch (Exception ev)
             {
-                if (viaggio_salvato)
-                    Dal.connection.Delete<Viaggio>(viaggio);
-                errori.Add(String.Format("Viaggio non salvato: {0} - {1} - {2} - {3} - {4} - {5} ({6})",viaggio.Id,viaggio.Data,viaggio.Fornitore.RagioneSociale,viaggio.Conducente,viaggio.TargaAutomezzo,viaggio.CaloPeso,ev.Message));
+                trans.Rollback();
+                throw ev;
             }
-            return errori;
+            finally
+            {
+                trans.Commit();
+            }
         }
 
         internal static void DeleteRiga(RigaViaggio riga)

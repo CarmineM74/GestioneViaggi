@@ -40,5 +40,10 @@ namespace GestioneViaggi.Model
             this.ProdottoId = prodotto.Id;
         }
 
+        public Boolean isNew()
+        {
+            return (Id == 0);
+        }
+
     }
 }

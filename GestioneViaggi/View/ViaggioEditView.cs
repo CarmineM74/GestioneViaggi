@@ -16,10 +16,16 @@ namespace GestioneViaggi.View
     {
         private ViaggioEditVModel _vmodel;
         private ViaggioEditPresenter _presenter;
+        private Boolean _canClose;
 
         public ViaggioEditView()
         {
             InitializeComponent();
+        }
+
+        private void ViaggioEditView_Shown(object sender, EventArgs e)
+        {
+            errorProvider1.DataSource = viaggioVMBs;
         }
 
         public void SetVModel(ViaggioEditVModel vmodel)
@@ -31,12 +37,17 @@ namespace GestioneViaggi.View
             righeDg.DataSource = righeBs;
             prodottiBs.DataSource = _vmodel.prodotti;
             fornitoriBs.DataSource = _vmodel.fornitori;
-            errorProvider1.DataSource = viaggioVMBs;
         }
 
         public void SetPresenter(ViaggioEditPresenter presenter)
         {
             _presenter = presenter;
+            _presenter.onViaggioSaveError += new NotifyMessagesDelegate(_presenter_onViaggioSaveError);
+        }
+
+        void _presenter_onViaggioSaveError(List<string> messages)
+        {
+            _canClose = false;
         }
 
         private void righeDg_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -95,5 +106,12 @@ namespace GestioneViaggi.View
         {
             _presenter.ImpostaRigaCorrente(righeBs.Current as RigaViaggio);
         }
+
+        private void ViaggioEditView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !_canClose;
+            _canClose = true;
+        }
+
     }
 }
