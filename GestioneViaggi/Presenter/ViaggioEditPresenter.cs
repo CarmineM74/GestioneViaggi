@@ -38,11 +38,7 @@ namespace GestioneViaggi.Presenter
             switch (e.PropertyName)
             {   
                 case "fornitoreId":
-                    // Recuperiamo il listino per il fornitore selezionato
-                    _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore,_vmodel.DataViaggio);
-                    if (_vmodel.prodotti.Count() == 0)
-                        MessageBox.Show("Non ci sono listini validi per il fornitore selezionato", "Recupero listino fornitore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    _view.SetVModel(_vmodel);
+                    AggiornaListino();
                     break;
                 case "pesata":
                     ricalcolaCostoRiga(_vmodel.riga);
@@ -65,6 +61,13 @@ namespace GestioneViaggi.Presenter
                 onViaggioSaveError(errors);
         }
 
+        private void AggiornaListino()
+        {
+            _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore, _vmodel.DataViaggio);
+            if (_vmodel.prodotti.Count() == 0)
+                MessageBox.Show("Non ci sono listini validi per il fornitore selezionato", "Recupero listino fornitore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            _view.SetVModel(_vmodel);
+        }
 
         public void SetCurrentViaggio(Viaggio viaggio)
         {
@@ -72,7 +75,7 @@ namespace GestioneViaggi.Presenter
             _vmodel.current = viaggio;
             _view.SetVModel(_vmodel);
             if (!viaggio.isNew())
-                _vmodel.fornitoreId = viaggio.FornitoreId;
+                AggiornaListino();
         }
 
         private void ricalcolaCostoRiga(RigaViaggio riga)

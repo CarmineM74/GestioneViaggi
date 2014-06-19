@@ -105,7 +105,7 @@ namespace GestioneViaggi.ViewModel
 
         private Totalizzatori CalcolaTotalizzatori(Totalizzatori t, Viaggio v)
         {
-            Decimal totaleKg = v.TotaleKg();
+            Decimal totaleKg = v.TotalePeso();
             Decimal totaleCosto = v.TotaleCosto();
             int mese = v.Data.Month;
             t.NumeroViaggi += 1;

@@ -30,6 +30,11 @@ namespace GestioneViaggi.ViewModel
             get { return ((_current == null) ? 0 : _current.TotaleCosto()); }
         }
 
+        public Decimal PesoViaggio
+        {
+            get { return ((_current == null) ? 0 : _current.TotalePeso()); }
+        }
+
         private Prodotto _selectedProduct;
         public Prodotto selectedProduct
         {
@@ -118,7 +123,7 @@ namespace GestioneViaggi.ViewModel
                 {
                     if (value < 0)
                         throw new Exception("Il calo peso non può essere inferiore a 0!");
-                    if (value > current.TotaleKg())
+                    if (value > current.TotalePeso())
                         throw new Exception("Il calo peso non può essere superiore al peso totale del viaggio!");
                 }
                 current.CaloPeso = value;

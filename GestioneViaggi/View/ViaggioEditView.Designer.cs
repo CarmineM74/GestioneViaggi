@@ -72,6 +72,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.totalePesoLbl = new System.Windows.Forms.Label();
+            this.totaleCostoLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoriBs)).BeginInit();
@@ -435,6 +437,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.totaleCostoLbl);
+            this.groupBox3.Controls.Add(this.totalePesoLbl);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Location = new System.Drawing.Point(634, 6);
@@ -449,18 +453,18 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(13, 52);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 13);
+            this.label10.Size = new System.Drawing.Size(40, 13);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Costo: ---";
+            this.label10.Text = "Costo: ";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Peso: ---";
+            this.label6.Text = "Peso:";
             // 
             // textBox1
             // 
@@ -477,6 +481,26 @@
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 27;
             this.label11.Text = "Cartellino";
+            // 
+            // totalePesoLbl
+            // 
+            this.totalePesoLbl.AutoSize = true;
+            this.totalePesoLbl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "PesoViaggio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.totalePesoLbl.Location = new System.Drawing.Point(61, 26);
+            this.totalePesoLbl.Name = "totalePesoLbl";
+            this.totalePesoLbl.Size = new System.Drawing.Size(16, 13);
+            this.totalePesoLbl.TabIndex = 2;
+            this.totalePesoLbl.Text = "---";
+            // 
+            // totaleCostoLbl
+            // 
+            this.totaleCostoLbl.AutoSize = true;
+            this.totaleCostoLbl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "CostoViaggio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.totaleCostoLbl.Location = new System.Drawing.Point(61, 52);
+            this.totaleCostoLbl.Name = "totaleCostoLbl";
+            this.totaleCostoLbl.Size = new System.Drawing.Size(16, 13);
+            this.totaleCostoLbl.TabIndex = 3;
+            this.totaleCostoLbl.Text = "---";
             // 
             // ViaggioEditView
             // 
@@ -575,5 +599,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
         private System.Windows.Forms.DataGridViewTextBoxColumn validoDalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.Label totaleCostoLbl;
+        private System.Windows.Forms.Label totalePesoLbl;
     }
 }

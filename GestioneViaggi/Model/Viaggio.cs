@@ -47,7 +47,7 @@ namespace GestioneViaggi.Model
             return (Id == 0);
         }
 
-        public Decimal TotaleKg()
+        public Decimal TotalePeso()
         {
             return Righe.Aggregate(0m, (a, r) => a += r.Pesata);
         }
