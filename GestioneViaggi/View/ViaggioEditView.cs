@@ -34,6 +34,7 @@ namespace GestioneViaggi.View
             _vmodel = vmodel;
             viaggioVMBs.DataSource = _vmodel;
             viaggioBs.DataSource = _vmodel.current;
+            righeDg.DataSource = null;
             righeBs.DataSource = _vmodel.current.Righe;
             righeDg.DataSource = righeBs;
             listinoDg.DataSource = null;

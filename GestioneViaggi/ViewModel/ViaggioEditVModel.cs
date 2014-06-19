@@ -185,6 +185,11 @@ namespace GestioneViaggi.ViewModel
             }
         }
 
+        public Boolean CanAddRemoveProducts
+        {
+            get { return (current != null) && (current.Righe.Count > 0) && (prodotti.Count > 0); }
+        }
+
         public List<Prodotto> prodotti { get; set; }
         public List<Fornitore> fornitori { get; set; }
 

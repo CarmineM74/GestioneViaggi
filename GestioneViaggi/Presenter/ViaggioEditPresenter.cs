@@ -30,7 +30,6 @@ namespace GestioneViaggi.Presenter
             _vmodel.prodotti = Dal.db.Prodotti.All().ToList();
             _vmodel.fornitori = Dal.db.Fornitori.All().ToList();
             _vmodel.riga = null;
-
         }
 
         void _vmodel_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -40,11 +39,15 @@ namespace GestioneViaggi.Presenter
                 case "fornitoreId":
                     AggiornaListino();
                     break;
+                case "DataViaggio":
+                    AggiornaListino();
+                    break;
                 case "pesata":
                     ricalcolaCostoRiga(_vmodel.riga);
                     break;
                 case "caloPeso":
                     ricalcolaCostiRighe();
+                    _view.SetVModel(_vmodel);
                     break;
                 default:
                     break;
@@ -65,7 +68,12 @@ namespace GestioneViaggi.Presenter
         {
             _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore, _vmodel.DataViaggio);
             if (_vmodel.prodotti.Count() == 0)
-                MessageBox.Show("Non ci sono listini validi per il fornitore selezionato", "Recupero listino fornitore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {
+                MessageBox.Show("Non ci sono listini validi per il fornitore e per la data selezionati", "Recupero listino fornitore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (_vmodel.current.Righe.Count > 0)
+                    _vmodel.current.Righe.Clear();
+
+            }
             _view.SetVModel(_vmodel);
         }
 
@@ -90,8 +98,15 @@ namespace GestioneViaggi.Presenter
 
         private void ricalcolaCostiRighe()
         {
+            Boolean _minoreZero = false;
             foreach (RigaViaggio r in _vmodel.current.Righe)
+            {
                 ricalcolaCostoRiga(r);
+                if (r.Costo <= 0) 
+                    _minoreZero = true;
+            }
+            if (_minoreZero)
+                MessageBox.Show("Attenzione!:\nUna o più righe presentano un costo inferiore od uguale a 0!", "Costo righe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         internal void NuovaRiga()

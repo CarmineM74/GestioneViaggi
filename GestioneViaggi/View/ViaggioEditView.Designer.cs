@@ -68,12 +68,12 @@
             this.validoDalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.totaleCostoLbl = new System.Windows.Forms.Label();
+            this.totalePesoLbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.totalePesoLbl = new System.Windows.Forms.Label();
-            this.totaleCostoLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoriBs)).BeginInit();
@@ -198,6 +198,7 @@
             this.groupBox1.Controls.Add(this.rigaViaggioPnl);
             this.groupBox1.Controls.Add(this.eliminaRigaBtn);
             this.groupBox1.Controls.Add(this.righeDg);
+            this.groupBox1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.viaggioVMBs, "CanAddRemoveProducts", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.groupBox1.Location = new System.Drawing.Point(463, 131);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(355, 289);
@@ -448,6 +449,26 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Totali";
             // 
+            // totaleCostoLbl
+            // 
+            this.totaleCostoLbl.AutoSize = true;
+            this.totaleCostoLbl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "CostoViaggio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.totaleCostoLbl.Location = new System.Drawing.Point(61, 52);
+            this.totaleCostoLbl.Name = "totaleCostoLbl";
+            this.totaleCostoLbl.Size = new System.Drawing.Size(16, 13);
+            this.totaleCostoLbl.TabIndex = 3;
+            this.totaleCostoLbl.Text = "---";
+            // 
+            // totalePesoLbl
+            // 
+            this.totalePesoLbl.AutoSize = true;
+            this.totalePesoLbl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "PesoViaggio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.totalePesoLbl.Location = new System.Drawing.Point(61, 26);
+            this.totalePesoLbl.Name = "totalePesoLbl";
+            this.totalePesoLbl.Size = new System.Drawing.Size(16, 13);
+            this.totalePesoLbl.TabIndex = 2;
+            this.totalePesoLbl.Text = "---";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -481,26 +502,6 @@
             this.label11.Size = new System.Drawing.Size(50, 13);
             this.label11.TabIndex = 27;
             this.label11.Text = "Cartellino";
-            // 
-            // totalePesoLbl
-            // 
-            this.totalePesoLbl.AutoSize = true;
-            this.totalePesoLbl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "PesoViaggio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.totalePesoLbl.Location = new System.Drawing.Point(61, 26);
-            this.totalePesoLbl.Name = "totalePesoLbl";
-            this.totalePesoLbl.Size = new System.Drawing.Size(16, 13);
-            this.totalePesoLbl.TabIndex = 2;
-            this.totalePesoLbl.Text = "---";
-            // 
-            // totaleCostoLbl
-            // 
-            this.totaleCostoLbl.AutoSize = true;
-            this.totaleCostoLbl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "CostoViaggio", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.totaleCostoLbl.Location = new System.Drawing.Point(61, 52);
-            this.totaleCostoLbl.Name = "totaleCostoLbl";
-            this.totaleCostoLbl.Size = new System.Drawing.Size(16, 13);
-            this.totaleCostoLbl.TabIndex = 3;
-            this.totaleCostoLbl.Text = "---";
             // 
             // ViaggioEditView
             // 
