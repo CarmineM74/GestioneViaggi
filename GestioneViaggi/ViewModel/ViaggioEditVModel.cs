@@ -41,8 +41,11 @@ namespace GestioneViaggi.ViewModel
             get { return current.Data; }
             set
             {
-                current.Data = value;
-                NotifyPropertyChanged("DataViaggio");
+                if (current.Data != value)
+                {
+                    current.Data = value;
+                    NotifyPropertyChanged("DataViaggio");
+                }
             }
         }
 
@@ -51,9 +54,12 @@ namespace GestioneViaggi.ViewModel
             get { return current.FornitoreId; }
             set
             {
-                current.FornitoreId = value;
-                current.Fornitore = fornitori.First(f => f.Id == value);
-                NotifyPropertyChanged("fornitoreId");
+                if (current.FornitoreId != value)
+                {
+                    current.FornitoreId = value;
+                    current.Fornitore = fornitori.First(f => f.Id == value);
+                    NotifyPropertyChanged("fornitoreId");
+                }
             }
         }
 

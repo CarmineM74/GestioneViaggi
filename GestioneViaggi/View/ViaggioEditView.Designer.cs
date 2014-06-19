@@ -31,8 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.idViaggioTb = new System.Windows.Forms.TextBox();
+            this.viaggioBs = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.fornitoreCb = new System.Windows.Forms.ComboBox();
+            this.viaggioVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.fornitoriBs = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.conducenteTb = new System.Windows.Forms.TextBox();
@@ -49,6 +51,8 @@
             this.eliminaRigaBtn = new System.Windows.Forms.Button();
             this.righeDg = new System.Windows.Forms.DataGridView();
             this.Prodotto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.righeBs = new System.Windows.Forms.BindingSource(this.components);
             this.prodottiBs = new System.Windows.Forms.BindingSource(this.components);
             this.salvaViaggioBtn = new System.Windows.Forms.Button();
@@ -61,17 +65,15 @@
             this.listinoDg = new System.Windows.Forms.DataGridView();
             this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validoDalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.viaggioVMBs = new System.Windows.Forms.BindingSource(this.components);
-            this.validoDalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viaggioBs = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoriBs)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.rigaViaggioPnl.SuspendLayout();
@@ -82,8 +84,6 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listinoDg)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -103,6 +103,10 @@
             this.idViaggioTb.ReadOnly = true;
             this.idViaggioTb.Size = new System.Drawing.Size(82, 20);
             this.idViaggioTb.TabIndex = 1;
+            // 
+            // viaggioBs
+            // 
+            this.viaggioBs.DataSource = typeof(GestioneViaggi.Model.Viaggio);
             // 
             // label2
             // 
@@ -125,6 +129,10 @@
             this.fornitoreCb.Size = new System.Drawing.Size(226, 21);
             this.fornitoreCb.TabIndex = 4;
             this.fornitoreCb.ValueMember = "Id";
+            // 
+            // viaggioVMBs
+            // 
+            this.viaggioVMBs.DataSource = typeof(GestioneViaggi.ViewModel.ViaggioEditVModel);
             // 
             // fornitoriBs
             // 
@@ -280,6 +288,22 @@
             this.Prodotto.ReadOnly = true;
             this.Prodotto.Width = 140;
             // 
+            // pesataDataGridViewTextBoxColumn
+            // 
+            this.pesataDataGridViewTextBoxColumn.DataPropertyName = "Pesata";
+            this.pesataDataGridViewTextBoxColumn.HeaderText = "Pesata";
+            this.pesataDataGridViewTextBoxColumn.Name = "pesataDataGridViewTextBoxColumn";
+            this.pesataDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pesataDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // costoDataGridViewTextBoxColumn
+            // 
+            this.costoDataGridViewTextBoxColumn.DataPropertyName = "Costo";
+            this.costoDataGridViewTextBoxColumn.HeaderText = "Costo";
+            this.costoDataGridViewTextBoxColumn.Name = "costoDataGridViewTextBoxColumn";
+            this.costoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.costoDataGridViewTextBoxColumn.Width = 70;
+            // 
             // righeBs
             // 
             this.righeBs.DataMember = "Righe";
@@ -376,6 +400,7 @@
             this.listinoDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listinoDg.Size = new System.Drawing.Size(439, 234);
             this.listinoDg.TabIndex = 0;
+            this.listinoDg.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.listinoDg_DataError);
             // 
             // Descrizione
             // 
@@ -392,6 +417,13 @@
             this.ValidoDal.Name = "ValidoDal";
             this.ValidoDal.ReadOnly = true;
             this.ValidoDal.Width = 80;
+            // 
+            // validoDalDataGridViewTextBoxColumn
+            // 
+            this.validoDalDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
+            this.validoDalDataGridViewTextBoxColumn.HeaderText = "Valido Al";
+            this.validoDalDataGridViewTextBoxColumn.Name = "validoDalDataGridViewTextBoxColumn";
+            this.validoDalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Costo
             // 
@@ -446,37 +478,6 @@
             this.label11.TabIndex = 27;
             this.label11.Text = "Cartellino";
             // 
-            // viaggioVMBs
-            // 
-            this.viaggioVMBs.DataSource = typeof(GestioneViaggi.ViewModel.ViaggioEditVModel);
-            // 
-            // validoDalDataGridViewTextBoxColumn
-            // 
-            this.validoDalDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
-            this.validoDalDataGridViewTextBoxColumn.HeaderText = "Valido Al";
-            this.validoDalDataGridViewTextBoxColumn.Name = "validoDalDataGridViewTextBoxColumn";
-            this.validoDalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pesataDataGridViewTextBoxColumn
-            // 
-            this.pesataDataGridViewTextBoxColumn.DataPropertyName = "Pesata";
-            this.pesataDataGridViewTextBoxColumn.HeaderText = "Pesata";
-            this.pesataDataGridViewTextBoxColumn.Name = "pesataDataGridViewTextBoxColumn";
-            this.pesataDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pesataDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // costoDataGridViewTextBoxColumn
-            // 
-            this.costoDataGridViewTextBoxColumn.DataPropertyName = "Costo";
-            this.costoDataGridViewTextBoxColumn.HeaderText = "Costo";
-            this.costoDataGridViewTextBoxColumn.Name = "costoDataGridViewTextBoxColumn";
-            this.costoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.costoDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // viaggioBs
-            // 
-            this.viaggioBs.DataSource = typeof(GestioneViaggi.Model.Viaggio);
-            // 
             // ViaggioEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,6 +510,8 @@
             this.Text = "ViaggioEditView";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViaggioEditView_FormClosing);
             this.Shown += new System.EventHandler(this.ViaggioEditView_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornitoriBs)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.rigaViaggioPnl.ResumeLayout(false);
@@ -521,8 +524,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.listinoDg)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

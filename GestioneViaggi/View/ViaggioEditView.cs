@@ -26,6 +26,7 @@ namespace GestioneViaggi.View
         private void ViaggioEditView_Shown(object sender, EventArgs e)
         {
             errorProvider1.DataSource = viaggioVMBs;
+            _canClose = true;
         }
 
         public void SetVModel(ViaggioEditVModel vmodel)
@@ -35,7 +36,9 @@ namespace GestioneViaggi.View
             viaggioBs.DataSource = _vmodel.current;
             righeBs.DataSource = _vmodel.current.Righe;
             righeDg.DataSource = righeBs;
+            listinoDg.DataSource = null;
             prodottiBs.DataSource = _vmodel.prodotti;
+            listinoDg.DataSource = prodottiBs;
             fornitoriBs.DataSource = _vmodel.fornitori;
         }
 
@@ -111,6 +114,11 @@ namespace GestioneViaggi.View
         {
             e.Cancel = !_canClose;
             _canClose = true;
+        }
+
+        private void listinoDg_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show(e.Exception.Message);
         }
 
     }

@@ -10,6 +10,7 @@ using Dapper;
 using Dapper.Contrib.Extensions;
 using Dapper.Mapper;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace GestioneViaggi.Presenter
 {
@@ -39,6 +40,8 @@ namespace GestioneViaggi.Presenter
                 case "fornitoreId":
                     // Recuperiamo il listino per il fornitore selezionato
                     _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore,_vmodel.DataViaggio);
+                    if (_vmodel.prodotti.Count() == 0)
+                        MessageBox.Show("Non ci sono listini validi per il fornitore selezionato", "Recupero listino fornitore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     _view.SetVModel(_vmodel);
                     break;
                 case "pesata":
@@ -114,6 +117,9 @@ namespace GestioneViaggi.Presenter
         internal void SalvaViaggio()
         {
             List<String> errori = new List<string>();
+            if (_vmodel.current.Righe.Where(r => (r.Costo == 0) || (r.Pesata == 0)).Count() > 0)
+                if (MessageBox.Show("Ci sono alcune righe con peso 0 e/o costo 0!\nDesideri salvare ugualmente il viaggio?","Salva viaggio", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    return;
             if (!ViaggioValidationService.isValid(_vmodel.current))
             {
                 errori.AddRange(ViaggioValidationService.Validate(_vmodel.current));
