@@ -68,12 +68,7 @@ namespace GestioneViaggi.Presenter
         {
             _vmodel.prodotti = FornitoreService.ListinoValidoPerFornitore(_vmodel.current.Fornitore, _vmodel.DataViaggio);
             if (_vmodel.prodotti.Count() == 0)
-            {
                 MessageBox.Show("Non ci sono listini validi per il fornitore e per la data selezionati", "Recupero listino fornitore", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                if (_vmodel.current.Righe.Count > 0)
-                    _vmodel.current.Righe.Clear();
-
-            }
             _view.SetVModel(_vmodel);
         }
 

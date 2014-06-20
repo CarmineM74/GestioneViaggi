@@ -81,6 +81,8 @@ namespace GestioneViaggi.DAL
 
         internal static List<Prodotto> ListinoValidoPerFornitore(Fornitore fornitore,DateTime validita)
         {
+            if (fornitore == null)
+                return new List<Prodotto>();
             String sql = "Select * from Prodotto where FornitoreId={0} ";
             sql += "and ValidoDal <= DateTime('{1}') ";
             sql += "and ValidoAl >= DateTime('{1}')";
