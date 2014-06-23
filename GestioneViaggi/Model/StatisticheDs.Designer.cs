@@ -358,13 +358,13 @@ namespace GestioneViaggi.Model {
             
             private global::System.Data.DataColumn columnNumeroViaggi;
             
-            private global::System.Data.DataColumn columnTotaleKg;
+            private global::System.Data.DataColumn columnTotalePeso;
             
             private global::System.Data.DataColumn columnTotaleCosto;
             
-            private global::System.Data.DataColumn columnKgViaggioMin;
+            private global::System.Data.DataColumn columnPesoViaggioMin;
             
-            private global::System.Data.DataColumn columnKgViaggioMax;
+            private global::System.Data.DataColumn columnPesoViaggioMax;
             
             private global::System.Data.DataColumn columnCostoViaggioMin;
             
@@ -374,7 +374,7 @@ namespace GestioneViaggi.Model {
             
             private global::System.Data.DataColumn columnCaloPesoMax;
             
-            private global::System.Data.DataColumn columnKgViaggioMedio;
+            private global::System.Data.DataColumn columnPesoViaggioMedio;
             
             private global::System.Data.DataColumn columnCostoViaggioMedio;
             
@@ -421,9 +421,9 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotaleKgColumn {
+            public global::System.Data.DataColumn TotalePesoColumn {
                 get {
-                    return this.columnTotaleKg;
+                    return this.columnTotalePeso;
                 }
             }
             
@@ -437,17 +437,17 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn KgViaggioMinColumn {
+            public global::System.Data.DataColumn PesoViaggioMinColumn {
                 get {
-                    return this.columnKgViaggioMin;
+                    return this.columnPesoViaggioMin;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn KgViaggioMaxColumn {
+            public global::System.Data.DataColumn PesoViaggioMaxColumn {
                 get {
-                    return this.columnKgViaggioMax;
+                    return this.columnPesoViaggioMax;
                 }
             }
             
@@ -485,9 +485,9 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn KgViaggioMedioColumn {
+            public global::System.Data.DataColumn PesoViaggioMedioColumn {
                 get {
-                    return this.columnKgViaggioMedio;
+                    return this.columnPesoViaggioMedio;
                 }
             }
             
@@ -536,19 +536,19 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TotalizzatoriRow AddTotalizzatoriRow(int NumeroViaggi, decimal TotaleKg, decimal TotaleCosto, decimal KgViaggioMin, decimal KgViaggioMax, decimal CostoViaggioMin, decimal CostoViaggioMax, decimal CaloPesoMin, decimal CaloPesoMax, decimal KgViaggioMedio, decimal CostoViaggioMedio) {
+            public TotalizzatoriRow AddTotalizzatoriRow(int NumeroViaggi, decimal TotalePeso, decimal TotaleCosto, decimal PesoViaggioMin, decimal PesoViaggioMax, decimal CostoViaggioMin, decimal CostoViaggioMax, decimal CaloPesoMin, decimal CaloPesoMax, decimal PesoViaggioMedio, decimal CostoViaggioMedio) {
                 TotalizzatoriRow rowTotalizzatoriRow = ((TotalizzatoriRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NumeroViaggi,
-                        TotaleKg,
+                        TotalePeso,
                         TotaleCosto,
-                        KgViaggioMin,
-                        KgViaggioMax,
+                        PesoViaggioMin,
+                        PesoViaggioMax,
                         CostoViaggioMin,
                         CostoViaggioMax,
                         CaloPesoMin,
                         CaloPesoMax,
-                        KgViaggioMedio,
+                        PesoViaggioMedio,
                         CostoViaggioMedio};
                 rowTotalizzatoriRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTotalizzatoriRow);
@@ -573,15 +573,15 @@ namespace GestioneViaggi.Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnNumeroViaggi = base.Columns["NumeroViaggi"];
-                this.columnTotaleKg = base.Columns["TotaleKg"];
+                this.columnTotalePeso = base.Columns["TotalePeso"];
                 this.columnTotaleCosto = base.Columns["TotaleCosto"];
-                this.columnKgViaggioMin = base.Columns["KgViaggioMin"];
-                this.columnKgViaggioMax = base.Columns["KgViaggioMax"];
+                this.columnPesoViaggioMin = base.Columns["PesoViaggioMin"];
+                this.columnPesoViaggioMax = base.Columns["PesoViaggioMax"];
                 this.columnCostoViaggioMin = base.Columns["CostoViaggioMin"];
                 this.columnCostoViaggioMax = base.Columns["CostoViaggioMax"];
                 this.columnCaloPesoMin = base.Columns["CaloPesoMin"];
                 this.columnCaloPesoMax = base.Columns["CaloPesoMax"];
-                this.columnKgViaggioMedio = base.Columns["KgViaggioMedio"];
+                this.columnPesoViaggioMedio = base.Columns["PesoViaggioMedio"];
                 this.columnCostoViaggioMedio = base.Columns["CostoViaggioMedio"];
             }
             
@@ -590,14 +590,14 @@ namespace GestioneViaggi.Model {
             private void InitClass() {
                 this.columnNumeroViaggi = new global::System.Data.DataColumn("NumeroViaggi", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNumeroViaggi);
-                this.columnTotaleKg = new global::System.Data.DataColumn("TotaleKg", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotaleKg);
+                this.columnTotalePeso = new global::System.Data.DataColumn("TotalePeso", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalePeso);
                 this.columnTotaleCosto = new global::System.Data.DataColumn("TotaleCosto", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotaleCosto);
-                this.columnKgViaggioMin = new global::System.Data.DataColumn("KgViaggioMin", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKgViaggioMin);
-                this.columnKgViaggioMax = new global::System.Data.DataColumn("KgViaggioMax", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKgViaggioMax);
+                this.columnPesoViaggioMin = new global::System.Data.DataColumn("PesoViaggioMin", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPesoViaggioMin);
+                this.columnPesoViaggioMax = new global::System.Data.DataColumn("PesoViaggioMax", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPesoViaggioMax);
                 this.columnCostoViaggioMin = new global::System.Data.DataColumn("CostoViaggioMin", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCostoViaggioMin);
                 this.columnCostoViaggioMax = new global::System.Data.DataColumn("CostoViaggioMax", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -606,8 +606,8 @@ namespace GestioneViaggi.Model {
                 base.Columns.Add(this.columnCaloPesoMin);
                 this.columnCaloPesoMax = new global::System.Data.DataColumn("CaloPesoMax", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCaloPesoMax);
-                this.columnKgViaggioMedio = new global::System.Data.DataColumn("KgViaggioMedio", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKgViaggioMedio);
+                this.columnPesoViaggioMedio = new global::System.Data.DataColumn("PesoViaggioMedio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPesoViaggioMedio);
                 this.columnCostoViaggioMedio = new global::System.Data.DataColumn("CostoViaggioMedio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCostoViaggioMedio);
             }
@@ -753,9 +753,11 @@ namespace GestioneViaggi.Model {
             
             private global::System.Data.DataColumn columnTargaAutomezzo;
             
-            private global::System.Data.DataColumn columnTotaleKgViaggio;
+            private global::System.Data.DataColumn columnTotalePesoViaggio;
             
             private global::System.Data.DataColumn columnTotaleCostoViaggio;
+            
+            private global::System.Data.DataColumn columnCaloPeso;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -832,9 +834,9 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotaleKgViaggioColumn {
+            public global::System.Data.DataColumn TotalePesoViaggioColumn {
                 get {
-                    return this.columnTotaleKgViaggio;
+                    return this.columnTotalePesoViaggio;
                 }
             }
             
@@ -843,6 +845,14 @@ namespace GestioneViaggi.Model {
             public global::System.Data.DataColumn TotaleCostoViaggioColumn {
                 get {
                     return this.columnTotaleCostoViaggio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CaloPesoColumn {
+                get {
+                    return this.columnCaloPeso;
                 }
             }
             
@@ -883,7 +893,7 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiRow AddViaggiRow(int Id, System.DateTime Data, string Fornitore, string Conducente, string TargaAutomezzo, decimal TotaleKgViaggio, decimal TotaleCostoViaggio) {
+            public ViaggiRow AddViaggiRow(int Id, System.DateTime Data, string Fornitore, string Conducente, string TargaAutomezzo, decimal TotalePesoViaggio, decimal TotaleCostoViaggio, decimal CaloPeso) {
                 ViaggiRow rowViaggiRow = ((ViaggiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -891,8 +901,9 @@ namespace GestioneViaggi.Model {
                         Fornitore,
                         Conducente,
                         TargaAutomezzo,
-                        TotaleKgViaggio,
-                        TotaleCostoViaggio};
+                        TotalePesoViaggio,
+                        TotaleCostoViaggio,
+                        CaloPeso};
                 rowViaggiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowViaggiRow);
                 return rowViaggiRow;
@@ -920,8 +931,9 @@ namespace GestioneViaggi.Model {
                 this.columnFornitore = base.Columns["Fornitore"];
                 this.columnConducente = base.Columns["Conducente"];
                 this.columnTargaAutomezzo = base.Columns["TargaAutomezzo"];
-                this.columnTotaleKgViaggio = base.Columns["TotaleKgViaggio"];
+                this.columnTotalePesoViaggio = base.Columns["TotalePesoViaggio"];
                 this.columnTotaleCostoViaggio = base.Columns["TotaleCostoViaggio"];
+                this.columnCaloPeso = base.Columns["CaloPeso"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -937,10 +949,12 @@ namespace GestioneViaggi.Model {
                 base.Columns.Add(this.columnConducente);
                 this.columnTargaAutomezzo = new global::System.Data.DataColumn("TargaAutomezzo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTargaAutomezzo);
-                this.columnTotaleKgViaggio = new global::System.Data.DataColumn("TotaleKgViaggio", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotaleKgViaggio);
+                this.columnTotalePesoViaggio = new global::System.Data.DataColumn("TotalePesoViaggio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalePesoViaggio);
                 this.columnTotaleCostoViaggio = new global::System.Data.DataColumn("TotaleCostoViaggio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotaleCostoViaggio);
+                this.columnCaloPeso = new global::System.Data.DataColumn("CaloPeso", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCaloPeso);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, false));
                 this.columnId.Unique = true;
@@ -1087,8 +1101,6 @@ namespace GestioneViaggi.Model {
             
             private global::System.Data.DataColumn columnCosto;
             
-            private global::System.Data.DataColumn columnCaloPeso;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RigheDataTable() {
@@ -1164,14 +1176,6 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CaloPesoColumn {
-                get {
-                    return this.columnCaloPeso;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1207,15 +1211,14 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheRow AddRigheRow(int Id, ViaggiRow parentViaggiRowByViaggi_Righe, string Prodotto, decimal Pesata, decimal Costo, decimal CaloPeso) {
+            public RigheRow AddRigheRow(int Id, ViaggiRow parentViaggiRowByViaggi_Righe, string Prodotto, decimal Pesata, decimal Costo) {
                 RigheRow rowRigheRow = ((RigheRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
                         null,
                         Prodotto,
                         Pesata,
-                        Costo,
-                        CaloPeso};
+                        Costo};
                 if ((parentViaggiRowByViaggi_Righe != null)) {
                     columnValuesArray[1] = parentViaggiRowByViaggi_Righe[0];
                 }
@@ -1246,7 +1249,6 @@ namespace GestioneViaggi.Model {
                 this.columnProdotto = base.Columns["Prodotto"];
                 this.columnPesata = base.Columns["Pesata"];
                 this.columnCosto = base.Columns["Costo"];
-                this.columnCaloPeso = base.Columns["CaloPeso"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1262,8 +1264,6 @@ namespace GestioneViaggi.Model {
                 base.Columns.Add(this.columnPesata);
                 this.columnCosto = new global::System.Data.DataColumn("Costo", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCosto);
-                this.columnCaloPeso = new global::System.Data.DataColumn("CaloPeso", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCaloPeso);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, false));
                 this.columnId.Unique = true;
@@ -1425,17 +1425,17 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotaleKg {
+            public decimal TotalePeso {
                 get {
                     try {
-                        return ((decimal)(this[this.tableTotalizzatori.TotaleKgColumn]));
+                        return ((decimal)(this[this.tableTotalizzatori.TotalePesoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotaleKg\' in table \'Totalizzatori\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalePeso\' in table \'Totalizzatori\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTotalizzatori.TotaleKgColumn] = value;
+                    this[this.tableTotalizzatori.TotalePesoColumn] = value;
                 }
             }
             
@@ -1457,33 +1457,33 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal KgViaggioMin {
+            public decimal PesoViaggioMin {
                 get {
                     try {
-                        return ((decimal)(this[this.tableTotalizzatori.KgViaggioMinColumn]));
+                        return ((decimal)(this[this.tableTotalizzatori.PesoViaggioMinColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'KgViaggioMin\' in table \'Totalizzatori\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PesoViaggioMin\' in table \'Totalizzatori\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTotalizzatori.KgViaggioMinColumn] = value;
+                    this[this.tableTotalizzatori.PesoViaggioMinColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal KgViaggioMax {
+            public decimal PesoViaggioMax {
                 get {
                     try {
-                        return ((decimal)(this[this.tableTotalizzatori.KgViaggioMaxColumn]));
+                        return ((decimal)(this[this.tableTotalizzatori.PesoViaggioMaxColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'KgViaggioMax\' in table \'Totalizzatori\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PesoViaggioMax\' in table \'Totalizzatori\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTotalizzatori.KgViaggioMaxColumn] = value;
+                    this[this.tableTotalizzatori.PesoViaggioMaxColumn] = value;
                 }
             }
             
@@ -1553,17 +1553,17 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal KgViaggioMedio {
+            public decimal PesoViaggioMedio {
                 get {
                     try {
-                        return ((decimal)(this[this.tableTotalizzatori.KgViaggioMedioColumn]));
+                        return ((decimal)(this[this.tableTotalizzatori.PesoViaggioMedioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'KgViaggioMedio\' in table \'Totalizzatori\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PesoViaggioMedio\' in table \'Totalizzatori\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTotalizzatori.KgViaggioMedioColumn] = value;
+                    this[this.tableTotalizzatori.PesoViaggioMedioColumn] = value;
                 }
             }
             
@@ -1597,14 +1597,14 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotaleKgNull() {
-                return this.IsNull(this.tableTotalizzatori.TotaleKgColumn);
+            public bool IsTotalePesoNull() {
+                return this.IsNull(this.tableTotalizzatori.TotalePesoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotaleKgNull() {
-                this[this.tableTotalizzatori.TotaleKgColumn] = global::System.Convert.DBNull;
+            public void SetTotalePesoNull() {
+                this[this.tableTotalizzatori.TotalePesoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1621,26 +1621,26 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsKgViaggioMinNull() {
-                return this.IsNull(this.tableTotalizzatori.KgViaggioMinColumn);
+            public bool IsPesoViaggioMinNull() {
+                return this.IsNull(this.tableTotalizzatori.PesoViaggioMinColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetKgViaggioMinNull() {
-                this[this.tableTotalizzatori.KgViaggioMinColumn] = global::System.Convert.DBNull;
+            public void SetPesoViaggioMinNull() {
+                this[this.tableTotalizzatori.PesoViaggioMinColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsKgViaggioMaxNull() {
-                return this.IsNull(this.tableTotalizzatori.KgViaggioMaxColumn);
+            public bool IsPesoViaggioMaxNull() {
+                return this.IsNull(this.tableTotalizzatori.PesoViaggioMaxColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetKgViaggioMaxNull() {
-                this[this.tableTotalizzatori.KgViaggioMaxColumn] = global::System.Convert.DBNull;
+            public void SetPesoViaggioMaxNull() {
+                this[this.tableTotalizzatori.PesoViaggioMaxColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1693,14 +1693,14 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsKgViaggioMedioNull() {
-                return this.IsNull(this.tableTotalizzatori.KgViaggioMedioColumn);
+            public bool IsPesoViaggioMedioNull() {
+                return this.IsNull(this.tableTotalizzatori.PesoViaggioMedioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetKgViaggioMedioNull() {
-                this[this.tableTotalizzatori.KgViaggioMedioColumn] = global::System.Convert.DBNull;
+            public void SetPesoViaggioMedioNull() {
+                this[this.tableTotalizzatori.PesoViaggioMedioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1812,17 +1812,17 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotaleKgViaggio {
+            public decimal TotalePesoViaggio {
                 get {
                     try {
-                        return ((decimal)(this[this.tableViaggi.TotaleKgViaggioColumn]));
+                        return ((decimal)(this[this.tableViaggi.TotalePesoViaggioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotaleKgViaggio\' in table \'Viaggi\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalePesoViaggio\' in table \'Viaggi\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableViaggi.TotaleKgViaggioColumn] = value;
+                    this[this.tableViaggi.TotalePesoViaggioColumn] = value;
                 }
             }
             
@@ -1839,6 +1839,22 @@ namespace GestioneViaggi.Model {
                 }
                 set {
                     this[this.tableViaggi.TotaleCostoViaggioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal CaloPeso {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableViaggi.CaloPesoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CaloPeso\' in table \'Viaggi\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViaggi.CaloPesoColumn] = value;
                 }
             }
             
@@ -1904,14 +1920,14 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotaleKgViaggioNull() {
-                return this.IsNull(this.tableViaggi.TotaleKgViaggioColumn);
+            public bool IsTotalePesoViaggioNull() {
+                return this.IsNull(this.tableViaggi.TotalePesoViaggioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotaleKgViaggioNull() {
-                this[this.tableViaggi.TotaleKgViaggioColumn] = global::System.Convert.DBNull;
+            public void SetTotalePesoViaggioNull() {
+                this[this.tableViaggi.TotalePesoViaggioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1924,6 +1940,18 @@ namespace GestioneViaggi.Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotaleCostoViaggioNull() {
                 this[this.tableViaggi.TotaleCostoViaggioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCaloPesoNull() {
+                return this.IsNull(this.tableViaggi.CaloPesoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCaloPesoNull() {
+                this[this.tableViaggi.CaloPesoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2034,22 +2062,6 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CaloPeso {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableRighe.CaloPesoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CaloPeso\' in table \'Righe\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRighe.CaloPesoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ViaggiRow ViaggiRow {
                 get {
                     return ((ViaggiRow)(this.GetParentRow(this.Table.ParentRelations["Viaggi_Righe"])));
@@ -2117,18 +2129,6 @@ namespace GestioneViaggi.Model {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCostoNull() {
                 this[this.tableRighe.CostoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCaloPesoNull() {
-                return this.IsNull(this.tableRighe.CaloPesoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCaloPesoNull() {
-                this[this.tableRighe.CaloPesoColumn] = global::System.Convert.DBNull;
             }
         }
         

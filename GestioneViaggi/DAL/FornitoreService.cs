@@ -87,8 +87,17 @@ namespace GestioneViaggi.DAL
             sql += "and ValidoDal <= DateTime('{1}') ";
             sql += "and ValidoAl >= DateTime('{1}')";
             sql = String.Format(sql, fornitore.Id, validita.ToString("yyyy-MM-dd"));
-            //MessageBox.Show(sql);
             return Dal.connection.Query<Prodotto>(sql).ToList();
         }
+
+        internal static List<Prodotto> ListinoPerFornitore(Fornitore fornitore)
+        {
+            if (fornitore == null)
+                return new List<Prodotto>();
+            String sql = "Select * from Prodotto where FornitoreId={0} ";
+            sql = String.Format(sql, fornitore.Id);
+            return Dal.connection.Query<Prodotto>(sql).ToList();
+        }
+
     }
 }

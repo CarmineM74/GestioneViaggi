@@ -20,7 +20,7 @@ using GestioneViaggi.ViewModel;
 
 namespace GestioneViaggi
 {
-    public partial class MainForm : Form, IAnagraficaFornitoriView, IElencoViaggiView
+    public partial class MainForm : Form, IAnagraficaFornitoriView, IElencoViaggiView, IRiepiloghiView
     {
         private Dal _dal;
         private AnagraficaFornitoriVModel _anaforvm = null;
@@ -30,6 +30,8 @@ namespace GestioneViaggi
         private ElencoViaggiPresenter _viaggipr = null;
         private ElencoViaggiVModel _viaggivm = null;
         private ViaggioEditPresenter _viaggioeditpr = null;
+        private StatisticheVModel _riepilogovm;
+        private RiepiloghiPresenter _riepilogopr = null;
 
         public MainForm()
         {
@@ -134,6 +136,7 @@ namespace GestioneViaggi
         private void MainForm_Shown(object sender, EventArgs e)
         {
             this.Text = String.Format("Gestione Viaggi - V{0}", Application.ProductVersion);
+            _riepilogopr = new RiepiloghiPresenter(this);
             _anaforpr = new AnagraficaFornitoriPresenter(this as IAnagraficaFornitoriView);
             _anaforpr.onFornitoriRefreshed += new FornitoriRefreshedDelegate(_anaforpr_onFornitoriRefreshed);
             _anaforpr.onFornitoriSaveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
@@ -163,6 +166,7 @@ namespace GestioneViaggi
             elencoFornitoriBs.DataSource = fornitori;
             elencoFornitoriDg.DataSource = elencoFornitoriBs;
             elencoFornitoriGb.Text = String.Format("Elenco fornitori: {0}", fornitori.Count());
+            _riepilogopr.SetFornitori(elencoFornitoriBs.DataSource as List<Fornitore>);
         }
 
         void _anaforpr_onFornitoriSaveError(List<string> messages)
@@ -380,12 +384,29 @@ namespace GestioneViaggi
 
         private void riepilogoGeneraleBtn_Click(object sender, EventArgs e)
         {
-            using (RiepiloghiPresenter pr = new RiepiloghiPresenter())
-            {
-                pr.RiepilogoGenerale();
-            }
+            _riepilogopr.RiepilogoGenerale();
         }
 
         //End Viaggi
+
+        void IRiepiloghiView.SetVModel(StatisticheVModel model)
+        {
+            _riepilogovm = model;
+            riepilogoBs.DataSource = _riepilogovm;
+        }
+
+        private void riepilogoFornitoriBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
+        }
+
+        private void mainTabControl_Selected(object sender, TabControlEventArgs e)
+        {
+        }
+
+        private void riepilogoProdottiBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _riepilogopr.SetProdotto(riepilogoProdottiBs.Current as Prodotto);
+        }
     }
 }

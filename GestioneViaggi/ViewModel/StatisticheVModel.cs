@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GestioneViaggi.Model;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace GestioneViaggi.ViewModel
 {
@@ -13,33 +14,33 @@ namespace GestioneViaggi.ViewModel
         public Decimal TotaleKg { get; set; }
         public Decimal TotaleCosto { get; set; }
 
-        private Decimal _KgViaggioMin = -1;
-        public Decimal KgViaggioMin {
-            get { return _KgViaggioMin; }
+        private Decimal _PesoViaggioMin = -1;
+        public Decimal PesoViaggioMin {
+            get { return _PesoViaggioMin; }
             set
             {
-                if (_KgViaggioMin < 0)
-                    _KgViaggioMin = value;
+                if (_PesoViaggioMin < 0)
+                    _PesoViaggioMin = value;
                 else
                 {
-                    if (_KgViaggioMin > value)
-                        _KgViaggioMin = value;
+                    if (_PesoViaggioMin > value)
+                        _PesoViaggioMin = value;
                 }
             }
         }
 
-        private Decimal _KgViaggioMax = -1;
-        public Decimal KgViaggioMax
+        private Decimal _PesoViaggioMax = -1;
+        public Decimal PesoViaggioMax
         {
-            get { return _KgViaggioMax; }
+            get { return _PesoViaggioMax; }
             set
             {
-                if (_KgViaggioMax < 0)
-                    _KgViaggioMax = value;
+                if (_PesoViaggioMax < 0)
+                    _PesoViaggioMax = value;
                 else
                 {
-                    if (_KgViaggioMax < value)
-                        _KgViaggioMax = value;
+                    if (_PesoViaggioMax < value)
+                        _PesoViaggioMax = value;
                 }
             }
         }
@@ -75,9 +76,9 @@ namespace GestioneViaggi.ViewModel
             }
         }
 
-        public Decimal KgViaggioMedio { get; set; }
+        public Decimal PesoViaggioMedio { get; set; }
         public Decimal CostoViaggioMedio { get; set; }
-        public Decimal CostoMedioKg { get; set; }
+        public Decimal CostoMedioPeso { get; set; }
         public Decimal CaloPesoMedio { get; set; }
 
         public List<int> ViaggiMeseAc { get; set; }
@@ -90,13 +91,13 @@ namespace GestioneViaggi.ViewModel
             NumeroViaggi = 0;
             TotaleCosto = 0;
             TotaleKg = 0;
-            _KgViaggioMin = -1;
-            _KgViaggioMax = -1;
+            _PesoViaggioMin = -1;
+            _PesoViaggioMax = -1;
             _CostoViaggioMin = -1;
             _CostoViaggioMax = -1;
-            KgViaggioMedio = 0;
+            PesoViaggioMedio = 0;
             CostoViaggioMedio = 0;
-            CostoMedioKg = 0;
+            CostoMedioPeso = 0;
             CaloPesoMedio = 0;
             ViaggiMeseAc = new List<int>();
             ViaggiMeseAp = new List<int>();
@@ -105,20 +106,20 @@ namespace GestioneViaggi.ViewModel
 
         private Totalizzatori CalcolaTotalizzatori(Totalizzatori t, Viaggio v)
         {
-            Decimal totaleKg = v.TotalePeso();
+            Decimal totalePeso = v.TotalePeso();
             Decimal totaleCosto = v.TotaleCosto();
             int mese = v.Data.Month;
             t.NumeroViaggi += 1;
             t.TotaleCosto += v.TotaleCosto();
-            t.TotaleKg += totaleKg;
-            t.KgViaggioMedio = t.TotaleKg;
-            t.KgViaggioMin = totaleKg; // Semanticamente non è corretto! Perchè non è detto che l'assegnazione avvenga. Sarebbe più corretto trasformarlo in un metodo.
-            t.KgViaggioMax = totaleKg;
+            t.TotaleKg += totalePeso;
+            t.PesoViaggioMedio = t.TotaleKg;
+            t.PesoViaggioMin = totalePeso; // Semanticamente non è corretto! Perchè non è detto che l'assegnazione avvenga. Sarebbe più corretto trasformarlo in un metodo.
+            t.PesoViaggioMax = totalePeso;
             t.TotaleCosto += totaleCosto;
             t.CostoViaggioMedio = t.TotaleCosto;
             t.CostoViaggioMin = totaleCosto;
             t.CostoViaggioMax = totaleCosto;
-            t.CostoMedioKg = t.TotaleCosto;
+            t.CostoMedioPeso = t.TotaleCosto;
             return t;
         }
 
@@ -139,9 +140,9 @@ namespace GestioneViaggi.ViewModel
         public void Aggiorna()
         {
             _viaggi.Aggregate(this, CalcolaTotalizzatori);
-            KgViaggioMedio = KgViaggioMedio / NumeroViaggi;
+            PesoViaggioMedio = PesoViaggioMedio / NumeroViaggi;
             CostoViaggioMedio = CostoViaggioMedio / NumeroViaggi;
-            CostoMedioKg = CostoMedioKg / TotaleKg;
+            CostoMedioPeso = CostoMedioPeso / TotaleKg;
             List<Viaggio> viaggiAc = _viaggi.Where(v => v.Data.Year == DateTime.Today.Year).ToList();
             List<Viaggio> viaggiAp = _viaggi.Where(v => v.Data.Year == DateTime.Today.Year-1).ToList();
             ViaggiMeseAc = ConteggiaViaggiMese(viaggiAc);
@@ -149,10 +150,76 @@ namespace GestioneViaggi.ViewModel
         }
     }
 
-    public class StatisticheVModel
+    public class StatisticheVModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String propName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+
+        private Fornitore _fornitore;
+        public Fornitore fornitore 
+        {
+            get { return _fornitore; }
+            set
+            {
+                if (_fornitore != value)
+                {
+                    _fornitore = value;
+                    NotifyPropertyChanged("fornitore");
+                }
+            }
+        }
+
+        private long _fornitoreId;
+        public long fornitoreId
+        {
+            get { return _fornitoreId; }
+            set {
+                if (_fornitoreId != value)
+                {
+                    _fornitoreId = value;
+                    NotifyPropertyChanged("fornitoreId");
+                }
+            }
+        }
+
+        private Prodotto _prodotto;
+        public Prodotto prodotto
+        {
+            get { return _prodotto; }
+            set {
+                if (_prodotto != value)
+                {
+                    _prodotto = value;
+                    NotifyPropertyChanged("prodotto");
+                }
+            }
+        }
+
+        public Boolean ProductSelectionEnabled
+        {
+            get { return (_fornitore != null); }
+        }
+
+        public Boolean RiepilogoGeneraleBtnEnabled
+        {
+            get { return ProductSelectionEnabled && (_prodotto != null); }
+        }
+
+        private List<Fornitore> _fornitori;
+        public List<Fornitore> fornitori
+        {
+            get { return _fornitori; }
+            set { _fornitori = value; NotifyPropertyChanged("fornitori"); }
+        }
+        public List<Prodotto> prodotti { get; set; }
         public List<Viaggio> viaggi { get; set; }
         public StatisticheDs dataset { get; set; }
         public Totalizzatori totalizzatori { get; set; }
+
     }
 }

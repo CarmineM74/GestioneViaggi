@@ -121,6 +121,7 @@
     <Compile Include="View\IAnagraficaProdottiView.cs" />
     <Compile Include="View\IElencoViaggiView.cs" />
     <Compile Include="View\IProdottoEditView.cs" />
+    <Compile Include="View\IRiepiloghiView.cs" />
     <Compile Include="View\IViaggioEditView.cs" />
     <Compile Include="View\ProdottoEditView.cs">
       <SubType>Form</SubType>
@@ -182,6 +183,7 @@
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.AnagraficaProdottiVModel.datasource" />
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.ElencoViaggiVModel.datasource" />
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.ProdottoEditVModel.datasource" />
+    <None Include="Properties\DataSources\GestioneViaggi.ViewModel.StatisticheVModel.datasource" />
     <None Include="Properties\DataSources\GestioneViaggi.ViewModel.ViaggioEditVModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

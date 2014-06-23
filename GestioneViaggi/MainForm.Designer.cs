@@ -91,15 +91,20 @@
             this.nuovoViaggioBtn = new System.Windows.Forms.Button();
             this.riepiloghiTp = new System.Windows.Forms.TabPage();
             this.riepilogoGeneraleBtn = new System.Windows.Forms.Button();
+            this.riepilogoBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.riepilogoProdottoCb = new System.Windows.Forms.ComboBox();
+            this.riepilogoProdottiBs = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.riepilogoFornitoreCb = new System.Windows.Forms.ComboBox();
+            this.riepilogoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.riepilogoMeseCb = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.riepilogoAlDtp = new System.Windows.Forms.DateTimePicker();
+            this.riepilogoDalDtp = new System.Windows.Forms.DateTimePicker();
             this.label17 = new System.Windows.Forms.Label();
             this.anagraficaProdottiVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.currentFornitoreBs = new System.Windows.Forms.BindingSource(this.components);
@@ -125,7 +130,10 @@
             this.groupBox5.SuspendLayout();
             this.viaggiFiltroDatePnl.SuspendLayout();
             this.riepiloghiTp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.riepilogoBs)).BeginInit();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.riepilogoProdottiBs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riepilogoFornitoriBs)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
@@ -170,6 +178,7 @@
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(784, 538);
             this.mainTabControl.TabIndex = 1;
+            this.mainTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.mainTabControl_Selected);
             // 
             // FornitoriTabPage
             // 
@@ -751,47 +760,89 @@
             // 
             // riepilogoGeneraleBtn
             // 
-            this.riepilogoGeneraleBtn.Location = new System.Drawing.Point(8, 15);
+            this.riepilogoGeneraleBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.riepilogoBs, "RiepilogoGeneraleBtnEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoGeneraleBtn.Location = new System.Drawing.Point(6, 119);
             this.riepilogoGeneraleBtn.Name = "riepilogoGeneraleBtn";
-            this.riepilogoGeneraleBtn.Size = new System.Drawing.Size(758, 35);
+            this.riepilogoGeneraleBtn.Size = new System.Drawing.Size(760, 35);
             this.riepilogoGeneraleBtn.TabIndex = 4;
             this.riepilogoGeneraleBtn.Text = "Riepilogo generale";
             this.riepilogoGeneraleBtn.UseVisualStyleBackColor = true;
             this.riepilogoGeneraleBtn.Click += new System.EventHandler(this.riepilogoGeneraleBtn_Click);
             // 
+            // riepilogoBs
+            // 
+            this.riepilogoBs.DataSource = typeof(GestioneViaggi.ViewModel.StatisticheVModel);
+            // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.comboBox2);
+            this.groupBox6.Controls.Add(this.riepilogoProdottoCb);
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Controls.Add(this.riepilogoFornitoreCb);
             this.groupBox6.Controls.Add(this.panel1);
             this.groupBox6.Controls.Add(this.label17);
-            this.groupBox6.Location = new System.Drawing.Point(6, 67);
+            this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(760, 107);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Filtri";
             // 
-            // comboBox2
+            // riepilogoProdottoCb
             // 
-            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox2.DataSource = this.elencoFornitoriBs;
-            this.comboBox2.DisplayMember = "RagioneSociale";
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(9, 32);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(263, 21);
-            this.comboBox2.TabIndex = 21;
-            this.comboBox2.ValueMember = "Id";
+            this.riepilogoProdottoCb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.riepilogoProdottoCb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.riepilogoProdottoCb.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.riepilogoBs, "ProductSelectionEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoProdottoCb.DataSource = this.riepilogoProdottiBs;
+            this.riepilogoProdottoCb.DisplayMember = "Descrizione";
+            this.riepilogoProdottoCb.FormattingEnabled = true;
+            this.riepilogoProdottoCb.Location = new System.Drawing.Point(9, 75);
+            this.riepilogoProdottoCb.Name = "riepilogoProdottoCb";
+            this.riepilogoProdottoCb.Size = new System.Drawing.Size(263, 21);
+            this.riepilogoProdottoCb.TabIndex = 23;
+            // 
+            // riepilogoProdottiBs
+            // 
+            this.riepilogoProdottiBs.DataMember = "prodotti";
+            this.riepilogoProdottiBs.DataSource = this.riepilogoBs;
+            this.riepilogoProdottiBs.CurrentChanged += new System.EventHandler(this.riepilogoProdottiBs_CurrentChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Prodotto";
+            // 
+            // riepilogoFornitoreCb
+            // 
+            this.riepilogoFornitoreCb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.riepilogoFornitoreCb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.riepilogoFornitoreCb.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.riepilogoBs, "fornitoreId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoFornitoreCb.DataSource = this.riepilogoFornitoriBs;
+            this.riepilogoFornitoreCb.DisplayMember = "RagioneSociale";
+            this.riepilogoFornitoreCb.FormattingEnabled = true;
+            this.riepilogoFornitoreCb.Location = new System.Drawing.Point(9, 32);
+            this.riepilogoFornitoreCb.Name = "riepilogoFornitoreCb";
+            this.riepilogoFornitoreCb.Size = new System.Drawing.Size(263, 21);
+            this.riepilogoFornitoreCb.TabIndex = 21;
+            this.riepilogoFornitoreCb.ValueMember = "Id";
+            // 
+            // riepilogoFornitoriBs
+            // 
+            this.riepilogoFornitoriBs.DataMember = "fornitori";
+            this.riepilogoFornitoriBs.DataSource = this.riepilogoBs;
+            this.riepilogoFornitoriBs.CurrentChanged += new System.EventHandler(this.riepilogoFornitoriBs_CurrentChanged);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.riepilogoMeseCb);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.dateTimePicker3);
-            this.panel1.Controls.Add(this.dateTimePicker4);
+            this.panel1.Controls.Add(this.riepilogoAlDtp);
+            this.panel1.Controls.Add(this.riepilogoDalDtp);
             this.panel1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.elencoViaggiVMBs, "dataFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.panel1.Location = new System.Drawing.Point(526, 16);
             this.panel1.Name = "panel1";
@@ -807,10 +858,10 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "Mese";
             // 
-            // comboBox1
+            // riepilogoMeseCb
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.riepilogoMeseCb.FormattingEnabled = true;
+            this.riepilogoMeseCb.Items.AddRange(new object[] {
             "Gennaio",
             "Febbraio",
             "Marzo",
@@ -823,10 +874,10 @@
             "Ottobre",
             "Novembre",
             "Dicembre"});
-            this.comboBox1.Location = new System.Drawing.Point(7, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(105, 21);
-            this.comboBox1.TabIndex = 21;
+            this.riepilogoMeseCb.Location = new System.Drawing.Point(7, 59);
+            this.riepilogoMeseCb.Name = "riepilogoMeseCb";
+            this.riepilogoMeseCb.Size = new System.Drawing.Size(105, 21);
+            this.riepilogoMeseCb.TabIndex = 21;
             // 
             // label13
             // 
@@ -846,23 +897,23 @@
             this.label14.TabIndex = 19;
             this.label14.Text = "Dal";
             // 
-            // dateTimePicker3
+            // riepilogoAlDtp
             // 
-            this.dateTimePicker3.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "alFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(118, 21);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(105, 20);
-            this.dateTimePicker3.TabIndex = 18;
+            this.riepilogoAlDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "alFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoAlDtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.riepilogoAlDtp.Location = new System.Drawing.Point(118, 21);
+            this.riepilogoAlDtp.Name = "riepilogoAlDtp";
+            this.riepilogoAlDtp.Size = new System.Drawing.Size(105, 20);
+            this.riepilogoAlDtp.TabIndex = 18;
             // 
-            // dateTimePicker4
+            // riepilogoDalDtp
             // 
-            this.dateTimePicker4.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "dalFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(7, 21);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(105, 20);
-            this.dateTimePicker4.TabIndex = 17;
+            this.riepilogoDalDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "dalFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoDalDtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.riepilogoDalDtp.Location = new System.Drawing.Point(7, 21);
+            this.riepilogoDalDtp.Name = "riepilogoDalDtp";
+            this.riepilogoDalDtp.Size = new System.Drawing.Size(105, 20);
+            this.riepilogoDalDtp.TabIndex = 17;
             // 
             // label17
             // 
@@ -934,8 +985,11 @@
             this.viaggiFiltroDatePnl.ResumeLayout(false);
             this.viaggiFiltroDatePnl.PerformLayout();
             this.riepiloghiTp.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.riepilogoBs)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.riepilogoProdottiBs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riepilogoFornitoriBs)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
@@ -1001,13 +1055,13 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox riepilogoMeseCb;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.DateTimePicker riepilogoAlDtp;
+        private System.Windows.Forms.DateTimePicker riepilogoDalDtp;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox riepilogoFornitoreCb;
         private System.Windows.Forms.GroupBox elencoViaggiGb;
         private System.Windows.Forms.DataGridView elencoViaggiDg;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -1028,6 +1082,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
         private System.Windows.Forms.DataGridViewTextBoxColumn validoAlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.ComboBox riepilogoProdottoCb;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.BindingSource riepilogoBs;
+        private System.Windows.Forms.BindingSource riepilogoFornitoriBs;
+        private System.Windows.Forms.BindingSource riepilogoProdottiBs;
     }
 }
 
