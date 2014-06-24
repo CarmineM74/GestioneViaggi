@@ -899,7 +899,7 @@
             // 
             // riepilogoAlDtp
             // 
-            this.riepilogoAlDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.riepilogoBs, "FiltroAl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoAlDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.riepilogoBs, "FiltroAl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "d"));
             this.riepilogoAlDtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.riepilogoAlDtp.Location = new System.Drawing.Point(118, 21);
             this.riepilogoAlDtp.Name = "riepilogoAlDtp";
@@ -908,7 +908,7 @@
             // 
             // riepilogoDalDtp
             // 
-            this.riepilogoDalDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.riepilogoBs, "FiltroDal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoDalDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.riepilogoBs, "FiltroDal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "d"));
             this.riepilogoDalDtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.riepilogoDalDtp.Location = new System.Drawing.Point(7, 21);
             this.riepilogoDalDtp.Name = "riepilogoDalDtp";

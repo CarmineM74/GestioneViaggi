@@ -174,6 +174,8 @@ namespace GestioneViaggi
             riepilogoFornitoriBs.DataSource = _riepilogovm.fornitori;
             riepilogoProdottiBs.DataSource = null;
             riepilogoProdottiBs.DataSource = _riepilogovm.prodotti;
+            riepilogoBs.ResetBindings(false);
+            _riepilogopr.SetFornitore(null);
         }
 
         void _anaforpr_onFornitoriSaveError(List<string> messages)
@@ -404,6 +406,7 @@ namespace GestioneViaggi
         void IRiepiloghiView.SetVModel(StatisticheVModel model)
         {
             _riepilogovm = model;
+            riepilogoBs.DataSource = _riepilogovm;
         }
 
         private void riepilogoFornitoriBs_CurrentChanged(object sender, EventArgs e)
