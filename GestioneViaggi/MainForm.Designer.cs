@@ -98,7 +98,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.riepilogoFornitoreCb = new System.Windows.Forms.ComboBox();
             this.riepilogoFornitoriBs = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.riepiloghiDatePnl = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.riepilogoMeseCb = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -134,7 +134,7 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.riepilogoProdottiBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.riepilogoFornitoriBs)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.riepiloghiDatePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).BeginInit();
@@ -178,7 +178,6 @@
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(784, 538);
             this.mainTabControl.TabIndex = 1;
-            this.mainTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.mainTabControl_Selected);
             // 
             // FornitoriTabPage
             // 
@@ -778,7 +777,7 @@
             this.groupBox6.Controls.Add(this.riepilogoProdottoCb);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.riepilogoFornitoreCb);
-            this.groupBox6.Controls.Add(this.panel1);
+            this.groupBox6.Controls.Add(this.riepiloghiDatePnl);
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
@@ -835,19 +834,19 @@
             this.riepilogoFornitoriBs.DataSource = this.riepilogoBs;
             this.riepilogoFornitoriBs.CurrentChanged += new System.EventHandler(this.riepilogoFornitoriBs_CurrentChanged);
             // 
-            // panel1
+            // riepiloghiDatePnl
             // 
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.riepilogoMeseCb);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.riepilogoAlDtp);
-            this.panel1.Controls.Add(this.riepilogoDalDtp);
-            this.panel1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.elencoViaggiVMBs, "dataFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.panel1.Location = new System.Drawing.Point(526, 16);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(228, 85);
-            this.panel1.TabIndex = 20;
+            this.riepiloghiDatePnl.Controls.Add(this.label12);
+            this.riepiloghiDatePnl.Controls.Add(this.riepilogoMeseCb);
+            this.riepiloghiDatePnl.Controls.Add(this.label13);
+            this.riepiloghiDatePnl.Controls.Add(this.label14);
+            this.riepiloghiDatePnl.Controls.Add(this.riepilogoAlDtp);
+            this.riepiloghiDatePnl.Controls.Add(this.riepilogoDalDtp);
+            this.riepiloghiDatePnl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.riepilogoBs, "RiepilogoDateFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepiloghiDatePnl.Location = new System.Drawing.Point(526, 16);
+            this.riepiloghiDatePnl.Name = "riepiloghiDatePnl";
+            this.riepiloghiDatePnl.Size = new System.Drawing.Size(228, 85);
+            this.riepiloghiDatePnl.TabIndex = 20;
             // 
             // label12
             // 
@@ -878,6 +877,7 @@
             this.riepilogoMeseCb.Name = "riepilogoMeseCb";
             this.riepilogoMeseCb.Size = new System.Drawing.Size(105, 21);
             this.riepilogoMeseCb.TabIndex = 21;
+            this.riepilogoMeseCb.TextChanged += new System.EventHandler(this.riepilogoMeseCb_TextChanged);
             // 
             // label13
             // 
@@ -899,7 +899,7 @@
             // 
             // riepilogoAlDtp
             // 
-            this.riepilogoAlDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "alFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoAlDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.riepilogoBs, "FiltroAl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.riepilogoAlDtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.riepilogoAlDtp.Location = new System.Drawing.Point(118, 21);
             this.riepilogoAlDtp.Name = "riepilogoAlDtp";
@@ -908,7 +908,7 @@
             // 
             // riepilogoDalDtp
             // 
-            this.riepilogoDalDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.elencoViaggiVMBs, "dalFilter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoDalDtp.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.riepilogoBs, "FiltroDal", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.riepilogoDalDtp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.riepilogoDalDtp.Location = new System.Drawing.Point(7, 21);
             this.riepilogoDalDtp.Name = "riepilogoDalDtp";
@@ -990,8 +990,8 @@
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.riepilogoProdottiBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.riepilogoFornitoriBs)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.riepiloghiDatePnl.ResumeLayout(false);
+            this.riepiloghiDatePnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anagraficaProdottiVMBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentFornitoreBs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentProdottoBs)).EndInit();
@@ -1053,7 +1053,7 @@
         private System.Windows.Forms.Button modificaViaggioBtn;
         private System.Windows.Forms.TabPage riepiloghiTp;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel riepiloghiDatePnl;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox riepilogoMeseCb;
         private System.Windows.Forms.Label label13;

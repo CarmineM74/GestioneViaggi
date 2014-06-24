@@ -20,6 +20,8 @@ using GestioneViaggi.ViewModel;
 
 namespace GestioneViaggi
 {
+    public delegate void ManipulateDateRangeDelegate(DateTime from, DateTime to);
+
     public partial class MainForm : Form, IAnagraficaFornitoriView, IElencoViaggiView, IRiepiloghiView
     {
         private Dal _dal;
@@ -137,6 +139,7 @@ namespace GestioneViaggi
         {
             this.Text = String.Format("Gestione Viaggi - V{0}", Application.ProductVersion);
             _riepilogopr = new RiepiloghiPresenter(this);
+            _riepilogopr.RiepilogoDateRangeInvalidError += new RiepilogDateRangeInvalidDelegate(_riepilogopr_RiepilogoDateRangeInvalidError);
             _anaforpr = new AnagraficaFornitoriPresenter(this as IAnagraficaFornitoriView);
             _anaforpr.onFornitoriRefreshed += new FornitoriRefreshedDelegate(_anaforpr_onFornitoriRefreshed);
             _anaforpr.onFornitoriSaveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
@@ -167,6 +170,10 @@ namespace GestioneViaggi
             elencoFornitoriDg.DataSource = elencoFornitoriBs;
             elencoFornitoriGb.Text = String.Format("Elenco fornitori: {0}", fornitori.Count());
             _riepilogopr.SetFornitori(elencoFornitoriBs.DataSource as List<Fornitore>);
+            riepilogoFornitoriBs.DataSource = null;
+            riepilogoFornitoriBs.DataSource = _riepilogovm.fornitori;
+            riepilogoProdottiBs.DataSource = null;
+            riepilogoProdottiBs.DataSource = _riepilogovm.prodotti;
         }
 
         void _anaforpr_onFornitoriSaveError(List<string> messages)
@@ -305,18 +312,23 @@ namespace GestioneViaggi
             }
         }
 
-        private void viaggioMeseFilterCb_TextChanged(object sender, EventArgs e)
+        private void CalcolaIntervalloDaMese(ComboBox cb, ManipulateDateRangeDelegate fn)
         {
-            if (viaggioMeseFilterCb.Items.Contains(viaggioMeseFilterCb.Text))
+            if (cb.Items.Contains(cb.Text))
             {
-                int idx = viaggioMeseFilterCb.Items.IndexOf(viaggioMeseFilterCb.Text);
+                int idx = cb.Items.IndexOf(cb.Text);
                 DateTime from, to;
                 int anno = DateTime.Today.Year;
                 from = DateTime.Parse(String.Format("1/{0}/{1}", idx + 1, anno));
                 to = from.AddMonths(1).AddDays(-1);
-                _viaggipr.SetDateFilterFromTo(from, to);
-                elencoViaggiVMBs.ResetBindings(false);
+                fn(from, to);
             }
+        }
+
+        private void viaggioMeseFilterCb_TextChanged(object sender, EventArgs e)
+        {
+            CalcolaIntervalloDaMese(viaggioMeseFilterCb, _viaggipr.SetDateFilterFromTo);
+            elencoViaggiVMBs.ResetBindings(false);
         }
 
         private void viaggiRimuoviFiltroBtn_Click(object sender, EventArgs e)
@@ -382,31 +394,38 @@ namespace GestioneViaggi
             _viaggipr.refreshViaggi();            
         }
 
+        //End Viaggi
+
         private void riepilogoGeneraleBtn_Click(object sender, EventArgs e)
         {
             _riepilogopr.RiepilogoGenerale();
         }
 
-        //End Viaggi
-
         void IRiepiloghiView.SetVModel(StatisticheVModel model)
         {
             _riepilogovm = model;
-            riepilogoBs.DataSource = _riepilogovm;
         }
 
         private void riepilogoFornitoriBs_CurrentChanged(object sender, EventArgs e)
         {
             _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
-        }
-
-        private void mainTabControl_Selected(object sender, TabControlEventArgs e)
-        {
+            riepilogoProdottiBs.ResetBindings(false);
         }
 
         private void riepilogoProdottiBs_CurrentChanged(object sender, EventArgs e)
         {
             _riepilogopr.SetProdotto(riepilogoProdottiBs.Current as Prodotto);
         }
+
+        private void riepilogoMeseCb_TextChanged(object sender, EventArgs e)
+        {
+            CalcolaIntervalloDaMese(riepilogoMeseCb, _riepilogopr.SetDateFilterFromTo);
+        }
+
+        void _riepilogopr_RiepilogoDateRangeInvalidError(DateTime from, DateTime to)
+        {
+            MessageBox.Show("L'intervallo specificato NON è valido!", "Intervallo date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }

@@ -200,14 +200,39 @@ namespace GestioneViaggi.ViewModel
             }
         }
 
+        private DateTime _filtroDal;
+        public DateTime FiltroDal
+        {
+            get { return _filtroDal; }
+            set { 
+                _filtroDal = value; 
+                NotifyPropertyChanged("filtroDal"); 
+            }
+        }
+
+        private DateTime _filtroAl;
+        public DateTime FiltroAl
+        {
+            get { return _filtroAl; }
+            set { 
+                _filtroAl = value; 
+                NotifyPropertyChanged("filtroAl"); 
+            }
+        }
+
         public Boolean ProductSelectionEnabled
         {
             get { return (_fornitore != null); }
         }
 
-        public Boolean RiepilogoGeneraleBtnEnabled
+        public Boolean RiepilogoDateFilterEnabled
         {
             get { return ProductSelectionEnabled && (_prodotto != null); }
+        }
+
+        public Boolean RiepilogoGeneraleBtnEnabled
+        {
+            get { return RiepilogoDateFilterEnabled; }
         }
 
         private List<Fornitore> _fornitori;
