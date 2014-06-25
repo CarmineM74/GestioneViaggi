@@ -42,6 +42,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.listinoDg = new System.Windows.Forms.DataGridView();
+            this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validoAlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listinoBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.eliminaFornitoreBtn = new System.Windows.Forms.Button();
@@ -59,6 +63,7 @@
             this.elencoViaggiGb = new System.Windows.Forms.GroupBox();
             this.elencoViaggiDg = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cartellino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fornitore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.targaAutomezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +73,8 @@
             this.elencoViaggiVMBs = new System.Windows.Forms.BindingSource(this.components);
             this.eliminaViaggioBtn = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.viaggioCartellinoFilterTb = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.viaggiFiltroDatePnl = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.viaggioMeseFilterCb = new System.Windows.Forms.ComboBox();
@@ -109,10 +116,6 @@
             this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
             this.prodottoEp = new System.Windows.Forms.ErrorProvider(this.components);
             this.fornitoreEp = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.validoAlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
@@ -281,6 +284,37 @@
             this.listinoDg.Size = new System.Drawing.Size(521, 289);
             this.listinoDg.TabIndex = 3;
             // 
+            // Descrizione
+            // 
+            this.Descrizione.DataPropertyName = "Descrizione";
+            this.Descrizione.HeaderText = "Descrizione";
+            this.Descrizione.Name = "Descrizione";
+            this.Descrizione.ReadOnly = true;
+            this.Descrizione.Width = 250;
+            // 
+            // ValidoDal
+            // 
+            this.ValidoDal.DataPropertyName = "ValidoDal";
+            this.ValidoDal.HeaderText = "Valido Dal";
+            this.ValidoDal.Name = "ValidoDal";
+            this.ValidoDal.ReadOnly = true;
+            this.ValidoDal.Width = 80;
+            // 
+            // validoAlDataGridViewTextBoxColumn
+            // 
+            this.validoAlDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
+            this.validoAlDataGridViewTextBoxColumn.HeaderText = "ValidoAl";
+            this.validoAlDataGridViewTextBoxColumn.Name = "validoAlDataGridViewTextBoxColumn";
+            this.validoAlDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Costo
+            // 
+            this.Costo.DataPropertyName = "Costo";
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
+            this.Costo.Width = 60;
+            // 
             // listinoBs
             // 
             this.listinoBs.DataMember = "currentListino";
@@ -444,6 +478,7 @@
             this.elencoViaggiDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.elencoViaggiDg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
+            this.Cartellino,
             this.dataDataGridViewTextBoxColumn,
             this.Fornitore,
             this.targaAutomezzoDataGridViewTextBoxColumn,
@@ -466,6 +501,13 @@
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // Cartellino
+            // 
+            this.Cartellino.DataPropertyName = "Cartellino";
+            this.Cartellino.HeaderText = "Cartellino";
+            this.Cartellino.Name = "Cartellino";
+            this.Cartellino.ReadOnly = true;
             // 
             // dataDataGridViewTextBoxColumn
             // 
@@ -530,6 +572,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.viaggioCartellinoFilterTb);
+            this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.viaggiFiltroDatePnl);
             this.groupBox5.Controls.Add(this.viaggiAbilitaFiltroDateCb);
             this.groupBox5.Controls.Add(this.viaggiRimuoviFiltroBtn);
@@ -546,6 +590,23 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Filtri";
+            // 
+            // viaggioCartellinoFilterTb
+            // 
+            this.viaggioCartellinoFilterTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.elencoViaggiVMBs, "cartellinoFilter", true));
+            this.viaggioCartellinoFilterTb.Location = new System.Drawing.Point(293, 32);
+            this.viaggioCartellinoFilterTb.Name = "viaggioCartellinoFilterTb";
+            this.viaggioCartellinoFilterTb.Size = new System.Drawing.Size(133, 20);
+            this.viaggioCartellinoFilterTb.TabIndex = 22;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(290, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Cartellino";
             // 
             // viaggiFiltroDatePnl
             // 
@@ -632,7 +693,7 @@
             // 
             this.viaggiAbilitaFiltroDateCb.AutoSize = true;
             this.viaggiAbilitaFiltroDateCb.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.elencoViaggiVMBs, "dataFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.viaggiAbilitaFiltroDateCb.Location = new System.Drawing.Point(287, 32);
+            this.viaggiAbilitaFiltroDateCb.Location = new System.Drawing.Point(457, 34);
             this.viaggiAbilitaFiltroDateCb.Name = "viaggiAbilitaFiltroDateCb";
             this.viaggiAbilitaFiltroDateCb.Size = new System.Drawing.Size(99, 17);
             this.viaggiAbilitaFiltroDateCb.TabIndex = 19;
@@ -944,37 +1005,6 @@
             this.fornitoreEp.ContainerControl = this;
             this.fornitoreEp.DataSource = this.anagraficaFornitoriVMBs;
             // 
-            // Descrizione
-            // 
-            this.Descrizione.DataPropertyName = "Descrizione";
-            this.Descrizione.HeaderText = "Descrizione";
-            this.Descrizione.Name = "Descrizione";
-            this.Descrizione.ReadOnly = true;
-            this.Descrizione.Width = 250;
-            // 
-            // ValidoDal
-            // 
-            this.ValidoDal.DataPropertyName = "ValidoDal";
-            this.ValidoDal.HeaderText = "Valido Dal";
-            this.ValidoDal.Name = "ValidoDal";
-            this.ValidoDal.ReadOnly = true;
-            this.ValidoDal.Width = 80;
-            // 
-            // validoAlDataGridViewTextBoxColumn
-            // 
-            this.validoAlDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
-            this.validoAlDataGridViewTextBoxColumn.HeaderText = "ValidoAl";
-            this.validoAlDataGridViewTextBoxColumn.Name = "validoAlDataGridViewTextBoxColumn";
-            this.validoAlDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Costo
-            // 
-            this.Costo.DataPropertyName = "Costo";
-            this.Costo.HeaderText = "Costo";
-            this.Costo.Name = "Costo";
-            this.Costo.ReadOnly = true;
-            this.Costo.Width = 60;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1094,11 +1124,6 @@
         private System.Windows.Forms.ComboBox riepilogoFornitoreCb;
         private System.Windows.Forms.GroupBox elencoViaggiGb;
         private System.Windows.Forms.DataGridView elencoViaggiDg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fornitore;
-        private System.Windows.Forms.DataGridViewTextBoxColumn targaAutomezzoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn conducenteDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button riepilogoGeneraleBtn;
         private System.Windows.Forms.ErrorProvider fornitoreEp;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1119,6 +1144,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
         private System.Windows.Forms.DataGridViewTextBoxColumn validoAlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cartellino;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fornitore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn targaAutomezzoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn conducenteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox viaggioCartellinoFilterTb;
+        private System.Windows.Forms.Label label4;
     }
 }
 

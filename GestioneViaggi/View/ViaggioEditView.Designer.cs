@@ -72,7 +72,7 @@
             this.totalePesoLbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cartellinoTb = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioBs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viaggioVMBs)).BeginInit();
@@ -487,12 +487,13 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Peso:";
             // 
-            // textBox1
+            // cartellinoTb
             // 
-            this.textBox1.Location = new System.Drawing.Point(265, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(68, 20);
-            this.textBox1.TabIndex = 2;
+            this.cartellinoTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.viaggioVMBs, "Cartellino", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.cartellinoTb.Location = new System.Drawing.Point(265, 8);
+            this.cartellinoTb.Name = "cartellinoTb";
+            this.cartellinoTb.Size = new System.Drawing.Size(68, 20);
+            this.cartellinoTb.TabIndex = 2;
             // 
             // label11
             // 
@@ -508,7 +509,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 462);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cartellinoTb);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -595,7 +596,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox cartellinoTb;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrizione;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;

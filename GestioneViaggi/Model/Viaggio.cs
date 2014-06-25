@@ -10,6 +10,7 @@ namespace GestioneViaggi.Model
     {
         [Key]
         long Id { get; set; }
+        long Cartellino { get; set; }
         long FornitoreId { get; set; }
         DateTime Data { get; set; }
         String TargaAutomezzo { get; set; }
@@ -24,6 +25,7 @@ namespace GestioneViaggi.Model
     public class Viaggio : IViaggio
     {
         public long Id { get; set; }
+        public long Cartellino { get; set; }
         public long FornitoreId { get; set; }
         public DateTime Data { get; set; }
         public String TargaAutomezzo { get; set; }

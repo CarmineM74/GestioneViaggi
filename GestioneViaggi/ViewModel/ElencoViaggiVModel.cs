@@ -35,6 +35,7 @@ namespace GestioneViaggi.ViewModel
         public String fornitoreFilter { get { return filtro.fornitore; } set { filtro.fornitore = value; } }
         public String targaFilter { get { return filtro.targa; } set { filtro.targa = value; } }
         public String conducenteFilter { get { return filtro.conducente; } set { filtro.conducente = value; } }
+        public long cartellinoFilter { get { return filtro.cartellino; } set { filtro.cartellino = value; } }
 
         public DateTime dalFilter { 
             get { return filtro.dal; } 

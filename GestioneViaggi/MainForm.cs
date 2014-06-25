@@ -42,6 +42,14 @@ namespace GestioneViaggi
             //testData();
         }
 
+        private long PickCartellino(List<long> cartellini)
+        {
+            int idx = new Random(DateTime.Now.Millisecond).Next(1, cartellini.Count());
+            long cartellino = cartellini[idx - 1];
+            cartellini.RemoveAt(idx - 1);
+            return cartellino;
+        }
+
         private void testData()
         {
             List<String> conducenti = new List<string>();
@@ -83,11 +91,16 @@ namespace GestioneViaggi
             }
 
             List<Viaggio> viaggi = new List<Viaggio>();
+            List<long> cartellini = new List<long>();
+            foreach (long x in Enumerable.Range(1, 1000))
+                cartellini.Add(x);
+
             rndDate = new Random(DateTime.Now.Millisecond);
             foreach (int j in Enumerable.Range(1, 1000))
             {
                 Viaggio v = new Viaggio
                 {
+                    Cartellino = PickCartellino(cartellini),
                     FornitoreId = new Random(DateTime.Now.Millisecond).Next(1, 10),
                     Data = DateTime.Now.AddDays(rndDate.Next(600)*-1),
                     TargaAutomezzo = targhe[rndDate.Next(0,targhe.Count-1)],

@@ -58,7 +58,9 @@ namespace GestioneViaggi.Presenter
             }
             else
             {
-                viaggi = _vmodel.items;
+               viaggi = _vmodel.items;
+               if (_vmodel.filtro.cartellinoValid)
+                   viaggi = viaggi.Where(v => v.Cartellino == _vmodel.filtro.cartellino).ToList();
                if (_vmodel.filtro.fornitoreValid)
                    viaggi = viaggi.Where(v => v.Fornitore.RagioneSociale.Contains(_vmodel.filtro.fornitore)).ToList();
                if (_vmodel.filtro.targaValid)

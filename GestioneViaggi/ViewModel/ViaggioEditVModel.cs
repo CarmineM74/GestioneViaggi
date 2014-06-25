@@ -25,6 +25,12 @@ namespace GestioneViaggi.ViewModel
             set { _current = value; NotifyPropertyChanged("current"); }
         }
 
+        public long cartellino
+        {
+            get { return _current.Cartellino; }
+            set { _current.Cartellino = value; NotifyPropertyChanged("cartellino"); }
+        }
+
         public Decimal CostoViaggio
         {
             get { return ((_current == null) ? 0 : _current.TotaleCosto()); }

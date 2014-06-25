@@ -19,6 +19,7 @@ CREATE TABLE "Prodotto"
 CREATE TABLE "Viaggio" 
 (
   "Id" INTEGER PRIMARY KEY AUTOINCREMENT, 
+  "Cartellino" INTEGER NOT NULL, 
   "FornitoreId" INTEGER NOT NULL, 
   "Data" VARCHAR(8000) NOT NULL, 
   "TargaAutomezzo" VARCHAR(30) NULL, 
@@ -41,4 +42,5 @@ CREATE TABLE "RigaViaggio"
 );
 
 CREATE UNIQUE INDEX uidx_fornitore_ragionesociale ON "Fornitore" ("RagioneSociale" ASC);
+CREATE UNIQUE INDEX uidx_viaggio_cartellino ON "Viaggio" ("Cartellino" ASC);
 --CREATE UNIQUE INDEX uidx_prodotto_descrizione ON "Prodotto" ("Descrizione" ASC);

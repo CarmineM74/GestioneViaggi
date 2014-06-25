@@ -7,6 +7,8 @@ namespace GestioneViaggi.Model
 {
     public class ViaggioFilter
     {
+        public long cartellino { get; set; }
+        public Boolean cartellinoValid { get; set; }
         public String fornitore { get; set; }
         public Boolean fornitoreValid { get; set; }
         public String targa { get; set; }
@@ -20,6 +22,8 @@ namespace GestioneViaggi.Model
 
         public ViaggioFilter()
         {
+            cartellino = 0;
+            cartellinoValid = false;
             fornitore = "";
             fornitoreValid = false;
             targa = "";
@@ -43,6 +47,7 @@ namespace GestioneViaggi.Model
 
         public void CheckValidity(Dictionary<String,List<String>> msgs)
         {
+            cartellinoValid = cartellino > 0;
             //fornitoreValid = !String.IsNullOrWhiteSpace(fornitore) && (fornitore.Trim().Length >= 3);
             fornitoreValid = !String.IsNullOrWhiteSpace(fornitore);
             //if (!fornitoreValid)

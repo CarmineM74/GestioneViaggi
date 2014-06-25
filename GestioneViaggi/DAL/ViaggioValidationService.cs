@@ -11,6 +11,13 @@ namespace GestioneViaggi.DAL
         public static List<String> Validate(Viaggio viaggio)
         {
             List<String> errors = new List<string>();
+            if (viaggio.Cartellino <= 0)
+                errors.Add("Nessun cartellino specificato");
+            else 
+            {
+                if (ViaggiService.FindByCartellino(viaggio.Cartellino) != null)
+                    errors.Add("Esiste già un viaggio con il cartellino specificato!");
+            }
             if (viaggio.FornitoreId <= 0)
                 errors.Add("Nessun fornitore specificato");
             Decimal res;

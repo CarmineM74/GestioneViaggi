@@ -76,6 +76,15 @@ namespace GestioneViaggi.DAL
             return AllBySql(sql).ToList();
         }
 
+        public static Viaggio FindByCartellino(long cartellino)
+        {
+            String sql = String.Format(@"Select * from viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId where Viaggio.Cartellino={0}", cartellino);
+            var vs = AllBySql(sql);
+            if (vs.Count() == 0)
+                return null;
+            return RehidrateAllFields(vs).First();
+        }
+
         public static void Save(Viaggio viaggio) 
         {
             int righe_salvate = 0;
