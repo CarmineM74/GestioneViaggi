@@ -11,7 +11,7 @@ namespace GestioneViaggi.ViewModel
     public class Totalizzatori
     {
         public int NumeroViaggi { get; set; }
-        public Decimal TotaleKg { get; set; }
+        public Decimal TotalePeso { get; set; }
         public Decimal TotaleCosto { get; set; }
 
         private Decimal _PesoViaggioMin = -1;
@@ -86,11 +86,13 @@ namespace GestioneViaggi.ViewModel
 
         private List<Viaggio> _viaggi;
 
+        private Boolean _isValid;
+
         public Totalizzatori(List<Viaggio> viaggi)
         {
             NumeroViaggi = 0;
             TotaleCosto = 0;
-            TotaleKg = 0;
+            TotalePeso = 0;
             _PesoViaggioMin = -1;
             _PesoViaggioMax = -1;
             _CostoViaggioMin = -1;
@@ -102,24 +104,55 @@ namespace GestioneViaggi.ViewModel
             ViaggiMeseAc = new List<int>();
             ViaggiMeseAp = new List<int>();
             _viaggi = viaggi;
+            _isValid = false;
+        }
+
+        public List<String> Dump()
+        {
+            List<String> res = new List<string>();
+            if (_isValid)
+            {
+                res.Add(String.Format("Numero viaggi: {0}", NumeroViaggi));
+                res.Add(String.Format("Calo peso medio rilevato: {0}", CaloPesoMedio));
+                res.Add(String.Format("Totale costo: {0}", TotaleCosto));
+                res.Add(String.Format("Costo minimo viaggio rilevato: {0}", CostoViaggioMin));
+                res.Add(String.Format("Costo massimo viaggio rilevato: {0}", CostoViaggioMax));
+                res.Add(String.Format("Costo medio viaggio rilevato: {0}", CostoViaggioMedio));
+                res.Add(String.Format("Totale peso: {0}", TotalePeso));
+                res.Add(String.Format("Peso minimo viaggio rilevato: {0}", PesoViaggioMin));
+                res.Add(String.Format("Peso massimo viaggio rilevato: {0}", PesoViaggioMax));
+                res.Add(String.Format("Peso medio viaggio rilevato: {0}", PesoViaggioMedio));
+            }
+            return res;
         }
 
         private Totalizzatori CalcolaTotalizzatori(Totalizzatori t, Viaggio v)
         {
+            //Riepilogo per il fornitore: Fornitore di prova 758 e prodotto: Prodotto di prova 800 Dal 01/06/2014 Al 30/06/2014
+            //Numero viaggi: 2
+            //Calo peso medio rilevato: 0
+            //Totale costo: 3277397
+            //Costo minimo viaggio rilevato: 918489
+            //Costo massimo viaggio rilevato: 2358908
+            //Costo medio viaggio rilevato: 1638698,5
+            //Totale peso: 48249
+            //Peso minimo viaggio rilevato: 19994
+            //Peso massimo viaggio rilevato: 28255
+            //Peso medio viaggio rilevato: 24124,5
+
             Decimal totalePeso = v.TotalePeso();
             Decimal totaleCosto = v.TotaleCosto();
             int mese = v.Data.Month;
             t.NumeroViaggi += 1;
-            t.TotaleCosto += v.TotaleCosto();
-            t.TotaleKg += totalePeso;
-            t.PesoViaggioMedio = t.TotaleKg;
+            t.TotaleCosto += totaleCosto;
+            t.TotalePeso += totalePeso;
+            t.PesoViaggioMedio += totalePeso;
             t.PesoViaggioMin = totalePeso; // Semanticamente non è corretto! Perchè non è detto che l'assegnazione avvenga. Sarebbe più corretto trasformarlo in un metodo.
             t.PesoViaggioMax = totalePeso;
-            t.TotaleCosto += totaleCosto;
-            t.CostoViaggioMedio = t.TotaleCosto;
+            t.CostoViaggioMedio += totaleCosto;
             t.CostoViaggioMin = totaleCosto;
             t.CostoViaggioMax = totaleCosto;
-            t.CostoMedioPeso = t.TotaleCosto;
+            t.CostoMedioPeso = totaleCosto;
             return t;
         }
 
@@ -142,11 +175,12 @@ namespace GestioneViaggi.ViewModel
             _viaggi.Aggregate(this, CalcolaTotalizzatori);
             PesoViaggioMedio = PesoViaggioMedio / NumeroViaggi;
             CostoViaggioMedio = CostoViaggioMedio / NumeroViaggi;
-            CostoMedioPeso = CostoMedioPeso / TotaleKg;
+            CostoMedioPeso = CostoMedioPeso / TotalePeso;
             List<Viaggio> viaggiAc = _viaggi.Where(v => v.Data.Year == DateTime.Today.Year).ToList();
             List<Viaggio> viaggiAp = _viaggi.Where(v => v.Data.Year == DateTime.Today.Year-1).ToList();
             ViaggiMeseAc = ConteggiaViaggiMese(viaggiAc);
             ViaggiMeseAp = ConteggiaViaggiMese(viaggiAp);
+            _isValid = true;
         }
     }
 

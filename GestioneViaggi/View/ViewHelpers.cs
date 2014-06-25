@@ -18,6 +18,8 @@ namespace GestioneViaggi.View
                 foreach (System.Reflection.PropertyInfo propa in props)
                 {
                     object obja = propa.GetValue(obj, new object[] { });
+                    if (obja == null)
+                        return ret;
                     if (obja.GetType().Name.Contains(prop))
                     {
                         ret = EvaluateValue(obja, property.Substring(property.IndexOf(".") + 1));

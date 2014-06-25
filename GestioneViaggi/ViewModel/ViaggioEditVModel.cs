@@ -123,7 +123,7 @@ namespace GestioneViaggi.ViewModel
                 {
                     if (value < 0)
                         throw new Exception("Il calo peso non può essere inferiore a 0!");
-                    if (value > current.TotalePeso())
+                    if ((value > 0) && (value > current.TotalePeso()))
                         throw new Exception("Il calo peso non può essere superiore al peso totale del viaggio!");
                 }
                 current.CaloPeso = value;

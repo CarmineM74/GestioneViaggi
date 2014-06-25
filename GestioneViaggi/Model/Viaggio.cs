@@ -49,13 +49,17 @@ namespace GestioneViaggi.Model
 
         public Decimal TotalePeso()
         {
-            return Righe.Aggregate(0m, (a, r) => a += r.Pesata);
+            return Righe.Aggregate(0m, (a, r) => a += (r.Pesata - CaloPeso));
         }
 
         public Decimal TotaleCosto()
         {
-            return Righe.Aggregate(0m, (a, r) => a += r.Costo);
+            return Righe.Aggregate(0m, (a, r) => a += (r.Costo - (CaloPeso * r.Prodotto.Costo)));
         }
 
+        internal bool HasProdotto(Prodotto prodotto)
+        {
+            return Righe.Exists(r => r.Prodotto.Descrizione == prodotto.Descrizione);
+        }
     }
 }

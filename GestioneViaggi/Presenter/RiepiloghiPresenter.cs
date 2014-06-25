@@ -12,6 +12,7 @@ using GestioneViaggi.View;
 namespace GestioneViaggi.Presenter
 {
     public delegate void RiepilogDateRangeInvalidDelegate(DateTime from, DateTime to);
+    public delegate void DatiInsufficientiDelegate();
 
     public class ProdottiDescrizioneEqComparer : IEqualityComparer<Prodotto>
     {
@@ -32,6 +33,7 @@ namespace GestioneViaggi.Presenter
         private IRiepiloghiView _view;
 
         public event RiepilogDateRangeInvalidDelegate RiepilogoDateRangeInvalidError;
+        public event DatiInsufficientiDelegate DatiInsufficientiError;
 
         public RiepiloghiPresenter(IRiepiloghiView view)
         {
@@ -39,6 +41,8 @@ namespace GestioneViaggi.Presenter
             _vmodel = new StatisticheVModel();
             _vmodel.prodotti = new List<Prodotto>();
             _vmodel.viaggi = ViaggiService.All();
+            _vmodel.FiltroDal = DateTime.Today.Date;
+            _vmodel.FiltroAl = _vmodel.FiltroDal;
             _view.SetVModel(_vmodel);
         }
 
@@ -51,14 +55,37 @@ namespace GestioneViaggi.Presenter
             return (DateTime.Compare(_vmodel.FiltroDal.Date, _vmodel.FiltroAl.Date) <= 0);
         }
 
+        internal List<Viaggio> FiltraViaggiPerData(List<Viaggio> viaggi)
+        {
+            DateTime dal, al;
+            dal = _vmodel.FiltroDal.Date;
+            al = _vmodel.FiltroAl.Date;
+            return viaggi.Where(v => (DateTime.Compare(dal, v.Data.Date) <= 0) && (DateTime.Compare(al, v.Data.Date) >= 0)).ToList();
+        }
+
+        internal List<Viaggio> FiltraViaggiPerProdotto(List<Viaggio> viaggi)
+        {
+            return viaggi.Where(v => v.HasProdotto(_vmodel.prodotto)).ToList();
+        }
+
         internal void RiepilogoGenerale()
         {
             if (isValidDateRange())
             {
-                _vmodel.dataset = new Model.StatisticheDs();
-                StatisticheDs.TotalizzatoriRow totalizzatori = _vmodel.dataset.Totalizzatori.NewTotalizzatoriRow();
-                _vmodel.totalizzatori = new Totalizzatori(_vmodel.viaggi);
-                _vmodel.totalizzatori.Aggiorna();
+                List<Viaggio> vs = FiltraViaggiPerData(_vmodel.viaggi);
+                vs = FiltraViaggiPerProdotto(vs);
+                _vmodel.totalizzatori = new Totalizzatori(vs);
+                if (vs.Count() > 0)
+                {
+                    _vmodel.dataset = new Model.StatisticheDs();
+                    StatisticheDs.TotalizzatoriRow totalizzatori = _vmodel.dataset.Totalizzatori.NewTotalizzatoriRow();
+                    _vmodel.totalizzatori.Aggiorna();
+                }
+                else
+                {
+                    if (DatiInsufficientiError != null)
+                        DatiInsufficientiError();
+                }
             }
             else
             {
@@ -79,6 +106,8 @@ namespace GestioneViaggi.Presenter
             // Non dobbiamo considerare la data di validità.
             _vmodel.prodotti.Clear();
             _vmodel.prodotti.AddRange(FornitoreService.ListinoPerFornitore(fornitore).Distinct(new ProdottiDescrizioneEqComparer()));
+            // Recuperiamo l'elenco dei viaggio legati al fornitore selezionato
+            _vmodel.viaggi = ViaggiService.FindByFornitore(fornitore);
         }
 
         internal void SetProdotto(Prodotto prodotto)

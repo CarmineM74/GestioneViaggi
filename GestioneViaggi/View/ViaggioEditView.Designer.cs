@@ -528,6 +528,7 @@
             this.Controls.Add(this.idViaggioTb);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViaggioEditView";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

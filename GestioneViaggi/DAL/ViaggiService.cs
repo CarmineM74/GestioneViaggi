@@ -62,8 +62,12 @@ namespace GestioneViaggi.DAL
 
         public static List<Viaggio> FindByFornitore(Fornitore fornitore)
         {
+            if (fornitore == null)
+                return new List<Viaggio>();
             String sql = String.Format(@"Select * from viaggio left outer join RigaViaggio on Viaggio.Id = RigaViaggio.ViaggioId where FornitoreId={0}",fornitore.Id);
-            return AllBySql(sql).ToList();
+//            return AllBySql(sql).ToList();
+            var vs = AllBySql(sql);
+            return RehidrateAllFields(vs).ToList();
         }
 
         public static List<Viaggio> FindByProdotto(Prodotto prodotto)

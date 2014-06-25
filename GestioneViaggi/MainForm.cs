@@ -140,6 +140,7 @@ namespace GestioneViaggi
             this.Text = String.Format("Gestione Viaggi - V{0}", Application.ProductVersion);
             _riepilogopr = new RiepiloghiPresenter(this);
             _riepilogopr.RiepilogoDateRangeInvalidError += new RiepilogDateRangeInvalidDelegate(_riepilogopr_RiepilogoDateRangeInvalidError);
+            _riepilogopr.DatiInsufficientiError += new DatiInsufficientiDelegate(_riepilogopr_DatiInsufficientiError);
             _anaforpr = new AnagraficaFornitoriPresenter(this as IAnagraficaFornitoriView);
             _anaforpr.onFornitoriRefreshed += new FornitoriRefreshedDelegate(_anaforpr_onFornitoriRefreshed);
             _anaforpr.onFornitoriSaveError += new NotifyMessagesDelegate(_anaforpr_onFornitoriSaveError);
@@ -186,12 +187,16 @@ namespace GestioneViaggi
         private void elencoFornitoriBs_CurrentChanged(object sender, EventArgs e)
         {
             // 2014.06.03 - Dobbiamo associare il listino associato al fornitore
-            _anaforvm.current = (elencoFornitoriBs.Current as Fornitore).Clone();
-            currentFornitoreBs.DataSource = _anaforvm.current;
-            listinoBs.DataSource = _anaforvm.currentListino;
-            listinoDg.DataSource = listinoBs;
-            listinoBs.ResetBindings(false);
-            anagraficaFornitoriVMBs.ResetBindings(false);
+            Fornitore f = (elencoFornitoriBs.Current as Fornitore);
+            if (f != null)
+            {
+                _anaforvm.current = f.Clone();
+                currentFornitoreBs.DataSource = _anaforvm.current;
+                listinoBs.DataSource = _anaforvm.currentListino;
+                listinoDg.DataSource = listinoBs;
+                listinoBs.ResetBindings(false);
+                anagraficaFornitoriVMBs.ResetBindings(false);
+            }
         }
 
         private void salvaFornitoreBtn_Click(object sender, EventArgs e)
@@ -308,9 +313,17 @@ namespace GestioneViaggi
 
         private void elencoViaggiDg_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+            if (elencoViaggiDg.Rows[e.RowIndex] == null)
+                return;
+            try
             {
-                e.Value = ViewHelpers.EvaluateValue(elencoViaggiDg.Rows[e.RowIndex].DataBoundItem, elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName);
+                if (elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+                {
+                    e.Value = ViewHelpers.EvaluateValue(elencoViaggiDg.Rows[e.RowIndex].DataBoundItem, elencoViaggiDg.Columns[e.ColumnIndex].DataPropertyName);
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -401,6 +414,9 @@ namespace GestioneViaggi
         private void riepilogoGeneraleBtn_Click(object sender, EventArgs e)
         {
             _riepilogopr.RiepilogoGenerale();
+            riepilogoLogTb.Text += String.Format("Riepilogo per il fornitore: {0} e prodotto: {1} Dal {2} Al {3}\r\n", _riepilogovm.fornitore.RagioneSociale, _riepilogovm.prodotto.Descrizione, _riepilogovm.FiltroDal.Date.ToShortDateString(), _riepilogovm.FiltroAl.Date.ToShortDateString());
+            foreach (String s in _riepilogovm.totalizzatori.Dump())
+                riepilogoLogTb.Text += s + "\r\n";
         }
 
         void IRiepiloghiView.SetVModel(StatisticheVModel model)
@@ -411,8 +427,8 @@ namespace GestioneViaggi
 
         private void riepilogoFornitoriBs_CurrentChanged(object sender, EventArgs e)
         {
-            _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
-            riepilogoProdottiBs.ResetBindings(false);
+            //_riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
+            //riepilogoProdottiBs.ResetBindings(false);
         }
 
         private void riepilogoProdottiBs_CurrentChanged(object sender, EventArgs e)
@@ -428,6 +444,22 @@ namespace GestioneViaggi
         void _riepilogopr_RiepilogoDateRangeInvalidError(DateTime from, DateTime to)
         {
             MessageBox.Show("L'intervallo specificato NON è valido!", "Intervallo date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        void _riepilogopr_DatiInsufficientiError()
+        {
+            MessageBox.Show("Non sono stati individuati viaggi con i parametri impostati!", "Calcolo statistiche", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void pulisciLogBtn_Click(object sender, EventArgs e)
+        {
+            riepilogoLogTb.Text = "";
+        }
+
+        private void riepilogoFornitoreCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
+            riepilogoProdottiBs.ResetBindings(false);
         }
 
     }

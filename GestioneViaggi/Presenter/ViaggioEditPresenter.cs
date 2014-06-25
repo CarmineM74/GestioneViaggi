@@ -88,7 +88,8 @@ namespace GestioneViaggi.Presenter
             // per tutto il documento ci espone ad un grave problema.
             // Tutte le righe con Pesata < del Calo Peso avranno un Costo < 0!
             // Come ci regoliamo ?
-            riga.Costo = riga.Prodotto.Costo * (riga.Pesata - _vmodel.caloPeso);
+            riga.Costo = riga.Prodotto.Costo * riga.Pesata;
+            //riga.Pesata -= _vmodel.caloPeso;
         }
 
         private void ricalcolaCostiRighe()

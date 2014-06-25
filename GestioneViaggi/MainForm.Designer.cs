@@ -42,10 +42,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.listinoDg = new System.Windows.Forms.DataGridView();
-            this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.validoAlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listinoBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.eliminaFornitoreBtn = new System.Windows.Forms.Button();
@@ -90,6 +86,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.nuovoViaggioBtn = new System.Windows.Forms.Button();
             this.riepiloghiTp = new System.Windows.Forms.TabPage();
+            this.pulisciLogBtn = new System.Windows.Forms.Button();
+            this.riepilogoLogTb = new System.Windows.Forms.TextBox();
             this.riepilogoGeneraleBtn = new System.Windows.Forms.Button();
             this.riepilogoBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -111,6 +109,10 @@
             this.currentProdottoBs = new System.Windows.Forms.BindingSource(this.components);
             this.prodottoEp = new System.Windows.Forms.ErrorProvider(this.components);
             this.fornitoreEp = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Descrizione = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValidoDal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validoAlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FornitoriTabPage.SuspendLayout();
@@ -148,7 +150,7 @@
             this.fileToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(784, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(950, 24);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -176,7 +178,7 @@
             this.mainTabControl.Location = new System.Drawing.Point(0, 24);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(784, 538);
+            this.mainTabControl.Size = new System.Drawing.Size(950, 538);
             this.mainTabControl.TabIndex = 1;
             // 
             // FornitoriTabPage
@@ -187,7 +189,7 @@
             this.FornitoriTabPage.Location = new System.Drawing.Point(4, 22);
             this.FornitoriTabPage.Name = "FornitoriTabPage";
             this.FornitoriTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.FornitoriTabPage.Size = new System.Drawing.Size(776, 512);
+            this.FornitoriTabPage.Size = new System.Drawing.Size(942, 512);
             this.FornitoriTabPage.TabIndex = 0;
             this.FornitoriTabPage.Text = "Anagrafica Fornitori";
             this.FornitoriTabPage.UseVisualStyleBackColor = true;
@@ -203,7 +205,7 @@
             this.groupBox1.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "canEditListino", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.groupBox1.Location = new System.Drawing.Point(401, 118);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 386);
+            this.groupBox1.Size = new System.Drawing.Size(533, 386);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Listino prodotti";
@@ -226,7 +228,7 @@
             // eliminaProdottoBtn
             // 
             this.eliminaProdottoBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "canDeleteProdotto", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.eliminaProdottoBtn.Location = new System.Drawing.Point(283, 357);
+            this.eliminaProdottoBtn.Location = new System.Drawing.Point(452, 357);
             this.eliminaProdottoBtn.Name = "eliminaProdottoBtn";
             this.eliminaProdottoBtn.Size = new System.Drawing.Size(75, 23);
             this.eliminaProdottoBtn.TabIndex = 9;
@@ -276,38 +278,8 @@
             this.listinoDg.Name = "listinoDg";
             this.listinoDg.ReadOnly = true;
             this.listinoDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listinoDg.Size = new System.Drawing.Size(352, 289);
+            this.listinoDg.Size = new System.Drawing.Size(521, 289);
             this.listinoDg.TabIndex = 3;
-            // 
-            // Descrizione
-            // 
-            this.Descrizione.DataPropertyName = "Descrizione";
-            this.Descrizione.HeaderText = "Descrizione";
-            this.Descrizione.Name = "Descrizione";
-            this.Descrizione.ReadOnly = true;
-            // 
-            // ValidoDal
-            // 
-            this.ValidoDal.DataPropertyName = "ValidoDal";
-            this.ValidoDal.HeaderText = "Valido Dal";
-            this.ValidoDal.Name = "ValidoDal";
-            this.ValidoDal.ReadOnly = true;
-            this.ValidoDal.Width = 80;
-            // 
-            // validoAlDataGridViewTextBoxColumn
-            // 
-            this.validoAlDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
-            this.validoAlDataGridViewTextBoxColumn.HeaderText = "ValidoAl";
-            this.validoAlDataGridViewTextBoxColumn.Name = "validoAlDataGridViewTextBoxColumn";
-            this.validoAlDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Costo
-            // 
-            this.Costo.DataPropertyName = "Costo";
-            this.Costo.HeaderText = "Costo";
-            this.Costo.Name = "Costo";
-            this.Costo.ReadOnly = true;
-            this.Costo.Width = 60;
             // 
             // listinoBs
             // 
@@ -324,14 +296,15 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(401, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 106);
+            this.groupBox2.Size = new System.Drawing.Size(533, 106);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dettaglio fornitore";
             // 
             // eliminaFornitoreBtn
             // 
-            this.eliminaFornitoreBtn.Location = new System.Drawing.Point(283, 74);
+            this.eliminaFornitoreBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "isSelected", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.eliminaFornitoreBtn.Location = new System.Drawing.Point(452, 74);
             this.eliminaFornitoreBtn.Name = "eliminaFornitoreBtn";
             this.eliminaFornitoreBtn.Size = new System.Drawing.Size(75, 23);
             this.eliminaFornitoreBtn.TabIndex = 7;
@@ -341,6 +314,7 @@
             // 
             // salvaFornitoreBtn
             // 
+            this.salvaFornitoreBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "isSelected", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.salvaFornitoreBtn.Location = new System.Drawing.Point(102, 74);
             this.salvaFornitoreBtn.Name = "salvaFornitoreBtn";
             this.salvaFornitoreBtn.Size = new System.Drawing.Size(75, 23);
@@ -362,9 +336,10 @@
             // ragioneSocialeTb
             // 
             this.ragioneSocialeTb.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.anagraficaFornitoriVMBs, "RagioneSociale", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ragioneSocialeTb.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.anagraficaFornitoriVMBs, "isSelected", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ragioneSocialeTb.Location = new System.Drawing.Point(6, 32);
             this.ragioneSocialeTb.Name = "ragioneSocialeTb";
-            this.ragioneSocialeTb.Size = new System.Drawing.Size(352, 20);
+            this.ragioneSocialeTb.Size = new System.Drawing.Size(506, 20);
             this.ragioneSocialeTb.TabIndex = 2;
             // 
             // label2
@@ -446,9 +421,9 @@
             this.viaggiTabPage.Location = new System.Drawing.Point(4, 22);
             this.viaggiTabPage.Name = "viaggiTabPage";
             this.viaggiTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.viaggiTabPage.Size = new System.Drawing.Size(776, 512);
+            this.viaggiTabPage.Size = new System.Drawing.Size(942, 512);
             this.viaggiTabPage.TabIndex = 2;
-            this.viaggiTabPage.Text = "Storico viaggi";
+            this.viaggiTabPage.Text = "Viaggi";
             this.viaggiTabPage.UseVisualStyleBackColor = true;
             // 
             // elencoViaggiGb
@@ -456,7 +431,7 @@
             this.elencoViaggiGb.Controls.Add(this.elencoViaggiDg);
             this.elencoViaggiGb.Location = new System.Drawing.Point(8, 119);
             this.elencoViaggiGb.Name = "elencoViaggiGb";
-            this.elencoViaggiGb.Size = new System.Drawing.Size(760, 358);
+            this.elencoViaggiGb.Size = new System.Drawing.Size(926, 358);
             this.elencoViaggiGb.TabIndex = 5;
             this.elencoViaggiGb.TabStop = false;
             this.elencoViaggiGb.Text = "Elenco viaggi";
@@ -478,7 +453,7 @@
             this.elencoViaggiDg.Name = "elencoViaggiDg";
             this.elencoViaggiDg.ReadOnly = true;
             this.elencoViaggiDg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.elencoViaggiDg.Size = new System.Drawing.Size(746, 333);
+            this.elencoViaggiDg.Size = new System.Drawing.Size(914, 333);
             this.elencoViaggiDg.TabIndex = 1;
             this.elencoViaggiDg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elencoViaggiDg_CellClick);
             this.elencoViaggiDg.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.elencoViaggiDg_CellFormatting);
@@ -545,7 +520,7 @@
             // eliminaViaggioBtn
             // 
             this.eliminaViaggioBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.elencoViaggiVMBs, "isSelected", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.eliminaViaggioBtn.Location = new System.Drawing.Point(693, 483);
+            this.eliminaViaggioBtn.Location = new System.Drawing.Point(859, 483);
             this.eliminaViaggioBtn.Name = "eliminaViaggioBtn";
             this.eliminaViaggioBtn.Size = new System.Drawing.Size(75, 23);
             this.eliminaViaggioBtn.TabIndex = 3;
@@ -567,7 +542,7 @@
             this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Location = new System.Drawing.Point(8, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(760, 107);
+            this.groupBox5.Size = new System.Drawing.Size(926, 107);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Filtri";
@@ -581,7 +556,7 @@
             this.viaggiFiltroDatePnl.Controls.Add(this.dateTimePicker2);
             this.viaggiFiltroDatePnl.Controls.Add(this.dateTimePicker1);
             this.viaggiFiltroDatePnl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.elencoViaggiVMBs, "dataFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.viaggiFiltroDatePnl.Location = new System.Drawing.Point(410, 8);
+            this.viaggiFiltroDatePnl.Location = new System.Drawing.Point(576, 5);
             this.viaggiFiltroDatePnl.Name = "viaggiFiltroDatePnl";
             this.viaggiFiltroDatePnl.Size = new System.Drawing.Size(228, 85);
             this.viaggiFiltroDatePnl.TabIndex = 20;
@@ -666,7 +641,7 @@
             // 
             // viaggiRimuoviFiltroBtn
             // 
-            this.viaggiRimuoviFiltroBtn.Location = new System.Drawing.Point(660, 68);
+            this.viaggiRimuoviFiltroBtn.Location = new System.Drawing.Point(826, 65);
             this.viaggiRimuoviFiltroBtn.Name = "viaggiRimuoviFiltroBtn";
             this.viaggiRimuoviFiltroBtn.Size = new System.Drawing.Size(94, 23);
             this.viaggiRimuoviFiltroBtn.TabIndex = 18;
@@ -676,7 +651,7 @@
             // 
             // viaggiApplicaFiltroBtn
             // 
-            this.viaggiApplicaFiltroBtn.Location = new System.Drawing.Point(660, 29);
+            this.viaggiApplicaFiltroBtn.Location = new System.Drawing.Point(826, 26);
             this.viaggiApplicaFiltroBtn.Name = "viaggiApplicaFiltroBtn";
             this.viaggiApplicaFiltroBtn.Size = new System.Drawing.Size(94, 23);
             this.viaggiApplicaFiltroBtn.TabIndex = 17;
@@ -747,22 +722,44 @@
             // 
             // riepiloghiTp
             // 
+            this.riepiloghiTp.Controls.Add(this.pulisciLogBtn);
+            this.riepiloghiTp.Controls.Add(this.riepilogoLogTb);
             this.riepiloghiTp.Controls.Add(this.riepilogoGeneraleBtn);
             this.riepiloghiTp.Controls.Add(this.groupBox6);
             this.riepiloghiTp.Location = new System.Drawing.Point(4, 22);
             this.riepiloghiTp.Name = "riepiloghiTp";
             this.riepiloghiTp.Padding = new System.Windows.Forms.Padding(3);
-            this.riepiloghiTp.Size = new System.Drawing.Size(776, 512);
+            this.riepiloghiTp.Size = new System.Drawing.Size(942, 512);
             this.riepiloghiTp.TabIndex = 3;
             this.riepiloghiTp.Text = "Riepiloghi";
             this.riepiloghiTp.UseVisualStyleBackColor = true;
+            // 
+            // pulisciLogBtn
+            // 
+            this.pulisciLogBtn.Location = new System.Drawing.Point(6, 486);
+            this.pulisciLogBtn.Name = "pulisciLogBtn";
+            this.pulisciLogBtn.Size = new System.Drawing.Size(75, 23);
+            this.pulisciLogBtn.TabIndex = 6;
+            this.pulisciLogBtn.Text = "Pulisci Log";
+            this.pulisciLogBtn.UseVisualStyleBackColor = true;
+            this.pulisciLogBtn.Click += new System.EventHandler(this.pulisciLogBtn_Click);
+            // 
+            // riepilogoLogTb
+            // 
+            this.riepilogoLogTb.Location = new System.Drawing.Point(6, 169);
+            this.riepilogoLogTb.Multiline = true;
+            this.riepilogoLogTb.Name = "riepilogoLogTb";
+            this.riepilogoLogTb.ReadOnly = true;
+            this.riepilogoLogTb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.riepilogoLogTb.Size = new System.Drawing.Size(928, 314);
+            this.riepilogoLogTb.TabIndex = 5;
             // 
             // riepilogoGeneraleBtn
             // 
             this.riepilogoGeneraleBtn.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.riepilogoBs, "RiepilogoGeneraleBtnEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.riepilogoGeneraleBtn.Location = new System.Drawing.Point(6, 119);
             this.riepilogoGeneraleBtn.Name = "riepilogoGeneraleBtn";
-            this.riepilogoGeneraleBtn.Size = new System.Drawing.Size(760, 35);
+            this.riepilogoGeneraleBtn.Size = new System.Drawing.Size(928, 35);
             this.riepilogoGeneraleBtn.TabIndex = 4;
             this.riepilogoGeneraleBtn.Text = "Riepilogo generale";
             this.riepilogoGeneraleBtn.UseVisualStyleBackColor = true;
@@ -781,7 +778,7 @@
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(760, 107);
+            this.groupBox6.Size = new System.Drawing.Size(928, 107);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Filtri";
@@ -827,6 +824,7 @@
             this.riepilogoFornitoreCb.Size = new System.Drawing.Size(263, 21);
             this.riepilogoFornitoreCb.TabIndex = 21;
             this.riepilogoFornitoreCb.ValueMember = "Id";
+            this.riepilogoFornitoreCb.SelectedIndexChanged += new System.EventHandler(this.riepilogoFornitoreCb_SelectedIndexChanged);
             // 
             // riepilogoFornitoriBs
             // 
@@ -843,7 +841,7 @@
             this.riepiloghiDatePnl.Controls.Add(this.riepilogoAlDtp);
             this.riepiloghiDatePnl.Controls.Add(this.riepilogoDalDtp);
             this.riepiloghiDatePnl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.riepilogoBs, "RiepilogoDateFilterEnabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.riepiloghiDatePnl.Location = new System.Drawing.Point(526, 16);
+            this.riepiloghiDatePnl.Location = new System.Drawing.Point(694, 16);
             this.riepiloghiDatePnl.Name = "riepiloghiDatePnl";
             this.riepiloghiDatePnl.Size = new System.Drawing.Size(228, 85);
             this.riepiloghiDatePnl.TabIndex = 20;
@@ -946,11 +944,42 @@
             this.fornitoreEp.ContainerControl = this;
             this.fornitoreEp.DataSource = this.anagraficaFornitoriVMBs;
             // 
+            // Descrizione
+            // 
+            this.Descrizione.DataPropertyName = "Descrizione";
+            this.Descrizione.HeaderText = "Descrizione";
+            this.Descrizione.Name = "Descrizione";
+            this.Descrizione.ReadOnly = true;
+            this.Descrizione.Width = 250;
+            // 
+            // ValidoDal
+            // 
+            this.ValidoDal.DataPropertyName = "ValidoDal";
+            this.ValidoDal.HeaderText = "Valido Dal";
+            this.ValidoDal.Name = "ValidoDal";
+            this.ValidoDal.ReadOnly = true;
+            this.ValidoDal.Width = 80;
+            // 
+            // validoAlDataGridViewTextBoxColumn
+            // 
+            this.validoAlDataGridViewTextBoxColumn.DataPropertyName = "ValidoAl";
+            this.validoAlDataGridViewTextBoxColumn.HeaderText = "ValidoAl";
+            this.validoAlDataGridViewTextBoxColumn.Name = "validoAlDataGridViewTextBoxColumn";
+            this.validoAlDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Costo
+            // 
+            this.Costo.DataPropertyName = "Costo";
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            this.Costo.ReadOnly = true;
+            this.Costo.Width = 60;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(950, 562);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.mainMenuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -985,6 +1014,7 @@
             this.viaggiFiltroDatePnl.ResumeLayout(false);
             this.viaggiFiltroDatePnl.PerformLayout();
             this.riepiloghiTp.ResumeLayout(false);
+            this.riepiloghiTp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.riepilogoBs)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -1078,15 +1108,17 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView listinoDg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descrizione;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn validoAlDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
         private System.Windows.Forms.ComboBox riepilogoProdottoCb;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.BindingSource riepilogoBs;
         private System.Windows.Forms.BindingSource riepilogoFornitoriBs;
         private System.Windows.Forms.BindingSource riepilogoProdottiBs;
+        private System.Windows.Forms.TextBox riepilogoLogTb;
+        private System.Windows.Forms.Button pulisciLogBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrizione;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValidoDal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validoAlDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
     }
 }
 

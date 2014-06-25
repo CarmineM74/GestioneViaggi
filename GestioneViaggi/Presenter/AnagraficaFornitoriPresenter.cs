@@ -94,6 +94,7 @@ namespace GestioneViaggi.Presenter
             else
             {
                 FornitoreService.Delete(fornitore);
+                _vmodel.current = null;
                 refreshFornitori();
             }
         }
