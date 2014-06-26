@@ -104,7 +104,6 @@ namespace GestioneViaggi.ViewModel
             _CostoViaggioMax = -1;
             PesoViaggioMedio = 0;
             CostoViaggioMedio = 0;
-            // Media prezzo del periodo
             CostoMedioPeso = 0;
             CaloPesoMedio = 0;
             ViaggiMeseAc = new List<int>();
@@ -125,6 +124,7 @@ namespace GestioneViaggi.ViewModel
                 res.Add(String.Format("Costo massimo viaggio rilevato: {0}", CostoViaggioMax));
                 res.Add(String.Format("Costo medio viaggio rilevato: {0}", CostoViaggioMedio));
                 res.Add(String.Format("Totale peso: {0}", TotalePeso));
+                res.Add(String.Format("Totale costo/ Totale peso rilevato: {0}", CostoMedioPeso));
                 res.Add(String.Format("Peso minimo viaggio rilevato: {0}", PesoViaggioMin));
                 res.Add(String.Format("Peso massimo viaggio rilevato: {0}", PesoViaggioMax));
                 res.Add(String.Format("Peso medio viaggio rilevato: {0}", PesoViaggioMedio));
@@ -158,7 +158,7 @@ namespace GestioneViaggi.ViewModel
             t.CostoViaggioMedio += totaleCosto;
             t.CostoViaggioMin = totaleCosto;
             t.CostoViaggioMax = totaleCosto;
-            t.CostoMedioPeso = totaleCosto;
+            t.CostoMedioPeso += totaleCosto;
             t.CaloPesoMedio += v.CaloPeso;
             return t;
         }
