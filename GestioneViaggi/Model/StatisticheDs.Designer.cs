@@ -26,12 +26,6 @@ namespace GestioneViaggi.Model {
         
         private TotalizzatoriDataTable tableTotalizzatori;
         
-        private ViaggiDataTable tableViaggi;
-        
-        private RigheDataTable tableRighe;
-        
-        private global::System.Data.DataRelation relationViaggi_Righe;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -63,12 +57,6 @@ namespace GestioneViaggi.Model {
                 if ((ds.Tables["Totalizzatori"] != null)) {
                     base.Tables.Add(new TotalizzatoriDataTable(ds.Tables["Totalizzatori"]));
                 }
-                if ((ds.Tables["Viaggi"] != null)) {
-                    base.Tables.Add(new ViaggiDataTable(ds.Tables["Viaggi"]));
-                }
-                if ((ds.Tables["Righe"] != null)) {
-                    base.Tables.Add(new RigheDataTable(ds.Tables["Righe"]));
-                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -94,26 +82,6 @@ namespace GestioneViaggi.Model {
         public TotalizzatoriDataTable Totalizzatori {
             get {
                 return this.tableTotalizzatori;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ViaggiDataTable Viaggi {
-            get {
-                return this.tableViaggi;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RigheDataTable Righe {
-            get {
-                return this.tableRighe;
             }
         }
         
@@ -187,12 +155,6 @@ namespace GestioneViaggi.Model {
                 if ((ds.Tables["Totalizzatori"] != null)) {
                     base.Tables.Add(new TotalizzatoriDataTable(ds.Tables["Totalizzatori"]));
                 }
-                if ((ds.Tables["Viaggi"] != null)) {
-                    base.Tables.Add(new ViaggiDataTable(ds.Tables["Viaggi"]));
-                }
-                if ((ds.Tables["Righe"] != null)) {
-                    base.Tables.Add(new RigheDataTable(ds.Tables["Righe"]));
-                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -232,19 +194,6 @@ namespace GestioneViaggi.Model {
                     this.tableTotalizzatori.InitVars();
                 }
             }
-            this.tableViaggi = ((ViaggiDataTable)(base.Tables["Viaggi"]));
-            if ((initTable == true)) {
-                if ((this.tableViaggi != null)) {
-                    this.tableViaggi.InitVars();
-                }
-            }
-            this.tableRighe = ((RigheDataTable)(base.Tables["Righe"]));
-            if ((initTable == true)) {
-                if ((this.tableRighe != null)) {
-                    this.tableRighe.InitVars();
-                }
-            }
-            this.relationViaggi_Righe = this.Relations["Viaggi_Righe"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -257,31 +206,11 @@ namespace GestioneViaggi.Model {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableTotalizzatori = new TotalizzatoriDataTable();
             base.Tables.Add(this.tableTotalizzatori);
-            this.tableViaggi = new ViaggiDataTable();
-            base.Tables.Add(this.tableViaggi);
-            this.tableRighe = new RigheDataTable();
-            base.Tables.Add(this.tableRighe);
-            this.relationViaggi_Righe = new global::System.Data.DataRelation("Viaggi_Righe", new global::System.Data.DataColumn[] {
-                        this.tableViaggi.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRighe.ViaggioIdColumn}, false);
-            this.Relations.Add(this.relationViaggi_Righe);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeTotalizzatori() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeViaggi() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeRighe() {
             return false;
         }
         
@@ -343,12 +272,6 @@ namespace GestioneViaggi.Model {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void TotalizzatoriRowChangeEventHandler(object sender, TotalizzatoriRowChangeEvent e);
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ViaggiRowChangeEventHandler(object sender, ViaggiRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void RigheRowChangeEventHandler(object sender, RigheRowChangeEvent e);
-        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
@@ -366,17 +289,25 @@ namespace GestioneViaggi.Model {
             
             private global::System.Data.DataColumn columnPesoViaggioMax;
             
+            private global::System.Data.DataColumn columnPesoViaggioMedio;
+            
             private global::System.Data.DataColumn columnCostoViaggioMin;
             
             private global::System.Data.DataColumn columnCostoViaggioMax;
             
-            private global::System.Data.DataColumn columnCaloPesoMin;
-            
-            private global::System.Data.DataColumn columnCaloPesoMax;
-            
-            private global::System.Data.DataColumn columnPesoViaggioMedio;
-            
             private global::System.Data.DataColumn columnCostoViaggioMedio;
+            
+            private global::System.Data.DataColumn columnCostoMedioPeso;
+            
+            private global::System.Data.DataColumn columnCaloPesoMedio;
+            
+            private global::System.Data.DataColumn columnRagioneSociale;
+            
+            private global::System.Data.DataColumn columnDescrizioneProdotto;
+            
+            private global::System.Data.DataColumn columnDal;
+            
+            private global::System.Data.DataColumn columnAl;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -453,6 +384,14 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PesoViaggioMedioColumn {
+                get {
+                    return this.columnPesoViaggioMedio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn CostoViaggioMinColumn {
                 get {
                     return this.columnCostoViaggioMin;
@@ -469,33 +408,57 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CaloPesoMinColumn {
-                get {
-                    return this.columnCaloPesoMin;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CaloPesoMaxColumn {
-                get {
-                    return this.columnCaloPesoMax;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PesoViaggioMedioColumn {
-                get {
-                    return this.columnPesoViaggioMedio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn CostoViaggioMedioColumn {
                 get {
                     return this.columnCostoViaggioMedio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CostoMedioPesoColumn {
+                get {
+                    return this.columnCostoMedioPeso;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CaloPesoMedioColumn {
+                get {
+                    return this.columnCaloPesoMedio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RagioneSocialeColumn {
+                get {
+                    return this.columnRagioneSociale;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescrizioneProdottoColumn {
+                get {
+                    return this.columnDescrizioneProdotto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DalColumn {
+                get {
+                    return this.columnDal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AlColumn {
+                get {
+                    return this.columnAl;
                 }
             }
             
@@ -536,7 +499,7 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TotalizzatoriRow AddTotalizzatoriRow(int NumeroViaggi, decimal TotalePeso, decimal TotaleCosto, decimal PesoViaggioMin, decimal PesoViaggioMax, decimal CostoViaggioMin, decimal CostoViaggioMax, decimal CaloPesoMin, decimal CaloPesoMax, decimal PesoViaggioMedio, decimal CostoViaggioMedio) {
+            public TotalizzatoriRow AddTotalizzatoriRow(int NumeroViaggi, decimal TotalePeso, decimal TotaleCosto, decimal PesoViaggioMin, decimal PesoViaggioMax, decimal PesoViaggioMedio, decimal CostoViaggioMin, decimal CostoViaggioMax, decimal CostoViaggioMedio, decimal CostoMedioPeso, decimal CaloPesoMedio, string RagioneSociale, string DescrizioneProdotto, System.DateTime Dal, System.DateTime Al) {
                 TotalizzatoriRow rowTotalizzatoriRow = ((TotalizzatoriRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NumeroViaggi,
@@ -544,12 +507,16 @@ namespace GestioneViaggi.Model {
                         TotaleCosto,
                         PesoViaggioMin,
                         PesoViaggioMax,
+                        PesoViaggioMedio,
                         CostoViaggioMin,
                         CostoViaggioMax,
-                        CaloPesoMin,
-                        CaloPesoMax,
-                        PesoViaggioMedio,
-                        CostoViaggioMedio};
+                        CostoViaggioMedio,
+                        CostoMedioPeso,
+                        CaloPesoMedio,
+                        RagioneSociale,
+                        DescrizioneProdotto,
+                        Dal,
+                        Al};
                 rowTotalizzatoriRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTotalizzatoriRow);
                 return rowTotalizzatoriRow;
@@ -577,12 +544,16 @@ namespace GestioneViaggi.Model {
                 this.columnTotaleCosto = base.Columns["TotaleCosto"];
                 this.columnPesoViaggioMin = base.Columns["PesoViaggioMin"];
                 this.columnPesoViaggioMax = base.Columns["PesoViaggioMax"];
+                this.columnPesoViaggioMedio = base.Columns["PesoViaggioMedio"];
                 this.columnCostoViaggioMin = base.Columns["CostoViaggioMin"];
                 this.columnCostoViaggioMax = base.Columns["CostoViaggioMax"];
-                this.columnCaloPesoMin = base.Columns["CaloPesoMin"];
-                this.columnCaloPesoMax = base.Columns["CaloPesoMax"];
-                this.columnPesoViaggioMedio = base.Columns["PesoViaggioMedio"];
                 this.columnCostoViaggioMedio = base.Columns["CostoViaggioMedio"];
+                this.columnCostoMedioPeso = base.Columns["CostoMedioPeso"];
+                this.columnCaloPesoMedio = base.Columns["CaloPesoMedio"];
+                this.columnRagioneSociale = base.Columns["RagioneSociale"];
+                this.columnDescrizioneProdotto = base.Columns["DescrizioneProdotto"];
+                this.columnDal = base.Columns["Dal"];
+                this.columnAl = base.Columns["Al"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -598,18 +569,26 @@ namespace GestioneViaggi.Model {
                 base.Columns.Add(this.columnPesoViaggioMin);
                 this.columnPesoViaggioMax = new global::System.Data.DataColumn("PesoViaggioMax", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPesoViaggioMax);
+                this.columnPesoViaggioMedio = new global::System.Data.DataColumn("PesoViaggioMedio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPesoViaggioMedio);
                 this.columnCostoViaggioMin = new global::System.Data.DataColumn("CostoViaggioMin", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCostoViaggioMin);
                 this.columnCostoViaggioMax = new global::System.Data.DataColumn("CostoViaggioMax", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCostoViaggioMax);
-                this.columnCaloPesoMin = new global::System.Data.DataColumn("CaloPesoMin", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCaloPesoMin);
-                this.columnCaloPesoMax = new global::System.Data.DataColumn("CaloPesoMax", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCaloPesoMax);
-                this.columnPesoViaggioMedio = new global::System.Data.DataColumn("PesoViaggioMedio", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPesoViaggioMedio);
                 this.columnCostoViaggioMedio = new global::System.Data.DataColumn("CostoViaggioMedio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCostoViaggioMedio);
+                this.columnCostoMedioPeso = new global::System.Data.DataColumn("CostoMedioPeso", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCostoMedioPeso);
+                this.columnCaloPesoMedio = new global::System.Data.DataColumn("CaloPesoMedio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCaloPesoMedio);
+                this.columnRagioneSociale = new global::System.Data.DataColumn("RagioneSociale", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRagioneSociale);
+                this.columnDescrizioneProdotto = new global::System.Data.DataColumn("DescrizioneProdotto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescrizioneProdotto);
+                this.columnDal = new global::System.Data.DataColumn("Dal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDal);
+                this.columnAl = new global::System.Data.DataColumn("Al", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAl);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -696,663 +675,6 @@ namespace GestioneViaggi.Model {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "TotalizzatoriDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ViaggiDataTable : global::System.Data.TypedTableBase<ViaggiRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnData;
-            
-            private global::System.Data.DataColumn columnFornitore;
-            
-            private global::System.Data.DataColumn columnConducente;
-            
-            private global::System.Data.DataColumn columnTargaAutomezzo;
-            
-            private global::System.Data.DataColumn columnTotalePesoViaggio;
-            
-            private global::System.Data.DataColumn columnTotaleCostoViaggio;
-            
-            private global::System.Data.DataColumn columnCaloPeso;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiDataTable() {
-                this.TableName = "Viaggi";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ViaggiDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ViaggiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DataColumn {
-                get {
-                    return this.columnData;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FornitoreColumn {
-                get {
-                    return this.columnFornitore;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ConducenteColumn {
-                get {
-                    return this.columnConducente;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TargaAutomezzoColumn {
-                get {
-                    return this.columnTargaAutomezzo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalePesoViaggioColumn {
-                get {
-                    return this.columnTotalePesoViaggio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotaleCostoViaggioColumn {
-                get {
-                    return this.columnTotaleCostoViaggio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CaloPesoColumn {
-                get {
-                    return this.columnCaloPeso;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiRow this[int index] {
-                get {
-                    return ((ViaggiRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ViaggiRowChangeEventHandler ViaggiRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ViaggiRowChangeEventHandler ViaggiRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ViaggiRowChangeEventHandler ViaggiRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ViaggiRowChangeEventHandler ViaggiRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddViaggiRow(ViaggiRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiRow AddViaggiRow(int Id, System.DateTime Data, string Fornitore, string Conducente, string TargaAutomezzo, decimal TotalePesoViaggio, decimal TotaleCostoViaggio, decimal CaloPeso) {
-                ViaggiRow rowViaggiRow = ((ViaggiRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Id,
-                        Data,
-                        Fornitore,
-                        Conducente,
-                        TargaAutomezzo,
-                        TotalePesoViaggio,
-                        TotaleCostoViaggio,
-                        CaloPeso};
-                rowViaggiRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowViaggiRow);
-                return rowViaggiRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ViaggiDataTable cln = ((ViaggiDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ViaggiDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnData = base.Columns["Data"];
-                this.columnFornitore = base.Columns["Fornitore"];
-                this.columnConducente = base.Columns["Conducente"];
-                this.columnTargaAutomezzo = base.Columns["TargaAutomezzo"];
-                this.columnTotalePesoViaggio = base.Columns["TotalePesoViaggio"];
-                this.columnTotaleCostoViaggio = base.Columns["TotaleCostoViaggio"];
-                this.columnCaloPeso = base.Columns["CaloPeso"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnData = new global::System.Data.DataColumn("Data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnData);
-                this.columnFornitore = new global::System.Data.DataColumn("Fornitore", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFornitore);
-                this.columnConducente = new global::System.Data.DataColumn("Conducente", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnConducente);
-                this.columnTargaAutomezzo = new global::System.Data.DataColumn("TargaAutomezzo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTargaAutomezzo);
-                this.columnTotalePesoViaggio = new global::System.Data.DataColumn("TotalePesoViaggio", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalePesoViaggio);
-                this.columnTotaleCostoViaggio = new global::System.Data.DataColumn("TotaleCostoViaggio", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotaleCostoViaggio);
-                this.columnCaloPeso = new global::System.Data.DataColumn("CaloPeso", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCaloPeso);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, false));
-                this.columnId.Unique = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiRow NewViaggiRow() {
-                return ((ViaggiRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ViaggiRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ViaggiRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ViaggiRowChanged != null)) {
-                    this.ViaggiRowChanged(this, new ViaggiRowChangeEvent(((ViaggiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ViaggiRowChanging != null)) {
-                    this.ViaggiRowChanging(this, new ViaggiRowChangeEvent(((ViaggiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ViaggiRowDeleted != null)) {
-                    this.ViaggiRowDeleted(this, new ViaggiRowChangeEvent(((ViaggiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ViaggiRowDeleting != null)) {
-                    this.ViaggiRowDeleting(this, new ViaggiRowChangeEvent(((ViaggiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveViaggiRow(ViaggiRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                StatisticheDs ds = new StatisticheDs();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ViaggiDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RigheDataTable : global::System.Data.TypedTableBase<RigheRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnViaggioId;
-            
-            private global::System.Data.DataColumn columnProdotto;
-            
-            private global::System.Data.DataColumn columnPesata;
-            
-            private global::System.Data.DataColumn columnCosto;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheDataTable() {
-                this.TableName = "Righe";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RigheDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected RigheDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ViaggioIdColumn {
-                get {
-                    return this.columnViaggioId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ProdottoColumn {
-                get {
-                    return this.columnProdotto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PesataColumn {
-                get {
-                    return this.columnPesata;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CostoColumn {
-                get {
-                    return this.columnCosto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheRow this[int index] {
-                get {
-                    return ((RigheRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RigheRowChangeEventHandler RigheRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RigheRowChangeEventHandler RigheRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RigheRowChangeEventHandler RigheRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RigheRowChangeEventHandler RigheRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddRigheRow(RigheRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheRow AddRigheRow(int Id, ViaggiRow parentViaggiRowByViaggi_Righe, string Prodotto, decimal Pesata, decimal Costo) {
-                RigheRow rowRigheRow = ((RigheRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Id,
-                        null,
-                        Prodotto,
-                        Pesata,
-                        Costo};
-                if ((parentViaggiRowByViaggi_Righe != null)) {
-                    columnValuesArray[1] = parentViaggiRowByViaggi_Righe[0];
-                }
-                rowRigheRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRigheRow);
-                return rowRigheRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                RigheDataTable cln = ((RigheDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new RigheDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnViaggioId = base.Columns["ViaggioId"];
-                this.columnProdotto = base.Columns["Prodotto"];
-                this.columnPesata = base.Columns["Pesata"];
-                this.columnCosto = base.Columns["Costo"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnViaggioId = new global::System.Data.DataColumn("ViaggioId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnViaggioId);
-                this.columnProdotto = new global::System.Data.DataColumn("Prodotto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProdotto);
-                this.columnPesata = new global::System.Data.DataColumn("Pesata", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPesata);
-                this.columnCosto = new global::System.Data.DataColumn("Costo", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCosto);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, false));
-                this.columnId.Unique = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheRow NewRigheRow() {
-                return ((RigheRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RigheRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(RigheRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.RigheRowChanged != null)) {
-                    this.RigheRowChanged(this, new RigheRowChangeEvent(((RigheRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.RigheRowChanging != null)) {
-                    this.RigheRowChanging(this, new RigheRowChangeEvent(((RigheRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.RigheRowDeleted != null)) {
-                    this.RigheRowDeleted(this, new RigheRowChangeEvent(((RigheRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.RigheRowDeleting != null)) {
-                    this.RigheRowDeleting(this, new RigheRowChangeEvent(((RigheRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveRigheRow(RigheRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                StatisticheDs ds = new StatisticheDs();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RigheDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1489,6 +811,22 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal PesoViaggioMedio {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableTotalizzatori.PesoViaggioMedioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PesoViaggioMedio\' in table \'Totalizzatori\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotalizzatori.PesoViaggioMedioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal CostoViaggioMin {
                 get {
                     try {
@@ -1521,54 +859,6 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CaloPesoMin {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableTotalizzatori.CaloPesoMinColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CaloPesoMin\' in table \'Totalizzatori\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTotalizzatori.CaloPesoMinColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CaloPesoMax {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableTotalizzatori.CaloPesoMaxColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CaloPesoMax\' in table \'Totalizzatori\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTotalizzatori.CaloPesoMaxColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal PesoViaggioMedio {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableTotalizzatori.PesoViaggioMedioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PesoViaggioMedio\' in table \'Totalizzatori\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTotalizzatori.PesoViaggioMedioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal CostoViaggioMedio {
                 get {
                     try {
@@ -1580,6 +870,102 @@ namespace GestioneViaggi.Model {
                 }
                 set {
                     this[this.tableTotalizzatori.CostoViaggioMedioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal CostoMedioPeso {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableTotalizzatori.CostoMedioPesoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CostoMedioPeso\' in table \'Totalizzatori\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotalizzatori.CostoMedioPesoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal CaloPesoMedio {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableTotalizzatori.CaloPesoMedioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CaloPesoMedio\' in table \'Totalizzatori\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotalizzatori.CaloPesoMedioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RagioneSociale {
+                get {
+                    try {
+                        return ((string)(this[this.tableTotalizzatori.RagioneSocialeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RagioneSociale\' in table \'Totalizzatori\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotalizzatori.RagioneSocialeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DescrizioneProdotto {
+                get {
+                    try {
+                        return ((string)(this[this.tableTotalizzatori.DescrizioneProdottoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DescrizioneProdotto\' in table \'Totalizzatori\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotalizzatori.DescrizioneProdottoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Dal {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableTotalizzatori.DalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Dal\' in table \'Totalizzatori\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotalizzatori.DalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Al {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableTotalizzatori.AlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Al\' in table \'Totalizzatori\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTotalizzatori.AlColumn] = value;
                 }
             }
             
@@ -1645,6 +1031,18 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPesoViaggioMedioNull() {
+                return this.IsNull(this.tableTotalizzatori.PesoViaggioMedioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPesoViaggioMedioNull() {
+                this[this.tableTotalizzatori.PesoViaggioMedioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCostoViaggioMinNull() {
                 return this.IsNull(this.tableTotalizzatori.CostoViaggioMinColumn);
             }
@@ -1669,42 +1067,6 @@ namespace GestioneViaggi.Model {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCaloPesoMinNull() {
-                return this.IsNull(this.tableTotalizzatori.CaloPesoMinColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCaloPesoMinNull() {
-                this[this.tableTotalizzatori.CaloPesoMinColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCaloPesoMaxNull() {
-                return this.IsNull(this.tableTotalizzatori.CaloPesoMaxColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCaloPesoMaxNull() {
-                this[this.tableTotalizzatori.CaloPesoMaxColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPesoViaggioMedioNull() {
-                return this.IsNull(this.tableTotalizzatori.PesoViaggioMedioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPesoViaggioMedioNull() {
-                this[this.tableTotalizzatori.PesoViaggioMedioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCostoViaggioMedioNull() {
                 return this.IsNull(this.tableTotalizzatori.CostoViaggioMedioColumn);
             }
@@ -1714,421 +1076,77 @@ namespace GestioneViaggi.Model {
             public void SetCostoViaggioMedioNull() {
                 this[this.tableTotalizzatori.CostoViaggioMedioColumn] = global::System.Convert.DBNull;
             }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ViaggiRow : global::System.Data.DataRow {
-            
-            private ViaggiDataTable tableViaggi;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ViaggiRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableViaggi = ((ViaggiDataTable)(this.Table));
+            public bool IsCostoMedioPesoNull() {
+                return this.IsNull(this.tableTotalizzatori.CostoMedioPesoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id {
-                get {
-                    try {
-                        return ((int)(this[this.tableViaggi.IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.IdColumn] = value;
-                }
+            public void SetCostoMedioPesoNull() {
+                this[this.tableTotalizzatori.CostoMedioPesoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime Data {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableViaggi.DataColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Data\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.DataColumn] = value;
-                }
+            public bool IsCaloPesoMedioNull() {
+                return this.IsNull(this.tableTotalizzatori.CaloPesoMedioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Fornitore {
-                get {
-                    try {
-                        return ((string)(this[this.tableViaggi.FornitoreColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Fornitore\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.FornitoreColumn] = value;
-                }
+            public void SetCaloPesoMedioNull() {
+                this[this.tableTotalizzatori.CaloPesoMedioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Conducente {
-                get {
-                    try {
-                        return ((string)(this[this.tableViaggi.ConducenteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Conducente\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.ConducenteColumn] = value;
-                }
+            public bool IsRagioneSocialeNull() {
+                return this.IsNull(this.tableTotalizzatori.RagioneSocialeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TargaAutomezzo {
-                get {
-                    try {
-                        return ((string)(this[this.tableViaggi.TargaAutomezzoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TargaAutomezzo\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.TargaAutomezzoColumn] = value;
-                }
+            public void SetRagioneSocialeNull() {
+                this[this.tableTotalizzatori.RagioneSocialeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotalePesoViaggio {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableViaggi.TotalePesoViaggioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalePesoViaggio\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.TotalePesoViaggioColumn] = value;
-                }
+            public bool IsDescrizioneProdottoNull() {
+                return this.IsNull(this.tableTotalizzatori.DescrizioneProdottoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotaleCostoViaggio {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableViaggi.TotaleCostoViaggioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotaleCostoViaggio\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.TotaleCostoViaggioColumn] = value;
-                }
+            public void SetDescrizioneProdottoNull() {
+                this[this.tableTotalizzatori.DescrizioneProdottoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal CaloPeso {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableViaggi.CaloPesoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CaloPeso\' in table \'Viaggi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableViaggi.CaloPesoColumn] = value;
-                }
+            public bool IsDalNull() {
+                return this.IsNull(this.tableTotalizzatori.DalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableViaggi.IdColumn);
+            public void SetDalNull() {
+                this[this.tableTotalizzatori.DalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableViaggi.IdColumn] = global::System.Convert.DBNull;
+            public bool IsAlNull() {
+                return this.IsNull(this.tableTotalizzatori.AlColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDataNull() {
-                return this.IsNull(this.tableViaggi.DataColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDataNull() {
-                this[this.tableViaggi.DataColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFornitoreNull() {
-                return this.IsNull(this.tableViaggi.FornitoreColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFornitoreNull() {
-                this[this.tableViaggi.FornitoreColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsConducenteNull() {
-                return this.IsNull(this.tableViaggi.ConducenteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetConducenteNull() {
-                this[this.tableViaggi.ConducenteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTargaAutomezzoNull() {
-                return this.IsNull(this.tableViaggi.TargaAutomezzoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTargaAutomezzoNull() {
-                this[this.tableViaggi.TargaAutomezzoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalePesoViaggioNull() {
-                return this.IsNull(this.tableViaggi.TotalePesoViaggioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalePesoViaggioNull() {
-                this[this.tableViaggi.TotalePesoViaggioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotaleCostoViaggioNull() {
-                return this.IsNull(this.tableViaggi.TotaleCostoViaggioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotaleCostoViaggioNull() {
-                this[this.tableViaggi.TotaleCostoViaggioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCaloPesoNull() {
-                return this.IsNull(this.tableViaggi.CaloPesoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCaloPesoNull() {
-                this[this.tableViaggi.CaloPesoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheRow[] GetRigheRows() {
-                if ((this.Table.ChildRelations["Viaggi_Righe"] == null)) {
-                    return new RigheRow[0];
-                }
-                else {
-                    return ((RigheRow[])(base.GetChildRows(this.Table.ChildRelations["Viaggi_Righe"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class RigheRow : global::System.Data.DataRow {
-            
-            private RigheDataTable tableRighe;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RigheRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableRighe = ((RigheDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id {
-                get {
-                    try {
-                        return ((int)(this[this.tableRighe.IdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Id\' in table \'Righe\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRighe.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ViaggioId {
-                get {
-                    try {
-                        return ((int)(this[this.tableRighe.ViaggioIdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ViaggioId\' in table \'Righe\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRighe.ViaggioIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Prodotto {
-                get {
-                    try {
-                        return ((string)(this[this.tableRighe.ProdottoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Prodotto\' in table \'Righe\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRighe.ProdottoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Pesata {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableRighe.PesataColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Pesata\' in table \'Righe\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRighe.PesataColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Costo {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableRighe.CostoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Costo\' in table \'Righe\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRighe.CostoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiRow ViaggiRow {
-                get {
-                    return ((ViaggiRow)(this.GetParentRow(this.Table.ParentRelations["Viaggi_Righe"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Viaggi_Righe"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdNull() {
-                return this.IsNull(this.tableRighe.IdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdNull() {
-                this[this.tableRighe.IdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsViaggioIdNull() {
-                return this.IsNull(this.tableRighe.ViaggioIdColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetViaggioIdNull() {
-                this[this.tableRighe.ViaggioIdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsProdottoNull() {
-                return this.IsNull(this.tableRighe.ProdottoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetProdottoNull() {
-                this[this.tableRighe.ProdottoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPesataNull() {
-                return this.IsNull(this.tableRighe.PesataColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPesataNull() {
-                this[this.tableRighe.PesataColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCostoNull() {
-                return this.IsNull(this.tableRighe.CostoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCostoNull() {
-                this[this.tableRighe.CostoColumn] = global::System.Convert.DBNull;
+            public void SetAlNull() {
+                this[this.tableTotalizzatori.AlColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2152,74 +1170,6 @@ namespace GestioneViaggi.Model {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TotalizzatoriRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ViaggiRowChangeEvent : global::System.EventArgs {
-            
-            private ViaggiRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiRowChangeEvent(ViaggiRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ViaggiRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class RigheRowChangeEvent : global::System.EventArgs {
-            
-            private RigheRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheRowChangeEvent(RigheRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RigheRow Row {
                 get {
                     return this.eventRow;
                 }

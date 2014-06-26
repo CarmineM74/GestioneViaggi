@@ -17,6 +17,8 @@ using GestioneViaggi.Model;
 using GestioneViaggi.View;
 using GestioneViaggi.Presenter;
 using GestioneViaggi.ViewModel;
+using CrystalDecisions.CrystalReports.Engine;
+using GestioneViaggi.Reports;
 
 namespace GestioneViaggi
 {
@@ -430,6 +432,14 @@ namespace GestioneViaggi
             riepilogoLogTb.Text += String.Format("Riepilogo per il fornitore: {0} e prodotto: {1} Dal {2} Al {3}\r\n", _riepilogovm.fornitore.RagioneSociale, _riepilogovm.prodotto.Descrizione, _riepilogovm.FiltroDal.Date.ToShortDateString(), _riepilogovm.FiltroAl.Date.ToShortDateString());
             foreach (String s in _riepilogovm.totalizzatori.Dump())
                 riepilogoLogTb.Text += s + "\r\n";
+            ReportDocument rpt = new ReportDocument();
+            rpt.Load(@".\Reports\RiepilogoGeneraleReport.rpt");
+            rpt.SetDataSource(_riepilogovm.dataset);
+            using (ReportViewer rviewer = new ReportViewer())
+            {
+                rviewer.SetReport(rpt);
+                rviewer.ShowDialog();
+            }
         }
 
         void IRiepiloghiView.SetVModel(StatisticheVModel model)

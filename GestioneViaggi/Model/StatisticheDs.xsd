@@ -20,54 +20,20 @@
               <xs:element name="TotaleCosto" msprop:Generator_ColumnVarNameInTable="columnTotaleCosto" msprop:Generator_ColumnPropNameInRow="TotaleCosto" msprop:Generator_ColumnPropNameInTable="TotaleCostoColumn" msprop:Generator_UserColumnName="TotaleCosto" type="xs:decimal" minOccurs="0" />
               <xs:element name="PesoViaggioMin" msprop:Generator_ColumnVarNameInTable="columnPesoViaggioMin" msprop:Generator_ColumnPropNameInRow="PesoViaggioMin" msprop:Generator_ColumnPropNameInTable="PesoViaggioMinColumn" msprop:Generator_UserColumnName="PesoViaggioMin" type="xs:decimal" minOccurs="0" />
               <xs:element name="PesoViaggioMax" msprop:Generator_ColumnVarNameInTable="columnPesoViaggioMax" msprop:Generator_ColumnPropNameInRow="PesoViaggioMax" msprop:Generator_ColumnPropNameInTable="PesoViaggioMaxColumn" msprop:Generator_UserColumnName="PesoViaggioMax" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PesoViaggioMedio" msprop:Generator_ColumnVarNameInTable="columnPesoViaggioMedio" msprop:Generator_ColumnPropNameInRow="PesoViaggioMedio" msprop:Generator_ColumnPropNameInTable="PesoViaggioMedioColumn" msprop:Generator_UserColumnName="PesoViaggioMedio" type="xs:decimal" minOccurs="0" />
               <xs:element name="CostoViaggioMin" msprop:Generator_ColumnVarNameInTable="columnCostoViaggioMin" msprop:Generator_ColumnPropNameInRow="CostoViaggioMin" msprop:Generator_ColumnPropNameInTable="CostoViaggioMinColumn" msprop:Generator_UserColumnName="CostoViaggioMin" type="xs:decimal" minOccurs="0" />
               <xs:element name="CostoViaggioMax" msprop:Generator_ColumnVarNameInTable="columnCostoViaggioMax" msprop:Generator_ColumnPropNameInRow="CostoViaggioMax" msprop:Generator_ColumnPropNameInTable="CostoViaggioMaxColumn" msprop:Generator_UserColumnName="CostoViaggioMax" type="xs:decimal" minOccurs="0" />
-              <xs:element name="CaloPesoMin" msprop:Generator_ColumnVarNameInTable="columnCaloPesoMin" msprop:Generator_ColumnPropNameInRow="CaloPesoMin" msprop:Generator_ColumnPropNameInTable="CaloPesoMinColumn" msprop:Generator_UserColumnName="CaloPesoMin" type="xs:decimal" minOccurs="0" />
-              <xs:element name="CaloPesoMax" msprop:Generator_ColumnVarNameInTable="columnCaloPesoMax" msprop:Generator_ColumnPropNameInRow="CaloPesoMax" msprop:Generator_ColumnPropNameInTable="CaloPesoMaxColumn" msprop:Generator_UserColumnName="CaloPesoMax" type="xs:decimal" minOccurs="0" />
-              <xs:element name="PesoViaggioMedio" msprop:Generator_ColumnVarNameInTable="columnPesoViaggioMedio" msprop:Generator_ColumnPropNameInRow="PesoViaggioMedio" msprop:Generator_ColumnPropNameInTable="PesoViaggioMedioColumn" msprop:Generator_UserColumnName="PesoViaggioMedio" type="xs:decimal" minOccurs="0" />
               <xs:element name="CostoViaggioMedio" msprop:Generator_ColumnVarNameInTable="columnCostoViaggioMedio" msprop:Generator_ColumnPropNameInRow="CostoViaggioMedio" msprop:Generator_ColumnPropNameInTable="CostoViaggioMedioColumn" msprop:Generator_UserColumnName="CostoViaggioMedio" type="xs:decimal" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Viaggi" msprop:Generator_TableClassName="ViaggiDataTable" msprop:Generator_TableVarName="tableViaggi" msprop:Generator_RowChangedName="ViaggiRowChanged" msprop:Generator_TablePropName="Viaggi" msprop:Generator_RowDeletingName="ViaggiRowDeleting" msprop:Generator_RowChangingName="ViaggiRowChanging" msprop:Generator_RowEvHandlerName="ViaggiRowChangeEventHandler" msprop:Generator_RowDeletedName="ViaggiRowDeleted" msprop:Generator_RowClassName="ViaggiRow" msprop:Generator_UserTableName="Viaggi" msprop:Generator_RowEvArgName="ViaggiRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" minOccurs="0" />
-              <xs:element name="Data" msprop:Generator_ColumnVarNameInTable="columnData" msprop:Generator_ColumnPropNameInRow="Data" msprop:Generator_ColumnPropNameInTable="DataColumn" msprop:Generator_UserColumnName="Data" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Fornitore" msprop:Generator_ColumnVarNameInTable="columnFornitore" msprop:Generator_ColumnPropNameInRow="Fornitore" msprop:Generator_ColumnPropNameInTable="FornitoreColumn" msprop:Generator_UserColumnName="Fornitore" type="xs:string" minOccurs="0" />
-              <xs:element name="Conducente" msprop:Generator_ColumnVarNameInTable="columnConducente" msprop:Generator_ColumnPropNameInRow="Conducente" msprop:Generator_ColumnPropNameInTable="ConducenteColumn" msprop:Generator_UserColumnName="Conducente" type="xs:string" minOccurs="0" />
-              <xs:element name="TargaAutomezzo" msprop:Generator_ColumnVarNameInTable="columnTargaAutomezzo" msprop:Generator_ColumnPropNameInRow="TargaAutomezzo" msprop:Generator_ColumnPropNameInTable="TargaAutomezzoColumn" msprop:Generator_UserColumnName="TargaAutomezzo" type="xs:string" minOccurs="0" />
-              <xs:element name="TotalePesoViaggio" msprop:Generator_ColumnVarNameInTable="columnTotalePesoViaggio" msprop:Generator_ColumnPropNameInRow="TotalePesoViaggio" msprop:Generator_ColumnPropNameInTable="TotalePesoViaggioColumn" msprop:Generator_UserColumnName="TotalePesoViaggio" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TotaleCostoViaggio" msprop:Generator_ColumnVarNameInTable="columnTotaleCostoViaggio" msprop:Generator_ColumnPropNameInRow="TotaleCostoViaggio" msprop:Generator_ColumnPropNameInTable="TotaleCostoViaggioColumn" msprop:Generator_UserColumnName="TotaleCostoViaggio" type="xs:decimal" minOccurs="0" />
-              <xs:element name="CaloPeso" msprop:Generator_ColumnVarNameInTable="columnCaloPeso" msprop:Generator_ColumnPropNameInRow="CaloPeso" msprop:Generator_ColumnPropNameInTable="CaloPesoColumn" msprop:Generator_UserColumnName="CaloPeso" type="xs:decimal" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Righe" msprop:Generator_TableClassName="RigheDataTable" msprop:Generator_TableVarName="tableRighe" msprop:Generator_RowChangedName="RigheRowChanged" msprop:Generator_TablePropName="Righe" msprop:Generator_RowDeletingName="RigheRowDeleting" msprop:Generator_RowChangingName="RigheRowChanging" msprop:Generator_RowEvHandlerName="RigheRowChangeEventHandler" msprop:Generator_RowDeletedName="RigheRowDeleted" msprop:Generator_RowClassName="RigheRow" msprop:Generator_UserTableName="Righe" msprop:Generator_RowEvArgName="RigheRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" minOccurs="0" />
-              <xs:element name="ViaggioId" msprop:Generator_ColumnVarNameInTable="columnViaggioId" msprop:Generator_ColumnPropNameInRow="ViaggioId" msprop:Generator_ColumnPropNameInTable="ViaggioIdColumn" msprop:Generator_UserColumnName="ViaggioId" type="xs:int" minOccurs="0" />
-              <xs:element name="Prodotto" msprop:Generator_ColumnVarNameInTable="columnProdotto" msprop:Generator_ColumnPropNameInRow="Prodotto" msprop:Generator_ColumnPropNameInTable="ProdottoColumn" msprop:Generator_UserColumnName="Prodotto" type="xs:string" minOccurs="0" />
-              <xs:element name="Pesata" msprop:Generator_ColumnVarNameInTable="columnPesata" msprop:Generator_ColumnPropNameInRow="Pesata" msprop:Generator_ColumnPropNameInTable="PesataColumn" msprop:Generator_UserColumnName="Pesata" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Costo" msprop:Generator_ColumnVarNameInTable="columnCosto" msprop:Generator_ColumnPropNameInRow="Costo" msprop:Generator_ColumnPropNameInTable="CostoColumn" msprop:Generator_UserColumnName="Costo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoMedioPeso" msprop:Generator_ColumnVarNameInTable="columnCostoMedioPeso" msprop:Generator_ColumnPropNameInRow="CostoMedioPeso" msprop:Generator_ColumnPropNameInTable="CostoMedioPesoColumn" msprop:Generator_UserColumnName="CostoMedioPeso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CaloPesoMedio" msprop:Generator_ColumnVarNameInTable="columnCaloPesoMedio" msprop:Generator_ColumnPropNameInRow="CaloPesoMedio" msprop:Generator_ColumnPropNameInTable="CaloPesoMedioColumn" msprop:Generator_UserColumnName="CaloPesoMedio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RagioneSociale" msprop:Generator_ColumnVarNameInTable="columnRagioneSociale" msprop:Generator_ColumnPropNameInRow="RagioneSociale" msprop:Generator_ColumnPropNameInTable="RagioneSocialeColumn" msprop:Generator_UserColumnName="RagioneSociale" type="xs:string" minOccurs="0" />
+              <xs:element name="DescrizioneProdotto" msprop:Generator_ColumnVarNameInTable="columnDescrizioneProdotto" msprop:Generator_ColumnPropNameInRow="DescrizioneProdotto" msprop:Generator_ColumnPropNameInTable="DescrizioneProdottoColumn" msprop:Generator_UserColumnName="DescrizioneProdotto" type="xs:string" minOccurs="0" />
+              <xs:element name="Dal" msprop:Generator_ColumnVarNameInTable="columnDal" msprop:Generator_ColumnPropNameInRow="Dal" msprop:Generator_ColumnPropNameInTable="DalColumn" msprop:Generator_UserColumnName="Dal" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Al" msprop:Generator_ColumnVarNameInTable="columnAl" msprop:Generator_ColumnPropNameInRow="Al" msprop:Generator_ColumnPropNameInTable="AlColumn" msprop:Generator_UserColumnName="Al" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1">
-      <xs:selector xpath=".//mstns:Viaggi" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
-    <xs:unique name="Righe_Constraint1" msdata:ConstraintName="Constraint1">
-      <xs:selector xpath=".//mstns:Righe" />
-      <xs:field xpath="mstns:Id" />
-    </xs:unique>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="Viaggi_Righe" msdata:parent="Viaggi" msdata:child="Righe" msdata:parentkey="Id" msdata:childkey="ViaggioId" msprop:Generator_UserChildTable="Righe" msprop:Generator_ChildPropName="GetRigheRows" msprop:Generator_UserRelationName="Viaggi_Righe" msprop:Generator_RelationVarName="relationViaggi_Righe" msprop:Generator_UserParentTable="Viaggi" msprop:Generator_ParentPropName="ViaggiRow" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>

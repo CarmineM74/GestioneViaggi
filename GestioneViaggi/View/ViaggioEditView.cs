@@ -18,6 +18,11 @@ namespace GestioneViaggi.View
         private ViaggioEditPresenter _presenter;
         private Boolean _canClose;
 
+        // 2014.06.25
+        // Modificare l'inserimento della pesata per la riga del viaggio
+        // L'utente inserisce il peso i Kg uscendo dal textbox l'informazione viene
+        // automaticamente convertito in TONNELLATE
+
         public ViaggioEditView()
         {
             InitializeComponent();
@@ -120,6 +125,11 @@ namespace GestioneViaggi.View
         private void listinoDg_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             MessageBox.Show(e.Exception.Message);
+        }
+
+        private void pesataTb_Leave(object sender, EventArgs e)
+        {
+            pesataTb.Text = _vmodel.pesata.ToString();
         }
 
     }

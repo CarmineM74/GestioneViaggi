@@ -8,6 +8,8 @@ using GestioneViaggi.Model;
 using System.Data;
 using System.Windows.Forms;
 using GestioneViaggi.View;
+using GestioneViaggi.Reports;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace GestioneViaggi.Presenter
 {
@@ -80,6 +82,8 @@ namespace GestioneViaggi.Presenter
                     _vmodel.dataset = new Model.StatisticheDs();
                     StatisticheDs.TotalizzatoriRow totalizzatori = _vmodel.dataset.Totalizzatori.NewTotalizzatoriRow();
                     _vmodel.totalizzatori.Aggiorna();
+                    _vmodel.totalizzatori.FillRow(_vmodel.fornitore,_vmodel.prodotto,_vmodel.FiltroDal,_vmodel.FiltroAl,totalizzatori);
+                    _vmodel.dataset.Totalizzatori.Rows.Add(totalizzatori);
                 }
                 else
                 {

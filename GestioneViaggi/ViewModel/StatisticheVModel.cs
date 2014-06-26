@@ -99,6 +99,7 @@ namespace GestioneViaggi.ViewModel
             _CostoViaggioMax = -1;
             PesoViaggioMedio = 0;
             CostoViaggioMedio = 0;
+            // Media prezzo del periodo
             CostoMedioPeso = 0;
             CaloPesoMedio = 0;
             ViaggiMeseAc = new List<int>();
@@ -153,6 +154,7 @@ namespace GestioneViaggi.ViewModel
             t.CostoViaggioMin = totaleCosto;
             t.CostoViaggioMax = totaleCosto;
             t.CostoMedioPeso = totaleCosto;
+            t.CaloPesoMedio += v.CaloPeso;
             return t;
         }
 
@@ -176,11 +178,31 @@ namespace GestioneViaggi.ViewModel
             PesoViaggioMedio = PesoViaggioMedio / NumeroViaggi;
             CostoViaggioMedio = CostoViaggioMedio / NumeroViaggi;
             CostoMedioPeso = CostoMedioPeso / TotalePeso;
+            CaloPesoMedio = CaloPesoMedio / NumeroViaggi;
             List<Viaggio> viaggiAc = _viaggi.Where(v => v.Data.Year == DateTime.Today.Year).ToList();
             List<Viaggio> viaggiAp = _viaggi.Where(v => v.Data.Year == DateTime.Today.Year-1).ToList();
             ViaggiMeseAc = ConteggiaViaggiMese(viaggiAc);
             ViaggiMeseAp = ConteggiaViaggiMese(viaggiAp);
             _isValid = true;
+        }
+
+        internal void FillRow(Fornitore f, Prodotto p, DateTime dal, DateTime al, StatisticheDs.TotalizzatoriRow t)
+        {
+            t.RagioneSociale = f.RagioneSociale;
+            t.DescrizioneProdotto = p.Descrizione;
+            t.Dal = dal;
+            t.Al = al;
+            t.NumeroViaggi = NumeroViaggi;
+            t.TotaleCosto = TotaleCosto;
+            t.TotalePeso = TotalePeso;
+            t.PesoViaggioMax = PesoViaggioMax;
+            t.PesoViaggioMedio = PesoViaggioMedio;
+            t.PesoViaggioMin = PesoViaggioMin;
+            t.CostoViaggioMax = CostoViaggioMax;
+            t.CostoViaggioMedio = CostoViaggioMedio;
+            t.CostoViaggioMin = CostoViaggioMin;
+            t.CaloPesoMedio = CaloPesoMedio;
+            t.CostoMedioPeso = CostoMedioPeso;
         }
     }
 
