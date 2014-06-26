@@ -243,6 +243,7 @@
             this.pesataTb.Name = "pesataTb";
             this.pesataTb.Size = new System.Drawing.Size(83, 20);
             this.pesataTb.TabIndex = 0;
+            this.pesataTb.Leave += new System.EventHandler(this.pesataTb_Leave);
             // 
             // label7
             // 

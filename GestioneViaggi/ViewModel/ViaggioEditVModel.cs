@@ -103,8 +103,11 @@ namespace GestioneViaggi.ViewModel
                     throw new Exception("La pesata non può essere inferiore a 0!");
                 else
                 {
-                    _riga.Pesata = value;
-                    NotifyPropertyChanged("pesata");
+                    if (value != _riga.Pesata)
+                    {
+                        _riga.Pesata = value / 1000;
+                        NotifyPropertyChanged("pesata");
+                    }
                 }
             } 
         }
@@ -132,9 +135,11 @@ namespace GestioneViaggi.ViewModel
                     if ((value > 0) && (value > current.TotalePeso()))
                         throw new Exception("Il calo peso non può essere superiore al peso totale del viaggio!");
                 }
-                current.CaloPeso = value;
-
-                NotifyPropertyChanged("caloPeso");
+                if (current.CaloPeso != value)
+                {
+                    current.CaloPeso = value/1000;
+                    NotifyPropertyChanged("caloPeso");
+                }
             } 
         }
 
