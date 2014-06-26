@@ -87,6 +87,11 @@ namespace GestioneViaggi.ViewModel
         private List<Viaggio> _viaggi;
 
         private Boolean _isValid;
+        public Boolean IsValid
+        {
+            get { return _isValid; }
+            set { _isValid = value; }
+        }
 
         public Totalizzatori(List<Viaggio> viaggi)
         {

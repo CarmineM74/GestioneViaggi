@@ -77,7 +77,8 @@ namespace GestioneViaggi.Presenter
                 List<Viaggio> vs = FiltraViaggiPerData(_vmodel.viaggi);
                 vs = FiltraViaggiPerProdotto(vs);
                 _vmodel.totalizzatori = new Totalizzatori(vs);
-                if (vs.Count() > 0)
+                _vmodel.totalizzatori.IsValid = vs.Count() > 0;
+                if (_vmodel.totalizzatori.IsValid)
                 {
                     _vmodel.dataset = new Model.StatisticheDs();
                     StatisticheDs.TotalizzatoriRow totalizzatori = _vmodel.dataset.Totalizzatori.NewTotalizzatoriRow();

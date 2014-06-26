@@ -188,10 +188,10 @@ namespace GestioneViaggi
             _riepilogopr.SetFornitori(elencoFornitoriBs.DataSource as List<Fornitore>);
             riepilogoFornitoriBs.DataSource = null;
             riepilogoFornitoriBs.DataSource = _riepilogovm.fornitori;
-            riepilogoProdottiBs.DataSource = null;
-            riepilogoProdottiBs.DataSource = _riepilogovm.prodotti;
             riepilogoBs.ResetBindings(false);
             _riepilogopr.SetFornitore(null);
+            riepilogoProdottiBs.DataSource = null;
+            riepilogoProdottiBs.DataSource = _riepilogovm.prodotti;
         }
 
         void _anaforpr_onFornitoriSaveError(List<string> messages)
@@ -429,16 +429,19 @@ namespace GestioneViaggi
         private void riepilogoGeneraleBtn_Click(object sender, EventArgs e)
         {
             _riepilogopr.RiepilogoGenerale();
-            riepilogoLogTb.Text += String.Format("Riepilogo per il fornitore: {0} e prodotto: {1} Dal {2} Al {3}\r\n", _riepilogovm.fornitore.RagioneSociale, _riepilogovm.prodotto.Descrizione, _riepilogovm.FiltroDal.Date.ToShortDateString(), _riepilogovm.FiltroAl.Date.ToShortDateString());
-            foreach (String s in _riepilogovm.totalizzatori.Dump())
-                riepilogoLogTb.Text += s + "\r\n";
-            ReportDocument rpt = new ReportDocument();
-            rpt.Load(@".\Reports\RiepilogoGeneraleReport.rpt");
-            rpt.SetDataSource(_riepilogovm.dataset);
-            using (ReportViewer rviewer = new ReportViewer())
+            if (_riepilogovm.totalizzatori.IsValid)
             {
-                rviewer.SetReport(rpt);
-                rviewer.ShowDialog();
+                riepilogoLogTb.Text += String.Format("Riepilogo per il fornitore: {0} e prodotto: {1} Dal {2} Al {3}\r\n", _riepilogovm.fornitore.RagioneSociale, _riepilogovm.prodotto.Descrizione, _riepilogovm.FiltroDal.Date.ToShortDateString(), _riepilogovm.FiltroAl.Date.ToShortDateString());
+                foreach (String s in _riepilogovm.totalizzatori.Dump())
+                    riepilogoLogTb.Text += s + "\r\n";
+                ReportDocument rpt = new ReportDocument();
+                rpt.Load(@".\Reports\RiepilogoGeneraleReport.rpt");
+                rpt.SetDataSource(_riepilogovm.dataset);
+                using (ReportViewer rviewer = new ReportViewer())
+                {
+                    rviewer.SetReport(rpt);
+                    rviewer.ShowDialog();
+                }
             }
         }
 
@@ -449,6 +452,12 @@ namespace GestioneViaggi
         }
 
         private void riepilogoFornitoriBs_CurrentChanged(object sender, EventArgs e)
+        {
+            _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
+            riepilogoProdottiBs.ResetBindings(false);
+        }
+
+        private void riepilogoFornitoreCb_SelectedIndexChanged(object sender, EventArgs e)
         {
             //_riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
             //riepilogoProdottiBs.ResetBindings(false);
@@ -478,12 +487,5 @@ namespace GestioneViaggi
         {
             riepilogoLogTb.Text = "";
         }
-
-        private void riepilogoFornitoreCb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
-            riepilogoProdottiBs.ResetBindings(false);
-        }
-
     }
 }
