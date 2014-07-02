@@ -231,9 +231,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(211, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.Size = new System.Drawing.Size(57, 13);
             this.label8.TabIndex = 19;
-            this.label8.Text = "Costo (€)";
+            this.label8.Text = "Costo (€/t)";
             // 
             // pesataTb
             // 
@@ -250,9 +250,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Pesata (T)";
+            this.label7.Text = "Pesata (t)";
             // 
             // eliminaRigaBtn
             // 
@@ -353,6 +353,7 @@
             this.caloPesoTb.Name = "caloPesoTb";
             this.caloPesoTb.Size = new System.Drawing.Size(68, 20);
             this.caloPesoTb.TabIndex = 7;
+            this.caloPesoTb.Leave += new System.EventHandler(this.caloPesoTb_Leave);
             // 
             // label9
             // 
@@ -475,18 +476,18 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(13, 52);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
+            this.label10.Size = new System.Drawing.Size(63, 13);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Costo: ";
+            this.label10.Text = "Costo (€/t): ";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Peso:";
+            this.label6.Text = "Peso (t):";
             // 
             // cartellinoTb
             // 

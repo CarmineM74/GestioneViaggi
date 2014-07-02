@@ -132,5 +132,10 @@ namespace GestioneViaggi.View
             pesataTb.Text = _vmodel.pesata.ToString();
         }
 
+        private void caloPesoTb_Leave(object sender, EventArgs e)
+        {
+            caloPesoTb.Text = _vmodel.caloPeso.ToString();
+        }
+
     }
 }

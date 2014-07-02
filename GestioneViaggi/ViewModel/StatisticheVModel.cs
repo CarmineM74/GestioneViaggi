@@ -119,32 +119,33 @@ namespace GestioneViaggi.ViewModel
             {
                 res.Add(String.Format("Numero viaggi: {0}", NumeroViaggi));
                 res.Add(String.Format("Calo peso medio rilevato: {0}", CaloPesoMedio));
-                res.Add(String.Format("Totale costo: {0}", TotaleCosto));
-                res.Add(String.Format("Costo minimo viaggio rilevato: {0}", CostoViaggioMin));
-                res.Add(String.Format("Costo massimo viaggio rilevato: {0}", CostoViaggioMax));
-                res.Add(String.Format("Costo medio viaggio rilevato: {0}", CostoViaggioMedio));
-                res.Add(String.Format("Totale peso: {0}", TotalePeso));
-                res.Add(String.Format("Totale costo/ Totale peso rilevato: {0}", CostoMedioPeso));
-                res.Add(String.Format("Peso minimo viaggio rilevato: {0}", PesoViaggioMin));
-                res.Add(String.Format("Peso massimo viaggio rilevato: {0}", PesoViaggioMax));
-                res.Add(String.Format("Peso medio viaggio rilevato: {0}", PesoViaggioMedio));
+                res.Add(String.Format("Totale costo €/t: {0}", TotaleCosto));
+                res.Add(String.Format("Costo minimo viaggio rilevato €/t: {0}", CostoViaggioMin));
+                res.Add(String.Format("Costo massimo viaggio rilevato €/t: {0}", CostoViaggioMax));
+                res.Add(String.Format("Costo medio viaggio rilevato €/t: {0}", CostoViaggioMedio));
+                res.Add(String.Format("Totale peso t: {0}", TotalePeso));
+                res.Add(String.Format("Totale costo/Totale peso rilevato: {0}", CostoMedioPeso));
+                res.Add(String.Format("Peso minimo viaggio rilevato t: {0}", PesoViaggioMin));
+                res.Add(String.Format("Peso massimo viaggio rilevato t: {0}", PesoViaggioMax));
+                res.Add(String.Format("Peso medio viaggio rilevato t: {0}", PesoViaggioMedio));
             }
             return res;
         }
 
         private Totalizzatori CalcolaTotalizzatori(Totalizzatori t, Viaggio v)
         {
-            //Riepilogo per il fornitore: Fornitore di prova 758 e prodotto: Prodotto di prova 800 Dal 01/06/2014 Al 30/06/2014
-            //Numero viaggi: 2
-            //Calo peso medio rilevato: 0
-            //Totale costo: 3277397
-            //Costo minimo viaggio rilevato: 918489
-            //Costo massimo viaggio rilevato: 2358908
-            //Costo medio viaggio rilevato: 1638698,5
-            //Totale peso: 48249
-            //Peso minimo viaggio rilevato: 19994
-            //Peso massimo viaggio rilevato: 28255
-            //Peso medio viaggio rilevato: 24124,5
+            //Riepilogo per il fornitore: Test2 e prodotto: vv Dal 01/06/2014 Al 30/06/2014
+            //Numero viaggi: 1
+            //Calo peso medio rilevato: 2,345
+            //Totale costo €/t: 230,890
+            //Costo minimo viaggio rilevato €/t: 230,890
+            //Costo massimo viaggio rilevato €/t: 230,890
+            //Costo medio viaggio rilevato €/t: 230,890
+            //Totale peso t: 10,495
+            //Totale costo/Totale peso rilevato: 22
+            //Peso minimo viaggio rilevato t: 10,495
+            //Peso massimo viaggio rilevato t: 10,495
+            //Peso medio viaggio rilevato t: 10,495            
 
             Decimal totalePeso = v.TotalePeso();
             Decimal totaleCosto = v.TotaleCosto();

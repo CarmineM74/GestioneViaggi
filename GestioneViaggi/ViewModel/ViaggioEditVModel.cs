@@ -128,11 +128,12 @@ namespace GestioneViaggi.ViewModel
         public decimal caloPeso { 
             get { return current.CaloPeso; } 
             set {
+                Decimal valore_t = value / 1000;
                 if (current.Righe.Count > 0)
                 {
-                    if (value < 0)
+                    if (valore_t < 0)
                         throw new Exception("Il calo peso non può essere inferiore a 0!");
-                    if ((value > 0) && (value > current.TotalePeso()))
+                    if ((valore_t > 0) && (valore_t > current.TotalePeso()))
                         throw new Exception("Il calo peso non può essere superiore al peso totale del viaggio!");
                 }
                 if (current.CaloPeso != value)

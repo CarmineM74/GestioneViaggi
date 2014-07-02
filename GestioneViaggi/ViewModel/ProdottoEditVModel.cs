@@ -18,27 +18,36 @@ namespace GestioneViaggi.ViewModel
         }
 
         public List<Prodotto> items { get; set; }
-        public Prodotto current { get; set; }
+
+        public Prodotto _current;
+        public Prodotto current {
+            get { return _current; }
+            set
+            {
+                DatesChanged = false;
+                _current = value;
+                NotifyPropertyChanged("current");
+            }
+        }
 
         private Boolean CheckValidita()
         {
             return (DateTime.Compare(current.ValidoDal.Date,current.ValidoAl.Date) <= 0);
         }
 
+        public Boolean DatesChanged { get; set; }
+
         public DateTime ValidoDal
         {
             get { return current.ValidoDal; }
             set
             {
-//                DateTime _oldval = current.ValidoDal;
-                current.ValidoDal = value;
-//                if (CheckValidita())
+                if (DateTime.Compare(current.ValidoDal.Date, value.Date) != 0)
+                {
+                    current.ValidoDal = value;
+                    DatesChanged = true;
                     NotifyPropertyChanged("ValidoDal");
-                //else
-                //{
-                //    current.ValidoDal = _oldval;
-                //    throw new Exception("L'intervallo di validità specificato NON è valido!");
-                //}
+                }
             }
         }
 
@@ -47,15 +56,12 @@ namespace GestioneViaggi.ViewModel
             get { return current.ValidoAl; }
             set
             {
-//                DateTime _oldval = current.ValidoAl;
-                current.ValidoAl = value;
-//                if (CheckValidita())
+                if (DateTime.Compare(current.ValidoAl.Date, value.Date) != 0)
+                {
+                    current.ValidoAl = value;
+                    DatesChanged = true;
                     NotifyPropertyChanged("ValidoAl");
-                //else
-                //{
-                //    current.ValidoAl = _oldval;
-                //    throw new Exception("L'intervallo di validità specificato NON è valido!");
-                //}
+                }
             }
         }
 
