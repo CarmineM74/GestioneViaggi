@@ -97,9 +97,9 @@ namespace GestioneViaggi.DAL
         {
             List<String> errors = new List<string>();
             // Possiamo inserire se:
-            // - Non esiste un prodotto con la stessa descrizione
+            // - Non esiste un prodotto con la stessa descrizione e stesso fornitore
             // - Oppure esiste ma la data validità è diversa
-            List<Prodotto> ps = Dal.db.Prodotti.All().Where(p => p.Descrizione == prodotto.Descrizione).ToList();
+            List<Prodotto> ps = Dal.db.Prodotti.All().Where(p => (p.Descrizione == prodotto.Descrizione) && (p.FornitoreId == prodotto.FornitoreId)).ToList();
             if (ps.Count > 0)
             {
                 if (ps.Where(p => DateTime.Compare(p.ValidoDal.Date, prodotto.ValidoDal.Date) == 0).Count() > 0)

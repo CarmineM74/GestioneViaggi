@@ -98,6 +98,7 @@
             this.riepilogoGeneraleBtn = new System.Windows.Forms.Button();
             this.riepilogoBs = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tuttiFornitoriCb = new System.Windows.Forms.CheckBox();
             this.riepilogoProdottoCb = new System.Windows.Forms.ComboBox();
             this.riepilogoProdottiBs = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
@@ -832,6 +833,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.tuttiFornitoriCb);
             this.groupBox6.Controls.Add(this.riepilogoProdottoCb);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.riepilogoFornitoreCb);
@@ -843,6 +845,17 @@
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Filtri";
+            // 
+            // tuttiFornitoriCb
+            // 
+            this.tuttiFornitoriCb.AutoSize = true;
+            this.tuttiFornitoriCb.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.riepilogoBs, "TuttiFornitori", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tuttiFornitoriCb.Location = new System.Drawing.Point(294, 34);
+            this.tuttiFornitoriCb.Name = "tuttiFornitoriCb";
+            this.tuttiFornitoriCb.Size = new System.Drawing.Size(126, 17);
+            this.tuttiFornitoriCb.TabIndex = 24;
+            this.tuttiFornitoriCb.Text = "TUTTI I FORNITORI";
+            this.tuttiFornitoriCb.UseVisualStyleBackColor = true;
             // 
             // riepilogoProdottoCb
             // 
@@ -877,6 +890,7 @@
             this.riepilogoFornitoreCb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.riepilogoFornitoreCb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.riepilogoFornitoreCb.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.riepilogoBs, "fornitoreId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.riepilogoFornitoreCb.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.riepilogoBs, "canSelectSingoloFornitore", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.riepilogoFornitoreCb.DataSource = this.riepilogoFornitoriBs;
             this.riepilogoFornitoreCb.DisplayMember = "RagioneSociale";
             this.riepilogoFornitoreCb.FormattingEnabled = true;
@@ -1152,6 +1166,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn conducenteDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox viaggioCartellinoFilterTb;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox tuttiFornitoriCb;
     }
 }
 

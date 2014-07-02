@@ -282,9 +282,42 @@ namespace GestioneViaggi.ViewModel
             }
         }
 
+        private Boolean _tuttiFornitori;
+        public Boolean TuttiFornitori
+        {
+            get { return _tuttiFornitori; }
+            set { _tuttiFornitori = value; NotifyPropertyChanged("TuttiFornitori"); }
+        }
+
+        private Decimal _costoComplessivo;
+        public Decimal CostoComplessivo
+        {
+            get { return _costoComplessivo; }
+            set { _costoComplessivo = value; NotifyPropertyChanged("CostoComplessivo"); }
+        }
+
+        private Decimal _pesoComplessivo;
+        public Decimal PesoComplessivo
+        {
+            get { return _pesoComplessivo; }
+            set { _pesoComplessivo = value; NotifyPropertyChanged("PesoComplessivo"); }
+        }
+
+        private Decimal _costoMedioComplessivo;
+        public Decimal CostoMedioComplessivo
+        {
+            get { return _costoMedioComplessivo; }
+            set { _costoMedioComplessivo = value; NotifyPropertyChanged("CostoMedioComplessivo"); }
+        }
+
+        public Boolean canSelectSingoloFornitore
+        {
+            get { return !TuttiFornitori; }
+        }
+
         public Boolean ProductSelectionEnabled
         {
-            get { return (_fornitore != null); }
+            get { return ((_fornitore != null) || TuttiFornitori); }
         }
 
         public Boolean RiepilogoDateFilterEnabled

@@ -224,6 +224,7 @@ namespace GestioneViaggi
             _anaforvm.current = new Fornitore();
             currentFornitoreBs.DataSource = _anaforvm.current;
             anagraficaFornitoriVMBs.ResetBindings(false);
+            ragioneSocialeTb.Focus();
         }
 
         private void eliminaFornitoreBtn_Click(object sender, EventArgs e)
@@ -426,7 +427,7 @@ namespace GestioneViaggi
 
         //End Viaggi
 
-        private void riepilogoGeneraleBtn_Click(object sender, EventArgs e)
+        private void GeneraRiepilogo(Boolean usa_report)
         {
             _riepilogopr.RiepilogoGenerale();
             if (_riepilogovm.totalizzatori.IsValid)
@@ -434,6 +435,8 @@ namespace GestioneViaggi
                 riepilogoLogTb.Text += String.Format("Riepilogo per il fornitore: {0} e prodotto: {1} Dal {2} Al {3}\r\n", _riepilogovm.fornitore.RagioneSociale, _riepilogovm.prodotto.Descrizione, _riepilogovm.FiltroDal.Date.ToShortDateString(), _riepilogovm.FiltroAl.Date.ToShortDateString());
                 foreach (String s in _riepilogovm.totalizzatori.Dump())
                     riepilogoLogTb.Text += s + "\r\n";
+                if (!usa_report)
+                    return;
                 ReportDocument rpt = new ReportDocument();
                 rpt.Load(@".\Reports\RiepilogoGeneraleReport.rpt");
                 rpt.SetDataSource(_riepilogovm.dataset);
@@ -445,6 +448,30 @@ namespace GestioneViaggi
             }
         }
 
+        private void riepilogoGeneraleBtn_Click(object sender, EventArgs e)
+        {
+            if (tuttiFornitoriCb.Checked)
+            {
+                _riepilogovm.CostoComplessivo = 0;
+                _riepilogovm.PesoComplessivo = 0;
+                _riepilogovm.CostoMedioComplessivo = 0;
+                foreach (Fornitore f in _riepilogovm.fornitori)
+                {
+                    _riepilogopr.SetFornitore(f);
+                    GeneraRiepilogo(false);
+                    _riepilogovm.CostoComplessivo += _riepilogovm.totalizzatori.TotaleCosto;
+                    _riepilogovm.PesoComplessivo += _riepilogovm.totalizzatori.TotalePeso;
+                    riepilogoLogTb.Text += "\r\n\r\n";
+                }
+                _riepilogovm.CostoMedioComplessivo = _riepilogovm.CostoComplessivo / _riepilogovm.PesoComplessivo;
+                riepilogoLogTb.Text += String.Format("Costo Complessivo (€/t): {0}\r\nPeso Complessivo (t): {1}\r\nCosto Medio Complessivo: {2}", _riepilogovm.CostoComplessivo,_riepilogovm.PesoComplessivo,_riepilogovm.CostoMedioComplessivo.ToString("N2"));
+            }
+            else
+            {
+                GeneraRiepilogo(true);
+            }
+        }
+
         void IRiepiloghiView.SetVModel(StatisticheVModel model)
         {
             _riepilogovm = model;
@@ -453,14 +480,14 @@ namespace GestioneViaggi
 
         private void riepilogoFornitoriBs_CurrentChanged(object sender, EventArgs e)
         {
-            _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
-            riepilogoProdottiBs.ResetBindings(false);
+            //_riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
+            //riepilogoProdottiBs.ResetBindings(false);
         }
 
         private void riepilogoFornitoreCb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //_riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
-            //riepilogoProdottiBs.ResetBindings(false);
+            _riepilogopr.SetFornitore(riepilogoFornitoriBs.Current as Fornitore);
+            riepilogoProdottiBs.ResetBindings(false);
         }
 
         private void riepilogoProdottiBs_CurrentChanged(object sender, EventArgs e)
@@ -487,5 +514,6 @@ namespace GestioneViaggi
         {
             riepilogoLogTb.Text = "";
         }
+
     }
 }

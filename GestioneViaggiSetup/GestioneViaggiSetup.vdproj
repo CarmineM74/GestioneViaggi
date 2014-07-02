@@ -22,13 +22,13 @@
         "Entry"
         {
         "MsmKey" = "8:_28F459BD218641E89E3953CD691EA964"
-        "OwnerKey" = "8:_3623E409853B04052056E352233760C3"
+        "OwnerKey" = "8:_FA71087277EE4751AE0FE2A152DFF152"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_28F459BD218641E89E3953CD691EA964"
-        "OwnerKey" = "8:_FA71087277EE4751AE0FE2A152DFF152"
+        "OwnerKey" = "8:_3623E409853B04052056E352233760C3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,13 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_817EC9275B4AC0B908D467B7F0B54571"
-        "OwnerKey" = "8:_3623E409853B04052056E352233760C3"
+        "OwnerKey" = "8:_FA71087277EE4751AE0FE2A152DFF152"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_817EC9275B4AC0B908D467B7F0B54571"
-        "OwnerKey" = "8:_FA71087277EE4751AE0FE2A152DFF152"
+        "OwnerKey" = "8:_3623E409853B04052056E352233760C3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -101,6 +101,18 @@
         {
         "MsmKey" = "8:_9186FB2F1BFA3053C3939AF1E9945CF4"
         "OwnerKey" = "8:_FA71087277EE4751AE0FE2A152DFF152"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A3EB33333FDB4DF3A2F696906ACA2188"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A999F1C136BF4AD6B3623816E7BCA9C8"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -137,6 +149,12 @@
         {
         "MsmKey" = "8:_BE9EC1D3ED9484D0100281A619552C14"
         "OwnerKey" = "8:_4BEB87A4CF541B993113038462682535"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CBF14951DFA44A958C8D4D80AAB424A1"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,13 +196,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FA71087277EE4751AE0FE2A152DFF152"
+        "OwnerKey" = "8:_5568436656CE6D8C1A9A53BD1588A942"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5568436656CE6D8C1A9A53BD1588A942"
+        "OwnerKey" = "8:_28F459BD218641E89E3953CD691EA964"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FA71087277EE4751AE0FE2A152DFF152"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -265,12 +289,6 @@
         "OwnerKey" = "8:_3623E409853B04052056E352233760C3"
         "MsmSig" = "8:_UNDEFINED"
         }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_28F459BD218641E89E3953CD691EA964"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -331,6 +349,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -701,6 +727,46 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A3EB33333FDB4DF3A2F696906ACA2188"
+            {
+            "SourcePath" = "8:..\\GestioneViaggi\\creation.sql"
+            "TargetName" = "8:creation.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_EF43D37A9C19448D9F77AC632509DFEA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A999F1C136BF4AD6B3623816E7BCA9C8"
+            {
+            "SourcePath" = "8:..\\GestioneViaggi\\bin\\Debug\\x86\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_92AC4AFD20344466AA47C531CFDD4139"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AC6C4018BFD9A7A89035103823A2A85C"
             {
             "AssemblyRegister" = "3:1"
@@ -814,6 +880,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CBF14951DFA44A958C8D4D80AAB424A1"
+            {
+            "SourcePath" = "8:..\\GestioneViaggi\\bin\\Debug\\x64\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_EC246B8E9EC646BE9382C6945C19C434"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D9FC97E61ACA71D583FFD91A1A56EC5E"
             {
             "AssemblyRegister" = "3:1"
@@ -916,11 +1002,33 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_4512880321534B26A7A24D4F095FB4EF"
                     {
-                    "Name" = "8:Report"
+                    "Name" = "8:Reports"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_F06F00A57704415182FCC9B850F71426"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_92AC4AFD20344466AA47C531CFDD4139"
+                    {
+                    "Name" = "8:x86"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_EF5F9A47725D4ED1A967E25818D65470"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_EC246B8E9EC646BE9382C6945C19C434"
+                    {
+                    "Name" = "8:x64"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_B7527198EAEE46F69B4F65619CB8E9AA"
                         "Folders"
                         {
                         }
@@ -944,7 +1052,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GestioneViaggi"
         "ProductCode" = "8:{BD644761-33B0-4885-8939-A8E956480B4A}"
-        "PackageCode" = "8:{E4124FB2-4007-488D-A13C-D4153EA73DBC}"
+        "PackageCode" = "8:{2E4ED515-8F84-454D-B9A8-212DDE2C596E}"
         "UpgradeCode" = "8:{4EF26360-6C62-4553-AE90-C1FCA2AEBBEE}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

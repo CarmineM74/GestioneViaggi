@@ -107,12 +107,19 @@ namespace GestioneViaggi.Presenter
         internal void SetFornitore(Fornitore fornitore)
         {
             _vmodel.fornitore = fornitore;
-            // Recuperiamo l'elenco dei prodotti legati al fornitore selezionato
-            // Non dobbiamo considerare la data di validità.
             _vmodel.prodotti.Clear();
-            _vmodel.prodotti.AddRange(FornitoreService.ListinoPerFornitore(fornitore).Distinct(new ProdottiDescrizioneEqComparer()));
-            // Recuperiamo l'elenco dei viaggio legati al fornitore selezionato
-            _vmodel.viaggi = ViaggiService.FindByFornitore(fornitore);
+            if (fornitore == null)
+            {
+                // Tutti i fornitori
+                _vmodel.prodotti.AddRange(Dal.db.Prodotti.All().Distinct(new ProdottiDescrizioneEqComparer()));
+                _vmodel.viaggi = ViaggiService.All();
+            }
+            else
+            {
+                _vmodel.prodotti.AddRange(FornitoreService.ListinoPerFornitore(fornitore).Distinct(new ProdottiDescrizioneEqComparer()));
+                // Recuperiamo l'elenco dei viaggio legati al fornitore selezionato
+                _vmodel.viaggi = ViaggiService.FindByFornitore(fornitore);
+            }
         }
 
         internal void SetProdotto(Prodotto prodotto)
